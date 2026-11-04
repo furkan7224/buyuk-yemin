@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+# Android derleme çıktıları ve GİZLİ imza dosyaları — asla depoya koyma
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/keystore.properties
+*.jks
+*.keystore
+*.p8
+# iOS
+ios/App/build/
+ios/DerivedData/
+*.xcarchive
+*.ipa
+build/

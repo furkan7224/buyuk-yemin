@@ -1,0 +1,8 @@
+<!-- android/app/src/main/AndroidManifest.xml dosyasında <application> etiketinin İÇİNE ekle -->
+<!-- Büyük Yemin ANDROID AdMob uygulama kimliği (hazır, olduğu gibi kopyala) -->
+<meta-data
+    android:name="com.google.android.gms.ads.APPLICATION_ID"
+    android:value="ca-app-pub-4370898434583301~4996418525"/>
+
+<!-- <application> etiketinin DIŞINA, <manifest> içine ekle (Android 13+ reklam kimliği izni) -->
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"/>

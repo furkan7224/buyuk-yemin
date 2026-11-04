@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Büyük Yemin</string>
+    <string name="title_activity_main">Büyük Yemin</string>
+    <string name="package_name">com.gulergamestudios.buyukyemin</string>
+    <string name="custom_url_scheme">com.gulergamestudios.buyukyemin</string>
+</resources>

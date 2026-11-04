@@ -1,0 +1,94 @@
+name: iOS → TestFlight
+
+# Actions sekmesinden "Run workflow" ile elle başlatılır.
+on:
+  workflow_dispatch:
+    inputs:
+      reklam_modu:
+        description: "Reklam modu (test = Google test reklamları, gercek = canlı reklamlar)"
+        required: true
+        default: "test"
+        type: choice
+        options: [test, gercek]
+
+jobs:
+  ios:
+    runs-on: macos-26
+    timeout-minutes: 60
+    env:
+      APP_STORE_KEY_ID: ${{ secrets.APP_STORE_KEY_ID }}
+      APP_STORE_ISSUER_ID: ${{ secrets.APP_STORE_ISSUER_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Gizli anahtarları kontrol et
+        run: |
+          for v in APP_STORE_KEY_ID APP_STORE_ISSUER_ID APPLE_TEAM_ID; do
+            if [ -z "${!v}" ]; then echo "::error::$v gizli değişkeni eksik (Settings → Secrets and variables → Actions)"; exit 1; fi
+          done
+          if [ -z "${{ secrets.APP_STORE_KEY_P8 }}" ]; then echo "::error::APP_STORE_KEY_P8 gizli değişkeni eksik"; exit 1; fi
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Paketleri kur
+        run: npm ci
+
+      - name: Reklam modunu ayarla
+        run: |
+          if [ "${{ inputs.reklam_modu }}" = "gercek" ]; then
+            sed -i '' 's/var TEST = true;/var TEST = false;/' www/ads.js
+          fi
+          grep -n "var TEST" www/ads.js
+
+      - name: Capacitor iOS senkronizasyonu
+        run: npx cap sync ios
+
+      - name: App Store Connect API anahtarını yaz
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          printf '%s' "${{ secrets.APP_STORE_KEY_P8 }}" > "$RUNNER_TEMP/keys/AuthKey_${APP_STORE_KEY_ID}.p8"
+
+      - name: Arşivle (otomatik imzalama)
+        run: |
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_${APP_STORE_KEY_ID}.p8" \
+            -authenticationKeyID "$APP_STORE_KEY_ID" \
+            -authenticationKeyIssuerID "$APP_STORE_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} \
+            archive
+
+      - name: App Store Connect'e yükle (TestFlight)
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>${APPLE_TEAM_ID}</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>uploadSymbols</key><true/>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/keys/AuthKey_${APP_STORE_KEY_ID}.p8" \
+            -authenticationKeyID "$APP_STORE_KEY_ID" \
+            -authenticationKeyIssuerID "$APP_STORE_ISSUER_ID"
+
+      - name: Anahtarı temizle
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/keys"

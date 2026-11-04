@@ -1,0 +1,7 @@
+<!-- ios/App/App/Info.plist içindeki en dıştaki <dict> etiketinin içine yapıştır -->
+<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-4370898434583301~6904985896</string>
+<key>NSUserTrackingUsageDescription</key>
+<string>Bu izin, sana daha uygun reklamlar göstermek için kullanılır. Oyun izin vermesen de aynı şekilde çalışır.</string>
+<!-- Google'ın güncel SKAdNetworkItems listesini de buraya ekle:
+     AdMob yardım merkezi → iOS → "SKAdNetwork" sayfasındaki hazır XML bloğu -->
