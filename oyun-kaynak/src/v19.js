@@ -1,0 +1,52 @@
+/* =====================================================================
+   v19 · dışarıda yenen yemek öğün sayılır + arkadaş ve sevgiliyle planlar
+   ===================================================================== */
+
+/* ---------- Dışarıda yemek → öğün ---------- */
+const BRK=/kahvaltı|kruvasan|espresso|nihari|şakşuka|full english|diner|blini|ful ve|samsa|chai/i;
+function bestMeal(k){const m=menuOf(S.nation,k);let bi=0;m.forEach((x,i)=>{if(x[1]>m[bi][1])bi=i});return bi}
+function mealOut(name,pref){S.mealOut=S.mealOut||{};const order=pref?[pref,...['k','o','a'].filter(x=>x!==pref)]:BRK.test(name)?['k','o','a']:['o','a','k'];const slot=order.find(k=>S.meals[k]==null);if(!slot)return null;S.meals[slot]=bestMeal(slot);S.mealOut[slot]=name;return slot}
+function eatOut(i){if(!S.izin)return toast('Şehirde yemek için izin günü gerekiyor.');const L=CITYF[S.nation]||CITYF.TR;const f=L[+i];if(!f)return;S.eat=S.eat||{};if(S.eat[i]===S.day)return toast('Bugün zaten oradaydın.');const n=Object.values(S.eat).filter(d=>d===S.day).length;if(n>=3)return toast('Bugün yeterince yedin; bir de yürüyüş yap.');if(S.money<f[2])return toast('Paran yetmiyor.');
+ S.eat[i]=S.day;S.money-=f[2];addSt('mental',f[3]);S.nutri=clamp(S.nutri+f[4]);S.fatigue=clamp(S.fatigue-3);const slot=mealOut(f[0]);log(f[0]+'.');toast(f[1]+' Ruh hali +'+f[3]+(slot?` · ${MEALN[slot]} yapıldı`:''));if(R()<.3)setTimeout(meet,200);save();render()}
+
+/* ---------- Planlar ---------- */
+/* who: p = sevgili, f = arkadaş, g = herkes */
+const PLANS=[
+ {id:'yemek',n:'Akşam yemeği',who:'pf',cost:900,meal:'a',m:6,b:10,t:['Mum ışığında bir masa, uzun bir sohbet.','Şehrin en sevdiğiniz lokantasında saatlerce oturdunuz.']},
+ {id:'kahvalti',n:'Uzun bir kahvaltı',who:'pf',cost:500,meal:'k',m:5,b:8,t:['Çay üstüne çay, gülüşmeler.','Güneşli bir terasta öğlene kadar kahvaltı.']},
+ {id:'sinema',n:'Sinema',who:'pf',cost:400,m:5,b:7,t:['Film bitince yol boyunca sonunu tartıştınız.','Patlamış mısır, karanlık salon ve birkaç saatlik huzur.']},
+ {id:'mac',n:'Stadyumda maç',who:'f',cost:600,m:6,b:9,t:['Tribünde sesiniz kısılana kadar bağırdınız.','Son dakika golünde birbirinize sarıldınız.']},
+ {id:'doga',n:'Doğa yürüyüşü ve piknik',who:'pf',cost:250,meal:'o',m:7,b:9,dayan:.5,t:['Patikada yürüdünüz, tepede sandviçlerinizi açtınız.','Bir dere kenarında ateş yakıp çay demlediniz.']},
+ {id:'konser',n:'Konser',who:'pf',cost:700,m:7,b:9,t:['Kalabalığın içinde aynı şarkıyı bağırdınız.','Ön sıralarda, müziğin içinde kayboldunuz.']},
+ {id:'sahil',n:'Gün batımında sahil yürüyüşü',who:'p',cost:150,m:6,b:12,t:['Güneş denize gömülürken el ele yürüdünüz.','Dalgaların sesi, uzun bir sessizlik ve bir itiraf.']},
+ {id:'evde',n:'Evde film ve yemek',who:'p',cost:300,meal:'a',m:6,b:11,home:1,t:['Birlikte yemek pişirdiniz; mutfak savaş alanına döndü.','Battaniye, film ve sıcak bir çorba.']},
+ {id:'grup',n:'Herkesle grup yemeği',who:'g',cost:1600,meal:'a',m:9,b:8,t:['Masa kahkahalarla doldu; herkes birbirini yeni tanıyormuş gibi.','Sevgilin ve arkadaşların aynı masada; gecenin sonunda herkes senin hikâyeni dinliyordu.']}];
+const nextLeave=()=>{if(S.izin)return S.day;if(S.izinNext)return S.day+1;for(let k=1;k<=7;k++){const d=S.day+k;if((d-1)%7===6)return d}return S.day+7};
+const dayName=d=>d===S.day?'bugün':d===S.day+1?'yarın':DAYS[(d-1)%7]+' (Gün '+d+')';
+function pplList(){const L=[];if(S.partner)L.push({k:'p',n:S.partner.name,b:S.partner.aff,rel:S.partner.m?'Eşin':'Sevgilin'});(S.friends||[]).forEach((f,i)=>L.push({k:'f'+i,n:f.n,b:f.b,rel:'Arkadaşın · '+f.job}));if(S.partner&&(S.friends||[]).length)L.push({k:'g',n:'Herkes',b:60,rel:'Sevgilin ve arkadaşların'});return L}
+function whoOf(k){if(k==='p')return S.partner?{n:S.partner.name,b:S.partner.aff}:null;if(k==='g')return{n:'Herkes',b:60};const f=(S.friends||[])[+k.slice(1)];return f?{n:f.n,b:f.b}:null}
+function planStart(){const P=pplList();if(!P.length)return toast('Plan yapacak kimse yok. İzin günlerinde yeni insanlarla tanış.');if(S.world.war)return toast('Savaş sürerken izin yok; planlar bekleyecek.');
+ pushModal({k:'Plan yap',ti:'Kiminle?',body:`<p class="small muted">Plan ${dayName(nextLeave())} için yapılacak. Kabul edip etmemeleri aranızdaki bağa bağlı.</p>`,ch:P.map(p=>({t:`${p.n} · ${p.rel}`,fn:()=>setTimeout(()=>planWhat(p.k),0)})).concat([{t:'Vazgeç',fn:()=>{}}])})}
+function planWhat(k){const w=k==='p'?'p':k==='g'?'g':'f';const L=PLANS.filter(x=>x.who.includes(w)&&(!x.home||houseLv()>=1));const who=whoOf(k);
+ pushModal({k:'Plan yap · '+who.n,ti:'Ne yapalım?',body:`<p class="small muted">Gün: ${dayName(nextLeave())}. Buluşma 1 eylem harcar; ücret o gün ödenir.</p>`,ch:L.map(p=>({t:`${p.n} · ${money(p.cost)}${p.meal?' · '+MEALN[p.meal].toLocaleLowerCase('tr'):''}`,fn:()=>setTimeout(()=>planAsk(k,p.id),0)})).concat([{t:'Geri',fn:()=>setTimeout(planStart,0)}])})}
+function planAsk(k,pid,incoming){const who=whoOf(k),P=PLANS.find(x=>x.id===pid);if(!who||!P)return;const d=nextLeave();S.plans=(S.plans||[]).filter(x=>!(x.k===k&&x.d===d));
+ const ok=incoming||R()<clamp(.45+who.b/150,.2,.95);if(!ok){if(k==='p')S.partner.aff=clamp(S.partner.aff-1);pushModal({k:'Plan',ti:who.n,body:`<p>"${esc(pick(['Bu hafta çok yoğunum, sonra telafi edelim mi?','Ah, o gün başka bir sözüm var. Bir dahakine kesin!','Biraz yorgunum, evde dinlenmek istiyorum. Kusura bakma.']))}"</p><p class="small muted">Bağınız güçlendikçe kabul etme ihtimali artar.</p>`});return}
+ S.plans.push({k,id:pid,d,n:who.n});log(`${who.n} ile plan: ${P.n} (${dayName(d)})`);if(!incoming)pushModal({k:'Plan',ti:who.n,body:`<p>"${esc(pick(['Harika fikir! Sabırsızlanıyorum.','Anlaştık, kaçırmam!','Tam ihtiyacım olan şey. Görüşürüz!']))}"</p><div class="fx"><span class="p">${esc(P.n)} · ${dayName(d)}</span></div>`});save();render()}
+function planDo(i){const pl=(S.plans||[])[+i];if(!pl||pl.d!==S.day||!S.izin)return;const P=PLANS.find(x=>x.id===pl.id);const who=whoOf(pl.k);if(!who){S.plans.splice(+i,1);return render()}if(S.money<P.cost)return toast('Bu plan için paran yetmiyor.');if(!useAP())return;
+ S.money-=P.cost;addSt('mental',P.m);S.fatigue=clamp(S.fatigue-6);if(P.dayan)addSt('dayan',P.dayan);const slot=P.meal?mealOut(who.n+' ile '+P.n.toLocaleLowerCase('tr'),P.meal):null;
+ const bump=(kk,v)=>{if(kk==='p'&&S.partner){S.partner.aff=clamp(S.partner.aff+v);S.partner.last=S.day;if(typeof needDone==='function')needDone('date')}else if(kk.startsWith('f')){const f=S.friends[+kk.slice(1)];if(f){f.b=clamp(f.b+v);f.last=S.day}}};
+ if(pl.k==='g'){bump('p',P.b);(S.friends||[]).forEach((_,j)=>bump('f'+j,P.b))}else bump(pl.k,P.b);S.plans.splice(+i,1);log(`${who.n} ile ${P.n.toLocaleLowerCase('tr')}.`);confessMoment(pl.k);
+ pushModal({k:'Buluşma · '+P.n,ti:who.n,art:planArt(P.id),body:`<p>${esc(pick(P.t))}</p><div class="fx"><span class="p">Ruh hali +${P.m}</span><span class="p">Bağ +${P.b}</span><span class="n">−${money(P.cost)}</span>${slot?`<span class="p">${MEALN[slot]} yapıldı</span>`:''}</div>`,ch:[{t:'Hesabı ben ödeyeyim',fn:()=>{if(pl.k==='p'&&S.partner)S.partner.aff=clamp(S.partner.aff+2)}},{t:'Hesabı paylaşalım',fn:()=>{S.money+=Math.round(P.cost/2)}}]});save();render()}
+function planCancel(i){const pl=(S.plans||[])[+i];if(!pl)return;const w=whoOf(pl.k);if(pl.k==='p'&&S.partner)S.partner.aff=clamp(S.partner.aff-4);else if(pl.k.startsWith('f')){const f=S.friends[+pl.k.slice(1)];if(f)f.b=clamp(f.b-3)}S.plans.splice(+i,1);toast(`${w?w.n:''} ile planı iptal ettin. Biraz kırıldı.`);save();render()}
+/* gün sonu: kaçırılan planlar ve gelen davetler */
+function planTick(notes){S.plans=(S.plans||[]).filter(pl=>{if(pl.d<=S.day){const w=whoOf(pl.k);if(w){if(pl.k==='p'&&S.partner)S.partner.aff=clamp(S.partner.aff-8);else if(pl.k.startsWith('f')){const f=S.friends[+pl.k.slice(1)];if(f)f.b=clamp(f.b-6)}notes.push(`<span class="red">${esc(w.n)} ile planı kaçırdın.</span> Seni bekledi; kırgın.`)}return false}return true});
+ if(S.world.war)return;const tom=S.day+1;const izinTom=(tom-1)%7===6||S.izinNext;if(!izinTom||R()>.45)return;const P=pplList().filter(p=>p.k!=='g'&&!(S.plans||[]).some(x=>x.k===p.k));if(!P.length)return;const p=pick(P);const w=p.k==='p'?'p':'f';const opt=pick(PLANS.filter(x=>x.who.includes(w)&&(!x.home||houseLv()>=1)));
+ pushModal({k:'Davet',ti:p.n,body:`<p>"${esc(pick(['Yarın boşsun değil mi? ','Yarın izinlisin, biliyorum! ','Bir fikrim var: ']))}${esc(opt.n.toLocaleLowerCase('tr'))} ${p.k==='p'?'yapalım mı? Seni özledim.':'yapalım mı? Çoktandır görüşmedik.'}"</p><div class="fx"><span>${money(opt.cost)}</span><span class="p">Ruh hali +${opt.m}</span>${opt.meal?`<span class="p">${MEALN[opt.meal]} dahil</span>`:''}</div>`,ch:[{t:'Kabul et',fn:()=>{const d=S.day+1;S.plans=[...(S.plans||[]),{k:p.k,id:opt.id,d:d+0,n:p.n}];}},{t:'Bu sefer olmaz',fn:()=>{if(p.k==='p')S.partner.aff=clamp(S.partner.aff-2)}}]})}
+function planArt(id){const k={yemek:'sehir',kahvalti:'sahil',sinema:'sehir',mac:'sehir',doga:'dag',konser:'sehir',sahil:'sahil',evde:'mustakil',grup:'sehir'}[id]||'sehir';return (ART[k]||ART.sehir)()}
+function plansCard(){const L=S.plans||[];const P=pplList();if(!P.length&&!L.length)return'';
+ return `<div class="card plans"><div class="sec-h"><h2>Planlar</h2><button class="mini b" data-a="plan" data-v="new" ${S.world.war?'disabled':''}>+ Plan yap</button></div>
+ ${L.length?L.map((pl,i)=>{const P_=PLANS.find(x=>x.id===pl.id);const today=pl.d===S.day&&S.izin;return `<div class="pl ${today?'now':''}"><div class="pl-d"><b>${pl.d===S.day?'BUGÜN':pl.d===S.day+1?'YARIN':'GÜN '+pl.d}</b><small>${DAYS[(pl.d-1)%7]}</small></div><div class="grow"><b>${esc(P_.n)}</b><div class="small muted">${esc(pl.n)} · ${money(P_.cost)}${P_.meal?' · '+MEALN[P_.meal].toLocaleLowerCase('tr')+' dahil':''}</div></div>${today?`<button class="mini on" data-a="plan" data-v="do|${i}">Buluş</button>`:`<button class="mini" data-a="plan" data-v="x|${i}">İptal</button>`}</div>`}).join(''):`<p class="small muted">Henüz plan yok. ${S.partner?esc(S.partner.name)+' ya da ':''}arkadaşlarınla izin günün için bir şey ayarla.</p>`}</div>`}
+function planAct(v){const[a,i]=String(v).split('|');if(a==='new')return planStart();if(a==='do')return planDo(i);if(a==='x')return planCancel(i)}
+function mealOutNote(){const M=S.mealOut||{};const k=Object.keys(M);if(!k.length)return'';return `<div class="brief"><span class="n">🍽</span><div><b>Dışarıda yendi</b><span class="small">${k.map(x=>`${MEALN[x]}: ${esc(M[x])}`).join(' · ')}</span></div></div>`}
+
+const A19={plan:planAct};

@@ -1,0 +1,106 @@
+/* =====================================================================
+   v18 · premium araç çizimleri, kedi ve köpek ırkları (at kaldırıldı)
+   ===================================================================== */
+
+/* ---------- Araçlar ---------- */
+function roadScene(id,inner){const rr=rng(id.length*131+7);
+ const sky=`<rect width="320" height="150" fill="url(#${id}sk)"/>`;
+ const city=[...Array(16)].map((_,i)=>{const x=i*21-4,h=26+rr()*42,w=16+rr()*10;return `<rect x="${x.toFixed(0)}" y="${(96-h).toFixed(0)}" width="${w.toFixed(0)}" height="${h.toFixed(0)}" fill="#141a2c"/>${[...Array(Math.floor(h/9))].map((_,r)=>rr()<.35?`<rect x="${(x+3+rr()*(w-6)).toFixed(0)}" y="${(96-h+4+r*9).toFixed(0)}" width="2.2" height="3" fill="#ffd88a" opacity=".85"/>`:'').join('')}`}).join('');
+ const bokeh=[...Array(10)].map(()=>`<circle cx="${(rr()*320).toFixed(0)}" cy="${(70+rr()*24).toFixed(0)}" r="${(3+rr()*6).toFixed(1)}" fill="${pick(['#ffcf7a','#ff8a5a','#9fd0ff'])}" opacity="${(.12+rr()*.25).toFixed(2)}" filter="url(#${id}bl)"/>`).join('');
+ return `<svg viewBox="0 0 320 150" class="vart" aria-hidden="true"><defs>${G8(id+'sk',['#0a0e1c','#232b4a','#7a4a5a','#d08a5a'],1)}${G8(id+'rd',['#2a2d33','#0d0e11'],1)}<filter id="${id}bl"><feGaussianBlur stdDeviation="2.2"/></filter>${GLOW}<linearGradient id="${id}rf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="${id}mk"><rect y="136" width="320" height="20" fill="url(#${id}rf)"/></mask></defs>
+ ${sky}${city}${bokeh}<rect y="96" width="320" height="54" fill="url(#${id}rd)"/><path d="M0 97 H320" stroke="#ffffff22"/><path d="M0 146 H320" stroke="#e8c96a" stroke-width="2" stroke-dasharray="22 16" opacity=".5"/>${inner}<rect width="320" height="150" fill="url(#${id}vg)" opacity="0"/></svg>`}
+const CARD8={
+ sedan:{body:'M36 108 C36 98 42 94 56 92 L92 88 C104 76 120 66 146 62 L200 62 C220 62 236 72 252 86 L282 90 C292 92 298 98 298 106 L298 112 C298 116 294 118 290 118 L40 118 C37 118 36 115 36 112Z',glass:'M108 88 C118 78 130 70 148 67 L196 67 C212 67 226 76 240 88Z',pil:[176],w:[92,250],r:19,col:['#d7e3ef','#6f8aa6','#25374a'],cal:'#888',hl:[290,96],tl:[40,100]},
+ suv:{body:'M34 112 L36 88 C38 80 44 76 56 74 L94 72 L112 54 C116 50 122 48 130 48 L222 48 C232 48 238 52 244 60 L258 76 L284 80 C294 82 298 88 298 98 L298 114 C298 117 296 118 292 118 L38 118 C35 118 34 116 34 112Z',glass:'M104 74 L118 56 C121 53 125 52 130 52 L220 52 C228 52 233 55 237 61 L248 74Z',pil:[160,204],w:[94,250],r:21,col:['#a9c2a8','#3f5a46','#16231a'],cal:'#888',hl:[290,86],tl:[38,84]},
+ spor:{body:'M30 110 C30 102 36 98 50 96 L96 90 C114 78 138 70 168 68 L196 68 C222 70 244 80 262 90 L290 96 C300 98 304 104 304 110 L304 114 C304 117 302 118 298 118 L34 118 C31 118 30 116 30 113Z',glass:'M118 88 C134 78 152 73 170 72 L194 72 C212 74 228 80 242 88Z',pil:[],w:[88,256],r:18,col:['#ff9a8a','#d0201a','#4a0606'],cal:'#ffcc00',hl:[296,102],tl:[34,104]}};
+function car8(id,k){const c=CARD8[k];const g=id;
+ const wheel=cx=>`<circle cx="${cx}" cy="118" r="${c.r+4}" fill="#07080a"/><circle cx="${cx}" cy="118" r="${c.r}" fill="url(#${g}ty)"/><circle cx="${cx}" cy="118" r="${c.r*.68}" fill="url(#${g}rm)" stroke="#1a1c20"/>${[...Array(10)].map((_,i)=>{const a=i/10*Math.PI*2;return `<path d="M${cx} 118 L${(cx+Math.cos(a)*c.r*.64).toFixed(1)} ${(118+Math.sin(a)*c.r*.64).toFixed(1)}" stroke="#5a6068" stroke-width="${i%2?1.2:2.4}"/>`}).join('')}<rect x="${cx-c.r*.42}" y="${118-c.r*.5}" width="${c.r*.26}" height="${c.r*.5}" rx="2" fill="${c.cal}"/><circle cx="${cx}" cy="118" r="${c.r*.16}" fill="#c9ced4"/>`;
+ const car=`<g id="${g}car"><path d="${c.body}" fill="url(#${g}bd)" stroke="#000" stroke-opacity=".55"/><path d="${c.glass}" fill="url(#${g}gl)"/><path d="${c.glass}" fill="none" stroke="#0a0d12" stroke-width="2"/>${c.pil.map(x=>`<path d="M${x} ${k==='suv'?50:64} L${x-3} ${k==='suv'?74:88}" stroke="#0a0d12" stroke-width="4"/>`).join('')}
+ <path d="M${c.w[0]+30} 92 L${c.w[1]-30} 92" stroke="#fff" stroke-opacity=".28" stroke-width="1.6"/><path d="M${c.w[0]+40} 96 V114 M${(c.w[0]+c.w[1])/2+8} 92 V116" stroke="#000" stroke-opacity=".35"/><rect x="${(c.w[0]+c.w[1])/2-14}" y="98" width="12" height="2.6" rx="1.3" fill="#d8dde2" opacity=".8"/>
+ <path d="M${k==='spor'?250:236} ${k==='suv'?62:84} l10 -2 l2 6 l-10 2Z" fill="url(#${g}bd)" stroke="#000" stroke-opacity=".5"/>
+ <path d="M130 ${k==='suv'?56:72} L150 ${k==='suv'?56:70} L118 ${k==='suv'?72:88} L104 ${k==='suv'?72:88}Z" fill="#fff" opacity=".18"/>
+ ${c.wing?'<path d="M266 86 L298 84 L300 88 L268 91Z" fill="#1a0606"/>':''}
+ ${wheel(c.w[0])}${wheel(c.w[1])}
+ <ellipse cx="${c.hl[0]}" cy="${c.hl[1]}" rx="5" ry="3" fill="#fffbe0" filter="url(#glow)"/><path d="M${c.hl[0]+3} ${c.hl[1]} L320 ${c.hl[1]-10} L320 ${c.hl[1]+16}Z" fill="#fff6c8" opacity=".14"/>
+ <ellipse cx="${c.tl[0]}" cy="${c.tl[1]}" rx="3" ry="4" fill="#ff3020" filter="url(#glow)"/></g>`;
+ return roadScene(id,`<defs>${G8(g+'bd',c.col,1)}${G8(g+'gl',['#bfe0ff','#3a5878','#0e1a28'],1)}<radialGradient id="${g}ty"><stop offset=".6" stop-color="#2a2c30"/><stop offset="1" stop-color="#0a0b0d"/></radialGradient><radialGradient id="${g}rm" cx=".4" cy=".35"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".7" stop-color="#9aa2aa"/><stop offset="1" stop-color="#4c5258"/></radialGradient></defs>
+ <ellipse cx="${(c.w[0]+c.w[1])/2}" cy="138" rx="${(c.w[1]-c.w[0])/2+50}" ry="6" fill="#000" opacity=".65"/>${car}<use href="#${g}car" transform="translate(0 276) scale(1 -1)" opacity=".16" mask="url(#${id}mk)"/>`)}
+function moto8(){const g='mo8';return roadScene(g,`<defs>${G8(g+'t',['#ff8a6a','#c8201a','#4a0606'],1)}${G8(g+'ch',['#ffffff','#9aa2aa','#4c5258'],1)}<radialGradient id="${g}ty"><stop offset=".62" stop-color="#2a2c30"/><stop offset="1" stop-color="#0a0b0d"/></radialGradient></defs>
+ <ellipse cx="164" cy="138" rx="96" ry="5" fill="#000" opacity=".65"/>
+ ${[104,226].map(cx=>`<circle cx="${cx}" cy="116" r="22" fill="url(#${g}ty)"/><circle cx="${cx}" cy="116" r="15" fill="none" stroke="url(#${g}ch)" stroke-width="2"/>${[...Array(12)].map((_,i)=>{const a=i/12*Math.PI*2;return `<path d="M${cx} 116 L${(cx+Math.cos(a)*15).toFixed(1)} ${(116+Math.sin(a)*15).toFixed(1)}" stroke="#8a9098" stroke-width=".9"/>`}).join('')}<circle cx="${cx}" cy="116" r="4" fill="#c9ced4"/>`).join('')}
+ <path d="M104 116 L146 90 L178 92" stroke="#2c2f36" stroke-width="6" fill="none"/><path d="M226 116 L206 70" stroke="url(#${g}ch)" stroke-width="5"/>
+ <rect x="140" y="88" width="40" height="26" rx="5" fill="#3a3e46"/><path d="M146 92 h28 M146 98 h28 M146 104 h28" stroke="#1a1c20" stroke-width="2"/><path d="M150 112 C170 120 196 122 214 116" stroke="url(#${g}ch)" stroke-width="6" fill="none" stroke-linecap="round"/>
+ <path d="M140 84 C146 66 172 62 196 68 L206 80 C196 86 162 88 140 86Z" fill="url(#${g}t)" stroke="#000" stroke-opacity=".5"/><path d="M152 72 C166 66 182 66 194 70" stroke="#fff" stroke-opacity=".45" stroke-width="2" fill="none"/>
+ <path d="M100 82 L142 80 L140 88 L104 90Z" fill="#141518"/><path d="M200 66 L214 52 L226 50" stroke="#1a1c20" stroke-width="4" fill="none" stroke-linecap="round"/>
+ <ellipse cx="214" cy="74" rx="6" ry="5" fill="#fffbe0" filter="url(#glow)"/><path d="M218 74 L320 60 L320 92Z" fill="#fff6c8" opacity=".12"/>`)}
+ART.sedan=()=>car8('cs8','sedan');ART.suv=()=>car8('cv8','suv');ART.spor=()=>car8('cp8','spor');ART.motor=()=>moto8();
+
+/* ---------- Kedi ve köpek portreleri ---------- */
+function petStudio(id,bg,inner){return `<svg viewBox="0 0 320 150" class="vart" aria-hidden="true"><defs><radialGradient id="${id}bg" cx=".5" cy=".38" r=".75"><stop offset="0" stop-color="${bg[0]}"/><stop offset="1" stop-color="${bg[1]}"/></radialGradient><filter id="${id}sf"><feGaussianBlur stdDeviation="1.2"/></filter></defs><rect width="320" height="150" fill="url(#${id}bg)"/><ellipse cx="160" cy="146" rx="120" ry="18" fill="#000" opacity=".35"/>${inner}</svg>`}
+function eye8(x,y,c,slit,rx=7){return `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${rx*.82}" fill="#111"/><ellipse cx="${x}" cy="${y}" rx="${rx-1}" ry="${rx*.82-1}" fill="${c}"/><ellipse cx="${x}" cy="${y}" rx="${slit?1.6:rx*.42}" ry="${rx*.7}" fill="#0a0a0a"/><circle cx="${x-rx*.35}" cy="${y-rx*.35}" r="${rx*.24}" fill="#fff"/>`}
+const CATS=[
+ ['kedi_tekir','Tekir kedi',3000,{b:'#9a8a72',d:'#4a3f30',l:'#d8ccb4',st:1,e:['#7fae3a','#7fae3a']}],
+ ['kedi_van','Van kedisi',6000,{b:'#f4f1ea',d:'#c97a3a',l:'#ffffff',van:1,e:['#e2b84a','#3a8ad0']}],
+ ['kedi_british','British Shorthair',5000,{b:'#8a929c',d:'#5c636c',l:'#aab1ba',plump:1,e:['#e29a2a','#e29a2a']}],
+ ['kedi_siyam','Siyam kedisi',4500,{b:'#efe2c8',d:'#4a3020',l:'#fbf3e2',pt:1,e:['#4a8ad8','#4a8ad8']}]];
+function catArt(o,id){const w=o.plump?1.12:1;const hx=160,hy=70;
+ const stripes=o.st?`<path d="M${hx-10} ${hy-28} l3 9 M${hx} ${hy-30} v10 M${hx+10} ${hy-28} l-3 9 M${hx-30} ${hy+2} q10 0 14 -4 M${hx-31} ${hy+10} q11 0 15 -3 M${hx+30} ${hy+2} q-10 0 -14 -4 M${hx+31} ${hy+10} q-11 0 -15 -3" stroke="${o.d}" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M118 118 q8 -6 14 4 M188 122 q8 -10 16 -2" stroke="${o.d}" stroke-width="5" fill="none" stroke-linecap="round"/>`:'';
+ const mask=o.pt?`<ellipse cx="${hx}" cy="${hy+10}" rx="20" ry="17" fill="${o.d}" opacity=".85"/>`:'';
+ const vanP=o.van?`<path d="M${hx-26} ${hy-26} q10 -6 18 2 l-4 8Z M${hx+26} ${hy-26} q-10 -6 -18 2 l4 8Z" fill="${o.d}"/><path d="M226 128 C250 120 256 96 244 84" stroke="${o.d}" stroke-width="12" fill="none" stroke-linecap="round"/>`:`<path d="M226 128 C250 120 256 96 244 84" stroke="url(#${id}fur)" stroke-width="12" fill="none" stroke-linecap="round"/>`;
+ return petStudio(id,['#3e3446','#120e16'],`<defs><radialGradient id="${id}fur" cx=".45" cy=".3" r=".8"><stop offset="0" stop-color="${o.l}"/><stop offset=".55" stop-color="${o.b}"/><stop offset="1" stop-color="${o.d}"/></radialGradient></defs>
+ ${vanP}<path d="M${hx-62*w} 150 C${hx-60*w} 112 ${hx-40} 96 ${hx} 96 C${hx+40} 96 ${hx+60*w} 112 ${hx+62*w} 150Z" fill="url(#${id}fur)"/><path d="M${hx-22} 150 C${hx-20} 118 ${hx+20} 118 ${hx+22} 150Z" fill="${o.l}" opacity=".8"/>
+ <path d="M${hx-34*w} ${hy-14} L${hx-40*w} ${hy-50} L${hx-12} ${hy-30}Z M${hx+34*w} ${hy-14} L${hx+40*w} ${hy-50} L${hx+12} ${hy-30}Z" fill="${o.pt?o.d:o.b}" stroke="#000" stroke-opacity=".25"/><path d="M${hx-32*w} ${hy-18} L${hx-36*w} ${hy-42} L${hx-18} ${hy-28}Z M${hx+32*w} ${hy-18} L${hx+36*w} ${hy-42} L${hx+18} ${hy-28}Z" fill="#e8a8a0" opacity=".85"/>
+ <ellipse cx="${hx}" cy="${hy}" rx="${38*w}" ry="${33*w}" fill="url(#${id}fur)"/><ellipse cx="${hx-24*w}" cy="${hy+12}" rx="14" ry="11" fill="url(#${id}fur)"/><ellipse cx="${hx+24*w}" cy="${hy+12}" rx="14" ry="11" fill="url(#${id}fur)"/>
+ ${mask}${stripes}<ellipse cx="${hx}" cy="${hy+14}" rx="13" ry="9" fill="${o.l}" opacity="${o.pt?.25:.9}"/>
+ ${eye8(hx-14,hy-2,o.e[0],1,7.5)}${eye8(hx+14,hy-2,o.e[1],1,7.5)}
+ <path d="M${hx-4} ${hy+8} L${hx+4} ${hy+8} L${hx} ${hy+13}Z" fill="#e88a90"/><path d="M${hx} ${hy+13} q-5 5 -9 2 M${hx} ${hy+13} q5 5 9 2" stroke="#3a2a2a" stroke-width="1.4" fill="none"/>
+ <path d="M${hx-14} ${hy+12} L${hx-48} ${hy+6} M${hx-14} ${hy+15} L${hx-48} ${hy+16} M${hx+14} ${hy+12} L${hx+48} ${hy+6} M${hx+14} ${hy+15} L${hx+48} ${hy+16}" stroke="#fff" stroke-opacity=".75" stroke-width=".9"/>`)}
+const DOGSTY={
+ 'Kangal':{b:'#cdb07a',d:'#7a5a30',l:'#e8d4a8',mask:'#1a1410',ears:'f',e:'#5a3a1a'},'Golden Retriever':{b:'#d9a24a',d:'#8a5a1a',l:'#f2cf8a',ears:'f',e:'#5a3a1a'},
+ 'Alman Çoban Köpeği':{b:'#b07a3a',d:'#1a1410',l:'#d8a868',saddle:1,ears:'e',e:'#4a2a10'},'Sibirya Husky':{b:'#8a929c',d:'#3a3e46',l:'#f2f4f6',ears:'e',e:'#5ab0ff',husky:1},
+ 'Shiba Inu':{b:'#d9822a',d:'#8a4a10',l:'#fbecd8',ears:'e',e:'#3a2010',husky:1},'Labrador':{b:'#e2c690',d:'#a8864a',l:'#f4e2b8',ears:'f',e:'#4a2a10'},
+ 'Kafkas Çoban Köpeği':{b:'#a8946e',d:'#3a3020',l:'#d8c8a0',mask:'#2a2218',ears:'f',e:'#3a2a10',fluffy:1},'Orta Asya Çoban Köpeği':{b:'#d8c8a8',d:'#8a7a5a',l:'#f2ead8',ears:'f',e:'#3a2a10'},
+ 'Saluki':{b:'#e8d6b0',d:'#a88a5a',l:'#f8eedc',ears:'f',e:'#3a2a10',longear:1},'Kenan Köpeği':{b:'#e8d8b8',d:'#a8946e',l:'#fbf3e2',ears:'e',e:'#3a2a10'},
+ 'Bully Kutta':{b:'#f0ece4',d:'#a8a098',l:'#ffffff',ears:'f',e:'#3a2a10'},'Maremma Çoban Köpeği':{b:'#f4f1ea',d:'#c8c0b0',l:'#ffffff',ears:'f',e:'#2a1a10',fluffy:1},
+ 'Fransız Çoban Köpeği (Briard)':{b:'#b8945a',d:'#6a4a20',l:'#d8b880',ears:'f',e:'#2a1a10',fluffy:1},'Shar Pei':{b:'#c8945a',d:'#7a4a1a',l:'#e2b882',ears:'f',e:'#2a1a10',wrinkle:1}};
+function dogArt(o,id){const hx=160,hy=64;
+ const ears=o.ears==='e'?`<path d="M${hx-36} ${hy-6} L${hx-40} ${hy-48} L${hx-12} ${hy-26}Z M${hx+36} ${hy-6} L${hx+40} ${hy-48} L${hx+12} ${hy-26}Z" fill="url(#${id}fur)" stroke="#000" stroke-opacity=".25"/><path d="M${hx-33} ${hy-12} L${hx-36} ${hy-38} L${hx-18} ${hy-24}Z M${hx+33} ${hy-12} L${hx+36} ${hy-38} L${hx+18} ${hy-24}Z" fill="${o.husky?o.l:'#c89a88'}" opacity=".8"/>`
+  :`<path d="M${hx-30} ${hy-26} C${hx-56} ${hy-24} ${hx-(o.longear?62:56)} ${hy+(o.longear?44:22)} ${hx-40} ${hy+(o.longear?48:28)} C${hx-34} ${hy+20} ${hx-30} ${hy} ${hx-26} ${hy-14}Z M${hx+30} ${hy-26} C${hx+56} ${hy-24} ${hx+(o.longear?62:56)} ${hy+(o.longear?44:22)} ${hx+40} ${hy+(o.longear?48:28)} C${hx+34} ${hy+20} ${hx+30} ${hy} ${hx+26} ${hy-14}Z" fill="${o.d}" stroke="#000" stroke-opacity=".3"/>`;
+ const huskyFace=o.husky?`<path d="M${hx} ${hy-30} C${hx-10} ${hy-8} ${hx-30} ${hy-4} ${hx-34} ${hy+14} C${hx-20} ${hy+34} ${hx+20} ${hy+34} ${hx+34} ${hy+14} C${hx+30} ${hy-4} ${hx+10} ${hy-8} ${hx} ${hy-30}Z" fill="${o.l}"/>`:'';
+ const mask=o.mask?`<path d="M${hx-22} ${hy+4} C${hx-24} ${hy+30} ${hx+24} ${hy+30} ${hx+22} ${hy+4} C${hx+12} ${hy-6} ${hx-12} ${hy-6} ${hx-22} ${hy+4}Z" fill="${o.mask}" opacity=".85"/>`:'';
+ const saddle=o.saddle?`<path d="M${hx-60} 150 C${hx-56} 118 ${hx-30} 104 ${hx} 104 C${hx+30} 104 ${hx+56} 118 ${hx+60} 150Z" fill="${o.d}" opacity=".9"/><path d="M${hx-20} ${hy-30} C${hx-6} ${hy-14} ${hx+6} ${hy-14} ${hx+20} ${hy-30} C${hx+10} ${hy-38} ${hx-10} ${hy-38} ${hx-20} ${hy-30}Z" fill="${o.d}"/>`:'';
+ const fluff=o.fluffy?[...Array(14)].map((_,i)=>{const a=Math.PI*(.15+i/13*.7);return `<circle cx="${(hx+Math.cos(a)*-58).toFixed(1)}" cy="${(hy+44+Math.sin(a)*24).toFixed(1)}" r="9" fill="url(#${id}fur)"/>`}).join(''):'';
+ const wr=o.wrinkle?`<path d="M${hx-20} ${hy-18} q20 -6 40 0 M${hx-24} ${hy-10} q24 -6 48 0 M${hx-28} ${hy+20} q8 6 12 -2 M${hx+28} ${hy+20} q-8 6 -12 -2" stroke="${o.d}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`:'';
+ return petStudio(id,['#3a4a3e','#0e1410'],`<defs><radialGradient id="${id}fur" cx=".45" cy=".3" r=".8"><stop offset="0" stop-color="${o.l}"/><stop offset=".55" stop-color="${o.b}"/><stop offset="1" stop-color="${o.d}"/></radialGradient></defs>
+ <path d="M${hx-66} 150 C${hx-64} 110 ${hx-40} 92 ${hx} 92 C${hx+40} 92 ${hx+64} 110 ${hx+66} 150Z" fill="url(#${id}fur)"/>${saddle}${fluff}<path d="M${hx-20} 150 C${hx-20} 120 ${hx+20} 120 ${hx+20} 150Z" fill="${o.l}" opacity=".8"/>
+ ${o.ears==='e'?ears:''}<path d="M${hx-38} ${hy+6} C${hx-40} ${hy-26} ${hx-20} ${hy-40} ${hx} ${hy-40} C${hx+20} ${hy-40} ${hx+40} ${hy-26} ${hx+38} ${hy+6} C${hx+36} ${hy+30} ${hx+20} ${hy+44} ${hx} ${hy+44} C${hx-20} ${hy+44} ${hx-36} ${hy+30} ${hx-38} ${hy+6}Z" fill="url(#${id}fur)"/>${o.ears!=='e'?ears:''}
+ ${huskyFace}${mask}${wr}<ellipse cx="${hx}" cy="${hy+22}" rx="20" ry="16" fill="${o.mask?o.mask:o.l}" opacity="${o.mask?.9:.95}"/>
+ ${eye8(hx-15,hy-4,o.e,0,6)}${eye8(hx+15,hy-4,o.e,0,6)}<path d="M${hx-20} ${hy-14} q5 -4 10 0 M${hx+10} ${hy-14} q5 -4 10 0" stroke="${o.d}" stroke-width="2" fill="none"/>
+ <path d="M${hx-9} ${hy+12} C${hx-9} ${hy+6} ${hx+9} ${hy+6} ${hx+9} ${hy+12} C${hx+9} ${hy+18} ${hx} ${hy+20} ${hx} ${hy+20} C${hx} ${hy+20} ${hx-9} ${hy+18} ${hx-9} ${hy+12}Z" fill="#141010"/><ellipse cx="${hx-3}" cy="${hy+10}" rx="3" ry="1.6" fill="#fff" opacity=".45"/>
+ <path d="M${hx} ${hy+20} V${hy+26} M${hx} ${hy+26} q-8 6 -14 0 M${hx} ${hy+26} q8 6 14 0" stroke="#1a1010" stroke-width="1.8" fill="none"/><path d="M${hx-6} ${hy+29} q6 12 12 0Z" fill="#e8707a"/>
+ <rect x="${hx-30}" y="${hy+46}" width="60" height="8" rx="4" fill="#c8302a"/><circle cx="${hx}" cy="${hy+58}" r="5" fill="#e2c160" stroke="#8a6418"/>`)}
+/* evcil hayvan listesi: [id, ad, fiyat, haftalık bakım, günlük ruh hali, gereken ev seviyesi, açıklama, tür] */
+function rebuildPets(){const nat=S?S.nation:'TR';const nb=DOGB[nat]||'Kangal';const names=[nb,...['Golden Retriever','Alman Çoban Köpeği','Sibirya Husky','Kangal'].filter(x=>x!==nb)].slice(0,4);
+ const dogs=names.map((n,i)=>['kopek_'+i,n,[9000,8000,10000,12000][i]||9000,350,2,2,'Sadık yol arkadaşı. Ruh hali +2, sabah koşularıyla dayanıklılık artar.','kopek',DOGSTY[n]||DOGSTY['Kangal']]);
+ const cats=CATS.map(([id,n,p,o])=>[id,n,p,150,1,1,'Akşamları kapıda seni bekler. Ruh hali her gün +1.','kedi',o]);
+ PETS.splice(0,PETS.length,...cats,...dogs);PETS.forEach(P=>{ART[P[0]]=()=>P[7]==='kedi'?catArt(P[8],P[0]):dogArt(P[8],P[0])})}
+/* evcil hayvan satın alma: türde bir tane (bir kedi + bir köpek) */
+function petBuy(id){const V=vS();rebuildPets();const P=PETS.find(x=>x[0]===id);if(!P)return;if(houseLv()<P[5])return toast(`Bunun için en az ${HOUSE[P[5]][1].toLocaleLowerCase('tr')} gerekiyor.`);
+ if(V.pets.some(p=>{const Q=PETS.find(x=>x[0]===p.t);return Q&&Q[7]===P[7]}))return toast(P[7]==='kedi'?'Zaten bir kedin var.':'Zaten bir köpeğin var.');if(S.money<P[2])return toast('Paran yetmiyor.');
+ const nm=petName(id);S.money-=P[2];V.pets.push({t:id,n:nm,b:70,d:S.day});addSt('mental',8);log('Yeni dost: '+nm+' ('+P[1]+')');
+ pushModal({k:'Evcil hayvan',ti:nm,art:ART[id](),body:`<p>${esc(P[1])} artık evinde. Adını <b>${esc(nm)}</b> koydun.</p><div class="fx"><span class="p">Ruh hali +8</span><span class="n">Haftalık bakım ${money(P[3])}</span></div>`});save();render()}
+function migratePets(V){if(!V||!V.pets)return;V.pets=V.pets.filter(p=>{if(p.t==='kedi'){p.t='kedi_tekir'}else if(p.t==='kopek'){p.t='kopek_0'}else if(p.t==='at'){S.money+=39000;toast('Atın satıldı (+39.000); artık sadece kedi ve köpek sahiplenilebiliyor.');return false}return true})}
+
+/* ---------- Premium harekât hazırlığı ---------- */
+const PKGX={hafif:{ic:'<path d="M14 4 L6 15 H12 L10 24 L20 11 H14Z" fill="currentColor"/>',bars:[['Hız',90],['Koruma',35],['Ateş gücü',50],['Gizlilik',55]],tag:'Hızlı reaksiyon'},
+ agir:{ic:'<path d="M3 17 H25 L23 21 H5Z M6 13 H20 L23 17 H4Z M10 9 H17 L18 13 H9Z M17 10 H27" stroke="currentColor" stroke-width="1.6" fill="currentColor"/>',bars:[['Hız',30],['Koruma',95],['Ateş gücü',90],['Gizlilik',20]],tag:'Zırhlı tertip'},
+ gizli:{ic:'<path d="M2 14 C7 6 21 6 26 14 C21 22 7 22 2 14Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="14" r="4" fill="currentColor"/><path d="M4 4 L24 24" stroke="currentColor" stroke-width="2"/>',bars:[['Hız',60],['Koruma',40],['Ateş gücü',35],['Gizlilik',95]],tag:'Sızma ekibi'}};
+const SUPX={yok:{ic:'<circle cx="14" cy="14" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 20 L20 8" stroke="currentColor" stroke-width="2"/>',bars:[['Ateş',0],['Hassasiyet',0],['Sürpriz',95]]},
+ topcu:{ic:'<path d="M4 20 H22 L20 24 H6Z M8 16 H18 L20 20 H6Z M14 16 L24 6" stroke="currentColor" stroke-width="2.4" fill="currentColor"/>',bars:[['Ateş',95],['Hassasiyet',40],['Sürpriz',20]]},
+ iha:{ic:'<path d="M2 14 H26 M10 14 L7 6 H10 L16 14 M10 14 L7 22 H10 L16 14 M22 12 V16" stroke="currentColor" stroke-width="2" fill="none"/>',bars:[['Ateş',60],['Hassasiyet',90],['Sürpriz',60]]},
+ hava:{ic:'<path d="M3 14 L13 12 L20 4 L22 5 L18 13 L26 14 L18 15 L22 23 L20 24 L13 16Z" fill="currentColor"/>',bars:[['Ateş',100],['Hassasiyet',70],['Sürpriz',35]]},
+ deniz:{ic:'<path d="M2 18 H26 L22 23 H6Z M8 14 H20 L22 18 H6Z M14 14 V6 M14 8 H20" stroke="currentColor" stroke-width="2" fill="currentColor"/>',bars:[['Ateş',85],['Hassasiyet',55],['Sürpriz',40]]}};
+function tcard(kind,k,n,d,X,sel){return `<button class="tcard ${sel?'sel':''}" data-a="oprep" data-v="${kind==='p'?k+'|':'|'+k}"><span class="tc-ic"><svg viewBox="0 0 28 28" width="30" height="30">${X.ic}</svg></span><span class="tc-b"><span class="tc-h"><b>${esc(n)}</b>${X.tag?`<em>${X.tag}</em>`:''}</span><small>${esc(d)}</small><span class="tc-bars">${X.bars.map(([bn,v])=>`<span><i>${bn}</i><u><s style="width:${v}%"></s></u></span>`).join('')}</span></span><span class="tc-ck">${sel?'✓':''}</span></button>`}
+function prepPanel(o){return `<div class="prep-h"><span>1</span><b>Kuvvet tertibi</b><i></i></div><div class="tgrid">${PKG.map(([k,n,d])=>tcard('p',k,n,d,PKGX[k],o.pkgSel===k)).join('')}</div>
+ <div class="prep-h"><span>2</span><b>Destek</b><i></i></div><div class="tgrid">${supports().map(([k,n,d])=>tcard('s',k,n,d,SUPX[k]||SUPX.yok,o.supSel===k)).join('')}</div>
+ <div class="prep-go ${o.pkgSel&&o.supSel?'ready':''}"><span>${o.pkgSel?esc(PKG.find(p=>p[0]===o.pkgSel)[1]):'Tertip seç'} · ${o.supSel?esc((supports().find(s=>s[0]===o.supSel)||['','—'])[1]):'Destek seç'}</span><small>Harekât 6 aşamadan oluşur: intikal, yaklaşma, beklenmedik durum, süreli kritik an, hedefte ve tahliye. İki seçimi yaptığında harekât başlar (1 eylem).</small></div>`}
