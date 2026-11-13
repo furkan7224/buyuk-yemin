@@ -89,9 +89,10 @@ function str(R,x){if(R.cleared[x])return {s:-1,tags:[['Temize çıktı','o']]};l
  if(R.tail[x]==='secret')tags.push(['Sırrı ortaya çıktı','o']);
  return {s,tags}}
 function contraCheck(R){let nw=[];const L=R.liar;
- if(L&&R.iv[L]&&!R.liarOk&&R.alibi&&R.alibi[L]&&R.alibi[L].indexOf(SU[L].sleep)===0){R.contra[L]=R.contra[L]||{};
+ const AK=x=>R.alibiK&&R.alibiK[x]?R.alibiK[x]:{s:!!(R.alibi&&R.alibi[x]&&R.alibi[x].indexOf(SU[x].sleep)===0),k:!!(R.alibi&&/kışladaydım/.test(R.alibi[x]||''))};
+ if(L&&R.iv[L]&&!R.liarOk&&R.alibi&&R.alibi[L]&&AK(L).s){R.contra[L]=R.contra[L]||{};
   if(R.got.nobet&&R.sets.nobet.includes(L)&&!R.contra[L].nobet){R.contra[L].nobet=1;nw.push(`${nm(L)} o gecelerde uyuduğunu söylemişti. Ama nöbet çizelgesine göre üç sızıntı gecesinde de saat 02.00 ile 03.00 arasında karargâhta uyanıktı.`)}
-  if(R.got.defter&&R.sets.defter.includes(L)&&!R.contra[L].defter&&/kışladaydım/.test(R.alibi[L])){R.contra[L].defter=1;nw.push(`${nm(L)} sabahları kışladan çıkmadığını söylemişti. Ama giriş-çıkış defterine göre sızıntılardan sonraki sabahlarda 05.40'ta nizamiyeden çıkmış.`)}
+  if(R.got.defter&&R.sets.defter.includes(L)&&!R.contra[L].defter&&AK(L).k){R.contra[L].defter=1;nw.push(`${nm(L)} sabahları kışladan çıkmadığını söylemişti. Ama giriş-çıkış defterine göre sızıntılardan sonraki sabahlarda 05.40'ta nizamiyeden çıkmış.`)}
   if(!Object.keys(R.contra[L]).length)delete R.contra[L]}
  const m=R.mole;if(!R.iv[m])return nw;R.contra[m]=R.contra[m]||{};
  if(R.got.nobet&&!R.contra[m].nobet){R.contra[m].nobet=1;nw.push(`${nm(m)} o gecelerde uyuduğunu söylemişti. Ama nöbet çizelgesine göre üç sızıntı gecesinde de saat 02.00 ile 03.00 arasında karargâhta uyanıktı.`)}
@@ -148,7 +149,7 @@ function act(R,v){const [a,b,c]=String(v).split(':');
   if(first){const inN=R.sets.nobet.includes(b),inD=R.sets.defter.includes(b);
    const say=b===R.mole?SU[b].sleep+' Sabahları da kışladaydım, hiçbir yere çıkmadım.':b===R.liar&&!R.tail[b]?SU[b].sleep+(inD?' Sabahları da kışladaydım, hiçbir yere çıkmadım.':''):(inN?SU[b].duty:SU[b].sleep)+(inD?' '+SU[b].early:'');
    body=`${nm(b)} karşına oturuyor. Sızıntı gecelerinde nerede olduğunu soruyorsun.\n\n— ${say}`;
-   R.alibi=R.alibi||{};R.alibi[b]=say}
+   R.alibi=R.alibi||{};R.alibi[b]=say;R.alibiK=R.alibiK||{};R.alibiK[b]={s:say.indexOf(SU[b].sleep)===0,k:/kışladaydım/.test(say)}}
   else{if(b===R.mole){R.alert++;R.nervous[b]=1;body=SU[b].press+`\n\nKonuşurken parmakları masanın kenarında durmadan tıkırdıyor. Bir şey saklıyor olabilir.`}
    else if(b===R.liar&&R.contra[b]){body=SU[b].pressX+`\n\nİfadesindeki tutarsızlığın sebebi buymuş. ${kn(b)} o gece nerede olduğunu bu yüzden saklamış.`;delete R.contra[b];R.liarOk=1;if(b===R.herring)R.expl[b]=1}
    else if(R.tail[b]==='secret'||(b===R.herring&&R.got.banka)){body=SU[b].pressX;if(b===R.herring)R.expl[b]=1}
@@ -229,7 +230,7 @@ function view(R){
  </div>${rings(R)}
  <div class="kbar"><button class="btn ghost" data-a="kb" data-v="menu:accuse"${R.day>=5?'':' disabled'}>${R.day>=5?'Suçla':'Suçla · 5. gün'}</button><button class="btn" data-a="kb" data-v="night">Günü bitir ›</button></div>`}
 function rings(R){const rows=IDS.map(x=>({x,...str(R,x)}));const mx=Math.max(6,...rows.map(r=>r.s));
- return `<button class="kring-card" data-a="kb" data-v="menu:board"><div class="sec-h"><span class="lbl">Kanıt panosu</span><span class="small acc">Ayrıntı ›</span></div><div class="krings">${rows.map(r=>{const h=r.s<0?0:Math.min(1,r.s/mx);return `<div class="kr${r.s<0?' clr':''}${r.s>0?' hot':''}" style="--h:${h.toFixed(2)}"><span class="kr-ring">${av(r.x,38)}${r.s>0?`<em>${r.s}</em>`:''}</span><small>${esc(SU[r.x].k)}</small></div>`}).join('')}</div></button>`}
+ return `<button class="kring-card" data-a="kb" data-v="menu:board"><div class="sec-h"><span class="lbl">Kanıt panosu</span><span class="small acc">Ayrıntı ›</span></div><div class="krings">${rows.map(r=>{const h=r.s<0?0:Math.min(1,r.s/mx);return `<div class="kr${r.s<0?' clr':''}${r.s>0?' hot':''}" style="--h:${h.toFixed(2)}"><span class="kr-ring">${av(r.x,38)}${r.s>0?`<em>${r.s}</em>`:''}</span><small class="notr">${esc(SU[r.x].k)}</small></div>`}).join('')}</div></button>`}
 const KI={iv:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v10H9l-5 4z"/></svg>',
  cl:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="6"/><path d="M15 15l5 5"/></svg>',
  tail:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -294,5 +295,5 @@ const T={id:'kostebek',ti:'Köstebek',genre:'Casusluk · Dedektiflik',color:'#b8
  subtitle:R=>R.end?'Son':R.phase==='brief'?'Bölüm 1 · Görev':`Gün ${Math.min(R.day,DAYS)} · ${T.chapters[chOf(R)].ti}`};
 registerTale(T);
 A32.kb=v=>{const P=tp32('kostebek');if(!P.run)return;act(P.run,v);tpSave32();render();const el=$('#tscr');if(el)el.scrollTop=0;window.scrollTo(0,0)};
-window.__KB={SU,IDS,newRun,act,str,endDay,confront,DAYS};
+window.__KB={SU,IDS,newRun,act,str,endDay,confront,DAYS,T,ART,KI};
 })();

@@ -469,7 +469,7 @@ let I18BUSY=false;
 function trNode(root){if(LANG==='tr'||!root)return;I18BUSY=true;try{
  if(root.nodeType===3){const v=root.nodeValue;const t=trS(v);if(t!==v)root.nodeValue=t;return}
  if(root.nodeType!==1)return;if(root.closest&&root.closest('script,style,textarea'))return;
- const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('script,style,textarea,svg text.raw')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});let n;while(n=w.nextNode()){const v=n.nodeValue;if(!/[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v))continue;const t=trS(v);if(t!==v)n.nodeValue=t}
+ const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('script,style,textarea,svg text.raw,.notr')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});let n;while(n=w.nextNode()){const v=n.nodeValue;if(!/[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v))continue;const t=trS(v);if(t!==v)n.nodeValue=t}
  (root.querySelectorAll?root.querySelectorAll('[placeholder],[aria-label]'):[]).forEach(e=>{['placeholder','aria-label'].forEach(a=>{const v=e.getAttribute(a);if(v){const t=trS(v);if(t!==v)e.setAttribute(a,t)}})})
  }finally{I18BUSY=false}}
 function i18nInit(){document.documentElement.lang=LANG;setTitle();const mo=new MutationObserver(recs=>{if(LANG==='tr')return;const set=new Set();recs.forEach(r=>{if(r.type==='characterData')set.add(r.target);else r.addedNodes.forEach(n=>set.add(n))});set.forEach(trNode)});mo.observe(document.body,{childList:true,subtree:true,characterData:true});trNode(document.body)}

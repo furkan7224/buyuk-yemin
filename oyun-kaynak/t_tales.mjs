@@ -2,9 +2,9 @@ import {chromium} from '/opt/node22/lib/node_modules/playwright/index.mjs';
 const b=await chromium.launch();const p=await b.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
 await p.route('**/*',r=>r.request().url().startsWith('file:')||r.request().url().startsWith('data:')?r.continue():r.abort());
 await p.goto('file://'+process.cwd()+'/demir-yemin.html');
-const rep=await p.evaluate(()=>{const out={};
+const rep=await p.evaluate(()=>{const out={};const LS=['tr','en'];for(const LG of LS){LANG=LG;taleLang34();
  const v=(x,st,fl)=>typeof x==='function'?x(st,fl):x;const cl=x=>Math.max(0,Math.min(100,Math.round(x)));
- for(const t of TALES){if(t.custom)continue;const r={problems:[],ends:{},visited:new Set(),steps:[]};const S=t.scenes;
+ for(const t of TALES){if(t.custom)continue;if(LG==='en'&&!TALE_EN[t.id]){out[t.id+'_en']='EN YOK';continue}const r={problems:[],ends:{},visited:new Set(),steps:[]};const S=t.scenes;
   /* statik kontroller */
   for(const [id,sc] of Object.entries(S)){
    if(!sc.end&&(!sc.ch||!sc.ch.length))r.problems.push('Seçeneksiz sahne: '+id);
@@ -34,6 +34,7 @@ const rep=await p.evaluate(()=>{const out={};
     sc=go}
    maxLen=Math.max(maxLen,steps)}
   const all=Object.keys(S);r.unreached=all.filter(k=>!r.visited.has(k));
-  out[t.id]={scenes:all.length,problems:[...new Set(r.problems)].slice(0,40),probCount:r.problems.length,ends:r.ends,unreached:r.unreached,maxLen}}
+  if(LG==='en'){const E=TALE_EN[t.id];for(const id in t._trv.scenes){const e=E.scenes[id];const s0=t._trv.scenes[id];if(!e){r.problems.push('EN sahne yok: '+id);continue}if(e.b==null)r.problems.push('EN metin yok: '+id);if((s0.ch||[]).length!==((e.ch||[]).length))r.problems.push('EN seçenek sayısı: '+id+' '+(s0.ch||[]).length+'/'+(e.ch||[]).length);(s0.ch||[]).forEach((c,i)=>{if(c.why&&!(e.why&&e.why[i]))r.problems.push('EN why yok: '+id+'['+i+']')});const txt=typeof e.b==='function'?'':e.b;if(/[ğışçöüĞİŞÇÖÜ]/.test(txt.replace(/Aydın|Çelik|Yıldırım|Kâzım|Yıldızdere|Yeşilova|Akpınar|Taşlıca|Çamlık|Güler|Arı|Uçar|Ateş|Gülsüm|Şükrü|Rıfat|Nazlı|Rıza|Yalın|Ana/g,'')))r.problems.push('EN içinde Türkçe harf: '+id)}}
+  out[t.id+(LG==='en'?'_en':'')]={scenes:all.length,problems:[...new Set(r.problems)].slice(0,40),probCount:r.problems.length,ends:r.ends,unreached:r.unreached,maxLen}}}
  return out});
 console.log(JSON.stringify(rep,null,1));console.log('PAGE ERRORS',JSON.stringify(errs));await b.close();

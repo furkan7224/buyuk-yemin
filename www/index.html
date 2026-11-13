@@ -5678,7 +5678,7 @@ let I18BUSY=false;
 function trNode(root){if(LANG==='tr'||!root)return;I18BUSY=true;try{
  if(root.nodeType===3){const v=root.nodeValue;const t=trS(v);if(t!==v)root.nodeValue=t;return}
  if(root.nodeType!==1)return;if(root.closest&&root.closest('script,style,textarea'))return;
- const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('script,style,textarea,svg text.raw')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});let n;while(n=w.nextNode()){const v=n.nodeValue;if(!/[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v))continue;const t=trS(v);if(t!==v)n.nodeValue=t}
+ const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('script,style,textarea,svg text.raw,.notr')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});let n;while(n=w.nextNode()){const v=n.nodeValue;if(!/[A-Za-zÇĞİÖŞÜçğıöşü]/.test(v))continue;const t=trS(v);if(t!==v)n.nodeValue=t}
  (root.querySelectorAll?root.querySelectorAll('[placeholder],[aria-label]'):[]).forEach(e=>{['placeholder','aria-label'].forEach(a=>{const v=e.getAttribute(a);if(v){const t=trS(v);if(t!==v)e.setAttribute(a,t)}})})
  }finally{I18BUSY=false}}
 function i18nInit(){document.documentElement.lang=LANG;setTitle();const mo=new MutationObserver(recs=>{if(LANG==='tr')return;const set=new Set();recs.forEach(r=>{if(r.type==='characterData')set.add(r.target);else r.addedNodes.forEach(n=>set.add(n))});set.forEach(trNode)});mo.observe(document.body,{childList:true,subtree:true,characterData:true});trNode(document.body)}
@@ -6316,6 +6316,71 @@ Paket|Pack|パック|Paquete|Pack|Paket`.split('\n').forEach(l=>{const c=l.split
  return `<div class="card tmed32"><div class="sec-h"><h2>Hikâye madalyaları</h2></div>${m.map(x=>`<div class="row"><div class="tm-i">★</div><div class="grow"><b>${esc(x)}</b><small class="muted">Hikâye modunda kazanıldı</small></div></div>`).join('')}</div>`+h}}
 
 /* =====================================================================
+   v34 · Hikâyelerin İngilizce sürümü
+   Türkçe dışındaki bütün dillerde hikâyeler İngilizce gösterilir.
+   Sahne hikâyelerinde mantık (etki, şans, hedef) Türkçe dosyadan gelir;
+   İngilizce katman yalnızca metinleri değiştirir: TALE_EN[id] = {meta, scenes, end}
+   Özel motorlu hikâyeler (Köstebek) kendi t.en nesnesini verir.
+   ===================================================================== */
+const TALE_EN={};
+const TALE_META34=['ti','genre','sub','pitch','chapters','statDefs'];
+const taleEnOn34=()=>typeof LANG!=='undefined'&&LANG!=='tr';
+function taleBuildEn34(t){const E=TALE_EN[t.id];if(!E)return null;if(t._enBuilt)return t._enBuilt;
+ const o=Object.assign({},E.meta||{});
+ if(t.scenes&&E.scenes){const sc={};for(const id in t._trv.scenes){const s=t._trv.scenes[id],e=E.scenes[id]||{};const s2=Object.assign({},s);
+   if(e.b!=null)s2.b=e.b;if(e.ti!=null)s2.ti=e.ti;
+   if(s.ch)s2.ch=s.ch.map((c,i)=>{const c2=Object.assign({},c);if(e.ch&&e.ch[i]!=null)c2.t=e.ch[i];if(e.why&&e.why[i]!=null)c2.why=e.why[i];return c2});
+   if(s.end)s2.end=Object.assign({},s.end,{ti:(E.end&&E.end[s.end.k])||s.end.ti},s.end.medal&&E.medal?{medal:E.medal}:{});
+   sc[id]=s2}o.scenes=sc}
+ return t._enBuilt=o}
+function taleLang34(){TALES.forEach(t=>{
+ if(!t._trv){t._trv={};TALE_META34.concat(['scenes','view','endText','subtitle','endArt','endings']).forEach(k=>{if(k in t)t._trv[k]=t[k]})}
+ Object.assign(t,t._trv);
+ if(taleEnOn34()){const en=t.en||taleBuildEn34(t);if(en)Object.assign(t,en)}})}
+{const _sl=setLang;setLang=function(v){_sl(v);taleLang34();render()}}
+setTimeout(()=>{taleLang34();try{render()}catch(e){}},0);
+/* hikâye arayüzündeki kalıp metinler */
+`Kararların sonu belirler|Your choices decide the ending|選択が結末を決める|Tus decisiones deciden el final|Tes choix décident de la fin|Deine Entscheidungen bestimmen das Ende
+1. bölüm ücretsiz|Chapter 1 free|第1章無料|Capítulo 1 gratis|Chapitre 1 gratuit|Kapitel 1 kostenlos
+Devam ediyor|In progress|進行中|En curso|En cours|Läuft
+Açık|Unlocked|解放済み|Desbloqueada|Débloquée|Freigeschaltet
+Kaldığın yerden|Continue|続きから|Continuar|Reprendre|Fortsetzen
+Bölümler|Chapters|章|Capítulos|Chapitres|Kapitel
+Sonlar|Endings|結末|Finales|Fins|Enden
+Devam et|Continue|続ける|Continuar|Continuer|Weiter
+Hikâye burada bitmiyor.|The story doesn't end here.|物語はここで終わらない。|La historia no termina aquí.|L'histoire ne s'arrête pas là.|Die Geschichte endet hier nicht.
+Paketi aç|Unlock pack|パックを解放|Desbloquear paquete|Débloquer le pack|Paket freischalten
+Paketi aç ve devam et|Unlock pack and continue|パックを解放して続ける|Desbloquear y continuar|Débloquer et continuer|Freischalten und weiterspielen
+Daha sonra|Later|あとで|Más tarde|Plus tard|Später
+tek seferlik|one-time|1回限り|pago único|paiement unique|einmalig
+tek seferlik ödeme|one-time payment|1回限りの支払い|pago único|paiement unique|Einmalzahlung
+Her hikâyede farklı sonlar|Multiple endings in every story|各物語に複数の結末|Varios finales en cada historia|Plusieurs fins dans chaque histoire|Mehrere Enden in jeder Geschichte
+Kariyer modunda özel madalyalar|Exclusive medals in career mode|キャリアモードの限定勲章|Medallas exclusivas en el modo carrera|Médailles exclusives en mode carrière|Exklusive Medaillen im Karrieremodus
+Kariyer ödülü|Career reward|キャリア報酬|Recompensa de carrera|Récompense de carrière|Karriere-Belohnung
+Kariyer modundaki profilinde görünür.|Shown on your career profile.|キャリアのプロフィールに表示されます。|Aparece en tu perfil de carrera.|Visible sur ton profil de carrière.|Wird in deinem Karriereprofil angezeigt.
+Hikâye madalyaları|Story medals|ストーリー勲章|Medallas de historia|Médailles d'histoire|Story-Medaillen
+Hikâye modunda kazanıldı|Earned in story mode|ストーリーモードで獲得|Obtenida en el modo historia|Obtenue en mode histoire|Im Story-Modus verdient
+Son|Ending|結末|Final|Fin|Ende`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6&&!I18N[c[0]])I18N[c[0]]=c});
+
+I18P.push(
+ [/^Bölüm (\d+)$/,['Chapter $1','第$1章','Capítulo $1','Chapitre $1','Kapitel $1']],
+ [/^(\d+)\/(\d+) bulundu$/,['$1/$2 found','$1/$2 発見','$1/$2 encontrados','$1/$2 trouvées','$1/$2 gefunden']],
+ [/^Başarı şansı %(\d+)$/,['Success chance $1%','成功率 $1%','Probabilidad de éxito $1%','Chance de réussite $1 %','Erfolgschance $1 %']],
+ [/^(\d+) hikâye · tek paket$/,['$1 stories · one pack','$1つの物語・1パック','$1 historias · un paquete','$1 histoires · un pack','$1 Geschichten · ein Paket']],
+ [/^(\d+) hikâyenin tamamı$/,['All $1 stories','全$1話','Las $1 historias completas','Les $1 histoires complètes','Alle $1 Geschichten']],
+ [/^(\d+) bölüm açık$/,['$1 chapters unlocked','$1章解放','$1 capítulos desbloqueados','$1 chapitres débloqués','$1 Kapitel freigeschaltet']],
+ [/^(\d+)\/(\d+) son$/,['$1/$2 endings','結末 $1/$2','$1/$2 finales','$1/$2 fins','$1/$2 Enden']]);
+`‹ Hikâyeler|‹ Stories|‹ ストーリー|‹ Historias|‹ Histoires|‹ Geschichten
+Her hikâyenin tamamı, tüm sonlar ve kariyer madalyaları|Every story in full, all endings and career medals|全ストーリー、全結末、キャリア勲章|Todas las historias completas, todos los finales y medallas|Toutes les histoires, toutes les fins et médailles de carrière|Alle Geschichten, alle Enden und Karriere-Medaillen
+paket dahil, reklamsız ve tüm özellikler ›|pack included, no ads and every feature ›|パック込み・広告なし・全機能 ›|paquete incluido, sin anuncios y todo ›|pack inclus, sans pub et tout le reste ›|Paket inklusive, werbefrei, alle Funktionen ›
+Hikâye Paketi + reklamsız oyun + 2 kat tecrübe + istediğin rütbeden başla ›|Story Pack + no ads + 2× experience + start at any rank ›|ストーリーパック+広告なし+経験値2倍+好きな階級から ›|Paquete de historias + sin anuncios + experiencia ×2 + cualquier rango ›|Pack d'histoires + sans pub + expérience ×2 + n'importe quel grade ›|Story-Paket + werbefrei + doppelte Erfahrung + beliebiger Startrang ›
+Kaldığın yer kaydedildi. Paketi aç,|Your progress is saved. Unlock the pack to continue|進行状況は保存されました。パックを解放して続きを：|Tu progreso se ha guardado. Desbloquea el paquete para continuar|Ta progression est sauvegardée. Débloque le pack pour reprendre|Dein Fortschritt ist gespeichert. Schalte das Paket frei, um
+hikâyesine tam buradan devam et.|right where you left off.|をここから。|justo donde lo dejaste.|là où tu t'es arrêté.|genau hier weiterzuspielen.
+Hikâyeye başla|Start the story|物語を始める|Empezar la historia|Commencer l'histoire|Geschichte starten
+Hikâye Paketi açık|Story Pack unlocked|ストーリーパック解放済み|Paquete de historias desbloqueado|Pack d'histoires débloqué|Story-Paket freigeschaltet
+Esir ve diğer hikâyeler · kararların sonu belirler|Captive and more · your choices decide the ending|捕虜ほか・選択が結末を決める|Cautivo y más · tus decisiones deciden el final|Captif et plus · tes choix décident de la fin|Gefangen und mehr · deine Entscheidungen bestimmen das Ende`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
+
+/* =====================================================================
    HİKÂYE · ESİR
    Karakterler: Sen (Çavuş) · Onbaşı Selim Kara (34, kızı Elif) · Er Mert Aydın (20)
    Binbaşı Rehn (sorgucu) · Tobas (yaşlı gardiyan). Düşman: kurgusal Vaskar Cumhuriyeti.
@@ -6741,6 +6806,316 @@ registerTale({id:'esir',ti:'Esir',genre:'Hayatta kalma · Kaçış',color:'#c9a6
  fail:(st,fl,c)=>st.saglik<=0?'end_karanlik':(st.moral<=0&&c>=1&&c<=2?'end_karanlik':null),start:'p1',arts:ARTS,scenes:S});
 })();
 
+/* HİKÂYE · ESİR · İngilizce metin katmanı (mantık st_esir.js'ten gelir) */
+(function(){
+const gaveLine=fl=>fl.gave?`\n\nYou tell the battalion commander yourself about the small piece of information you gave in the interrogation room. He is silent for a long time, then touches your shoulder:\n\n— Everyone has a limit, Sergeant. Even at yours, you chose your friend.`:'';
+TALE_EN.esir={
+ meta:{ti:'Captive',genre:'Survival · Escape',sub:'A squad captured behind enemy lines and their escape',
+  pitch:'Your squad is captured after an ambush on a night patrol. A wounded corporal, a young private on his first mission, and a patient major waiting for you in the interrogation room. Who will you trust, and who will you leave behind? Not everyone may make it home.',
+  chapters:[{ti:'Ambush',sub:'Night patrol and capture'},{ti:'The Cell',sub:'Interrogation and will'},{ti:'The Plan',sub:'Observation and trust'},{ti:'Escape',sub:'Barbed wire and pursuit'},{ti:'Return',sub:'Minefield and the way home'}],
+  statDefs:[['moral','Morale','var(--acc)'],['saglik','Health','var(--green)'],['bag','Squad bond','var(--blue)']]},
+ medal:'Returned from Captivity',
+ end:{kahraman:'A hero\'s return',aci:'Bitter victory',yalniz:'Alone',bedel:'The price',karanlik:'Darkness'},
+ scenes:{
+p1:{b:`02:40. You are at the foot of Eagle Ridge; the border line is only a few hundred meters away.
+
+At the evening briefing the battalion commander kept it short: "There's movement on the other side. Get close, look, count, come back. No engagement."
+
+Two men are with you. Corporal Selim Kara has twelve years in uniform; he rarely talks, and when he does it's usually a joke. Private Mert Aydın is twenty, and this is his first night patrol. In the dark you can hear him trying to hold his breath.
+
+There are two ways forward. The bed of Grey Creek is hidden but slow. The ridge path is fast, but exposed under the moonlight.`,
+ ch:['Follow the creek bed. Slow but unseen.','Take the ridge path. Time matters.','Before setting off, go to Mert.']},
+p1b:{b:`You touch Mert's shoulder. You can feel him shaking.
+
+— Everyone is scared on their first night, you say quietly. Anyone who isn't is either lying or hasn't understood yet.
+
+— Then I'm not lying, Sergeant, Mert whispers. His voice steadies a little.
+
+Selim grins in the dark:
+
+— I still haven't understood, after twelve years. Come on, let's make it back for breakfast.`,
+ ch:['Follow the creek bed. Slow but unseen.','Take the ridge path. Time matters.']},
+p2:{b:(st,fl)=>(fl.path==='dere'
+ ?`For half an hour you move over the wet stones of the creek bed. Just as you climb onto the flat ground facing the ridge, the sky suddenly turns white: a flare.`
+ :`You move fast along the ridge, but the moon is right above you. Between the rocks you catch a glint of metal. Too late. The sky suddenly turns white: a flare.`)+`
+
+Then the sound of a machine gun. You dive behind the rocks. You hear Selim cry out, muffled; he's been hit in the leg.
+
+Mert is frozen at the radio. Fire is coming from three directions. You've walked into an ambush.`,
+ ch:['Radio HQ: report the ambush and your coordinates.','Drag Selim behind the rocks.','Return fire and cover Mert.']},
+p3a:{b:`You take the radio from Mert's hands.
+
+— Eagle One, Eagle One, this is Nightbird! Ambush! Grid four-one, eight-seven. Fire from three sides, one wounded!
+
+Static. Then a broken voice: "…copy… hold on…"
+
+The message went through. But in those few seconds Selim was left alone among the rocks, and the ring of fire is closing.`,ch:['Continue.']},
+p3b:{b:`You grab Selim by his belt and drag him behind the rocks. A bullet passes right by your ear; stone chips cut your face.
+
+— Leave me, Sergeant, Selim groans. Get to the radio!
+
+— Shut up, you say. Nobody leaves anybody.
+
+Selim is in cover now. But the radio is in Mert's hands, and Mert is out in the open.`,ch:['Continue.']},
+p3c:{b:(st,fl)=>fl.cover==='ok'
+ ?`You shoulder your rifle and fire short bursts at the muzzle flashes. One of the guns opposite falls silent.
+
+Meanwhile Mert pulls Selim behind cover. Scared as he is, the kid did the right thing.`
+ :`You shoulder your rifle and fire at the muzzle flashes. Something slams into your left shoulder, like a sledgehammer. A warm wetness spreads down your arm.
+
+Still, you keep firing. Meanwhile Mert pulls Selim behind cover.`,ch:['Continue.']},
+p4:{b:`The firing stops. That is not a good sign.
+
+Footsteps in the dark, all around the rocks. Then a voice in heavily accented Turkish:
+
+— Sergeant! You are surrounded. Surrender and your wounded man lives. Resist, and you all die.
+
+You check your magazine: the last few rounds. Mert is looking at you. Selim's face is white as chalk.`,
+ ch:['Surrender. Keeping your men alive matters more than anything.','Have Mert burn the codebook, then surrender.','Try to hold out to the last bullet.']},
+p5:{b:(st,fl)=>`Your hands are zip-tied behind your back and a rough sack is pulled over your head. You're thrown into the back of a pickup. You can hear Selim moaning and Mert breathing fast.${fl.fought?`
+
+The rifle butt to your head is still throbbing. Your ears are ringing.`:''}${fl.burn?`
+
+Before surrendering you saw Mert set the codebook alight with his lighter. At least those pages won't fall into their hands.`:''}
+
+The truck lurches onto the road.`,
+ ch:['Whisper to Mert: "Stay calm. We\'ll get out together."','Silently count the turns and sounds. Memorize the route.','Do nothing. Save your strength.']},
+p6:{b:(st,fl)=>(fl.route?`Left. Left. A long straight road. Under the wheels, the hollow sound of a bridge; wood, not metal. Then a hard right. Forty minutes. You must not forget this.
+
+`:'')+`The truck stops. Dogs barking, the creak of an iron gate, shouting in a language you don't understand.
+
+When the sack is pulled off your head you see high wire fences, watchtowers and searchlights. A prison camp.
+
+An officer in a clean uniform walks up and smiles:
+
+— Welcome, Sergeant. I am Major Rehn. We are going to talk a great deal.`,ch:['Wait to be taken to a cell.']},
+h1:{b:`A concrete cell. Three paces long, two paces wide. High up, a small barred window. A bucket in the corner.
+
+The bandage on Selim's leg is soaked with blood and his fever is rising. Mert sits against the wall, hugging his knees.
+
+An old guard stands watch by the door. He doesn't shout like the others; every now and then he looks in through the bars.`,
+ ch:['Tear your shirt and re-dress Selim\'s wound.','Ask the old guard for water and a clean cloth.','Tell Selim to hold on. Save your strength.']},
+h1b:{b:`— Water, you tell the guard. We have a wounded man. Please.
+
+The man looks at you for a while. Then he walks away without a word. Ten minutes later he comes back with a bottle of water and a clean folded cloth, and passes them through the bars.
+
+— Tobas, he says, tapping his chest. That must be his name.
+
+— Thank you, Tobas.
+
+He nods and goes back to his post. Not everyone in this camp may be an enemy.`,ch:['Continue.']},
+h2:{b:(st,fl)=>`Before dawn they take you from the cell. A small windowless room. On the table: a lamp, a file and a glass of tea.
+
+Major Rehn speaks politely, calmly, almost kindly:
+
+— Drink your tea, Sergeant. Tell us your unit's positions and radio codes, and you and your friends will see a doctor tonight. You have my word.${fl.burn?`
+
+He pauses for a moment.
+
+— Your codebook was burned. Clever. But I am a patient man.`:''}`,
+ ch:['Give only your name, rank and service number.','Give false positions to stall them.','Say nothing. Look him in the eye.']},
+h3:{b:(st,fl)=>`Rehn has the door opened. Two soldiers drag Mert in. The boy's lip is split.${fl.lie?`
+
+— The positions you gave us were empty, Sergeant, Rehn says in the same calm voice. Lies have a price.`:''}
+
+— If you won't talk, Rehn says, perhaps he will. He's young, he's scared. Scared people tell you everything.
+
+Mert looks at you. There is no pleading in his eyes; it's the look of a soldier waiting for orders.`,
+ ch:['Give a minor but true piece of information to save Mert.','Say "I\'m in command, he knows nothing." Take the weight yourself.','Stay silent. Signal Mert to stay silent too.']},
+h4:{b:(st,fl)=>`That night the three of you lie side by side in the cell. ${fl.mertHurt?'Mert faces the wall, crying quietly; he was badly beaten in the interrogation room today.':'Mert is crying quietly.'} ${fl.band?'Selim\'s fever has come down a little; the bandage worked.':'Selim\'s fever is still high.'}
+
+Selim takes a crumpled photo out of his pocket. A girl of about six, smiling with missing teeth.
+
+— Elif, he says. I promised I'd make it to her birthday. Three weeks left.`,
+ ch:['Tell them about your home, your village, what you\'ll do when you get back.','Start whispering about escape.','Tell them to sleep. You need your strength.']},
+k1:{b:(st,fl)=>`The days blur together. Every noon you're taken out to the yard for a half-hour walk. It's the only time you get to see the camp.${fl.plan?`
+
+Escape is now on all three of your minds. Every walk is a reconnaissance.`:''}
+
+What will you pay attention to today?`,
+ ch:['The guard changes and tower schedules.','Weak spots in the wire fence.','The people: who treats whom, and how?']},
+k1b:{b:(st,fl)=>`The next day you're in the yard again. ${fl.shift?'Yesterday you noticed that the tower guards change at three o\'clock; during the change the searchlights don\'t cover the yard for a few minutes.':fl.fence?'Yesterday you noticed that at the northeast corner the ground has sunk at the base of a post and the wire is loose.':'Yesterday you noticed that the other guards don\'t show old Tobas much respect, and that he doesn\'t treat the prisoners the way they do.'}
+
+What else will you look at today?`,
+ ch:['The guard changes and tower schedules.','Weak spots in the wire fence.','The people: who treats whom, and how?']},
+k2:{b:`At dinner the door opens a crack. Tobas slips an extra slice of bread and a piece of cheese under your plate.
+
+— My son, he says in broken Turkish. He's a soldier too. Like you. Maybe he's somewhere too… Nobody gives him bread.
+
+His eyes are wet. Can you trust this man?`,
+ ch:['Ask Tobas for help: the door lock, the guard schedule.','Thank him but ask for nothing. Don\'t take the risk.','Try to steal his keys when he dozes off.']},
+k3ok:{b:`Tobas is silent for a long time. Then he lowers his voice:
+
+— Thursday night I'm on watch. At three the tower guards change; for ten minutes nobody looks at the yard. The bolt on your door… might be forgotten.
+
+He reaches his hand through the bars. You shake it. Both your hands are trembling.`,ch:['Continue.']},
+k3no:{b:`Tobas's face changes in an instant. He steps back and leaves without a word.
+
+Half an hour later two guards enter the cell. They take you outside and beat you. Rehn stands in the doorway with his arms folded, watching:
+
+— An escape plan, Sergeant? From now on, my eyes are on you.
+
+You never see Tobas on watch again.`,ch:['Continue.']},
+k3:{b:`You thank Tobas with a nod. The three of you split the bread and cheese.
+
+Selim swallows his bite and smiles:
+
+— Best cheese I've ever eaten. Don't tell Elif; her mother's pastries would be offended.`,ch:['Continue.']},
+k3key:{b:`Tobas is snoring in his chair, his head on his chest. You quietly slide a single key off the ring on his belt. So the jingle won't sound different, you put a piece of wire in its place.
+
+The key is in your palm. Your heart is pounding against your ribs.`,ch:['Continue.']},
+k3no2:{b:`The moment your hand reaches his belt, Tobas opens his eyes. He says nothing; there is only deep disappointment on his face. Then he blows his whistle.
+
+That night they keep you standing until morning. Rehn watches from the doorway:
+
+— An escape plan, Sergeant? From now on, my eyes are on you.`,ch:['Continue.']},
+k4:{b:(st,fl)=>`You find a loose piece in the iron frame of the bunk. For days you grind its end flat and sharp against the concrete floor.${fl.fence?' It could work on the wire fence you spotted.':''}${fl.watched?`
+
+Rehn wasn't bluffing: now two extra patrols pass your cell every night.`:''}
+
+But the real problem is Selim. His leg hasn't healed; he walks with a limp.
+
+— I'll slow you down, Sergeant, he says. Go. I'll stay here. I'll manage somehow.`,
+ ch:['"No. Three of us came in, three of us go out." You\'ll carry Selim.','Promise Selim you\'ll come back for him once you\'re out.','Selim creates a diversion in the camp while you escape.']},
+k5:{b:`The plan is ready. Only one decision remains: when?`,
+ ch:['At three, during the tower guard change.','Thursday night, when Tobas is on watch.','The first rainy night. Rain covers sounds and tracks.'],
+ why:['You didn\'t observe the guard schedule.','You don\'t have Tobas\'s help.']},
+e1:{b:(st,fl)=>(fl.time==='shift'?`02:55. You count the sweeps of the tower searchlight: once every forty seconds.`
+ :fl.time==='tobas'?`Thursday night. Tobas's heavy footsteps pass down the corridor once, then stop.`
+ :`You waited three days. Finally thunder rolls; rain drums on the roof.`)+`
+
+Mert is ready. `+(fl.carry?`You've put Selim's arm over your shoulder; he grits his teeth and stands up.`
+ :fl.leaveSelim?`Selim lies on his bunk with his eyes closed, pretending to sleep. You didn't say goodbye; it's easier this way.`
+ :`Selim sits up on his bunk and winks at you, as if to say "wait for my signal".`),
+ ch:['Gently push the door. Tobas must have kept his word.','Put the stolen key in the lock.','Try to lift the bolt with the iron piece.']},
+e1x:{b:`The iron scrapes against the bolt with a sharp screech. A flashlight comes on in the corridor.
+
+You hold your breath. The light waits in front of the door for a while… then moves away. The guard must have thought it was a rat.
+
+On the second try the bolt lifts.`,ch:['Continue.']},
+e2:{b:(st,fl)=>`You slip across the dark corner of the yard and reach the wire.${fl.fence?' This is the spot you picked: the ground has sunk at the base of the post and the wire is loose.':' The wire is pulled tight, with gaps no wider than a hand.'}`,
+ ch:['Crawl under the wire at the loose post.','Bend the wires with the iron piece and open a gap.']},
+e3:{b:(st,fl)=>(fl.alarm?`A wire snaps and knocks down the tin can tied to it. A moment of silence… then the siren!`
+ :`You're on the other side of the fence. Just as you're about to run for the edge of the forest, the searchlight slides across the grass toward you.`)+(fl.diversion?`
+
+At that very moment shouting erupts at the far end of the camp. Selim! He's banging on the bars of the cell and yelling at the top of his lungs. The searchlights swing that way.`:''),
+ ch:['Use the chance Selim bought you. Run!','Run! Don\'t stop until the forest.','Get down. Don\'t move until the light passes.','Run toward the light and draw their attention. Let the others escape.']},
+e3b:{b:(st,fl)=>`A machine-gun burst churns the ground.${fl.carry?' Selim\'s weight slows you down. As a bullet passes by, Selim jerks and groans; he\'s been hit.':' A bullet grazes your calf.'}
+
+Still, you reach the darkness of the trees.`,ch:['Continue.']},
+e4:{b:(st,fl)=>`Dogs barking behind you. Flashlight beams dance between the trees.${fl.route?`
+
+The route you counted in the truck is still in your head: the wooden bridge, the long straight road… The bridge must be to the south. The border lies that way.`:''}`,
+ ch:['Get into the creek. The water will hide your scent from the dogs.','Climb the ridge and get away fast.','Follow the route you memorized in the truck. Head for the bridge.']},
+b1:{b:(st,fl)=>`You run straight into the searchlight beam. You spread your arms and shout. Every barrel turns toward you.
+
+Behind you, in the dark, you see ${fl.carry?'Mert hoist Selim onto his shoulder and':'Mert'} disappear into the trees. Then a rifle butt, and darkness.`,ch:['…']},
+d1:{b:(st,fl)=>`At dawn you take shelter in a hollow in the rocks. You're soaked and starving; your feet are bloody.
+
+${fl.carry?(fl.selimHit?'Selim\'s wound keeps bleeding and his fever has climbed again. His lips are cracked; he keeps murmuring Elif\'s name.':'Selim\'s fever has climbed again. His lips are cracked; he\'s delirious.'):'Mert sleeps beside you, shivering. Now and then he jerks awake, then drifts off again.'}`,
+ ch:['Rest here for a day and move at night.','Keep moving now. Search teams may be closing in.','Give Selim your last food and water.']},
+d2:{b:`In the afternoon the trees thin out. In the distance, on top of a hill, you see a flag waving: ours.
+
+Between you lies a kilometer of open ground. Mert points to a rusty sign, half buried in the earth. On it, a red skull.
+
+A minefield.`,
+ ch:['Probe the ground with your knife and move inch by inch.','Follow the animal tracks; cross where the goats have crossed.','Run across. The shorter it takes, the better.']},
+d3:{b:(st,fl)=>`Halfway across, Mert freezes.
+
+— Sergeant, he whispers. Something clicked under my foot.
+
+He's standing on a pressure mine. The moment he lifts his foot, it will go off.${fl.run?' He stepped on it while running; now he\'s balancing on one foot.':''}`,
+ ch:['Try to replace Mert\'s weight with a stone of equal weight.','Stay with him and keep him calm. Signal our side.','Tell Mert to throw himself forward.']},
+d3ok:{b:`For a moment everything stops. Then nothing happens.
+
+Mert lies face down a few steps away, his hands dug into the dirt. He's alive. He looks at you and tries to laugh, but he's crying. So are you.
+
+You walk the rest of the way stepping in his footprints.`,ch:['Continue.']},
+d3help:{b:(st,fl)=>`They must be watching through binoculars from the trench on the hill. Half an hour later a combat engineer sergeant crawls up to you with a mine detector.${fl.msg?`
+
+— We got your radio message, he says. We've been looking for you for days.`:''}
+
+With expert hands he disarms the mine. Mert drops to his knees, sobbing. You let him cry.
+
+The engineer leads you to the trenches along the safe path he has cleared.`,ch:['Continue.']},
+d3x:{b:`The explosion, a moment of white silence. Then a ringing in your ears.
+
+You crawl to where Mert is lying. His eyes are open, looking at you. He tries to say something but no sound comes out. You hold his hand; he holds yours. Then he doesn't.
+
+He was twenty. It was his first night patrol.`,ch:['Continue.']},
+d4:{b:`The last hundred meters. A voice rises from the trench on the hill:
+
+— Halt! Who are you? Don't move!
+
+Barrels are aimed at you. You're wearing the torn prisoner clothes of the enemy camp. Our own men don't recognize you.`,
+ ch:['Raise your hands and shout the battalion password.','Get down; shout your name, rank and unit.','Shout "Nightbird! Nightbird is coming home!"']},
+end_kahraman:{b:(st,fl)=>`The three of you tumble into the trench in your torn prisoner clothes. Someone brings blankets, someone water. The battalion commander comes running; he hugs you first, then Selim, then Mert.
+
+Three weeks later you're in the hospital garden. Selim is in a wheelchair with Elif on his lap. He made it to her birthday. Mert lights the candles on the cake; his hand no longer shakes.
+
+A month later a medal is pinned to your chest on the parade ground. You search the crowd for two faces. They're in the front row, both on their feet, applauding.${gaveLine(fl)}
+
+Three of you went in. Three of you came out.`},
+end_aci:{b:(st,fl)=>{const mDead=fl.mert==='dead',sDead=fl.carry&&fl.selimDead===1;
+ let t=`When you reach our trench, your knees give way. Blankets, water, radio static… it all seems to come from very far away.`;
+ if(mDead)t+=`
+
+Two days later Mert's body, as the engineers recovered it from the minefield, is sent to his village. You write the letter to his mother yourself. You start over three times; no sentence is enough.`;
+ if(sDead)t+=`
+
+Selim never saw the border. On the last night, in the rock hollow, burning with fever, he kept murmuring Elif's name. You carried him home on your back. You couldn't return a father to his daughter, but you brought a soldier back to his country.`;
+ else if(!fl.carry)t+=`
+
+You left Selim in the camp. You think about him every night. Four months later his name appears on a prisoner exchange list. He's thinner, his hair has gone grey, but he's alive. He missed Elif's birthday; he promises to make the next one. This time he keeps his word.`;
+ return t+gaveLine(fl)+`
+
+The medal pinned to your chest feels a little heavier every morning.`}},
+end_yalniz:{b:(st,fl)=>`You enter the trench alone.
+
+You left Mert in the minefield, and ${fl.carry?'Selim in that rock hollow on the last night':'Selim behind the barbed wire'}. You set out as a squad; you're the only one who came back.
+
+For weeks you don't speak. At night, in your sleep, you hear radio static: "…hold on…"
+
+One morning in the hospital garden someone sits down beside you. Selim's wife, with Elif on her lap. She isn't angry with you; she only wants to know what happened. You tell her everything. For the first time, you cry.
+
+Sometimes surviving isn't a victory, but a responsibility.`},
+end_bedel:{b:(st,fl)=>`When they throw you back into the cell, there's a strange peace on your face.${fl.leaveSelim||fl.diversion?' Selim is on the other side of the wall; you both stayed, but Mert got away.':''}
+
+Two weeks later Rehn stops in front of your cell:
+
+— ${fl.carry?'Your friends':'Your private'} crossed the border, Sergeant. Congratulations. You lost… and yet you won. I rarely see that.
+
+Seven months later, on a foggy morning, a prisoner exchange takes place on the bridge between the two countries.${fl.carry?'':' Selim walks beside you, leaning on your arm.'} A figure waits at the far end of the bridge; as you get closer, the face comes into focus. Mert. Beside him, ${fl.carry?'Selim on crutches':'the battalion commander'}.
+
+Mert salutes you. You salute him back.
+
+Some victories are won by the one who pays the price.`},
+end_karanlik:{b:(st,fl)=>st.saglik<=0&&fl._failC>=3
+ ?`Your wounds and exhaustion finally bring you down. The ground is cold; the sky is very far away.
+
+${fl.mert==='dead'?'No one is beside you. The last thing you think of is the moment you held Mert\'s hand.':'Mert tries to drag you, then collapses beside you and takes your hand. "I won\'t let go, Sergeant," he says. "You didn\'t either."'}
+
+${fl.mert==='dead'?'Days later a patrol finds your dog tag in a rock hollow a few kilometers from the border and returns it to your battalion.':'Two days later Mert reaches our trench alone. He places a dog tag in the battalion commander\'s palm: yours.'}
+
+The story didn't have to end here. How much did your choices wear down your body?`
+ :st.saglik<=0
+ ?`Your body couldn't take any more. One morning you can't get up from your bunk; Selim's and Mert's voices grow more and more distant.
+
+By the time the camp doctor arrives, it's too late.
+
+Months later, at a prisoner exchange, a list is handed over with a mark beside your name. Mert will carry that list in his wallet for years.
+
+The story didn't have to end here. How much did your choices wear down your body and mind?`
+ :`One day, facing Rehn, you realize your voice is no longer your own. You tell him everything he asks. Your hope is gone.
+
+Selim doesn't speak to you after that night. Mert can't look you in the face.
+
+Everyone has a breaking point. Yours was here.
+
+The story didn't have to end here. Could you have made choices that kept your morale standing?`}
+ }};
+})();
+
 /* =====================================================================
    HİKÂYE · KÖSTEBEK  (özel mekanikli dedektiflik hikâyesi)
    Oyuncu: Binbaşı (Genelkurmay İstihbarat). 10 gün, günde 3 eylem.
@@ -6832,9 +7207,10 @@ function str(R,x){if(R.cleared[x])return {s:-1,tags:[['Temize çıktı','o']]};l
  if(R.tail[x]==='secret')tags.push(['Sırrı ortaya çıktı','o']);
  return {s,tags}}
 function contraCheck(R){let nw=[];const L=R.liar;
- if(L&&R.iv[L]&&!R.liarOk&&R.alibi&&R.alibi[L]&&R.alibi[L].indexOf(SU[L].sleep)===0){R.contra[L]=R.contra[L]||{};
+ const AK=x=>R.alibiK&&R.alibiK[x]?R.alibiK[x]:{s:!!(R.alibi&&R.alibi[x]&&R.alibi[x].indexOf(SU[x].sleep)===0),k:!!(R.alibi&&/kışladaydım/.test(R.alibi[x]||''))};
+ if(L&&R.iv[L]&&!R.liarOk&&R.alibi&&R.alibi[L]&&AK(L).s){R.contra[L]=R.contra[L]||{};
   if(R.got.nobet&&R.sets.nobet.includes(L)&&!R.contra[L].nobet){R.contra[L].nobet=1;nw.push(`${nm(L)} o gecelerde uyuduğunu söylemişti. Ama nöbet çizelgesine göre üç sızıntı gecesinde de saat 02.00 ile 03.00 arasında karargâhta uyanıktı.`)}
-  if(R.got.defter&&R.sets.defter.includes(L)&&!R.contra[L].defter&&/kışladaydım/.test(R.alibi[L])){R.contra[L].defter=1;nw.push(`${nm(L)} sabahları kışladan çıkmadığını söylemişti. Ama giriş-çıkış defterine göre sızıntılardan sonraki sabahlarda 05.40'ta nizamiyeden çıkmış.`)}
+  if(R.got.defter&&R.sets.defter.includes(L)&&!R.contra[L].defter&&AK(L).k){R.contra[L].defter=1;nw.push(`${nm(L)} sabahları kışladan çıkmadığını söylemişti. Ama giriş-çıkış defterine göre sızıntılardan sonraki sabahlarda 05.40'ta nizamiyeden çıkmış.`)}
   if(!Object.keys(R.contra[L]).length)delete R.contra[L]}
  const m=R.mole;if(!R.iv[m])return nw;R.contra[m]=R.contra[m]||{};
  if(R.got.nobet&&!R.contra[m].nobet){R.contra[m].nobet=1;nw.push(`${nm(m)} o gecelerde uyuduğunu söylemişti. Ama nöbet çizelgesine göre üç sızıntı gecesinde de saat 02.00 ile 03.00 arasında karargâhta uyanıktı.`)}
@@ -6891,7 +7267,7 @@ function act(R,v){const [a,b,c]=String(v).split(':');
   if(first){const inN=R.sets.nobet.includes(b),inD=R.sets.defter.includes(b);
    const say=b===R.mole?SU[b].sleep+' Sabahları da kışladaydım, hiçbir yere çıkmadım.':b===R.liar&&!R.tail[b]?SU[b].sleep+(inD?' Sabahları da kışladaydım, hiçbir yere çıkmadım.':''):(inN?SU[b].duty:SU[b].sleep)+(inD?' '+SU[b].early:'');
    body=`${nm(b)} karşına oturuyor. Sızıntı gecelerinde nerede olduğunu soruyorsun.\n\n— ${say}`;
-   R.alibi=R.alibi||{};R.alibi[b]=say}
+   R.alibi=R.alibi||{};R.alibi[b]=say;R.alibiK=R.alibiK||{};R.alibiK[b]={s:say.indexOf(SU[b].sleep)===0,k:/kışladaydım/.test(say)}}
   else{if(b===R.mole){R.alert++;R.nervous[b]=1;body=SU[b].press+`\n\nKonuşurken parmakları masanın kenarında durmadan tıkırdıyor. Bir şey saklıyor olabilir.`}
    else if(b===R.liar&&R.contra[b]){body=SU[b].pressX+`\n\nİfadesindeki tutarsızlığın sebebi buymuş. ${kn(b)} o gece nerede olduğunu bu yüzden saklamış.`;delete R.contra[b];R.liarOk=1;if(b===R.herring)R.expl[b]=1}
    else if(R.tail[b]==='secret'||(b===R.herring&&R.got.banka)){body=SU[b].pressX;if(b===R.herring)R.expl[b]=1}
@@ -6972,7 +7348,7 @@ function view(R){
  </div>${rings(R)}
  <div class="kbar"><button class="btn ghost" data-a="kb" data-v="menu:accuse"${R.day>=5?'':' disabled'}>${R.day>=5?'Suçla':'Suçla · 5. gün'}</button><button class="btn" data-a="kb" data-v="night">Günü bitir ›</button></div>`}
 function rings(R){const rows=IDS.map(x=>({x,...str(R,x)}));const mx=Math.max(6,...rows.map(r=>r.s));
- return `<button class="kring-card" data-a="kb" data-v="menu:board"><div class="sec-h"><span class="lbl">Kanıt panosu</span><span class="small acc">Ayrıntı ›</span></div><div class="krings">${rows.map(r=>{const h=r.s<0?0:Math.min(1,r.s/mx);return `<div class="kr${r.s<0?' clr':''}${r.s>0?' hot':''}" style="--h:${h.toFixed(2)}"><span class="kr-ring">${av(r.x,38)}${r.s>0?`<em>${r.s}</em>`:''}</span><small>${esc(SU[r.x].k)}</small></div>`}).join('')}</div></button>`}
+ return `<button class="kring-card" data-a="kb" data-v="menu:board"><div class="sec-h"><span class="lbl">Kanıt panosu</span><span class="small acc">Ayrıntı ›</span></div><div class="krings">${rows.map(r=>{const h=r.s<0?0:Math.min(1,r.s/mx);return `<div class="kr${r.s<0?' clr':''}${r.s>0?' hot':''}" style="--h:${h.toFixed(2)}"><span class="kr-ring">${av(r.x,38)}${r.s>0?`<em>${r.s}</em>`:''}</span><small class="notr">${esc(SU[r.x].k)}</small></div>`}).join('')}</div></button>`}
 const KI={iv:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v10H9l-5 4z"/></svg>',
  cl:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="6"/><path d="M15 15l5 5"/></svg>',
  tail:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -7037,7 +7413,268 @@ const T={id:'kostebek',ti:'Köstebek',genre:'Casusluk · Dedektiflik',color:'#b8
  subtitle:R=>R.end?'Son':R.phase==='brief'?'Bölüm 1 · Görev':`Gün ${Math.min(R.day,DAYS)} · ${T.chapters[chOf(R)].ti}`};
 registerTale(T);
 A32.kb=v=>{const P=tp32('kostebek');if(!P.run)return;act(P.run,v);tpSave32();render();const el=$('#tscr');if(el)el.scrollTop=0;window.scrollTo(0,0)};
-window.__KB={SU,IDS,newRun,act,str,endDay,confront,DAYS};
+window.__KB={SU,IDS,newRun,act,str,endDay,confront,DAYS,T,ART,KI};
+})();
+
+/* =====================================================================
+   HİKÂYE · KÖSTEBEK · İngilizce sürüm
+   Kural ve kayıt yapısı Türkçe dosyayla birebir aynıdır (newRun oradan gelir),
+   böylece dil değişse de devam eden soruşturma bozulmaz.
+   ===================================================================== */
+(function(){
+const KB=window.__KB;if(!KB)return;
+const DAYS=10,AP=3,LEAK=[3,6,9],DROP=[4,8];
+const HAND={sağlak:'right-handed',solak:'left-handed'};
+const SU={
+ kaya:{n:'Captain Can Kaya',k:'Kaya',r:'Operations officer',c:'#c9a64a',hand:'sağlak',smoke:1,
+  bio:'Your classmate from the academy and your closest friend for years. Rumor has it he\'s been drowning in debt lately.',
+  duty:'I was duty officer on two of those nights. At two I did my rounds of the HQ, then worked on plans in the briefing room.',
+  sleep:'I went to bed early that night. We\'d been on the plans all day; I could barely stand.',
+  early:'Early in the morning I went down to town; I had business at the bank.',
+  secret:'You follow Kaya to a teahouse in the back streets of town. A heavyset man sits at the table; Kaya hands him an envelope, the man counts the money and leaves. A loan shark. Kaya sits with his head in his hands for a long time.\n\nYour friend is drowning in debt, but that isn\'t treason.',
+  press:'Kaya laughs at first, then the laugh freezes on his face.\n\n— You suspect me? Fifteen years… We stood watch together for fifteen years.',
+  pressX:'Kaya is silent for a while, then tells you everything: gambling debts, the loan shark, months of interest payments.\n\n— I was too ashamed to tell anyone. But I swear, I didn\'t sell out my country.'},
+ aras:{n:'Major Levent Aras',k:'Aras',r:'Operations planning branch',c:'#b8453a',hand:'solak',smoke:0,
+  bio:'Harsh, ambitious and by-the-book. His name is on the promotion list; people say he\'d do anything for it.',
+  duty:'After midnight I was in the operations center, finishing the report the colonel asked for.',
+  sleep:'Lights out at eleven. I\'m a disciplined man, Major.',
+  early:'I go running at six every morning. Check the gate log.',
+  secret:'At midnight Aras leaves the HQ and goes to the restaurant of the hotel in town. A staff colonel from division HQ sits at the table. Aras gives him an expensive watch; from their talk, it\'s clear they\'re discussing the promotion list.\n\nUnbecoming and against the rules. But not espionage.',
+  press:'Aras looks at you without blinking.\n\n— You have every right to investigate me. But put a single stain on my record, and I\'ll make you answer for it.',
+  pressX:'Aras clenches his jaw, then briefly admits it: he met the staff colonel, looking for an inside track to promotion.\n\n— That\'s a disciplinary matter, Major. Not treason.'},
+ deniz:{n:'Sergeant Deniz Yılmaz',k:'Deniz',r:'Signals sergeant',c:'#70a3c4',hand:'sağlak',smoke:1,
+  bio:'All radio traffic passes through his hands. On night shifts he\'s usually alone in the signals room.',
+  duty:'The night shift was mine. I was at the radio in the signals room until morning.',
+  sleep:'I wasn\'t on shift that night; I was asleep in the barracks.',
+  early:'Early in the morning I went to the post office in town. My mother had sent a package.',
+  secret:'At one in the morning Deniz sneaks out of the barracks to the pay phone by the main gate. He talks quietly for half an hour, laughing now and then. After hanging up, he looks at a photograph: his fiancée.\n\nA forbidden late-night call. It calls for a disciplinary penalty, but it isn\'t espionage.',
+  press:'Deniz swallows; his eyes slide to the door.\n\n— Sir, I\'m only responsible for the radios. I reported everything I heard.',
+  pressX:'Deniz turns red and confesses: he\'s been secretly calling his fiancée at night.\n\n— I\'ll take whatever punishment there is, sir. But I\'m not a traitor.'},
+ leyla:{n:'Interpreter Leyla Saran',k:'Leyla',r:'Civilian interpreter',c:'#a78bfa',hand:'solak',smoke:1,
+  bio:'Speaks the enemy\'s language like a native. Part of her family still lives on the other side of the border.',
+  duty:'I was translating intercepted radio traffic until late. I finished around two-thirty.',
+  sleep:'I was asleep. Interpreters don\'t work nights, Major; at least I didn\'t that night.',
+  early:'In the morning I went down to the market in town. I go once a month.',
+  secret:'At night Leyla steps into the back garden of the officers\' quarters and calls across the border on a hidden mobile phone. The call is short and broken; at the end she cries. It\'s clear she\'s talking to her sick mother.\n\nA forbidden line. But what you heard was a daughter missing her mother, not an agent\'s report.',
+  press:'Leyla folds her arms.\n\n— Because my family is across the border, I\'m the first suspect, right? I\'m used to it, Major.',
+  pressX:'Leyla puts the hidden phone on the table.\n\n— My mother is ill. I call her. That\'s all. Listen to every call if you like.'},
+ emre:{n:'Lieutenant Emre Tunç',k:'Emre',r:'Logistics officer',c:'#7fb35a',hand:'sağlak',smoke:0,
+  bio:'Quiet, polite, flawless at his job. Perhaps a little too flawless. No one has a bad word to say about him.',
+  duty:'There was a night inventory at the depot. I was checking the ammunition lists.',
+  sleep:'I went to bed at eleven. There was a shipment the next day; I needed rest.',
+  early:'Early in the morning I went out to meet the supply convoy; my signature is on the shipping papers.',
+  secret:'At two in the morning Emre leaves his quarters and goes to the gym, where he punches the bag for an hour. Then he sits on a bench and looks at his phone: old messages from his father in hospital.\n\nA sleepless, lonely man in pain. But no sign of treason.',
+  press:'Emre is calm, almost too calm.\n\n— I understand your questions, sir. I have nothing to hide. I\'ll answer whatever you ask.',
+  pressX:'For the first time Emre\'s voice trembles: his father is in hospital, and he can\'t sleep at night.\n\n— I didn\'t want anyone to know, sir. I didn\'t want to look weak.'},
+ tekin:{n:'Colonel Nihat Tekin',k:'Tekin',r:'HQ commander',c:'#e39540',hand:'solak',smoke:1,
+  bio:'Your commander. Every operational plan crosses his desk. Questioning him could cost you your career.',
+  duty:'I am the commander of this headquarters, Major; I\'m on duty day and night. That night I was in the operations center.',
+  sleep:'I was in my room. It takes courage to question where a colonel was at night.',
+  early:'In the morning I went to division HQ for a meeting.',
+  secret:'At night the colonel goes down to town in civilian clothes and enters a doctor\'s office behind the all-night pharmacy. He comes out carrying boxes of medicine. The next day you learn the truth: he has a serious illness and is hiding it from everyone so he won\'t be retired.\n\nA secret, but not the secret of a man who betrayed his country.',
+  press:'Colonel Tekin leans back in his chair.\n\n— So you\'ve put me on your list too. Brave of you, Major. I hope you\'re right; otherwise you may find it hard to leave this room.',
+  pressX:'The colonel stares out of the window for a long time, then tells you about his illness.\n\n— I\'ve worn this uniform for thirty years. I want to wear it until my last day. Is that a crime?'}
+};
+const IDS=Object.keys(SU);
+const nm=id=>SU[id].n,kn=id=>SU[id].k,pos=w=>w+(/s$/.test(w)?'\'':'\'s');
+const list=a=>a.map(nm).join(', ').replace(/, ([^,]*)$/,' and $1');
+const CLUES=['telsiz','nobet','defter','not','izmarit','banka'];
+const CN={telsiz:'Radio logs',nobet:'Duty roster',defter:'Gate log',not:'Burned note',izmarit:'Meeting point',banka:'Bank statements'};
+function str(R,x){if(R.cleared[x])return {s:-1,tags:[['Cleared','o']]};let s=0;const tags=[];
+ for(const c of CLUES)if(R.got[c]&&R.sets[c].includes(x)){if(c==='banka'&&R.expl[x]){tags.push(['Bank: explained','o']);continue}s++;tags.push([CN[c],'c'])}
+ if(R.contra[x]){const n=Object.keys(R.contra[x]).length;s+=2*n;tags.push([n>1?'2 contradictions':'Contradiction','r'])}
+ if(R.nervous[x]){s+=1;tags.push(['Nervous','r'])}
+ if(R.tail[x]==='witness'){s+=3;tags.push(['Seen with courier','r'])}
+ if(R.trap&&R.trap.res==='hit'&&R.trap.hit===x){s+=3;tags.push(['Trap: leaked','r'])}
+ if(R.tail[x]==='secret')tags.push(['Secret revealed','o']);
+ return {s,tags}}
+const C_N=x=>`${nm(x)} said they were asleep on those nights. But according to the duty roster, on all three leak nights they were awake in the HQ between 02:00 and 03:00.`;
+const C_D=x=>`${nm(x)} said they never left the barracks in the mornings. But according to the gate log, they went out through the main gate at 05:40 on the mornings after the leaks.`;
+function contraCheck(R){let nw=[];const L=R.liar;
+ const AK=x=>R.alibiK&&R.alibiK[x]?R.alibiK[x]:{s:false,k:false};
+ if(L&&R.iv[L]&&!R.liarOk&&R.alibi&&R.alibi[L]&&AK(L).s){R.contra[L]=R.contra[L]||{};
+  if(R.got.nobet&&R.sets.nobet.includes(L)&&!R.contra[L].nobet){R.contra[L].nobet=1;nw.push(C_N(L))}
+  if(R.got.defter&&R.sets.defter.includes(L)&&!R.contra[L].defter&&AK(L).k){R.contra[L].defter=1;nw.push(C_D(L))}
+  if(!Object.keys(R.contra[L]).length)delete R.contra[L]}
+ const m=R.mole;if(!R.iv[m])return nw;R.contra[m]=R.contra[m]||{};
+ if(R.got.nobet&&!R.contra[m].nobet){R.contra[m].nobet=1;nw.push(C_N(m))}
+ if(R.got.defter&&!R.contra[m].defter){R.contra[m].defter=1;nw.push(C_D(m))}
+ if(!Object.keys(R.contra[m]).length)delete R.contra[m];return nw}
+const BRIEF=[
+ {ti:'Behind closed doors',b:`Brigadier General Sevim Ateş, head of General Staff Intelligence, locks her office door before she begins:
+
+— Our last three operations were ambushed, Major. In all three, the enemy knew the plan before we did. We lost twenty-three soldiers.
+
+She puts three files on the table. Each cover bears a red stamp: TOP SECRET.
+
+— The information is leaking from Eastern HQ. Someone on the inside.`},
+ {ti:'The assignment',b:`— I'm sending you there on a new posting, under cover of a "personnel audit". No one will know your real assignment, not even the commander.
+
+The general turns to the window.
+
+— You have ten days. As long as the leak continues, our soldiers keep dying. Accuse the wrong person and you'll ruin an innocent life, and the real traitor slips away.
+
+— Understood, ma'am.
+
+— One more thing, Major. Trust no one.`},
+ {ti:'Six names',b:`Six people at Eastern HQ have access to the plans. The mole is one of them.
+
+Each day you have three actions: you can *take a statement*, *gather evidence*, or *tail* someone at night. From day five you can *set a trap* with false information, and when you're ready, you can *accuse* someone.
+
+Catch the contradictions, connect the clues. The evidence board will show you where suspicion is building.
+
+But be careful: if the mole notices, they'll start covering their tracks.`}];
+function morning(R){const d=R.day,N=[];
+ if(d===1)N.push('You\'ve arrived at Eastern HQ on a "personnel audit" posting. Colonel Tekin greeted you with a cold handshake. They gave you a room, a desk and a key.');
+ if(d===2)N.push('At breakfast Captain Kaya sat down next to you: "Great to see you here. Let\'s have tea tonight, like the old days." There are dark circles under his eyes.');
+ if(d===5)N.push('A shepherd from town said that in recent weeks someone has been waiting at night by the old fountain on the border road. That could be the meeting point.');
+ if(d===10)N.push('The last day. If you don\'t accuse the mole by sunset, the general will close the investigation and the leak will go on.');
+ return N.concat(R.notes)}
+function nightEvents(R){const d=R.day,m=R.mole,ev=[];
+ if(LEAK.includes(d)){if(R.trap&&R.trap.res==null&&R.trap.day<=d){const T=R.trap;if(T.a===m||T.b===m){T.res='hit';T.hit=m;ev.push(`Tonight the enemy acted on the false information about the ${T.hit===T.a?'north valley':'south bridge'}. Only **${nm(m)}** knew that.`)}else{T.res='clear';R.cleared[T.a]=1;R.cleared[T.b]=1;ev.push(`Tonight the enemy acted on neither of the two false leads in your trap. **${nm(T.a)}** and **${nm(T.b)}** are cleared.`)}}
+  const k=2+Math.floor(Math.random()*4);R.kia+=k;ev.push(`The leak continues: tonight one of our reconnaissance units was ambushed. **${k} killed.** Total losses: ${23+R.kia}.`)}
+ if(R.alert>=2&&!R.destroyed._done){R.destroyed._done=1;const c=['banka','izmarit','not'].find(x=>!R.got[x]);if(c){R.destroyed[c]=1;ev.push(`The mole is on alert. ${c==='banka'?'Access to the bank records has been shut off, citing a "technical fault".':c==='izmarit'?'The area around the old fountain was cleaned up overnight; not a trace is left.':'The ashes of the HQ stove were emptied overnight; the burned note is gone.'}`)}}
+ if(R.alert>=3&&!R.destroyed._comp){R.destroyed._comp=1;R.apPenalty=1;ev.push('An anonymous complaint has been filed against you: "The auditor is harassing personnel." Tomorrow morning you must explain yourself to Colonel Tekin; you\'ll lose one action.')}
+ return ev}
+function act(R,v){const [a,b,c]=String(v).split(':');
+ if(a==='bn'){R.bi++;if(R.bi>=BRIEF.length){R.phase='day';R.bi=0}return}
+ if(a==='menu'){R.menu=b||null;return}
+ if(a==='ok'){R.res=null;if(R.ap<=0&&R.phase==='day')endDay(R);return}
+ if(a==='night'){endDay(R);return}
+ if(a==='morning'){R.phase='day';R.notes=[];return}
+ if(a==='iv'){if(R.ap<=0||R.ivDay[b]===R.day)return;R.ap--;R.ivDay[b]=R.day;R.iv[b]=(R.iv[b]||0)+1;R.menu=null;
+  const first=R.iv[b]===1;let body;
+  const BAR=' And in the mornings I stayed in the barracks; I didn\'t go anywhere.';
+  if(first){const inN=R.sets.nobet.includes(b),inD=R.sets.defter.includes(b);
+   const say=b===R.mole?SU[b].sleep+BAR:b===R.liar&&!R.tail[b]?SU[b].sleep+(inD?BAR:''):(inN?SU[b].duty:SU[b].sleep)+(inD?' '+SU[b].early:'');
+   body=`${nm(b)} sits down across from you. You ask where they were on the leak nights.\n\n— ${say}`;
+   R.alibi=R.alibi||{};R.alibi[b]=say;R.alibiK=R.alibiK||{};R.alibiK[b]={s:say.indexOf(SU[b].sleep)===0,k:say.indexOf(BAR)>=0}}
+  else{if(b===R.mole){R.alert++;R.nervous[b]=1;body=SU[b].press+`\n\nAs they talk, their fingers keep drumming on the edge of the table. They may be hiding something.`}
+   else if(b===R.liar&&R.contra[b]){body=SU[b].pressX+`\n\nSo that was the reason for the inconsistency in the statement. That's why ${kn(b)} hid where they were that night.`;delete R.contra[b];R.liarOk=1;if(b===R.herring)R.expl[b]=1}
+   else if(R.tail[b]==='secret'||(b===R.herring&&R.got.banka)){body=SU[b].pressX;if(b===R.herring)R.expl[b]=1}
+   else body=SU[b].press}
+  const nw=contraCheck(R)||[];R.res={ti:'Statement · '+kn(b),b:body+(nw.length?'\n\n'+nw.map(x=>'CONTRADICTION: '+x).join('\n\n'):''),contra:nw.length>0};return}
+ if(a==='cl'){if(R.ap<=0||R.got[b]||R.destroyed[b])return;if(b==='banka'&&R.day<3)return;if(b==='izmarit'&&R.day<5&&!R.dropSeen)return;R.ap--;R.got[b]=1;R.menu=null;
+  const S=R.sets[b];let body='';const noticed=Math.random()<.12;if(noticed)R.alert++;
+  if(b==='telsiz')body=`You examine the recorders in the signals room. On each leak night, every time around 02:10, there were forty-second encrypted transmissions. They didn't come from outside, but from the backup radio in the signals room.\n\nOnly three people have a key to that room: ${list(S)}.`;
+  if(b==='nobet')body=`You compare the duty rosters with the door-card records. On all three leak nights, three people were awake in the HQ building between 02:00 and 03:00: ${list(S)}.`;
+  if(b==='defter')body=`You read the gate log page by page. On the mornings after the leaks, three names keep appearing, leaving the barracks before sunrise: ${list(S)}.`;
+  if(b==='not')body=`One of the privates sifting the ashes of the HQ stove brings you a half-burned scrap of paper. A single line is legible: "Thursday. Fountain. 02." ${SU[R.mole].hand==='solak'?'The ink is smudged in places by the hand that moved across the line; the writer is left-handed':'The ink is clean, the letters slant to the right; the writer is right-handed'}.\n\nThe ${HAND[SU[R.mole].hand]} suspects: ${list(S)}.`;
+  if(b==='izmarit')body=SU[R.mole].smoke?`At night you go to the old fountain and sweep the area with a flashlight. At the foot of the stone lies a handful of cigarette butts, all the same brand. Whoever waits here smokes.\n\nThe suspects who smoke: ${list(S)}.`:`At night you go to the old fountain and sweep the area with a flashlight. There are fresh footprints, but not a single cigarette butt. Whoever waits here for hours must not smoke.\n\nThe suspects who don't smoke: ${list(S)}.`;
+  if(b==='banka'){const m=R.mole;const t=x=>x==='kaya'?(x===m?'Kaya\'s debts to the loan sharks were suddenly paid off, each time two days after a leak.':'Kaya\'s account shows regular payments to loan sharks; he is clearly drowning in debt.'):x==='leyla'?(x===m?'Alongside Leyla\'s small transfers across the border, a large cash deposit landed in her account after every leak.':'Leyla sends small transfers across the border every month.'):`Cash was deposited into ${pos(kn(x))} account three times, each two days after a leak.`;
+   body=`With the prosecutor's approval you examine the suspects' bank statements for the last three months. Two accounts show unusual activity:\n\n${t(R.banka0=R.sets.banka[0])}\n\n${t(R.sets.banka[1])}`}
+  if(noticed)body+='\n\nOn your way out you lock eyes with someone in the corridor. They may have realized what you were looking for.';
+  const nw=contraCheck(R)||[];R.res={ti:CN[b],b:body+(nw.length?'\n\n'+nw.map(x=>'CONTRADICTION: '+x).join('\n\n'):''),contra:nw.length>0};return}
+ if(a==='tail'){if(R.ap<=0||R.tailDay===R.day)return;R.ap--;R.tailDay=R.day;R.menu=null;let body;const m=R.mole;
+  if(b===m){if(DROP.includes(R.day)){R.tail[b]='witness';R.dropSeen=1;body=`At half past one ${nm(b)} quietly slips out of the HQ. You follow at a distance. A shadow is waiting by the old fountain on the border road. ${kn(b)} hands over a folded envelope; the shadow tucks it inside a jacket and melts into the dark.\n\nYou saw it. This is no longer suspicion; it's an eyewitness account.`}
+   else{const seen=Math.random()<.3;if(seen)R.alert++;body=`You watch ${nm(b)} all night. Early to bed, the light flicks on once, then silence.${seen?'\n\nBefore dawn the curtain in the room moves aside; someone looks out, right at where you\'re hiding. You may have been spotted.':'\n\nNothing happened tonight.'}`}}
+  else{if(R.tail[b]!=='secret'){R.tail[b]='secret';body=SU[b].secret;if(b===R.herring)R.expl[b]=1;if(b===R.liar&&R.contra[b]){delete R.contra[b];R.liarOk=1;body+=`\n\nThat also explains the inconsistency in ${pos(kn(b))} statement.`}}else body=`You tail ${nm(b)} again, but nothing unusual happens tonight.`}
+  R.res={ti:'Night tail · '+kn(b),b:body};return}
+ if(a==='trap'){if(R.trap||R.day<5||R.day>9||R.ap<=0)return;if(b==='go'){const x=c.split(',');if(x.length!==2)return;R.ap--;R.trap={a:x[0],b:x[1],day:R.day,res:null};R.menu=null;R.tsel=[];
+   R.res={ti:'Trap set',b:`You tell ${nm(x[0])} about a raid planned in the north valley, and ${nm(x[1])} about a convoy waiting at the south bridge. Both are false, and each was told to only one person.\n\nNow you wait. The next leak night will show which lead reached the enemy.`};return}
+  R.tsel=R.tsel||[];const i=R.tsel.indexOf(b);if(i>=0)R.tsel.splice(i,1);else if(R.tsel.length<2)R.tsel.push(b);return}
+ if(a==='acc'){R.menu='accuse';R.accSel=b;return}
+ if(a==='accgo'){KB.confront(R,b);return}
+ if(a==='fin'){R.end=b;return}}
+function endDay(R){const ev=nightEvents(R);R.lastNight=ev;R.day++;R.res=null;R.menu=null;
+ if(R.day>DAYS){R.end='kacti';R.endWhy='time';return}
+ R.ap=AP-(R.apPenalty||0);R.apPenalty=0;R.phase='night'}
+const av=(id,sz=40)=>`<span class="kav" style="--c:${SU[id].c};width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.38)}px">${SU[id].k.slice(0,1)}</span>`;
+const md=s=>fmt32(String(s).replace(/\*\*([^*]+)\*\*/g,'⟦$1⟧')).replace(/⟦([^⟧]+)⟧/g,'<b>$1</b>').replace(/CONTRADICTION:|ÇELİŞKİ:/g,'<span class="kcontra">CONTRADICTION</span>');
+function header(R){return `<div class="khead"><div><span class="lbl">Day</span><b class="num">${Math.min(R.day,DAYS)}<small>/${DAYS}</small></b></div>
+ <div><span class="lbl">Actions</span><div class="kap">${Array.from({length:AP},(_,i)=>`<i class="${i<R.ap?'on':''}"></i>`).join('')}</div></div>
+ <div><span class="lbl">Killed</span><b class="num red">${23+R.kia}</b></div></div>${R.alert>=2?'<div class="kwarn">The mole is on alert and has started covering their tracks.</div>':''}`}
+function board(R){const rows=IDS.map(x=>({x,...(str(R,x)||{})}));const mx=Math.max(6,...rows.map(r=>r.s||0));
+ return `<div class="card kboard"><div class="sec-h"><h2>Evidence board</h2></div>
+ ${rows.map(r=>`<div class="krow${r.s<0?' clr':''}">${av(r.x,34)}<div class="grow"><div class="kn"><b>${esc(SU[r.x].n)}</b>${r.s<0?'<span class="kclr">Cleared</span>':''}</div>
+  ${r.s>=0?`<div class="ksus"><i style="width:${Math.min(100,(r.s/mx)*100)}%"></i></div>`:''}${r.tags&&r.tags.length?`<div class="ktags">${r.tags.map(([t,c])=>`<em class="${c}">${esc(t)}</em>`).join('')}</div>`:''}</div></div>`).join('')}</div>`}
+const CHS=[{ti:'The Assignment',sub:'Six suspects · days 1–2'},{ti:'Investigation',sub:'Statements and records · days 3–6'},{ti:'The Trap',sub:'False leads and tailing · days 7–9'},{ti:'Confrontation',sub:'The interrogation room · day 10'}];
+function chOf(R){return R.end?3:R.phase==='brief'?0:R.day<=2?0:R.day<=6?1:R.day<=9?2:3}
+const KD={telsiz:'Where did the encrypted broadcasts come from?',nobet:'Who was awake on the leak nights?',defter:'Who left the barracks in the mornings?',not:'Burned papers in the stove',izmarit:'The old fountain on the border road',banka:'Unusual money movements'};
+function view(R){const KI=VIEWTR.KI,ART=VIEWTR.ART;
+ if(R.phase==='brief'){const B=BRIEF[R.bi];return `${R.bi===0?`<div class="tchap32"><span>Chapter 1</span><b class="stencil">The Assignment</b></div>`:''}<div class="tart32">${ART.hq()}</div><div class="tbody32"><h3 class="stencil">${esc(B.ti)}</h3>${md(B.b)}</div>
+  ${R.bi===2?`<div class="ksus6">${IDS.map(x=>`<div>${av(x,36)}<span><b>${esc(SU[x].n)}</b><small>${esc(SU[x].bio)}</small></span></div>`).join('')}</div>`:''}
+  <button class="btn block" data-a="kb" data-v="bn">${R.bi<2?'Continue':'Begin the investigation'}</button>`}
+ if(R.phase==='night'){const ch=chOf(R);const newCh=[3,7,10].includes(R.day);return `${newCh?`<div class="tchap32"><span>Chapter ${ch+1}</span><b class="stencil">${esc(CHS[ch].ti)}</b></div>`:''}<div class="tart32">${ART.night()}</div>
+  <div class="tbody32"><h3 class="stencil">Night</h3>${R.lastNight.length?md(R.lastNight.join('\n\n')):'<p>The night passed quietly. One by one, the lights of the HQ go out.</p>'}</div>
+  <button class="btn block" data-a="kb" data-v="morning">Day ${R.day} begins ›</button>`}
+ if(R.phase==='turn'){return `<div class="tart32">${ART.room()}</div><div class="tbody32"><h3 class="stencil">An opportunity</h3>${md(`${nm(R.mole)} sits across from you in the interrogation room. The evidence is on the table; there's no denying it. Their shoulders sag.\n\nBut you have an idea: the mole is a channel that carries false information to the enemy. The enemy still trusts them, because they were never on alert and never covered their tracks. Instead of arresting them, you could use them.`)}</div>
+  <div class="topts32"><button class="opt op2" data-a="kb" data-v="fin:ag"><span class="k">A</span><span class="grow">Arrest them. Let the traitor get what they deserve.</span></button><button class="opt op2" data-a="kb" data-v="fin:cift"><span class="k">B</span><span class="grow">Make an offer: they'll carry the information we choose to the enemy, and in return their life will be spared.</span></button></div>`}
+ let h=header(R);
+ if(R.res){return h+`<div class="tbody32 kres${R.res.contra?' hot':''}"><h3 class="stencil">${esc(R.res.ti)}</h3>${md(R.res.b)}</div><button class="btn block" data-a="kb" data-v="ok">${R.ap<=0?'End the day ›':'OK'}</button>`}
+ const back=`<button class="btn ghost block" data-a="kb" data-v="menu:">‹ Back</button>`;
+ if(R.menu==='iv')return h+`<div class="card"><div class="sec-h"><h2>Whose statement will you take?</h2></div><p class="small muted">You can talk to each suspect once a day. On the second conversation, you press them.</p>${IDS.map(x=>`<button class="kpick" data-a="kb" data-v="iv:${x}"${R.ivDay[x]===R.day?' disabled':''}>${av(x,38)}<span class="grow"><b>${esc(SU[x].n)}</b><small>${esc(SU[x].r)} · ${R.iv[x]?(R.iv[x]===1?'Talked once':'Pressed'):'Not yet questioned'}</small></span><span class="chev">›</span></button>`).join('')}</div>`+back;
+ if(R.menu==='cl')return h+`<div class="card"><div class="sec-h"><h2>Where will you look?</h2></div>${CLUES.map(c=>{const lock=c==='banka'&&R.day<3?'From day 3 (prosecutor\'s approval)':c==='izmarit'&&R.day<5&&!R.dropSeen?'The meeting point isn\'t known yet':R.destroyed[c]?'The mole destroyed this evidence':R.got[c]?'Examined':'';return `<button class="kpick" data-a="kb" data-v="cl:${c}"${lock?' disabled':''}><span class="kic">${KI[c]}</span><span class="grow"><b>${esc(CN[c])}</b><small>${esc(lock||KD[c])}</small></span>${lock?'':'<span class="chev">›</span>'}</button>`}).join('')}</div>`+back;
+ if(R.menu==='tail')return h+`<div class="card"><div class="sec-h"><h2>Who will you tail tonight?</h2></div><p class="small muted">You can tail only one person a night. If the mole notices, they'll go on alert.</p>${IDS.map(x=>`<button class="kpick" data-a="kb" data-v="tail:${x}">${av(x,38)}<span class="grow"><b>${esc(SU[x].n)}</b><small>${R.tail[x]==='secret'?'Tailed before':R.tail[x]==='witness'?'Seen with courier':esc(SU[x].r)}</small></span><span class="chev">›</span></button>`).join('')}</div>`+back;
+ if(R.menu==='trap'){const sel=R.tsel||[];return h+`<div class="card"><div class="sec-h"><h2>Set a trap</h2></div><p class="small">Choose two suspects. You'll give each of them a different false operational lead. If the enemy acts on one of them at the next leak, that person is the mole; if it acts on neither, both are cleared. <b>You can set the trap only once.</b></p>${IDS.map(x=>`<button class="kpick${sel.includes(x)?' on':''}" data-a="kb" data-v="trap:${x}"${R.cleared[x]?' disabled':''}>${av(x,38)}<span class="grow"><b>${esc(SU[x].n)}</b><small>${R.cleared[x]?'Cleared':sel.includes(x)?(sel.indexOf(x)===0?'North valley lead':'South bridge lead'):esc(SU[x].r)}</small></span><span class="kchk">${sel.includes(x)?'✓':''}</span></button>`).join('')}</div>
+  <button class="btn block" data-a="kb" data-v="trap:go:${sel.join(',')}"${sel.length===2?'':' disabled'}>Give the false leads</button>`+back}
+ if(R.menu==='board')return h+board(R)+`<div class="card"><div class="sec-h"><h2>Statements</h2></div>${IDS.filter(x=>R.alibi&&R.alibi[x]).map(x=>`<div class="kst">${av(x,28)}<p><b>${esc(SU[x].k)}:</b> "${esc(R.alibi[x])}"</p></div>`).join('')||'<p class="small muted">You haven\'t taken anyone\'s statement yet.</p>'}</div>
+  <div class="card"><div class="sec-h"><h2>Evidence</h2></div>${CLUES.filter(c=>R.got[c]).map(c=>`<div class="kcl"><span class="kic">${KI[c]}</span><span><b>${esc(CN[c])}</b><small>${c==='banka'?esc(R.sets.banka.map(kn).join(' and ')+': unusual activity'):c==='not'?esc('Writer is '+HAND[SU[R.mole].hand]+': '+R.sets.not.map(kn).join(', ')):c==='izmarit'?esc((SU[R.mole].smoke?'Smokers: ':'Non-smokers: ')+R.sets.izmarit.map(kn).join(', ')):esc(R.sets[c].map(kn).join(', '))}</small></span></div>`).join('')||'<p class="small muted">You haven\'t gathered any evidence yet.</p>'}</div>`+back;
+ if(R.menu==='accuse'){const x=R.accSel;if(x){const S=str(R,x);return h+`<div class="card kacc">${av(x,64)}<h2 class="stencil">${esc(SU[x].n)}</h2><p class="small muted">${esc(SU[x].r)}</p>
+   <div class="ktags">${S.tags.filter(t=>t[1]!=='o').map(([t,c])=>`<em class="${c}">${esc(t)}</em>`).join('')||'<span class="small muted">You have almost no evidence against this person.</span>'}</div>
+   <p>You'll take them into the interrogation room and lay the evidence on the table. If you're wrong, an innocent life is ruined and the real mole gets away. <b>You can't take this decision back.</b></p></div>
+   <button class="btn warn block" data-a="kb" data-v="accgo:${x}">Accuse ${esc(kn(x))}</button><button class="btn ghost block" data-a="kb" data-v="acc:">‹ Choose someone else</button>`}
+  return h+`<div class="card"><div class="sec-h"><h2>Who will you accuse?</h2></div>${IDS.map(x=>{const S=str(R,x);return `<button class="kpick" data-a="kb" data-v="acc:${x}"${S.s<0?' disabled':''}>${av(x,38)}<span class="grow"><b>${esc(SU[x].n)}</b><small>${S.s<0?'Cleared':esc(SU[x].r)}</small></span><span class="chev">›</span></button>`}).join('')}</div>`+back}
+ const N=morning(R);
+ return h+(N.length?`<div class="kmorn"><span class="lbl">Morning report · Day ${R.day}</span>${md(N.join('\n\n'))}</div>`:'')+
+ `<div class="kacts">
+  <button class="kact" data-a="kb" data-v="menu:iv"${R.ap?'':' disabled'}><span class="kic">${KI.iv}</span><b>Take a statement</b><small>Talk to a suspect</small></button>
+  <button class="kact" data-a="kb" data-v="menu:cl"${R.ap?'':' disabled'}><span class="kic">${KI.cl}</span><b>Gather evidence</b><small>Records, logs</small></button>
+  <button class="kact" data-a="kb" data-v="menu:tail"${R.ap&&R.tailDay!==R.day?'':' disabled'}><span class="kic">${KI.tail}</span><b>Night tail</b><small>${R.tailDay===R.day?'Someone is being tailed tonight':'Follow someone'}</small></button>
+  <button class="kact" data-a="kb" data-v="menu:trap"${R.ap&&!R.trap&&R.day>=5&&R.day<=9?'':' disabled'}><span class="kic">${KI.trap}</span><b>Set a trap</b><small>${R.trap?(R.trap.res?'Trap resolved':'Trap set, waiting'):R.day<5?'From day 5':R.day>9?'No time left':'Plant false info'}</small></button>
+ </div>${rings(R)}
+ <div class="kbar"><button class="btn ghost" data-a="kb" data-v="menu:accuse"${R.day>=5?'':' disabled'}>${R.day>=5?'Accuse':'Accuse · day 5'}</button><button class="btn" data-a="kb" data-v="night">End the day ›</button></div>`}
+function rings(R){const rows=IDS.map(x=>({x,...str(R,x)}));const mx=Math.max(6,...rows.map(r=>r.s));
+ return `<button class="kring-card" data-a="kb" data-v="menu:board"><div class="sec-h"><span class="lbl">Evidence board</span><span class="small acc">Details ›</span></div><div class="krings">${rows.map(r=>{const h=r.s<0?0:Math.min(1,r.s/mx);return `<div class="kr${r.s<0?' clr':''}${r.s>0?' hot':''}" style="--h:${h.toFixed(2)}"><span class="kr-ring">${av(r.x,38)}${r.s>0?`<em>${r.s}</em>`:''}</span><small class="notr">${esc(SU[r.x].k)}</small></div>`}).join('')}</div></button>`}
+function endText(R){const m=R.mole,x=R.accused,kia=23+R.kia;
+ if(R.end==='ag')return `${R.bluff?`Your evidence is thin; you know it too. But you sit across from ${nm(m)} as if you know everything. In the third hour, they break.`:`You lay the evidence on the table piece by piece. ${nm(m)} denies it at first, then goes silent, then starts talking.`}
+
+— It was for the money, they say. Then it was fear. Once you start, you can't stop.
+
+With the names they give, the courier in the border village and two accomplices are caught the same night. The network collapses.
+
+A week later General Ateş calls you to her office. On the desk is a list of ${kia} names.
+
+— We can't bring them back, Major. But no new name will be added to this list. You made sure of that.`;
+ if(R.end==='cift')return `With trembling hands, ${nm(m)} accepts your offer.
+
+For the next six months the enemy receives reports we wrote from the source it trusts. Fake positions, units that don't exist, offensives that will never happen…
+
+When spring comes, the enemy's strongest division spends three days encircling an empty valley. In those three days our units break through the front.
+
+No one will know your name. It won't appear in any report on this operation. General Ateş simply shakes your hand:
+
+— Some victories are won in silence, Major. The greatest ones usually are.`;
+ if(R.end==='yanlis')return `${nm(x)} is arrested. As the handcuffs go on, they look at you; there's no anger in their eyes, only bewilderment.
+
+— You're wrong, they say. One day you'll understand.
+
+Three weeks later another operation is ambushed. Then another.
+
+Months later a courier caught at the border gives a single name: ${nm(m)}. But ${kn(m)} has long since crossed the border and vanished.
+
+${nm(x)} is released. You go to meet them at the gate. You offer your hand; they don't take it.
+
+They told you to trust no one. It turns out you shouldn't blindly trust the evidence either.`;
+ return R.endWhy==='weak'?`Your evidence wasn't enough. ${nm(m)} kept their composure in the interrogation room and had an answer for every accusation. The prosecutor ordered their release.
+
+The next morning ${pos(kn(m))} bed was empty. The border post's records showed a vehicle crossing to the other side at midnight.
+
+You found the mole, but you couldn't catch them.`:`The ten days are up. General Ateş closed the investigation.
+
+The leak at Eastern HQ went on for two more months. Then one night ${nm(m)} vanished without a trace. A week later they were on enemy television, smiling.
+
+The casualty list reached ${kia+11} names.`}
+const VIEWTR={KI:KB.KI,ART:KB.ART};
+const T=KB.T;
+T.en={ti:'The Mole',genre:'Espionage · Detective',sub:'Find the traitor at HQ in 10 days',
+ pitch:'The last three operations were ambushed. Someone at Eastern HQ is leaking information, and you have 10 days. Take statements, examine records, tail suspects at night, set traps with false information. The mole can be a different person every game. Accuse the wrong one and an innocent person burns while the real traitor escapes.',
+ chapters:CHS,
+ endings:[{k:'ag',ti:'Network dismantled',medal:'Shadow Hunter',tone:'good'},{k:'cift',ti:'Double agent',medal:'Invisible Insignia',tone:'good'},{k:'yanlis',ti:'The wrong person',tone:'bad'},{k:'kacti',ti:'The mole escaped',tone:'bad'}],
+ view,endText,subtitle:R=>R.end?'Ending':R.phase==='brief'?'Chapter 1 · The Assignment':`Day ${Math.min(R.day,DAYS)} · ${CHS[chOf(R)].ti}`};
+const actTR=KB.act;
+A32.kb=v=>{const P=tp32('kostebek');if(!P.run)return;(taleEnOn34()?act:actTR)(P.run,v);tpSave32();render();const el=$('#tscr');if(el)el.scrollTop=0;window.scrollTo(0,0)};
+window.__KBEN={SU,act,str,endDay,view,endText};
 })();
 
 /* =====================================================================
@@ -7612,6 +8249,446 @@ registerTale({id:'kriz',ti:'Kriz Masası',genre:'Siyaset · Gerilim',color:'#70a
  start:'k1',arts:ARTS,scenes:S});
 })();
 
+/* HİKÂYE · KRİZ MASASI · İngilizce metin katmanı (mantık st_kriz.js'ten gelir) */
+(function(){
+const sel=fl=>fl.savak?'yok':fl.tahliye?'bos':fl.gecUyari?'hafif':'agir';
+const bildi=fl=>fl.iddia||fl.nuri||fl.sor||fl.dosya||fl.ucuncu;
+TALE_EN.kriz={
+ meta:{ti:'Crisis Room',genre:'Politics · Thriller',sub:'48 hours, 14 hostages, a dam and a report nobody read',
+  pitch:'At midnight, armed men seize a dam\'s control building: fourteen hostages inside, a sleeping town nine kilometers below. You head the Crisis Room. On one side, a general who wants to storm the building; on the other, a negotiator who wants to talk; and across the table, a deputy minister who wants it over fast. Is the man holding the hostages a terrorist, or a whistleblower nobody listened to?',
+  chapters:[{ti:'First Contact',sub:'Hours 00–06'},{ti:'Negotiation',sub:'Hours 06–18'},{ti:'Breaking Point',sub:'Hours 18–30'},{ti:'Final Offer',sub:'Hours 30–42'},{ti:'Dawn',sub:'Hours 42–48'}],
+  statDefs:[['rehine','Hostage trust','var(--green)'],['kamuoyu','Public opinion','var(--acc)'],['masa','Team unity','var(--blue)']]},
+ medal:'Crisis Room Medal',
+ end:{gercek:'The truth',sessiz:'Silent victory',baskin:'Raid in the storm',bedel:'A heavy price',sel:'Yeşilova',azil:'Relieved of command',kayip:'Dark morning'},
+ scenes:{
+k1:{b:`03:12. The phone wakes you on the second ring.
+
+— Sir, the control building of Yıldızdere Dam has been seized. Five armed men. Fourteen staff inside.
+
+Twenty minutes later the briefing file is in front of you. The dam sits nine kilometers above the town of Yeşilova. Twenty-two thousand people are asleep there. Whoever holds the control building can open the spillway gates whenever they like.
+
+The leader of the attackers called once and said a single sentence: "Whoever is in charge, I'll talk to them."
+
+The decree was signed five minutes ago. You are now head of the Crisis Room.
+
+Where do you go first?`,
+ ch:['Take a helicopter to the dam. See the scene with your own eyes.','Stay at the crisis center in the capital. Run the room from there.']},
+k2:{b:(st,fl)=>`${fl.yer==='saha'
+ ?'They\'ve turned the gendarmerie post three kilometers below the dam into a crisis center. Through the window you can see the dam\'s floodlights, each one an eye hanging in the dark.'
+ :'The wall of the capital\'s crisis center is covered in screens. The dam\'s security cameras have been dark for ten minutes.'}
+
+Three people sit at the table.
+
+Brigadier General Oya Demirel, Special Forces. Short hair, few words. "Give me two hours and I'll know every corner of that building."
+
+Chief Inspector Selin Uçar, fifteen years as a negotiator. "Don't make him wait. A man who waits starts talking to himself."
+
+Deputy Minister Haldun Sezer. His tie is perfect even at midnight. "The press will hear soon. Let's get the news flow under control first."
+
+All three are looking at you. What's your first order?`,
+ ch:['Selin is right. Call him now and keep the line open.','Seal the perimeter first and get the snipers in place. The call can wait an hour.','Issue a media blackout first. Then we call.']},
+k3:{b:(st,fl)=>`${fl.bekletti
+ ?`An hour and fourteen minutes later the line opens. The voice is cold:
+
+— You kept me waiting an hour. One more hour and I'd have opened one of the gates. Know that.`
+ :'The line opens on the second ring.'}
+
+— My name is Arman Kesk. I worked at this dam as a technician for nine years. I'm not a terrorist. But I'm not leaving here empty-handed tonight.
+
+His voice is calm; he chooses his words carefully. Selin writes a single word on a piece of paper and shows it to you: *Educated.*
+
+— I have three demands. First, my brother Serdar Kesk is released. Second, I speak on live television. Third…
+
+He pauses.
+
+— I'll tell you the third later. First I want to see that you take me seriously.
+
+How do you answer?`,
+ ch:['"I\'m listening. First, prove the hostages are alright."','"I don\'t negotiate at gunpoint. Release the hostages, then we talk."','"Tell me your third demand now. I mean it."']},
+k4:{b:(st,fl)=>`${fl.kanit
+ ?`Arman hands the phone to someone. A shaky, old voice:
+
+— This is Halil Turan, shift supervisor. We're all fine. They haven't hurt anyone.
+
+Then he lowers his voice:
+
+— Sir, have them check the third gallery…
+
+The line goes dead.`
+ :fl.ucuncu
+ ?`Arman is silent for a long time.
+
+— The third is a report, he says at last. The dam's acceptance report. The real one, not the one you were shown.
+
+The line goes dead.`
+ :`Arman lets out a short laugh.
+
+— Commander, there are fourteen people in this building. And twenty-two thousand nine kilometers below. If you won't negotiate, why did you call?
+
+The line goes dead.`}
+
+04:50. The duty officer appears at the door.
+
+— Sir, there's an old man on the line. Nuri Bilgin. Says he was one of the engineers who built the dam. "I know Arman, I need to speak to the commander," he says. He's called eleven times tonight.
+
+Haldun shakes his head.
+
+— Every busybody will call tonight. Let's not waste our time.`,
+ ch:['Put Nuri Bilgin through. I\'ll give him five minutes.','Have an officer listen. If it\'s important, they can pass it on.']},
+k5:{b:(st,fl)=>`${fl.nuri?`Nuri Bilgin's voice is tired but clear:
+
+— Arman was my apprentice. That boy wouldn't kill anyone. But he's afraid of something, and he may be right to be. I need to talk to you face to face.
+
+You send a car to bring him in.
+
+`:''}05:40. Selin puts her tablet on the table. A forty-second video, filmed on one of the hostages' phones, has leaked online. Trainee engineer Ece Yalın is crying, calling out to her mother. It's been viewed two million times in an hour.
+
+${fl.yasak?'The media blackout didn\'t stop the video from spreading. If anything, it fed the question: "What are they hiding?"':'News channels have already started running it in their tickers.'}
+
+Haldun stands up.
+
+— The minister expects a statement. Now.
+
+What will you say?`,
+ ch:['"The situation is completely under our control."','"We are working for the safety of the hostages. I can\'t give details right now."','Make no statement. Stay silent.']},
+k6:{b:(st,fl)=>`06:05. Day is breaking. Oya's team spent the night mapping the building.
+
+— Sir, we've observed the guard change. At 06:30 two of the five inside go to sleep. If we go in through the front door and the roof at the same time, we can get most of the fourteen hostages out.
+
+*Most.* The word hangs over the table.
+
+Selin cuts in at once:
+
+— Arman wants his brother, not to die. We haven't even talked properly yet.
+
+Haldun looks at his watch. He says nothing, but it's clear what he's thinking.
+
+The decision is yours.`,
+ ch:['No raid. We keep talking.','Authorize the dawn raid.']},
+k7a:{b:`The team is inside in six minutes. They bring six hostages out of the building, among them Ece Yalın, the young woman from the video.
+
+But Arman and his men retreat into the turbine hall with the remaining eight hostages. They weld the steel door shut from the inside. No one died; still, getting in is now much harder.
+
+Twenty minutes later Arman calls. His voice is shaking, but not from fear. From rage.
+
+— You lied to me. Try that again and I'll open the gates. All of them.`,ch:['Continue.']},
+k7b:{b:`The roof door is booby-trapped. The blast throws the team's lead man back. Fire opens up from inside; technician Mehmet Er is hit in the leg. Oya has to pull the team back.
+
+Then Arman's voice:
+
+— You asked for this.
+
+The first spillway gate opens half a meter. Nine kilometers below, Yeşilova's sirens start to wail. Ten minutes later the gate closes again. That was a warning.`,ch:['Continue.']},
+m1:{b:(st,fl)=>`08:00. ${fl.ihanet
+ ?`Arman hasn't picked up the phone for two hours. When he finally does, he sets a single condition:
+
+— From now on I talk only to that policewoman. Not to you.`
+ :'This time Arman calls himself. You can hear the sleeplessness in his voice.'}
+
+— You have twelve hours for my brother. If Serdar isn't standing in front of this dam by 20:00, I open the first gate all the way.
+
+Selin puts her pen down.
+
+— They'll ask for food and medicine, she says. They're running out of water in there. We could ask for a few hostages in exchange.
+
+Haldun objects:
+
+— No prisoner swaps. The state doesn't do that.
+
+Arman is still on the line, waiting for an answer.`,
+ ch:['Ask for two hostages in exchange for food and medicine.','Offer to let him talk to Serdar on the phone.','Buy time with a "technical problem" excuse.']},
+m2:{b:(st,fl)=>`${fl.takas?`09:40. The food boxes are left at the door. Ten minutes later two people walk out with their hands up: ${fl.alti?'old night watchman Rıza and technician Yusuf':'trainee Ece Yalın and old night watchman Rıza'}. Both are unharmed.
+
+`:fl.takasRed?`09:40. Arman refuses the offer. "Nobody comes out. Take your food back and eat it yourselves."
+
+`:fl.kardes?`09:40. You patch Serdar through from prison. The two brothers talk for three minutes. Even after hanging up, Arman's voice is softer.
+
+`:''}${fl.nuri
+ ?`10:30. Nuri Bilgin arrives at the crisis center. He's seventy-one and carries a yellowed notebook.
+
+— We built this dam thirty years ago, he says. The contractor was Akbel Construction. The concrete in the third gallery failed the lab tests. I objected, and they took me off the project. Arman was my apprentice back then. He knows everything.
+
+He opens the notebook: measurements, dates, signatures.
+
+— Arman is using his brother as a pretext, he says. What he really wants is that report. The dam's acceptance report is a fake.`
+ :`10:30. Oya's drone scans the downstream face of the dam. Something catches your eye in the footage: in the middle of summer, a thin but steady trickle of water is seeping from the outlet of the third gallery.
+
+— Probably nothing, says Oya. Old dams sweat.`}`,
+ ch:['Quietly start a structural inspection of the dam.','The dam\'s structure isn\'t our priority right now. Focus on the hostages.']},
+m3:{b:(st,fl)=>`${fl.kontrol?`11:20. A short report comes in from the dam's maintenance crew: the monitoring instruments in the third gallery were switched off as "faulty" two years ago. No one has taken a reading since.
+
+`:''}12:00. Haldun hangs up and comes over to the table.
+
+— The minister wants this finished before the evening news. General Demirel is ready. If you approve a noon raid, we'll back you.
+
+Haldun's phone buzzes again. You catch a glimpse of the screen: *Akbel Construction · Board.*
+
+${fl.kontrol||fl.nuri?'Haldun puts the phone in his pocket without answering. He notices you watching him.':'Haldun declines the call.'}`,
+ ch:['I don\'t make decisions on a political schedule. No raid.','I want Akbel Construction\'s dam files on my desk. Now.','Prepare a noon raid. But I make the final call.'],
+ why:[null,'You have no suspicions about the dam.']},
+m4:{b:(st,fl)=>`14:00. ${fl.ogle?`As Oya's team moves into position, Arman calls. As if he can see everything:
+
+— I can see your men on the roof. Pull them back, or the talking ends.
+
+Oya pulls the team back. The noon raid is off.
+
+`:''}Arman repeats his second demand: live television. Three minutes. Uncut.
+
+Haldun is firm:
+
+— We can't give an armed man a podium.
+
+Selin sees it differently:
+
+— If he talks, he'll calm down. If he can't, he'll explode.
+
+Oya suggests a technical solution:
+
+— We could set up a fake broadcast. The camera records, but nothing goes on air.`,
+ ch:['Allow a controlled broadcast with a ten-second delay.','Set up a fake broadcast.','Refuse the broadcast.']},
+m4b:{b:(st,fl)=>fl.yakalandi
+ ?`Arman checks the broadcast on a small radio inside. When he can't hear his own voice on any channel, he smashes the camera on the floor.
+
+A single gunshot comes over the line. One of the technicians has been hit in the shoulder.
+
+— Lie to me again, Arman says, and the next bullet won't miss.`
+ :`${fl.sahte?'Arman speaks to the camera. His words appear only on the screen in the crisis center.':'Arman\'s face appears on the screens. Tired, unshaven, looking straight into the camera.'}
+
+— My name is Arman Kesk. I'm from the village of Taşlıca. My village lies under this dam's reservoir. What I did tonight is a crime, I know. But there's a crack in the third gallery. This dam was built thirty years ago with substandard concrete, and the people who knew kept quiet. I'm speaking to everyone in Yeşilova: demand an evacuation. When this broadcast ends, do with me what you will.
+
+${fl.sahte?'The screen goes black. No one heard it. Only you and the people at this table.':'When the screens go dark, nobody at the table speaks. Haldun\'s face is white.'}`,ch:['Continue.']},
+m5:{b:(st,fl)=>`17:30. Selin looks up from the line.
+
+— Halil Turan may be having a heart attack. He's sixty-two, and his medication is at home. Arman is asking for a doctor.
+
+Oya sees an opportunity at once:
+
+— I have a combat medic. He goes in dressed as a doctor, sees the inside, maybe plants a listening device.
+
+Selin objects:
+
+— If he's caught, it's all over. ${fl.ihanet?'He already doesn\'t trust us. He never will again.':'He\'ll never trust us again.'}`,
+ ch:['Send a real doctor.','Send the medic disguised as a doctor.','No doctor. Two hostages released first.']},
+r1:{b:(st,fl)=>`${fl.doktor?'The doctor stays inside for an hour and stabilizes Halil. On the way out he tells you one thing: "The people in there are more afraid of the man next to Arman than of you."':fl.icerde?'The medic returns an hour later. There are four armed men inside, not five. The explosives are real, but wired only to the gate motors. One of them, a young kid named Bora, is close to tears. The listening device is in place.':fl.doktorYak?'The medic is caught during the search at the door. Arman roughs him up and sends him back. Halil\'s medication only gets inside an hour later.':'Arman releases no one. He says nothing about Halil\'s condition either.'}
+
+22:10. The reservoir level alarm goes off. The level dropped twelve centimeters in an hour. The stream that runs through Yeşilova is nearing flood level.
+
+Oya: — He's opened the gates. It's a warning.
+
+${fl.nuri||fl.kontrol
+ ?'Nuri Bilgin leans toward the screen. His hands are shaking. — No, he says. The gates are closed, look at the motor logs. This water is coming from the third gallery. The crack is opening.'
+ :'But the gate motor logs show no movement at all. The water is coming from somewhere else, and no one knows where.'}`,
+ ch:['Quietly evacuate Yeşilova tonight.','An evacuation would cause panic. Wait and watch.','Ask Arman directly about the crack.'],
+ why:[null,null,'You know nothing about a crack.']},
+r2:{b:(st,fl)=>fl.sor
+ ?`— So you know, Arman says. For the first time his voice breaks.
+
+— Thirty years ago Master Nuri objected, and they fired him. I've kept the original copy of that report for ten years. I sent it to the governor, the ministry, the newspapers. Nobody even opened the envelope.
+
+He takes a deep breath.
+
+— You don't have to release my brother, Commander. Make the report public. Evacuate Yeşilova. I'll surrender. But the men with me… Cevdet wants other things. I didn't bring him. He found me.`
+ :fl.ihanet
+ ?`Arman picks up the phone but doesn't speak. In the background you hear a man shouting:
+
+— They're stalling! Open the gate!
+
+Arman yells back: "Cevdet, shut up!" Then the line goes dead. A few minutes later it opens again.
+
+— It's past 20:00, Arman says. I didn't open the gate. Don't you wonder why?`
+ :`Arman sounds tired.
+
+— It's past 20:00, he says. I didn't open the gate. Don't you wonder why? I ask you one thing: read this dam's acceptance report. The real one. Then call me.`,
+ ch:['"I promise you: the report will be made public."','"Release the hostages first. Then we\'ll talk about everything."','Stall him. Buy Oya time.'],
+ why:['You don\'t know which report he means.']},
+r3:{b:(st,fl)=>`02:00. Only you and Haldun are left in the crisis center. Haldun closes the door.
+
+— I'll be frank. The owner of Akbel Construction is the minister's brother-in-law. ${fl.dosya?'The files you asked for arrived. The lab report for the third gallery isn\'t in them. Someone removed those pages.':'If that report is real and it comes out, it won\'t just bring down a company. It\'ll bring down the government.'}
+
+He is quiet for a moment.
+
+— Save the hostages, arrest the man. We'll discuss the report later, calmly. I'm saying this for your career. Truly.`,
+ ch:['"No. The report goes into the crisis record."','"Fine. The report won\'t be discussed at this table."','Say nothing. In the morning, leak the report to a journalist.'],
+ why:[null,null,'You have nothing to leak.']},
+r4:{b:(st,fl)=>`${fl.sizinti?'04:30. You dial a journalist\'s number. The call lasts four minutes. The morning edition\'s headline is ready: "Fake report allegation at Yıldızdere."\n\n':''}05:00. A whisper comes ${fl.icerde?'through the listening device':'over Selin\'s line'}. Bora. Nineteen, Arman's nephew. He found a phone on the pretext of going to the toilet.
+
+— Ma'am, he says to Selin. I never wanted this. Cevdet keeps the detonator for the explosives. Not even Arman can touch it. I want out.
+
+Selin looks at you. Getting Bora out could change the whole balance inside. Or it could make Cevdet realize everything.`,
+ ch:['Help Bora surrender.','Bora stays inside. He\'ll be our eyes and ears.']},
+r5:{b:(st,fl)=>`${fl.bora?'Bora comes out through the dam\'s service door with his hands up. Oya\'s team pins him down and drags him behind cover. His first words: "Cevdet has the detonator. Red. Left pocket."':fl.boraYak?'Before Bora can reach the door, Cevdet catches him. Shouting comes from inside. They\'ve tied Bora up with the hostages. Cevdet suspects everyone now, even Arman.':'Bora stayed inside. Every two hours he sends short messages: "They\'re sleeping." "Cevdet isn\'t sleeping."'}
+
+12:00. The weather service issues a warning: a severe storm will hit the area after 20:00 this evening. Helicopters won't be able to fly.
+
+${fl.tahliye?'The evacuation of Yeşilova is eighty percent complete. People are sheltering in schools up in the hills.':'Life in Yeşilova goes on as usual. The market is open, the schools are in session.'}
+
+The ministry is ready to bring Serdar Kesk from prison to the site. They're waiting for your approval.`,
+ ch:['Bring Serdar.','Serdar stays in prison.']},
+s1:{b:(st,fl)=>`${fl.serdar
+ ?`15:00. They bring Serdar Kesk to the crisis center. Handcuffed, thin; he looks like his brother.
+
+— My brother wouldn't shoot anyone, he says. But Cevdet would. I met him in prison. My brother cares about the dam; Cevdet cares about money. Someone paid him for this. I don't know who. My brother doesn't know either.`
+ :`15:00. Oya puts an intelligence file on the table.
+
+— Cevdet Arı. Two armed robberies, one attempted murder. Met Arman last year. A large sum was deposited into his account last week. Source unknown.`}
+
+${(fl.dosya||fl.kayit||fl.sizinti)&&bildi(fl)?'The financial crimes unit traces the money. The trail ends at a shell company. Last year the company had a single client: Akbel Construction.\n\nNuri Bilgin sinks into his chair. — They were going to blow up the dam, he says. Arman would take the blame. And the fake report would stay at the bottom of the reservoir forever.\n\n':''}Oya continues:
+
+— We need to separate Cevdet from Arman. If Arman is alone, he'll surrender. If Cevdet stays, someone dies.`,
+ ch:['Prepare Selin for a final conversation with Arman.','Have Oya draw up a raid plan to isolate Cevdet.','Show Arman the money trail. Let him learn who he\'s really working for.'],
+ why:[null,null,'You have no evidence to follow the money.']},
+s2:{b:(st,fl)=>`19:00. The first gusts of the storm rattle the crisis center's windows. In an hour the helicopters will be grounded.
+
+${fl.para
+ ?`You read Arman the money transfer, line by line. A long silence.
+
+— Cevdet… used me, he says at last. He was going to blow up the dam and I'd take the blame. And everything I've been trying to tell people for years would be washed away with the water.`
+ :`Arman calls. He sounds exhausted.
+
+— Commander, we're both out of time. Say your last word.`}
+
+What's your final offer?`,
+ ch:['"The report will be made public. You release the hostages and surrender."','Put Serdar on the line. Let him persuade his brother to surrender.','The talking is over. Raid before the storm hits.'],
+ why:['You don\'t have the power to release the report, or you never gave Arman your word.','Serdar isn\'t here.']},
+s3t:{b:(st,fl)=>`20:40. The storm crashes down on the dam. Arman agrees.
+
+— I'm bringing the hostages to the door, he says.
+
+Then the sound of a struggle on the line. Cevdet's voice:
+
+— Nobody leaves! I've got the detonator!
+
+${fl.bora?'Just as Bora said: red detonator, left pocket. ':''}Oya's sniper is in position, but the rain is ruining his view. Selin takes off her jacket:
+
+— I'll go in unarmed. If Arman is with me, I can talk Cevdet down.`,
+ ch:['Let Selin go in unarmed.','Clear the sniper to take Cevdet down.']},
+s3b:{b:(st,fl)=>`19:50. The storm is ten minutes away. Oya's team waits in the shadow of the dam.
+
+— There are ${fl.bora?'three':'four'} armed men inside, says Oya. ${fl.bora||fl.icerde?'We know who has the detonator. ':'We don\'t know who has the detonator. '}${fl.alti?'The turbine hall door is welded; getting in will be hard. ':''}Where do we go in?`,
+ ch:['Through the old maintenance gallery Master Nuri knows.','Through the roof and the front door at the same time.','Cut the power first, then go in in the dark.'],
+ why:['No one knows the dam\'s old plans.']},
+f1:{b:(st,fl)=>`${{
+ teslim:'Selin walks out of the storm with Arman on her arm. Behind them the hostages come out in single file. Arman tackled Cevdet himself; the red detonator lies in the mud. No one died.',
+ atis:'A single shot. Cevdet goes down, wounded but alive. Arman walks out the door with his hands raised. The hostages are behind him. No one died.',
+ baskin:'As the team storms in, Cevdet reaches for the detonator. The first operator is faster. Arman lays down his weapon and drops to his knees. All the hostages are rescued; two operators are lightly wounded.',
+ kayip:'Something goes wrong. Cevdet presses the detonator; one of the gate motors explodes. Gunfire in the dark. When the count is taken in the morning, two of the hostages, Halil Turan and technician Mehmet Er, are dead. Cevdet is dead. Arman is captured, wounded.'
+}[fl.sonuc]}
+
+23:30. The storm is at its worst. But the real danger hasn't passed.
+
+${fl.nuri||fl.kontrol
+ ?'Nuri Bilgin shouts over the radio: — The third gallery! The leak has doubled! If we don\'t lower the reservoir now, the dam won\'t hold!'
+ :'Around midnight a deep, long groan comes from the body of the dam. The engineers on duty can\'t tell what it is.'}
+
+${fl.tahliye?'Yeşilova is empty. Everyone is in the schools up in the hills.':'Twenty-two thousand people are asleep in Yeşilova.'}`,
+ ch:['Open the bottom outlets. Lower the reservoir in a controlled way.',(st,fl)=>fl.tahliye?'Finish the evacuation. Nobody stays in town.':'Warn the town. Sound the sirens.','It\'s not a structural problem, it\'s the storm. Wait.'],
+ why:['No one knows the condition of the dam.']},
+f2:{b:(st,fl)=>`${{
+ yok:'Following Master Nuri\'s instructions, the bottom outlets are opened. Water flows into the valley in a controlled stream. By early morning the reservoir has dropped two meters. The crack stops growing. The dam holds.',
+ bos:'Before dawn the wall of the third gallery collapses. The side of the dam tears open; water pours into the valley. The lower neighborhoods of Yeşilova are flooded. But the town was empty. No one died.',
+ hafif:'The sirens sound at midnight. People run for the hills in the rain, in their pajamas. Before dawn the gallery wall collapses; the water reaches the lower neighborhoods. Most people are saved. But not everyone.',
+ agir:'Before dawn the wall of the third gallery collapses. The side of the dam tears open. The water rushes down on sleeping Yeşilova.'
+}[sel(fl)]}
+
+09:00. The press room is packed. Haldun stands beside you holding a statement prepared for you. The headline is in bold: *Terror attack successfully prevented.*
+
+The cameras turn to you.`,
+ ch:['Tell the truth: the report, Akbel Construction, everything.','Read Haldun\'s statement.'],
+ why:['You don\'t know any truth to tell.']},
+end_gercek:{b:(st,fl)=>`You set the statement down on the table and open your own file.
+
+The lab results for the third gallery. Nuri Bilgin's thirty-year-old written objection. Akbel Construction's signatures.${fl.para?' The money deposited into Cevdet Arı\'s account, and the shell company it came from.':''}
+
+Haldun walks out of the room. Before evening the minister announces his resignation.
+
+${fl.savak?'Yıldızdere Dam is drained for repairs. The engineers\' report is short: the dam could have collapsed within weeks. In Yeşilova no one quite understands how close it was; but you do.':'The collapsed side of the dam is shown on the news for months. But Yeşilova did not lose a single life. A year later the foundation of a new dam is laid; this time every report is public.'}
+
+Arman Kesk is tried. He will serve his sentence for taking hostages; he accepts that himself. On the last day of the trial Master Nuri sits in the front row. He nods to Arman.
+
+Six months later a letter arrives. It's from trainee engineer Ece Yalın: "I'm on the new inspection team. I check every batch of concrete myself."
+
+Some crises are the only road to the truth.`},
+end_sessiz:{b:(st,fl)=>`"The terror attack was prevented by the determination of our security forces."
+
+Camera flashes. The next morning your photo is on the front page of every newspaper.
+
+All the hostages went home. Arman Kesk is tried as a "terrorist leader". When he tries to mention the report in court, the judge cuts him off.
+
+${fl.savak?'The dam is quietly drained for "routine maintenance". Akbel Construction wins the repair contract.':'The collapse of the dam is announced as a "natural disaster caused by the storm". Akbel Construction wins the rebuilding contract.'}${fl.sizinti?'\n\nThe story you leaked stays in the news for a week. Then the ministry calls it a "baseless allegation" and the matter is closed.':''}
+
+One night you get a short message from Nuri Bilgin: "You kept quiet too."
+
+You keep your medal in a drawer.
+
+You saved the hostages. You couldn't save the truth.`},
+end_baskin:{b:(st,fl)=>`"The terror attack was prevented by the determination of our security forces."
+
+Helmet-camera footage of Oya's team plays on every screen: a flawless operation in the storm, in the dark. The news channels call it "the operation of the year".
+
+All the hostages were rescued. Cevdet Arı and Arman Kesk are under arrest.
+
+But in interrogation Arman asks only one question, the same question every time:
+
+— Did you read the report?
+
+${fl.savak?'The dam is quietly drained for "routine maintenance". Akbel Construction wins the repair contract.':'The collapse of the dam is announced as a "natural disaster caused by the storm". No one asks any questions.'}
+
+Oya and her team receive medals. On the day of the ceremony Oya comes up to you and asks quietly: "Sir, was that man right?"
+
+You don't answer.
+
+You won an operation. The real battle never began.`},
+end_bedel:{b:(st,fl)=>`${fl.acik?'In the press room you tell the truth: the report, Akbel Construction, everything. But nobody is listening. Everyone is asking about two names.':'You read Haldun\'s statement. But nobody is listening. Everyone is asking about two names.'}
+
+Halil Turan. Mehmet Er.
+
+You go to Halil's funeral. He spent thirty-one years at that dam; he was four months from retirement. Mehmet was twenty-six. He was getting married in two months. His fiancée won't even look at you.
+
+The board of inquiry examines your decisions one by one. None of them was illegal. None of them was good enough.
+
+Arman was captured wounded. From his hospital bed he looks at you and says, "I never wanted this." You believe him. It changes nothing.
+
+${fl.acik?'The report does come out in the end; Akbel Construction goes on trial. But the news always shows those two photos.':'The report never comes out.'}
+
+Every decision made in a crisis room touches someone's life.`},
+end_sel:{b:(st,fl)=>`When the morning light reaches the valley, the lower half of Yeşilova is gone. Rooftops, minarets, the basketball hoop in the schoolyard rise out of a muddy lake.
+
+${sel(fl)==='hafif'?'The sirens that sounded in the night saved thousands. But eleven people never came back.':'No one was warned. The death toll rises every hour.'}
+
+${fl.sonuc==='kayip'?'The names of the two hostages lost in the control building almost disappear in this long list.':'All the hostages were rescued. But no one talks about that anymore.'}
+
+${fl.yayin?'Arman Kesk\'s warning from the live broadcast is replayed on television for days: "There\'s a crack in the third gallery."':'Nuri Bilgin\'s yellowed notebook ends up in a newspaper\'s hands. His thirty-year-old written objection makes the headlines.'}
+
+Before the board of inquiry, you are asked a single question:
+
+— Didn't you know?
+
+The signs were there. Reading them was your job.`},
+end_azil:{b:(st,fl)=>`${st.kamuoyu<=0
+ ?'Your face is on every screen. Headlines read "Crisis room collapses" and "The state stands by and watches". The minister doesn\'t even call; you learn from the news that you\'ve been relieved of command.'
+ :'No one at the table looks at you anymore. Oya questions your orders; Haldun sends his reports straight to the minister. Before dawn an order arrives: command of the Crisis Room has been handed to another general.'}
+
+You watch the rest of the crisis on a hotel-room television. Someone else writes the ending.
+
+In a crisis, trust is the most valuable ammunition. Yours ran out.
+
+The story didn't have to end here. Could you have held both the room and the public at the same time?`},
+end_kayip:{b:`On the other end of the line, Arman has stopped talking. Instead, Cevdet's voice:
+
+— Your time is up.
+
+Two gunshots.
+
+Ten minutes later Oya's team is inside. Cevdet tries to shoot his way out and is killed. Arman sits among the hostages with his head in his hands.
+
+In the morning the count is taken. Shift supervisor Halil Turan and technician Mehmet Er are dead.
+
+Once the hostages' trust was broken, there was no time left to win it back.
+
+The story didn't have to end here. At which decision did you lose the hostages?`}
+ }};
+})();
+
 /* =====================================================================
    HİKÂYE · EFSANE BİRLİK
    Çerçeve: Çamlık Huzurevi. 91 yaşındaki "Kâzım Yıldırım" ve tarih öğrencisi Zeynep.
@@ -8085,6 +9162,369 @@ registerTale({id:'efsane',ti:'Efsane Birlik',genre:'Dram · Savaş',color:'#7fb3
  stats:{hafiza:60,birlik:60,vicdan:50},statDefs:[['hafiza','Hafıza','var(--blue)'],['birlik','Birlik ruhu','var(--green)'],['vicdan','Vicdan','var(--acc)']],
  fail:(st,fl,c)=>c>=1&&st.hafiza<=0?'end_sis':null,
  start:'z1',arts:ARTS,scenes:S});
+})();
+
+/* HİKÂYE · EFSANE BİRLİK · İngilizce metin katmanı (mantık st_efsane.js'ten gelir) */
+(function(){
+TALE_EN.efsane={
+ meta:{ti:'Legendary Unit',genre:'Drama · War',sub:'A seventy-year-old secret in a nursing-home room',
+  pitch:'A ninety-one-year-old veteran tells a young history student the story of his legendary unit: twelve soldiers who held a mountain pass for nine days to save a village. But the more he tells, the less some things add up. A promise kept for seventy years, a dog tag and a name.',
+  chapters:[{ti:'The Visitor',sub:'The nursing home and first memories'},{ti:'The Pass',sub:'Eagle Pass and the village of Akpınar'},{ti:'Nine Days',sub:'Hunger, cold and a white flag'},{ti:'The Last Night',sub:'The snow cornice and the dog tag'},{ti:'The Truth',sub:'The last question'}],
+  statDefs:[['hafiza','Memory','var(--blue)'],['birlik','Unit spirit','var(--green)'],['vicdan','Conscience','var(--acc)']]},
+ medal:'Legendary Unit Medal',
+ end:{gercek:'Two names',efsane:'Legend',emanet:'The keepsake',bedel:'Half a day',sis:'Fog'},
+ scenes:{
+z1:{b:`Çamlık Nursing Home, November. Rain draws thin lines on the window.
+
+You are ninety-one. In the mornings, first your knees ache, then your memories.
+
+Nurse Sevim knocks on the door:
+
+— Uncle Kâzım, you have a visitor. A girl from the university. She studies history and records old soldiers' stories. She asked for you specifically. About the Wolf Company.
+
+The Wolf Company. In school textbooks they're called "the Legendary Unit": twelve soldiers who held Eagle Pass for nine days and saved a village. You are known as the only one still alive.
+
+In the drawer of your nightstand lies a medal wrapped in a handkerchief. You haven't opened it in years.`,
+ ch:['"Let her come in. Maybe it\'s finally time to tell it."','Say, "I\'m tired, another time."']},
+z2:{b:(st,fl)=>`${fl.isteksiz
+ ?'Before she leaves, Sevim puts a photograph on the nightstand. "The girl asked me to show you this." A minute later the girl herself is at the door; she doesn\'t come in uninvited, but she has no intention of giving up either.'
+ :'The girl comes in. She can\'t be more than twenty-four; a recorder in her hand, a thick folder in her bag.'}
+
+— I'm Zeynep, she says. I'd like to show you a photograph.
+
+You know the photo. Twelve young men in the snow. Some are laughing, some are glaring at the lens. Behind them, the rocks of Eagle Pass.
+
+— This photo is in every book, says Zeynep. But there are no names under it. Which one is you?
+
+Your finger pauses over the photograph.`,
+ ch:['Point to the broad-shouldered, laughing sergeant in the middle.','Point to the thin boy at the end, shivering in the snow.']},
+z2b:{b:`Zeynep looks at the photo, then at you.
+
+— But that boy… According to the records, that's Private Hasan Çelik. Killed on the ninth night.
+
+For a moment there's only the sound of the rain.
+
+— My eyes aren't what they were, child, you say. Old age.
+
+Zeynep writes something in her notebook. Then she smiles.
+
+— Could you start from the beginning? From the day you joined the unit.`,ch:['Close your eyes and begin.']},
+z3:{b:(st,fl)=>`${fl.gosterdi==='cavus'?`— Sergeant Kâzım Yıldırım, Zeynep says, looking at the photo. Twenty-three years old. Then she switches on the recorder. — Start from the beginning. From the day you joined the unit.
+
+You close your eyes.
+
+`:''}*Sixty-nine years ago. The eastern front.*
+
+You jump from the back of the truck into the snow. You are nineteen. Everything you've owned since you left the orphanage is in the pack on your back.
+
+The Wolf Company's tents are lined up beside a stream. Captain Ateş Kaya looks you up and down and, without a word, ticks a name on his list.
+
+Then a voice:
+
+— This the new rookie?
+
+A broad-shouldered sergeant with a mustache. When he laughs, his eyes disappear. Seeing that your hands have gone purple, he pulls off his own gloves and holds them out.
+
+— Take them. Where I come from, they wouldn't even call this snow.
+
+The name tape on his chest reads *K. Yıldırım*.`,
+ ch:['Take the gloves. Thank him.','Say, "No need." You don\'t want to owe anyone.','Ask about the company\'s name: why "Wolf"?']},
+z4:{b:(st,fl)=>`${fl.eldiven
+ ?'The sergeant slaps your shoulder: — My name\'s Kâzım. You call me Sarge, I call you Rookie. Deal?'
+ :fl.kurt
+ ?'The sergeant laughs: — Because a wolf doesn\'t leave the pack. If one falls, the pack doesn\'t abandon him. My name\'s Kâzım. You\'re part of the pack now, Rookie.'
+ :'The sergeant shrugs: — Suit yourself. But on this mountain, everyone ends up owing someone. My name\'s Kâzım.'}
+
+The first weeks pass in snow, guard duty and Kâzım's endless stories. He talks about his mother, Hatice Ana, who lost his two older brothers on other fronts. And about his eight-year-old little sister, Nazlı: "I always give her holiday money. If I don't make it back for this holiday, there'll be hell to pay."
+
+There are others in the company too: the quiet sniper Corporal Bekir, Yakup the radioman, Şükrü the cook, who sings folk songs over his pot, and Rıfat the medic.
+
+One night on watch Kâzım asks you:
+
+— Who've you got, Rookie? Who do you write letters to?`,
+ ch:['Say, "I don\'t have anyone." Tell the truth.','Say, "I have an aunt." You don\'t want to look alone.','Don\'t answer. Change the subject.']},
+z5:{b:(st,fl)=>`${fl.yetim
+ ?'Kâzım is quiet for a long time. Then he takes a crumpled letter from his pocket. — Then from now on half my letters are yours, he says. My mother\'s used to praying for more than one anyway.'
+ :'Kâzım doesn\'t press. But from that night on, he adds a line to the end of every letter: "There\'s a rookie with me, pray for him too, Mother."'}
+
+When you open your eyes, Zeynep is looking at you. The red light of the recorder is blinking.
+
+— Hatice Ana, she says slowly. Nazlı. You said those names with so much love.
+
+Then she takes a sheet of paper out of her folder.
+
+— May I ask something? Please don't be upset. Kâzım Yıldırım's military record lists his blood type as O. The nursing home's medical record says A.
+
+Your throat goes dry.`,
+ ch:['"A clerk\'s mistake, child. Back then everything was written by hand."','Stay silent for a while. Then say, "I\'ll tell you tomorrow."','Sip your tea. Try to hide that your hand is shaking.']},
+g1:{b:(st,fl)=>`The next day Zeynep comes again. ${fl.katip
+ ?'She doesn\'t bring up the blood type again. But you see her write something in the margin of her notebook.'
+ :fl.yarin?'— Yesterday you said "tomorrow", she says with a smile. Today is that tomorrow.':'She leaves the pastries she brought on the nightstand.'}
+
+— Tell me about Eagle Pass, she says. The books have three lines about it. You're the only one who knows the rest.
+
+Sometimes memories come on their own; sometimes you have to drag them out.`,
+ ch:['Start telling it right away.','First, look at the photo for a long time. Remember the faces one by one.']},
+g2:{b:`*March. Eagle Pass.*
+
+Captain Ateş spreads the map on a rock.
+
+— The enemy has broken through the main line. This pass is the only road down to the village of Akpınar. Three hundred people live there. They'll be evacuated over the highland trail behind the mountain. We need three days. For three days, we hold this pass.
+
+When you reach Akpınar, the village elder, Grandpa Kerim, greets you. His granddaughter Gülsüm, ten years old, is trying to round up her goats. Women have tied quilts to their backs. Old people, sick people, babies in arms…
+
+Kâzım turns to you:
+
+— We need to start digging, but… look at them, Rookie.
+
+The captain gives you the first day to decide what to do.`,
+ ch:['Help the villagers carry their belongings to the highland trail.','Start digging positions. If the pass isn\'t held, no one survives.','Go scout the upper rocks of the pass with Bekir.']},
+g3:{b:(st,fl)=>`${fl.yardim
+ ?'By evening your arms feel like they\'ll fall off. Gülsüm hands you the rope of one of her goats: "You take this one, soldier. He\'s the most stubborn."'
+ :fl.mevzi?'Until evening you dig at the frozen ground. Your hands are bloody, but the position is deep.'
+ :'Up in the rocks above the pass, you and Bekir find a goat track the enemy could use to get behind you. Bekir only nods: "Good eye."'}
+
+On the first night, at three o'clock, lights appear on the slope opposite. Engines. Then silence.
+
+Bekir slides in next to you:
+
+— Don't rush. Let them get close. If we fire too early, they'll know how few we are.
+
+Beside you, Yakup's breathing quickens. A flare climbs into the sky.`,
+ ch:['Listen to Bekir. Wait for them to get close.','Open fire now. Scare them off.']},
+g4:{b:(st,fl)=>`${fl.gece1==='iyi'
+ ?'The enemy vanguard walked into the ambush and pulled back. No one in the company was wounded. In the morning, Kâzım hands you the first cup of tea.'
+ :'The enemy figured out how few you are. Mortar fire went on all night. Şükrü\'s pot was punctured, and Rıfat was hit in the arm.'}
+
+*Day three.* Captain Ateş is wounded in the leg; he grits his teeth as Rıfat changes the dressing. Yakup looks up from the radio:
+
+— HQ has ordered a withdrawal, sir. Immediately.
+
+But half the village is still on the highland trail. Snow fell overnight and blocked the path; the old and the sick can only move slowly, on foot. They need another day, maybe two.
+
+The captain gathers everyone. His voice is weak but firm:
+
+— The order is clear. But I don't want to abandon this village. If we stay, most of us won't make it back. I'm asking what you think. You first, Rookie. In this company, the youngest speaks first.
+
+Kâzım looks at you. You know what he's thinking.`,
+ ch:['"Let\'s stay, sir. Until the village is through."','"Orders are orders, sir. Let\'s withdraw."','"Let volunteers stay, and the rest withdraw."']},
+g4b:{b:`The captain lowers his head. The withdrawal begins.
+
+Half a day later, down in the valley, someone comes running through the snow. Gülsüm. Barefoot, her face swollen from crying.
+
+— They're coming! Grandpa and the others are still on the trail!
+
+Kâzım slings his rifle over his shoulder and turns back; he doesn't even look behind him. The captain stops for a moment, then shouts:
+
+— Company! We're going back!
+
+By the time you reach the pass, the enemy has reached the first houses at the edge of the village. You drive them back, but half a day has been lost. Fourteen people from the last group on the highland trail never came back.
+
+Years later you will still count those fourteen names, one by one, every night.`,ch:['Continue.']},
+g5:{b:(st,fl)=>`Zeynep's voice calls you back to the present:
+
+— Uncle Kâzım? Are you alright?
+
+For a moment you don't know who she is. Her hair, the shape of her eyes…
+
+— Nazlı? you say. I brought your holiday money…
+
+Zeynep freezes. Her eyes fill with tears. Then she reaches out and takes your hand.
+
+— I'm Zeynep, she says slowly. But Nazlı… is a name I love dearly too.
+
+${fl.geri?'You don\'t speak for a while. You never told anyone about that half day. It isn\'t in the books either.':'Your hands are still shaking.'}`,
+ ch:['Rest a little. Watch the rain through the window.','Keep going. You have to tell it before you forget.']},
+d1:{b:(st,fl)=>`*Day five.*
+
+The rations are gone. Şükrü boils the last of the bulgur with snowmelt and makes a soup. The steam rising from the pot draws the whole company around it.
+
+${fl.geri
+ ?'The survivors of the lost group, about twenty people, are waiting in the sheepfold just below the pass.'
+ :'The village\'s last group, about a hundred old and sick people, are waiting in the sheepfold just below the pass, waiting for the snowbound trail to open.'} Children shiver by the fire.
+
+Kâzım stands at the pot and looks at you. The soup is barely enough for twelve.`,
+ ch:['Share the soup with the people in the sheepfold.','The soldiers have to stay strong enough to fight. The soup is for the company.','Take your own share to Gülsüm. Leave the rest alone.']},
+d2:{b:(st,fl)=>`${fl.paylas?'Without a word, Kâzım takes the ladle from you and hands the first bowl to Grandpa Kerim. That night half the company goes to sleep hungry; no one complains.\n\n':fl.gulsum?'Gülsüm holds the bowl in both hands and gives half of it to her little brother.\n\n':''}*Day six.* Captain Ateş died quietly before dawn. His last words were to Kâzım: "The company is yours."
+
+The radio is dead too. Yakup spent all night working on the wires; no use. HQ doesn't know where you are, or whether you're alive.
+
+Kâzım stands over the map:
+
+— Someone has to go down. Reach the unit in the valley and ask for help. But the road is right under the enemy's eyes.
+
+Everyone is silent. Then you hear your own voice.`,
+ ch:['"I\'ll go, Sarge."','"Let\'s try to fix the radio with Yakup one more time."','"Nobody goes. Whatever happens, happens to all of us together."']},
+d3:{b:(st,fl)=>`${fl.haber==='kosu'
+ ?'At night you slip down through the snow into the valley. Before dawn you reach an artillery unit. "Day nine," their commander says. "We can\'t come any sooner." On the way back, Kâzım is waiting for you at the mouth of the pass; he hugs you and slaps your back.'
+ :fl.yaralandi?'Halfway down you run into a patrol. As you run, a bullet grazes your shoulder. You crawl back through the snow. As Kâzım pulls you into the position, you hear him shout for the first time: "If you ever go anywhere again without asking me…" He can\'t finish the sentence.'
+ :fl.haber==='telsiz'?'Before dawn Yakup shouts with joy. A crackling voice over the radio: "Day nine. Hold on. Day nine."'
+ :fl.telsizYok?'The radio never speaks again. Yakup carries it on his back anyway; "maybe," he says.'
+ :'Nobody goes. That night the company huddles even closer around the fire.'}
+
+*Day seven.* A white flag on the opposite slope. An enemy officer, with an interpreter, walks out to the middle of the pass.
+
+— Surrender. The women and children will not be touched. You have my word.
+
+Kâzım whispers to you:
+
+— The last group's trail opens tomorrow. We need one more day.`,
+ ch:['Suggest to Kâzım: "Let\'s drag out the talks and buy time."','"We don\'t surrender. Send him away."','Ask: "Should we trust his word and hand the group over to them?"']},
+d4:{b:(st,fl)=>`${{
+ oyalama:'Kâzım spends half the day drinking tea and haggling with the enemy officer; every offer gets a question, every question a story. By evening, the last group is on the highland trail.',
+ anladi:'The talks last an hour. Then the enemy officer realizes he\'s being stalled. In the afternoon comes the hardest attack yet. Şükrü falls that day; his pot is still by the fire.',
+ red:'The officer shrugs and walks back. That night the attack comes. Şükrü falls; his pot is still by the fire.',
+ teklif:'Kâzım gives you a look you won\'t forget for seventy years. — A wolf doesn\'t abandon the pack, Rookie, is all he says. He sends the officer back. That night the attack comes. Şükrü falls.'
+}[fl.d7]}
+
+Zeynep switches off the recorder. She takes out her phone.
+
+— I'd like you to hear something. It was a very old cassette recording; I had it digitized.
+
+An old woman's voice comes from the speaker: "…my brother came every holiday. Candy in his hand, money in his pocket. Even when my mother's eyes could no longer see, she knew the sound of his footsteps…"
+
+You know the voice. Older than you've ever heard it, but you know it.
+
+— Nazlı, you say.`,
+ ch:['Cry. Let go of the tears you\'ve held back for seventy years.','Pull yourself together. Say, "Let\'s go on."']},
+s1:{b:(st,fl)=>`*The ninth night.*
+
+Seven of you are left. ${fl.yaralandi?'Your shoulder is bandaged; you hold your rifle with one hand. ':''}The last villagers in the sheepfold, Grandpa Kerim and Gülsüm among them, have set off on the highland trail. If you hold the pass until morning, they'll be safe.
+
+But this time the enemy is coming with everything. The opposite slope is full of lanterns.
+
+Kâzım gathers you and shows you the last of the explosives:
+
+— The snow cornice above the pass. If we blow it, the avalanche closes the road; nobody gets through for weeks. But the fuse is short. Whoever lights it might not get away.
+
+Silence.
+
+— I'll stay, says Kâzım. The rest of you follow the villagers up to the highlands.`,
+ ch:['"I\'ll stay, Sarge. I don\'t have anyone."','"Let\'s stay together. One lights the fuse, the other pulls him away."','Obey the order. Withdraw with the others.']},
+s2:{b:(st,fl)=>`${{
+ ben:'Kâzım laughs. Seventy years later you can still hear that laugh. — You don\'t have anyone? he says. What am I, then? Then he grabs you by the collar and shoves you back. By the time you get up, he has already lit the fuse.',
+ birlikte:'You light the fuse together. You run. Behind you, the mountain groans.',
+ cekil:'You go a hundred meters. Then you stop. You turn back. You find Kâzım at the fuse. When he sees you, he curses, then laughs. — Stubborn goat, he says. Just like Gülsüm\'s goat.'
+}[fl.son]}
+
+The explosion. Then a roar; it's as if the mountain itself is sliding. The snow cornice comes crashing down onto the pass.
+
+Then silence.
+
+It's Kâzım who digs you out of the snow. But he can't get up himself. A shard of rock is lodged in his chest. A dark stain is spreading across the snow.`,ch:['Kneel beside him.']},
+s3:{b:`Kâzım's breath comes short and shallow. You hold his hand.
+
+— Listen, Rookie, he says. There's no time.
+
+He takes the dog tag from around his neck and presses it into your palm. Then he pulls yours off and snaps the chain.
+
+— My mother has buried two sons. If she buries a third, she won't survive it. You go home. In my place. Give Nazlı her holiday money.
+
+— Sarge, I…
+
+— That's an order, he says. The last one.
+
+From his breast pocket he takes an unfinished letter.
+
+— To my mother, he says. You finish it.`,
+ ch:['Take the dog tag and the letter. "I promise, Sarge."','"I can\'t, Sarge. It would be a lie."']},
+s4:{b:(st,fl)=>`${fl.reddettim
+ ?`Kâzım doesn't answer. His hand in yours, his eyes open, he is looking at the sky. Then everything goes dark.
+
+When you wake up you're in a field hospital. A nurse greets you with a smile: "Welcome back, Sergeant Kâzım." The dog tag is around your neck. He must have put it on you while you were unconscious. The letter is in your pocket too.`
+ :`Kâzım breathes his last with his hand in yours. His eyes are open, looking at the sky.
+
+When you wake up you're in a field hospital. A nurse greets you with a smile: "Welcome back, Sergeant Kâzım."`}
+
+According to the records, Private Hasan Çelik was killed on the ninth night. Sergeant Kâzım Yıldırım is the only surviving soldier of the Legendary Unit.
+
+A month later you're standing at the door of a village house. Hatice Ana's eyes can no longer see. When she hears your voice, her hands search for your face. Her fingers move over your forehead, your nose, your lips. For a long, long time.
+
+Behind her stands an eight-year-old girl. Nazlı. She looks at you. First she understands something, then she decides something.
+
+— Brother, she says. Welcome home.`,
+ ch:['Whisper the truth into Hatice Ana\'s ear.','Stay silent. Be her son.']},
+r1:{b:(st,fl)=>`${fl.anneBildi
+ ?'Hatice Ana listens to your whisper. Then she presses your head to her chest. "I know, my child," she says. "Kâzım\'s footsteps didn\'t sound like that. But now you are my son too."'
+ :'Hatice Ana holds you to her heart. She asks nothing. For twenty-one years, until the day she dies, she prays for you every morning.'}
+
+Seventy years. You carried Hatice Ana's coffin. You gave Nazlı away at her wedding; you held her hand. Holiday money, every holiday… And every year, alone, you went to the grave at Eagle Pass, the stone that reads "Private Hasan Çelik".
+
+In the nursing-home room, Zeynep sits across from you. The recorder is on the table. The red light is on.
+
+— One last question, she says. Her voice is trembling.
+
+— Who are you?`,
+ ch:['"I am Hasan Çelik. Kâzım Yıldırım died on the ninth night. Saving me."','"I am Kâzım Yıldırım, child. Whatever the books say."','Don\'t answer. Take the dog tag and the unfinished letter from the drawer and hand them to her.']},
+end_gercek:{b:`Zeynep doesn't switch off the recorder. She's crying, but she's smiling.
+
+— I knew, she says. My grandmother told me. Nazlı Yıldırım. She passed away last spring. In her last days she held my hand and said: "Go to Çamlık Nursing Home. Thank your Uncle Hasan. He was a brother to me and my mother for a lifetime. My brother Kâzım would have wanted that."
+
+You thought she never knew. For seventy years Nazlı knew, and never said a word.
+
+Six months later a small ceremony is held at Eagle Pass. On the gravestone that has read "Private Hasan Çelik" for seventy years, the right name is finally carved: *Sergeant Kâzım Yıldırım.* On the marble of the memorial, two names are written side by side. Beneath both, the same line: *The Wolf Company.*
+
+You sit in your wheelchair next to Zeynep. The wind blows down through the pass. For a moment, from very far away, you think you hear someone laugh.
+
+— Rookie, says the wind. Did you make it home?
+
+You did, Sarge. Just the way you wanted.`},
+end_efsane:{b:`Zeynep looks at you for a long time. Then she switches off the recorder.
+
+— My grandmother used to say that too, she says slowly. "My brother Kâzım." She always said that. Nazlı Yıldırım. She passed away last spring.
+
+She stands up and pauses at the door.
+
+— In her last days she asked me to thank you. I didn't ask why. I think I know now.
+
+The books don't change. At school ceremonies, teachers still tell the story of "the last living hero, Kâzım Yıldırım". A name is printed under the photograph: under the laughing sergeant in the middle.
+
+One winter morning Sevim finds you by the window, asleep, a dog tag in your hand. There's a name on the tag, but no one reads it closely.
+
+Sometimes a legend protects not a lie, but a promise.`},
+end_emanet:{b:`You say nothing. You open the drawer. Under the medal in the handkerchief lie a seventy-year-old dog tag and a yellowed, unfinished letter.
+
+Zeynep turns the tag over. It reads *K. Yıldırım*. The first line of the letter: "Dear Mother, if I don't make it back for this holiday…" The letter is unfinished; beneath it, another hand has added more lines over the years. One line for every holiday.
+
+As she reads, Zeynep understands. Then she looks at you.
+
+— My grandmother Nazlı, she whispers. She knew. She always knew. She asked me to thank you.
+
+She closes her hand around the dog tag.
+
+— What would you like me to do?
+
+— You decide, child, you say. It's yours to keep now.
+
+A year later Zeynep's book is published: *Eagle Pass: Two Soldiers, One Name.* On the first page there's a one-line dedication: *To everyone who keeps their word.*`},
+end_bedel:{b:(st,fl)=>`${fl.secim==='gercek'
+ ?'— I am Hasan Çelik, you say. Then you keep going, because tonight you\'ve decided to say everything. How on the third day you said, "Let\'s withdraw." The half day that was lost. The fourteen people on the highland trail who never came back.'
+ :fl.secim==='emanet'?'You hand Zeynep the dog tag and the letter. Then one more sheet of paper: a list you\'ve kept for seventy years. Fourteen names.'
+ :'— I am Kâzım Yıldırım, you say. But your voice is shaking. Inside the legend of "nine days" in the books, there is half a day no one knows about.'}
+
+Zeynep listens in silence. Finally she switches off the recorder.
+
+— My grandmother Nazlı, she says. She asked me to thank you. For being a brother to her for a lifetime.
+
+Thanks. Thanks, to a man who has counted fourteen names every night for seventy years.
+
+The books still say "nine days". But you never forgot that half day: the afternoon Gülsüm ran barefoot through the snow. The way Kâzım turned back without looking behind him.
+
+Sometimes a hero's story is built on top of a regret.
+
+The story didn't have to end here. Could you have said something different on the third day?`},
+end_sis:{b:`Zeynep asks something, but the words get tangled. The girl in front of you becomes Nazlı, then Gülsüm, then no one at all.
+
+— Sarge? you say to the empty room. The fuse… the fuse is short…
+
+Sevim comes in and helps you lie down. Zeynep quietly packs up the recorder. She stops at the door and looks at you for a while.
+
+She comes again the next week. And the week after. But the story never comes together again.
+
+Some secrets are kept not by a promise, but by a fog.
+
+The story didn't have to end here. Could you have given yourself room to rest while you told it?`}
+ }};
 })();
 
 /* =====================================================================
