@@ -92,11 +92,17 @@ Zeynep defterine bir şey yazıyor. Sonra gülümsüyor.
 — Baştan anlatır mısınız? Birliğe ilk geldiğiniz günden.`,
  ch:[{t:'Gözlerini kapat ve anlatmaya başla.',go:'z3'}]},
 
-z3:{c:0,art:'camp',b:(st,fl)=>`${fl.gosterdi==='cavus'?`— Çavuş Kâzım Yıldırım, diyor Zeynep, fotoğrafa bakarak. Yirmi üç yaşında. Sonra kayıt cihazını açıyor. — Baştan anlatın. Birliğe ilk geldiğiniz günden.
+z3:{c:0,art:'camp',b:(st,fl)=>`${fl.gosterdi==='cavus'?`Zeynep fotoğrafa bakıyor.
+
+— Çavuş Kâzım Yıldırım, diyor. Yirmi üç yaşında.
+
+Sonra kayıt cihazını açıyor.
+
+— Baştan anlatın. Birliğe ilk geldiğiniz günden.
 
 Gözlerini kapatıyorsun.
 
-`:''}*Altmış dokuz yıl önce. Doğu cephesi.*
+`:''}*Yetmiş iki yıl önce. Doğu cephesi.*
 
 Kamyonun kasasından karın içine atlıyorsun. On dokuz yaşındasın. Yetimhaneden çıktığın günden beri sahip olduğun her şey sırtındaki çantada.
 
@@ -152,7 +158,7 @@ Boğazın kuruyor.`,
 /* ================= BÖLÜM 2 · GEÇİT ================= */
 g1:{c:1,art:'home',b:(st,fl)=>`Ertesi gün Zeynep yine geliyor. ${fl.katip
  ?'Kan grubu meselesini bir daha açmıyor. Ama defterinin kenarına bir şey yazdığını görüyorsun.'
- :fl.yarin?'— Dün "yarın" demiştiniz, diyor gülümseyerek. Bugün o yarın.':'Getirdiği poğaçaları komodinin üstüne bırakıyor.'}
+ :fl.yarin?'Gülümseyerek oturuyor: "Dün yarın anlatırım demiştiniz. Bugün o yarın."':'Getirdiği poğaçaları komodinin üstüne bırakıyor.'}
 
 — Kartal Geçidi'ni anlatın, diyor. Kitaplarda üç satır var. Gerisini bilen tek kişi sizsiniz.
 
@@ -249,7 +255,7 @@ Erzak bitti. Şükrü son bulguru kar suyuyla kaynatıp bir çorba yapıyor. Kaz
 
 ${fl.geri
  ?'Geri dönemeyen kafileden kurtulabilenler, yirmi kadar kişi, geçidin hemen altındaki ağılda bekliyor.'
- :'Köyün son kafilesi, yüz kadar yaşlı ve hasta, geçidin hemen altındaki ağılda bekliyor. Karla kapanan yolun açılmasını bekliyorlar.'} Çocuklar ateşin başında titriyor.
+ :'Köyün son kafilesi, yüz kadar yaşlı ve hasta, geçidin hemen altındaki ağılda bekliyor. Karla kapanan yolun açılmasını umuyorlar.'} Çocuklar ateşin başında titriyor.
 
 Kâzım kazanın başında durup sana bakıyor. Çorba on iki kişiye ancak yetiyor.`,
  ch:[{t:'Çorbayı ağıldakilerle paylaş.',fx:{birlik:10,vicdan:10},set:{paylas:1},go:'d2'},

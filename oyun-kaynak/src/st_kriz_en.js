@@ -422,13 +422,13 @@ You watch the rest of the crisis on a hotel-room television. Someone else writes
 In a crisis, trust is the most valuable ammunition. Yours ran out.
 
 The story didn't have to end here. Could you have held both the room and the public at the same time?`},
-end_kayip:{b:`On the other end of the line, Arman has stopped talking. Instead, Cevdet's voice:
+end_kayip:{b:`On the other end of the line, Arman has stopped talking. Instead you hear one of the men with him, a hard, cold voice:
 
 — Your time is up.
 
 Two gunshots.
 
-Ten minutes later Oya's team is inside. Cevdet tries to shoot his way out and is killed. Arman sits among the hostages with his head in his hands.
+Ten minutes later Oya's team is inside. The owner of that cold voice, Cevdet Arı, tries to shoot his way out and is killed. Arman sits among the hostages with his head in his hands.
 
 In the morning the count is taken. Shift supervisor Halil Turan and technician Mehmet Er are dead.
 

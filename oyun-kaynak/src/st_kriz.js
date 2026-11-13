@@ -546,13 +546,13 @@ Bir krizde güven, en değerli cephanedir. Seninki bitti.
 
 Hikâye burada bitmek zorunda değildi. Masayı ve kamuoyunu aynı anda tutabilir miydin?`,ch:[]},
 
-end_kayip:{c:4,art:'raid',end:{k:'kayip',ti:'Karanlık sabah',tone:'bad'},b:`Hattın öbür ucunda Arman artık konuşmuyor. Onun yerine Cevdet'in sesi geliyor:
+end_kayip:{c:4,art:'raid',end:{k:'kayip',ti:'Karanlık sabah',tone:'bad'},b:`Hattın öbür ucunda Arman artık konuşmuyor. Onun yerine yanındaki adamlardan birinin sert, soğuk sesi geliyor:
 
 — Süreniz doldu.
 
 İki el silah sesi.
 
-Oya'nın ekibi on dakika sonra içeride. Cevdet ateş açarak kaçmaya çalışıyor ve vuruluyor. Arman, rehinelerin arasında, başını ellerinin arasına almış oturuyor.
+Oya'nın ekibi on dakika sonra içeride. O sert sesin sahibi, Cevdet Arı, ateş açarak kaçmaya çalışıyor ve vuruluyor. Arman, rehinelerin arasında, başını ellerinin arasına almış oturuyor.
 
 Sabah sayım yapılıyor. Vardiya şefi Halil Turan ve teknisyen Mehmet Er hayatını kaybetti.
 

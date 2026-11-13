@@ -43,11 +43,17 @@ For a moment there's only the sound of the rain.
 Zeynep writes something in her notebook. Then she smiles.
 
 — Could you start from the beginning? From the day you joined the unit.`,ch:['Close your eyes and begin.']},
-z3:{b:(st,fl)=>`${fl.gosterdi==='cavus'?`— Sergeant Kâzım Yıldırım, Zeynep says, looking at the photo. Twenty-three years old. Then she switches on the recorder. — Start from the beginning. From the day you joined the unit.
+z3:{b:(st,fl)=>`${fl.gosterdi==='cavus'?`Zeynep looks at the photo.
+
+— Sergeant Kâzım Yıldırım, she says. Twenty-three years old.
+
+Then she switches on the recorder.
+
+— Start from the beginning. From the day you joined the unit.
 
 You close your eyes.
 
-`:''}*Sixty-nine years ago. The eastern front.*
+`:''}*Seventy-two years ago. The eastern front.*
 
 You jump from the back of the truck into the snow. You are nineteen. Everything you've owned since you left the orphanage is in the pack on your back.
 
@@ -93,7 +99,7 @@ Your throat goes dry.`,
  ch:['"A clerk\'s mistake, child. Back then everything was written by hand."','Stay silent for a while. Then say, "I\'ll tell you tomorrow."','Sip your tea. Try to hide that your hand is shaking.']},
 g1:{b:(st,fl)=>`The next day Zeynep comes again. ${fl.katip
  ?'She doesn\'t bring up the blood type again. But you see her write something in the margin of her notebook.'
- :fl.yarin?'— Yesterday you said "tomorrow", she says with a smile. Today is that tomorrow.':'She leaves the pastries she brought on the nightstand.'}
+ :fl.yarin?'She sits down with a smile: "Yesterday you said you\'d tell me tomorrow. Today is that tomorrow."':'She leaves the pastries she brought on the nightstand.'}
 
 — Tell me about Eagle Pass, she says. The books have three lines about it. You're the only one who knows the rest.
 
@@ -175,7 +181,7 @@ The rations are gone. Şükrü boils the last of the bulgur with snowmelt and ma
 
 ${fl.geri
  ?'The survivors of the lost group, about twenty people, are waiting in the sheepfold just below the pass.'
- :'The village\'s last group, about a hundred old and sick people, are waiting in the sheepfold just below the pass, waiting for the snowbound trail to open.'} Children shiver by the fire.
+ :'The village\'s last group, about a hundred old and sick people, are waiting in the sheepfold just below the pass, hoping the snowbound trail will open.'} Children shiver by the fire.
 
 Kâzım stands at the pot and looks at you. The soup is barely enough for twelve.`,
  ch:['Share the soup with the people in the sheepfold.','The soldiers have to stay strong enough to fight. The soup is for the company.','Take your own share to Gülsüm. Leave the rest alone.']},
