@@ -173,11 +173,13 @@ window.IAPGrant=function(k){if(k==='premium'){if(!isPrem33())grant33('premium',t
  if(k==='terfi'&&terfiWhy33()){goldAdd33(800);toast('Terfi Emri şu an kullanılamadığı için karşılığı olan 800 altın hesabına eklendi.');render();return}
  grant33(k)};
 
-/* ---- yeni isim: Büyük Yemin: Senin Hikâyen ---- */
+/* Yeni isim (Büyük Yemin: Senin Hikâyen) onaydan sonraki küçük güncellemeyle açılacak:
+/ * ---- yeni isim: Büyük Yemin: Senin Hikâyen ---- * /
 Object.assign(GAMET,{tr:'Büyük Yemin: Senin Hikâyen',en:'Grand Oath: Your Story',ja:'大いなる誓い：あなたの物語',es:'El Gran Juramento: Tu historia',fr:'Le Grand Serment : Ton histoire',de:'Der Große Eid: Deine Geschichte'});
 try{setTitle()}catch(e){}
 {const _vt=vTitleX;vTitleX=function(){return _vt().replace(/(<div class="stencilbar"><span><\/span>)Erden mareşale(<span><\/span>)/,'$1Senin hikâyen$2')}}
 I18N['Senin hikâyen']=['Senin hikâyen','Your story','あなたの物語','Tu historia','Ton histoire','Deine Geschichte'];
+*/
 `Premium, Hikâye Paketi, altın ve Terfi Emri|Premium, Story Pack, gold and Promotion Order|プレミアム、ストーリーパック、ゴールド、昇進命令|Premium, paquete de historias, oro y orden de ascenso|Premium, pack d'histoires, or et ordre de promotion|Premium, Story-Paket, Gold und Beförderungsbefehl
 Altın paketleri ve Terfi Emri|Gold packs and Promotion Order|ゴールドパックと昇進命令|Paquetes de oro y orden de ascenso|Packs d'or et ordre de promotion|Goldpakete und Beförderungsbefehl
 Mağaza · Premium aktif|Store · Premium active|ストア・プレミアム有効|Tienda · Premium activo|Boutique · Premium actif|Shop · Premium aktiv
