@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <script src="ads.js"></script>
 <script src="iap.js"></script>
+<script src="fb.js"></script>
 <title>Büyük Yemin</title>
 <meta name="theme-color" content="#141510">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -6177,6 +6178,7 @@ Personel Başkanlığı|Personnel Command|人事部|Jefatura de Personal|Directi
 Talebin reddedildi|Request denied|申請却下|Solicitud denegada|Demande refusée|Antrag abgelehnt
 İtirazın kabul edildi|Petition accepted|申請受理|Petición aceptada|Requête acceptée|Antrag angenommen`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
 
+const P32=k=>{try{if(typeof price33==='function')return price33(k)}catch(e){}return({story:'₺99,99',premium:'₺299,99'})[k]};
 /* =====================================================================
    v32 · HİKÂYE MODU MOTORU
    Hikâyeler TALES dizisine registerTale() ile eklenir.
@@ -6265,10 +6267,10 @@ function vTale32(){const t=tale32(T32.id);if(!t){UI.scr='tales';return vTales32(
 function vTaleLock32(t,chap,ci){return `<div class="tlock32"><div class="ti-art">${taleArt32(t.cover,t)}</div><span class="lbl">Bölüm ${ci+1} · ${esc(chap.ti)}</span><h2 class="stencil">Hikâye devam ediyor…</h2>
  <p>Ücretsiz bölümü bitirdin. <b>${esc(t.ti)}</b> hikâyesinin devamı ve diğer tüm hikâyeler <b>Hikâye Paketi</b>'nde. Kaldığın yer kaydedildi; paketi alınca buradan devam edersin.</p>
  <div class="fx">${TALES.map(x=>`<span>${esc(x.ti)}</span>`).join('')}</div>
- <button class="btn block" data-a="buy" data-v="story">Hikâye Paketi · 149 TL</button><button class="btn ghost block" data-a="buy" data-v="premium">Premium · 399 TL (paket dahil)</button>
+ <button class="btn block" data-a="buy" data-v="story">Hikâye Paketi · ${P32('story')}</button><button class="btn ghost block" data-a="buy" data-v="premium">Premium · ${P32('premium')} (paket dahil)</button>
  <button class="btn ghost block" data-a="tales">Hikâyelere dön</button></div>`}
 function taleEndBlock32(t,k,body,art){const P=tp32(t.id);const E=talEnds32(t).find(e=>e.k===k)||{k,ti:k};const first=!P.done.includes(E.k);
- if(first){P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
+ if(first){try{fl35('story_end',T32.id+':'+E.k)}catch(e){}P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
  const ends=talEnds32(t);
  return `<div class="tend32 ${E.tone||''}"><span class="lbl">Son · ${P.done.length}/${ends.length}</span><h2 class="stencil">${esc(E.ti)}</h2>${first?'<span class="chip" style="color:var(--acc)">Yeni son açıldı</span>':''}</div>
  ${art?`<div class="tart32">${art}</div>`:''}<div class="tbody32">${fmt32(body)}</div>
@@ -6276,7 +6278,7 @@ function taleEndBlock32(t,k,body,art){const P=tp32(t.id);const E=talEnds32(t).fi
  <div class="card"><span class="lbl">Bulduğun sonlar</span><div class="ti-end"><div>${ends.map(e=>P.done.includes(e.k)?`<span class="ok">${esc(e.ti)}</span>`:'<span>???</span>').join('')}</div></div></div>
  <button class="btn block" data-a="talenew">Tekrar oyna, başka bir son bul</button><button class="btn ghost block" data-a="tales">Hikâyelere dön</button>`}
 function vTaleEnd32(t,sc,R,body){const P=tp32(t.id);const E=sc.end;const first=!P.done.includes(E.k);
- if(first){P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
+ if(first){try{fl35('story_end',T32.id+':'+E.k)}catch(e){}P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
  const ends=Object.values(t.scenes).filter(s=>s.end);
  return `<div class="top gut"><button class="mini" data-a="tales">‹ Hikâyeler</button><div class="who"><b>${esc(t.ti)}</b><span>Son</span></div></div>
  <div class="scr plain gut tale32" id="tscr"><div class="tend32 ${E.tone||''}"><span class="lbl">Son · ${P.done.length}/${ends.length}</span><h2 class="stencil">${esc(E.ti)}</h2>${first?'<span class="chip" style="color:var(--acc)">Yeni son açıldı</span>':''}</div>
@@ -9555,8 +9557,8 @@ function poster32(t,soon,big){const P=soon?null:tp32(t.id);const ends=soon?0:tal
 function packBanner32(){if(hasStory32())return '';const all=allPosters32();
  return `<div class="tpack"><div class="tpk-shine"></div><div class="tpk-h"><span class="tpk-k">Hikâye Paketi</span><b class="stencil">${all.length} hikâye · tek paket</b><small>Her hikâyenin tamamı, tüm sonlar ve kariyer madalyaları</small></div>
  <div class="tpk-mini">${all.map(({t,soon})=>`<div style="--tc:${t.color}">${sl32(soon?soonArt32(t.color):taleArt32(t.cover,t))}<span>${esc(t.ti)}</span></div>`).join('')}</div>
- <div class="tpk-buy"><div><span class="tpk-p">149 TL</span><small>tek seferlik</small></div><button class="btn tpk-btn" data-a="buy" data-v="story">Paketi aç</button></div>
- <button class="tpk-prem" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · 399 TL <em>paket dahil, reklamsız ve tüm özellikler ›</em></button></div>`}
+ <div class="tpk-buy"><div><span class="tpk-p">${P32('story')}</span><small>tek seferlik</small></div><button class="btn tpk-btn" data-a="buy" data-v="story">Paketi aç</button></div>
+ <button class="tpk-prem" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · ${P32('premium')} <em>paket dahil, reklamsız ve tüm özellikler ›</em></button></div>`}
 function vTales32(){const runs=TALES.filter(t=>tp32(t.id).run&&!(t.custom?tp32(t.id).run.end:false));
  return `<div class="top gut"><button class="mini" data-a="back">‹ Geri</button><div class="who"><b>Hikâye modu</b><span>Kararların sonu belirler</span></div></div>
  <div class="scr plain gut" id="scr">
@@ -9577,9 +9579,9 @@ function vTaleLock32(t,chap,ci){const all=allPosters32();
  <div class="tpw-card"><div class="tpk-shine"></div><span class="tpk-k">Hikâye Paketi</span>
   <div class="tpw-grid">${all.map(({t:x,soon})=>`<div style="--tc:${x.color}">${sl32(soon?soonArt32(x.color):taleArt32(x.cover,x))}<span>${esc(x.ti)}</span></div>`).join('')}</div>
   <ul class="tpw-ul"><li>${all.length} hikâyenin tamamı</li><li>Her hikâyede farklı sonlar</li><li>Kariyer modunda özel madalyalar</li></ul>
-  <div class="tpw-price"><span class="tpk-p">149 TL</span><small>tek seferlik ödeme</small></div>
+  <div class="tpw-price"><span class="tpk-p">${P32('story')}</span><small>tek seferlik ödeme</small></div>
   <button class="btn block tpk-btn big" data-a="buy" data-v="story">Paketi aç ve devam et</button></div>
- <button class="tpk-prem big" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · 399 TL <em>Hikâye Paketi + reklamsız oyun + 2 kat tecrübe + istediğin rütbeden başla ›</em></button>
+ <button class="tpk-prem big" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · ${P32('premium')} <em>Hikâye Paketi + reklamsız oyun + 2 kat tecrübe + istediğin rütbeden başla ›</em></button>
  <button class="ti2-link" data-a="tales">Daha sonra</button></div></div>`}
 
 /* =====================================================================
@@ -9589,8 +9591,8 @@ function vTaleLock32(t,chap,ci){const all=allPosters32();
    ===================================================================== */
 const PID33={premium:'com.gulergamestudios.buyukyemin.premium',story:'com.gulergamestudios.buyukyemin.hikaye',
  goldL:'com.gulergamestudios.buyukyemin.altin_buyuk',goldS:'com.gulergamestudios.buyukyemin.altin_kucuk',terfi:'com.gulergamestudios.buyukyemin.terfi'};
-const PROD33={premium:{ti:'Premium',price:'399 TL',type:'non'},story:{ti:'Hikâye Paketi',price:'149 TL',type:'non'},
- goldL:{ti:'2.200 altın',price:'149 TL',type:'con',gold:2200},goldS:{ti:'800 altın',price:'79 TL',type:'con',gold:800},terfi:{ti:'Terfi Emri',price:'79 TL',type:'con'}};
+const PROD33={premium:{ti:'Premium',price:'₺299,99',type:'non'},story:{ti:'Hikâye Paketi',price:'₺99,99',type:'non'},
+ goldL:{ti:'2.200 altın',price:'₺99,99',type:'con',gold:2200},goldS:{ti:'800 altın',price:'₺49,99',type:'con',gold:800},terfi:{ti:'Terfi Emri',price:'₺49,99',type:'con'}};
 const isPrem33=()=>!!ENT32.premium;
 /* ---- altın cüzdanı (hesap düzeyinde; kariyerden bağımsız) ---- */
 let GOLD33=0;try{GOLD33=+(localStorage.getItem('by_gold')||0)||0}catch(e){}
@@ -9599,7 +9601,7 @@ function goldAdd33(n){GOLD33=Math.max(0,GOLD33+n);goldSave33()}
 const fmtG33=n=>Number(n).toLocaleString('tr-TR');
 /* ---- basit satın alma istatistikleri (cihazda) ---- */
 function an33(ev,id){try{const a=JSON.parse(localStorage.getItem('by_an')||'{}');const k=ev+(id?':'+id:'');a[k]=(a[k]||0)+1;localStorage.setItem('by_an',JSON.stringify(a))}catch(e){}
- try{window.IAPBridge&&window.IAPBridge.log&&window.IAPBridge.log(ev,id||'')}catch(e){}}
+ try{fl35(ev,id||'')}catch(e){}}
 /* ---- fiyat: mağazanın yerel fiyatı varsa o, yoksa varsayılan ---- */
 function price33(k){try{const p=window.IAPBridge&&window.IAPBridge.price(PID33[k]);if(p)return p}catch(e){}return PROD33[k].price}
 /* ---- aylık premium altını ---- */
@@ -9757,13 +9759,11 @@ window.IAPGrant=function(k){if(k==='premium'){if(!isPrem33())grant33('premium',t
  if(k==='terfi'&&terfiWhy33()){goldAdd33(800);toast('Terfi Emri şu an kullanılamadığı için karşılığı olan 800 altın hesabına eklendi.');render();return}
  grant33(k)};
 
-/* Yeni isim (Büyük Yemin: Senin Hikâyen) onaydan sonraki küçük güncellemeyle açılacak:
-/ * ---- yeni isim: Büyük Yemin: Senin Hikâyen ---- * /
+/* ---- yeni isim: Büyük Yemin: Senin Hikâyen (1.1 güncellemesi) ---- */
 Object.assign(GAMET,{tr:'Büyük Yemin: Senin Hikâyen',en:'Grand Oath: Your Story',ja:'大いなる誓い：あなたの物語',es:'El Gran Juramento: Tu historia',fr:'Le Grand Serment : Ton histoire',de:'Der Große Eid: Deine Geschichte'});
 try{setTitle()}catch(e){}
 {const _vt=vTitleX;vTitleX=function(){return _vt().replace(/(<div class="stencilbar"><span><\/span>)Erden mareşale(<span><\/span>)/,'$1Senin hikâyen$2')}}
 I18N['Senin hikâyen']=['Senin hikâyen','Your story','あなたの物語','Tu historia','Ton histoire','Deine Geschichte'];
-*/
 `Premium, Hikâye Paketi, altın ve Terfi Emri|Premium, Story Pack, gold and Promotion Order|プレミアム、ストーリーパック、ゴールド、昇進命令|Premium, paquete de historias, oro y orden de ascenso|Premium, pack d'histoires, or et ordre de promotion|Premium, Story-Paket, Gold und Beförderungsbefehl
 Altın paketleri ve Terfi Emri|Gold packs and Promotion Order|ゴールドパックと昇進命令|Paquetes de oro y orden de ascenso|Packs d'or et ordre de promotion|Goldpakete und Beförderungsbefehl
 Mağaza · Premium aktif|Store · Premium active|ストア・プレミアム有効|Tienda · Premium activo|Boutique · Premium actif|Shop · Premium aktiv
@@ -9784,6 +9784,12 @@ Rütbeleri beklemek istemiyor musun?|Don't want to wait for ranks?|昇進を待�
 Altın bakiyen|Gold balance|ゴールド残高|Saldo de oro|Solde d'or|Goldguthaben
 Altın al|Buy gold|ゴールドを購入|Comprar oro|Acheter de l'or|Gold kaufen
 altın|gold|ゴールド|oro|or|Gold`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
+
+/* v35 · Firebase Analytics olayları (uygulamada window.FBLog, fb.js). Tarayıcıda sessizce geçer. */
+function fl35(ev,v){try{window.FBLog&&window.FBLog(ev,v==null?'':String(v))}catch(e){}}
+{const _ts=taleStart32;taleStart32=function(id,fresh){if(fresh)fl35('story_start',id);return _ts.apply(this,arguments)}}
+{const _ng=newGame;newGame=function(){const r=_ng.apply(this,arguments);try{fl35('career_start',(S&&S.rank!=null)?S.rank:'')}catch(e){}return r}}
+{const _ed=endDay;endDay=function(){const d0=S&&S.day;const r=_ed.apply(this,arguments);try{if(S&&S.day!==d0&&S.day%10===0)fl35('career_day',S.day)}catch(e){}return r}}
 
 /* ============ OLAY BAĞLAMA ============ */
 const A={

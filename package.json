@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "@capacitor-community/admob": "8.3.0",
+    "@capacitor-firebase/analytics": "8.6.0",
+    "@capacitor-firebase/crashlytics": "8.6.0",
     "@capacitor/android": "8.6.0",
     "@capacitor/core": "8.6.0",
     "@capacitor/ios": "8.6.0",
-    "cordova-plugin-purchase": "^13.20.0"
+    "@revenuecat/purchases-capacitor": "14.1.1",
+    "firebase": "12.19.0"
   },
   "devDependencies": {
     "@capacitor/assets": "4.0.0",

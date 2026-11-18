@@ -15,7 +15,7 @@ function goldAdd33(n){GOLD33=Math.max(0,GOLD33+n);goldSave33()}
 const fmtG33=n=>Number(n).toLocaleString('tr-TR');
 /* ---- basit satın alma istatistikleri (cihazda) ---- */
 function an33(ev,id){try{const a=JSON.parse(localStorage.getItem('by_an')||'{}');const k=ev+(id?':'+id:'');a[k]=(a[k]||0)+1;localStorage.setItem('by_an',JSON.stringify(a))}catch(e){}
- try{window.IAPBridge&&window.IAPBridge.log&&window.IAPBridge.log(ev,id||'')}catch(e){}}
+ try{fl35(ev,id||'')}catch(e){}}
 /* ---- fiyat: mağazanın yerel fiyatı varsa o, yoksa varsayılan ---- */
 function price33(k){try{const p=window.IAPBridge&&window.IAPBridge.price(PID33[k]);if(p)return p}catch(e){}return PROD33[k].price}
 /* ---- aylık premium altını ---- */
@@ -173,13 +173,11 @@ window.IAPGrant=function(k){if(k==='premium'){if(!isPrem33())grant33('premium',t
  if(k==='terfi'&&terfiWhy33()){goldAdd33(800);toast('Terfi Emri şu an kullanılamadığı için karşılığı olan 800 altın hesabına eklendi.');render();return}
  grant33(k)};
 
-/* Yeni isim (Büyük Yemin: Senin Hikâyen) onaydan sonraki küçük güncellemeyle açılacak:
-/ * ---- yeni isim: Büyük Yemin: Senin Hikâyen ---- * /
+/* ---- yeni isim: Büyük Yemin: Senin Hikâyen (1.1 güncellemesi) ---- */
 Object.assign(GAMET,{tr:'Büyük Yemin: Senin Hikâyen',en:'Grand Oath: Your Story',ja:'大いなる誓い：あなたの物語',es:'El Gran Juramento: Tu historia',fr:'Le Grand Serment : Ton histoire',de:'Der Große Eid: Deine Geschichte'});
 try{setTitle()}catch(e){}
 {const _vt=vTitleX;vTitleX=function(){return _vt().replace(/(<div class="stencilbar"><span><\/span>)Erden mareşale(<span><\/span>)/,'$1Senin hikâyen$2')}}
 I18N['Senin hikâyen']=['Senin hikâyen','Your story','あなたの物語','Tu historia','Ton histoire','Deine Geschichte'];
-*/
 `Premium, Hikâye Paketi, altın ve Terfi Emri|Premium, Story Pack, gold and Promotion Order|プレミアム、ストーリーパック、ゴールド、昇進命令|Premium, paquete de historias, oro y orden de ascenso|Premium, pack d'histoires, or et ordre de promotion|Premium, Story-Paket, Gold und Beförderungsbefehl
 Altın paketleri ve Terfi Emri|Gold packs and Promotion Order|ゴールドパックと昇進命令|Paquetes de oro y orden de ascenso|Packs d'or et ordre de promotion|Goldpakete und Beförderungsbefehl
 Mağaza · Premium aktif|Store · Premium active|ストア・プレミアム有効|Tienda · Premium activo|Boutique · Premium actif|Shop · Premium aktiv

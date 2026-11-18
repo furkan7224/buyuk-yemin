@@ -90,7 +90,7 @@ function vTaleLock32(t,chap,ci){return `<div class="tlock32"><div class="ti-art"
  <button class="btn block" data-a="buy" data-v="story">Hikâye Paketi · ${P32('story')}</button><button class="btn ghost block" data-a="buy" data-v="premium">Premium · ${P32('premium')} (paket dahil)</button>
  <button class="btn ghost block" data-a="tales">Hikâyelere dön</button></div>`}
 function taleEndBlock32(t,k,body,art){const P=tp32(t.id);const E=talEnds32(t).find(e=>e.k===k)||{k,ti:k};const first=!P.done.includes(E.k);
- if(first){P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
+ if(first){try{fl35('story_end',T32.id+':'+E.k)}catch(e){}P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
  const ends=talEnds32(t);
  return `<div class="tend32 ${E.tone||''}"><span class="lbl">Son · ${P.done.length}/${ends.length}</span><h2 class="stencil">${esc(E.ti)}</h2>${first?'<span class="chip" style="color:var(--acc)">Yeni son açıldı</span>':''}</div>
  ${art?`<div class="tart32">${art}</div>`:''}<div class="tbody32">${fmt32(body)}</div>
@@ -98,7 +98,7 @@ function taleEndBlock32(t,k,body,art){const P=tp32(t.id);const E=talEnds32(t).fi
  <div class="card"><span class="lbl">Bulduğun sonlar</span><div class="ti-end"><div>${ends.map(e=>P.done.includes(e.k)?`<span class="ok">${esc(e.ti)}</span>`:'<span>???</span>').join('')}</div></div></div>
  <button class="btn block" data-a="talenew">Tekrar oyna, başka bir son bul</button><button class="btn ghost block" data-a="tales">Hikâyelere dön</button>`}
 function vTaleEnd32(t,sc,R,body){const P=tp32(t.id);const E=sc.end;const first=!P.done.includes(E.k);
- if(first){P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
+ if(first){try{fl35('story_end',T32.id+':'+E.k)}catch(e){}P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}
  const ends=Object.values(t.scenes).filter(s=>s.end);
  return `<div class="top gut"><button class="mini" data-a="tales">‹ Hikâyeler</button><div class="who"><b>${esc(t.ti)}</b><span>Son</span></div></div>
  <div class="scr plain gut tale32" id="tscr"><div class="tend32 ${E.tone||''}"><span class="lbl">Son · ${P.done.length}/${ends.length}</span><h2 class="stencil">${esc(E.ti)}</h2>${first?'<span class="chip" style="color:var(--acc)">Yeni son açıldı</span>':''}</div>
