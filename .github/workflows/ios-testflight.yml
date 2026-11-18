@@ -66,6 +66,8 @@ jobs:
         env:
           APP_STORE_KEY_PATH: ${{ runner.temp }}/keys/AuthKey_${{ secrets.APP_STORE_KEY_ID }}.p8
           BUILD_NUMBER: ${{ github.run_number }}
+          FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "180"
+          FASTLANE_XCODEBUILD_SETTINGS_RETRIES: "6"
         run: bash scripts/ios-release.sh
 
       - name: Anahtarı temizle
