@@ -1,3 +1,4 @@
+const P32=k=>{try{if(typeof price33==='function')return price33(k)}catch(e){}return({story:'₺99,99',premium:'₺299,99'})[k]};
 /* =====================================================================
    v32 · HİKÂYE MODU MOTORU
    Hikâyeler TALES dizisine registerTale() ile eklenir.
@@ -86,7 +87,7 @@ function vTale32(){const t=tale32(T32.id);if(!t){UI.scr='tales';return vTales32(
 function vTaleLock32(t,chap,ci){return `<div class="tlock32"><div class="ti-art">${taleArt32(t.cover,t)}</div><span class="lbl">Bölüm ${ci+1} · ${esc(chap.ti)}</span><h2 class="stencil">Hikâye devam ediyor…</h2>
  <p>Ücretsiz bölümü bitirdin. <b>${esc(t.ti)}</b> hikâyesinin devamı ve diğer tüm hikâyeler <b>Hikâye Paketi</b>'nde. Kaldığın yer kaydedildi; paketi alınca buradan devam edersin.</p>
  <div class="fx">${TALES.map(x=>`<span>${esc(x.ti)}</span>`).join('')}</div>
- <button class="btn block" data-a="buy" data-v="story">Hikâye Paketi · 149 TL</button><button class="btn ghost block" data-a="buy" data-v="premium">Premium · 399 TL (paket dahil)</button>
+ <button class="btn block" data-a="buy" data-v="story">Hikâye Paketi · ${P32('story')}</button><button class="btn ghost block" data-a="buy" data-v="premium">Premium · ${P32('premium')} (paket dahil)</button>
  <button class="btn ghost block" data-a="tales">Hikâyelere dön</button></div>`}
 function taleEndBlock32(t,k,body,art){const P=tp32(t.id);const E=talEnds32(t).find(e=>e.k===k)||{k,ti:k};const first=!P.done.includes(E.k);
  if(first){P.done.push(E.k);if(E.medal){TP32._medals=TP32._medals||[];if(!TP32._medals.includes(E.medal))TP32._medals.push(E.medal)}tpSave32()}

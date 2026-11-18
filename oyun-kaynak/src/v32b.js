@@ -14,8 +14,8 @@ function poster32(t,soon,big){const P=soon?null:tp32(t.id);const ends=soon?0:tal
 function packBanner32(){if(hasStory32())return '';const all=allPosters32();
  return `<div class="tpack"><div class="tpk-shine"></div><div class="tpk-h"><span class="tpk-k">Hikâye Paketi</span><b class="stencil">${all.length} hikâye · tek paket</b><small>Her hikâyenin tamamı, tüm sonlar ve kariyer madalyaları</small></div>
  <div class="tpk-mini">${all.map(({t,soon})=>`<div style="--tc:${t.color}">${sl32(soon?soonArt32(t.color):taleArt32(t.cover,t))}<span>${esc(t.ti)}</span></div>`).join('')}</div>
- <div class="tpk-buy"><div><span class="tpk-p">149 TL</span><small>tek seferlik</small></div><button class="btn tpk-btn" data-a="buy" data-v="story">Paketi aç</button></div>
- <button class="tpk-prem" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · 399 TL <em>paket dahil, reklamsız ve tüm özellikler ›</em></button></div>`}
+ <div class="tpk-buy"><div><span class="tpk-p">${P32('story')}</span><small>tek seferlik</small></div><button class="btn tpk-btn" data-a="buy" data-v="story">Paketi aç</button></div>
+ <button class="tpk-prem" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · ${P32('premium')} <em>paket dahil, reklamsız ve tüm özellikler ›</em></button></div>`}
 function vTales32(){const runs=TALES.filter(t=>tp32(t.id).run&&!(t.custom?tp32(t.id).run.end:false));
  return `<div class="top gut"><button class="mini" data-a="back">‹ Geri</button><div class="who"><b>Hikâye modu</b><span>Kararların sonu belirler</span></div></div>
  <div class="scr plain gut" id="scr">
@@ -36,7 +36,7 @@ function vTaleLock32(t,chap,ci){const all=allPosters32();
  <div class="tpw-card"><div class="tpk-shine"></div><span class="tpk-k">Hikâye Paketi</span>
   <div class="tpw-grid">${all.map(({t:x,soon})=>`<div style="--tc:${x.color}">${sl32(soon?soonArt32(x.color):taleArt32(x.cover,x))}<span>${esc(x.ti)}</span></div>`).join('')}</div>
   <ul class="tpw-ul"><li>${all.length} hikâyenin tamamı</li><li>Her hikâyede farklı sonlar</li><li>Kariyer modunda özel madalyalar</li></ul>
-  <div class="tpw-price"><span class="tpk-p">149 TL</span><small>tek seferlik ödeme</small></div>
+  <div class="tpw-price"><span class="tpk-p">${P32('story')}</span><small>tek seferlik ödeme</small></div>
   <button class="btn block tpk-btn big" data-a="buy" data-v="story">Paketi aç ve devam et</button></div>
- <button class="tpk-prem big" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · 399 TL <em>Hikâye Paketi + reklamsız oyun + 2 kat tecrübe + istediğin rütbeden başla ›</em></button>
+ <button class="tpk-prem big" data-a="buy" data-v="premium"><span class="tpk-best">En iyi değer</span>Premium · ${P32('premium')} <em>Hikâye Paketi + reklamsız oyun + 2 kat tecrübe + istediğin rütbeden başla ›</em></button>
  <button class="ti2-link" data-a="tales">Daha sonra</button></div></div>`}

@@ -5,8 +5,8 @@
    ===================================================================== */
 const PID33={premium:'com.gulergamestudios.buyukyemin.premium',story:'com.gulergamestudios.buyukyemin.hikaye',
  goldL:'com.gulergamestudios.buyukyemin.altin_buyuk',goldS:'com.gulergamestudios.buyukyemin.altin_kucuk',terfi:'com.gulergamestudios.buyukyemin.terfi'};
-const PROD33={premium:{ti:'Premium',price:'399 TL',type:'non'},story:{ti:'Hikâye Paketi',price:'149 TL',type:'non'},
- goldL:{ti:'2.200 altın',price:'149 TL',type:'con',gold:2200},goldS:{ti:'800 altın',price:'79 TL',type:'con',gold:800},terfi:{ti:'Terfi Emri',price:'79 TL',type:'con'}};
+const PROD33={premium:{ti:'Premium',price:'₺299,99',type:'non'},story:{ti:'Hikâye Paketi',price:'₺99,99',type:'non'},
+ goldL:{ti:'2.200 altın',price:'₺99,99',type:'con',gold:2200},goldS:{ti:'800 altın',price:'₺49,99',type:'con',gold:800},terfi:{ti:'Terfi Emri',price:'₺49,99',type:'con'}};
 const isPrem33=()=>!!ENT32.premium;
 /* ---- altın cüzdanı (hesap düzeyinde; kariyerden bağımsız) ---- */
 let GOLD33=0;try{GOLD33=+(localStorage.getItem('by_gold')||0)||0}catch(e){}

@@ -18,11 +18,11 @@ Oyun kodu hazırdır (ana kol `main`). Apple'a şu an gönderilecek sade sürüm
 
 | Kimlik (Product ID) | Tür | Fiyat | TR adı | EN adı |
 |---|---|---|---|---|
-| com.gulergamestudios.buyukyemin.premium | Tüketilmeyen (Non-consumable) | 399 TL | Premium | Premium |
-| com.gulergamestudios.buyukyemin.hikaye | Tüketilmeyen (Non-consumable) | 149 TL | Hikâye Paketi | Story Pack |
-| com.gulergamestudios.buyukyemin.altin_buyuk | Tüketilen (Consumable) | 149 TL | 2.200 Altın | 2,200 Gold |
-| com.gulergamestudios.buyukyemin.altin_kucuk | Tüketilen (Consumable) | 79 TL | 800 Altın | 800 Gold |
-| com.gulergamestudios.buyukyemin.terfi | Tüketilen (Consumable) | 79 TL | Terfi Emri | Promotion Order |
+| com.gulergamestudios.buyukyemin.premium | Tüketilmeyen (Non-consumable) | ₺299,99 | Premium | Premium |
+| com.gulergamestudios.buyukyemin.hikaye | Tüketilmeyen (Non-consumable) | ₺99,99 | Hikâye Paketi | Story Pack |
+| com.gulergamestudios.buyukyemin.altin_buyuk | Tüketilen (Consumable) | ₺99,99 | 2.200 Altın | 2,200 Gold |
+| com.gulergamestudios.buyukyemin.altin_kucuk | Tüketilen (Consumable) | ₺49,99 | 800 Altın | 800 Gold |
+| com.gulergamestudios.buyukyemin.terfi | Tüketilen (Consumable) | ₺49,99 | Terfi Emri | Promotion Order |
 
 Diğer ülkelerin fiyatı: mağazanın TL fiyatına göre otomatik eşdeğer fiyatı.
 
