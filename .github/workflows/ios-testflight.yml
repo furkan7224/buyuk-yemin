@@ -10,10 +10,16 @@ on:
         default: "test"
         type: choice
         options: [test, gercek]
+      mac:
+        description: "Mac türü (GitHub yoğunsa macos-15-intel dene)"
+        required: false
+        default: "macos-26"
+        type: choice
+        options: [macos-26, macos-15, macos-15-intel]
 
 jobs:
   ios:
-    runs-on: macos-26
+    runs-on: ${{ inputs.mac || 'macos-26' }}
     timeout-minutes: 60
     env:
       APP_STORE_KEY_ID: ${{ secrets.APP_STORE_KEY_ID }}
