@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074292455218",
+    "project_id": "buyuk-yemin",
+    "storage_bucket": "buyuk-yemin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074292455218:android:3585a1c26d5cb1cc82092b",
+        "android_client_info": {
+          "package_name": "com.gulergamestudios.buyukyemin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSZCo7jw8gHo2ky_NyEbGSFqfZzypYJp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
