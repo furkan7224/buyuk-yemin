@@ -1108,3 +1108,12 @@ button:focus-visible{outline:2px solid color-mix(in srgb,var(--acc) 80%,#fff);ou
 .card.gbal33{display:flex!important;flex-direction:row!important;align-items:center;text-align:left}
 .card.gbal33 .lbl{display:block}
 .card.prem33{text-align:left}
+
+/* v36 hızlı öğün */
+.qm36 .qm36-b{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 10px}
+.qm36 .qm36-b .btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px;text-align:left;min-height:64px}
+.qm36 .qm36-b .btn b{font:700 16px var(--font-c)}.qm36 .qm36-b .btn small{font-size:12px;opacity:.8;font-weight:500;letter-spacing:0;text-transform:none}
+.qm36 .qm36-a{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.qm36 .qm36-a .seg{flex:1;min-width:210px}
+.qm36-d{margin:4px 0 8px}.qm36-d>summary{cursor:pointer;list-style:none;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:600 15px var(--font-c);letter-spacing:.04em;color:var(--fg2,#cfc8b4)}
+.qm36-d>summary::after{content:' ▾';opacity:.7}.qm36-d[open]>summary::after{content:' ▴'}
+.st33-sub{margin:-4px 0 8px}

@@ -47,7 +47,8 @@
 
   window.AdBridge = {
     showRewarded: async function(){
-      if (!ready.rewarded) { await loadRewarded(); if (!ready.rewarded) return false; }
+      window.__adNoFill = false;
+      if (!ready.rewarded) { await loadRewarded(); if (!ready.rewarded) { window.__adNoFill = true; return false; } }
       var got = false;
       var rh = await AdMob.addListener('onRewardedVideoAdReward', function(){ got = true; });
       try {

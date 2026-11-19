@@ -153,7 +153,7 @@ var A33={
  slot33(v){v=+v;if(!isPrem33())return;SLOT33=v;try{localStorage.setItem('by_slot',String(v))}catch(e){}S=null;UI.scr='title';Q.length=0;nextModal();toast('Yuva '+(v+1)+' seçildi.')},
  sr33(v){UI.d.sr=+v<0?null:+v;render()},
  reset2(){try{localStorage.removeItem(slotKey33(curSlot33()))}catch(e){}S=null;UI.confirmReset=false;UI.scr='title';render()}};
-setTimeout(monthly33,1500);
+setTimeout(()=>monthly33(),1500);
 
 `Mağaza|Store|ストア|Tienda|Boutique|Shop
 Mağaza ve Premium|Store and Premium|ストアとプレミアム|Tienda y Premium|Boutique et Premium|Shop und Premium
