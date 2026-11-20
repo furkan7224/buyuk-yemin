@@ -5294,4 +5294,62 @@ Yeni dönem:|New era:|新時代：|Nueva era:|Nouvelle ère :|Neue Ära:
 Harekât yeteneği: {}|Operation ability: $1|作戦能力：$1|Capacidad de operación: $1|Capacité d'opération : $1|Einsatzfähigkeit: $1
 Yeni kuşak: {}|New belt: $1|新しい帯：$1|Nuevo cinturón: $1|Nouvelle ceinture : $1|Neuer Gürtel: $1
 Yeni teknik: {}|New technique: $1|新しい技：$1|Nueva técnica: $1|Nouvelle technique : $1|Neue Technik: $1
+Bu ürünler kariyerinde kullanılır. Önce bir kariyere başla ya da devam et.|These items are used in your career. Start or continue a career first.|これらのアイテムはキャリアで使用される。まずキャリアを開始するか続行しよう。|Estos artículos se usan en tu carrera. Primero empieza o continúa una carrera.|Ces objets s'utilisent dans ta carrière. Commence ou poursuis d'abord une carrière.|Diese Artikel werden in deiner Karriere genutzt. Starte oder setze zuerst eine Karriere fort.
+Kariyerine başlayınca hesabına geçecek.|It will be credited when you start your career.|キャリア開始時に口座に反映される。|Se abonará en tu cuenta cuando empieces tu carrera.|Ce sera crédité au début de ta carrière.|Es wird gutgeschrieben, sobald du deine Karriere beginnst.
+Premium: bu ayın {} oyun parası hesabına eklendi.|Premium: this month's $1 in game money has been added to your account.|プレミアム：今月のゲーム内通貨$1が追加された。|Premium: se han añadido a tu cuenta los $1 de dinero del juego de este mes.|Premium : les $1 de monnaie du jeu de ce mois ont été ajoutés à ton compte.|Premium: Das Spielgeld dieses Monats ($1) wurde deinem Konto gutgeschrieben.
+Terfi Emri şu an kullanılamadığı için karşılığı olan {} oyun parası eklendi.|Since the Promotion Order can't be used right now, its equivalent of $1 in game money has been added.|昇進命令は現在使用できないため、相当するゲーム内通貨$1を追加した。|Como la Orden de Ascenso no puede usarse ahora, se han añadido $1 equivalentes en dinero del juego.|L'Ordre de promotion étant inutilisable pour le moment, son équivalent de $1 en monnaie du jeu a été ajouté.|Da der Beförderungsbefehl gerade nicht nutzbar ist, wurden dir die entsprechenden $1 Spielgeld gutgeschrieben.
+{} oyun parası eklendi.|$1 in game money added.|ゲーム内通貨$1を追加した。|Se han añadido $1 de dinero del juego.|$1 de monnaie du jeu ajoutés.|$1 Spielgeld hinzugefügt.
+{} oyun parası hediye|$1 in game money as a gift|ゲーム内通貨$1をプレゼント|$1 de dinero del juego de regalo|$1 de monnaie du jeu offerts|$1 Spielgeld geschenkt
+Her ay {} oyun parası hediye|$1 in game money as a gift every month|毎月ゲーム内通貨$1をプレゼント|$1 de dinero del juego de regalo cada mes|$1 de monnaie du jeu offerts chaque mois|Jeden Monat $1 Spielgeld geschenkt
+{} oyun parası hesabına eklendi.|$1 in game money has been added to your account.|ゲーム内通貨$1が追加された。|Se han añadido $1 de dinero del juego a tu cuenta.|$1 de monnaie du jeu ont été ajoutés à ton compte.|$1 Spielgeld wurden deinem Konto gutgeschrieben.
+{} oyun parası hesabına geçti.|$1 in game money has been credited to your account.|ゲーム内通貨$1が口座に反映された。|Se han abonado $1 de dinero del juego en tu cuenta.|$1 de monnaie du jeu ont été crédités sur ton compte.|$1 Spielgeld wurden deinem Konto gutgeschrieben.
+Şu an gösterilecek reklam yok. Biraz sonra tekrar dene.|There's no ad to show right now. Try again in a moment.|現在表示できる広告がない。しばらくしてから再試行してください。|No hay anuncios disponibles ahora. Inténtalo de nuevo en un momento.|Aucune publicité disponible pour le moment. Réessaie dans un instant.|Gerade ist keine Werbung verfügbar. Versuche es gleich noch einmal.
+Bulduğun sonlar · {}|Endings found · $1|発見したエンディング・$1|Finales encontrados · $1|Fins découvertes · $1|Gefundene Enden · $1
+Bulduğun sonlar|Endings found|発見したエンディング|Finales encontrados|Fins découvertes|Gefundene Enden
+Elle yazılmış, kararlarınla şekillenen hikâyeler. Her hikâyenin birden fazla sonu var.|Handwritten stories shaped by your decisions. Every story has more than one ending.|手書きの物語が君の選択で形を変える。どの物語にも複数のエンディングがある。|Historias escritas a mano que se moldean con tus decisiones. Cada historia tiene más de un final.|Des histoires écrites à la main, façonnées par tes décisions. Chaque histoire a plusieurs fins.|Handgeschriebene Geschichten, die deine Entscheidungen formen. Jede Geschichte hat mehr als ein Ende.
+Esir ve diğer hikâyeler|The Captive and other stories|『捕虜』ほか全ストーリー|El cautivo y otras historias|Le Captif et autres histoires|Der Gefangene und weitere Geschichten
+Her hikâyenin 1. bölümü ücretsiz|Chapter 1 of every story is free|各ストーリーの第1章は無料|El capítulo 1 de cada historia es gratis|Le chapitre 1 de chaque histoire est gratuit|Kapitel 1 jeder Geschichte ist kostenlos
+Hikâye Paketi açık|Story Pack unlocked|ストーリーパック解放済み|Pack de historias desbloqueado|Pack Histoires débloqué|Story-Paket freigeschaltet
+Hikâye modu|Story mode|ストーリーモード|Modo historia|Mode histoire|Story-Modus
+Hikâye devam ediyor…|The story continues…|物語は続く…|La historia continúa…|L'histoire continue…|Die Geschichte geht weiter …
+Mağaza bir sonraki güncellemeyle açılacak.|The store will open with the next update.|ストアは次回のアップデートで開く。|La tienda abrirá con la próxima actualización.|La boutique ouvrira avec la prochaine mise à jour.|Der Shop öffnet mit dem nächsten Update.
+Yeni hikâyeler hazırlanıyor.|New stories are in the works.|新しい物語を準備中。|Se están preparando nuevas historias.|De nouvelles histoires sont en préparation.|Neue Geschichten sind in Arbeit.
+Ücretsiz bölümü bitirdin.|You've finished the free chapter.|無料の章を読み終えた。|Has terminado el capítulo gratuito.|Tu as terminé le chapitre gratuit.|Du hast das kostenlose Kapitel beendet.
+hikâyesinin devamı ve diğer tüm hikâyeler|— the rest of this story and all the other stories are in the|の続きとその他すべての物語は|: la continuación de esta historia y todas las demás están en el|: la suite de cette histoire et toutes les autres sont dans le|– die Fortsetzung dieser Geschichte und alle anderen Geschichten gibt es im
+'nde. Kaldığın yer kaydedildi; paketi alınca buradan devam edersin.|. Your place has been saved; once you get the pack, you'll continue from here.|に収録。進行は保存済み。パック購入後はここから続けられる。|. Tu progreso está guardado; al comprar el pack seguirás desde aquí.|. Ta progression est sauvegardée ; avec le pack, tu reprendras ici.|. Dein Fortschritt ist gespeichert; mit dem Paket machst du hier weiter.
+# bölüm|$1 chapters|全$1章|$1 capítulos|$1 chapitres|$1 Kapitel
+Bölüm # · {}|Chapter $1 · $2|第$1章・$2|Capítulo $1 · $2|Chapitre $1 · $2|Kapitel $1 · $2
+Ücretsiz|Free|無料|Gratis|Gratuit|Kostenlos
+Paket|Pack|パック|Pack|Pack|Paket
+Bir mesaj bile bağları korur.|Even a single message keeps bonds alive.|メッセージ一つでも絆は保たれる。|Incluso un mensaje mantiene los lazos.|Même un message entretient les liens.|Schon eine Nachricht hält Bindungen am Leben.
+Güne enerjiyle başla.|Start the day with energy.|元気に一日を始めよう。|Empieza el día con energía.|Commence la journée avec énergie.|Starte energiegeladen in den Tag.
+Günlük görev|Daily mission|日課任務|Misión diaria|Mission du jour|Tagesauftrag
+Yarın göreve dönüş.|Back to duty tomorrow.|明日は任務に復帰。|Mañana vuelves al servicio.|Retour au service demain.|Morgen geht es zurück in den Dienst.
+Şehre çık|Go into town|街へ出る|Sal a la ciudad|Sors en ville|In die Stadt gehen
+⚠ İCRA AKSADI|⚠ EXECUTION FALTERED|⚠ 遂行に支障|⚠ LA EJECUCIÓN FALLÓ|⚠ EXÉCUTION DÉFAILLANTE|⚠ AUSFÜHRUNG GESTOCKT
+✓ EMİR İCRA EDİLDİ|✓ ORDER CARRIED OUT|✓ 命令遂行|✓ ORDEN EJECUTADA|✓ ORDRE EXÉCUTÉ|✓ BEFEHL AUSGEFÜHRT
+✕ AĞIR DARBE|✕ HEAVY BLOW|✕ 大打撃|✕ GOLPE DURO|✕ COUP DUR|✕ SCHWERER SCHLAG
+Kriz Masası|Crisis Desk|危機管理室|Mesa de crisis|Cellule de crise|Krisenstab
+# hikâye · tek paket|$1 stories · one pack|$1話・1パック|$1 historias · un solo pack|$1 histoires · un seul pack|$1 Geschichten · ein Paket
+Her hikâyenin tamamı, tüm sonlar ve kariyer madalyaları|Every story in full, all endings and career medals|全ストーリー完全版、全エンディング、キャリア勲章|Todas las historias completas, todos los finales y medallas de carrera|Toutes les histoires en entier, toutes les fins et les médailles de carrière|Alle Geschichten komplett, alle Enden und Karriereorden
+Generaller salonu açıldı: yeni menüler|Generals' dining room opened: new menus|将官食堂が開放：新メニュー|Se abrió el comedor de generales: nuevos menús|Le mess des généraux est ouvert : nouveaux menus|Generalskasino eröffnet: neue Menüs
+Subay gazinosu açıldı: yeni menüler|Officers' mess opened: new menus|将校クラブが開放：新メニュー|Se abrió el casino de oficiales: nuevos menús|Le mess des officiers est ouvert : nouveaux menus|Offizierskasino eröffnet: neue Menüs
+Yemekhanede yeni menüler|New menus in the mess hall|食堂に新メニュー|Nuevos menús en el comedor|Nouveaux menus au réfectoire|Neue Menüs in der Kantine
+Alışveriş · {}|Shopping · $1|買い物・$1|Compras · $1|Achats · $1|Einkauf · $1
+Bunun için önce kendi evin ya da kiralık dairen olmalı.|You need your own house or a rented flat for this first.|そのためにはまず持ち家か賃貸住宅が必要だ。|Para esto primero necesitas una casa propia o un piso de alquiler.|Il te faut d'abord ta propre maison ou un appartement en location.|Dafür brauchst du zuerst ein eigenes Haus oder eine Mietwohnung.
+Paran yetmiyor. {} daha biriktirmelisin.|You can't afford it. You need to save $1 more.|お金が足りない。あと$1貯める必要がある。|No te llega el dinero. Necesitas ahorrar $1 más.|Tu n'as pas assez d'argent. Il te faut économiser encore $1.|Dein Geld reicht nicht. Du musst noch $1 sparen.
+İstediğin rütbeden başla, sıradaki terfine 2 kat hızlı ulaş.|Start at any rank you like and reach your next promotion twice as fast.|好きな階級から始め、次の昇進に2倍の速さで到達。|Empieza en el rango que quieras y alcanza tu próximo ascenso el doble de rápido.|Commence au grade de ton choix et atteins ta prochaine promotion deux fois plus vite.|Starte in jedem Rang und erreiche deine nächste Beförderung doppelt so schnell.
+İstediğin rütbeden başla, zirveye 2 kat hızlı ulaş.|Start at any rank you like and reach the top twice as fast.|好きな階級から始め、頂点に2倍の速さで到達。|Empieza en el rango que quieras y llega a la cima el doble de rápido.|Commence au grade de ton choix et atteins le sommet deux fois plus vite.|Starte in jedem Rang und erreiche die Spitze doppelt so schnell.
+Rütbeleri bekleme.|Don't wait for ranks.|階級を待つな。|No esperes a los rangos.|N'attends pas les grades.|Warte nicht auf Ränge.
+Tek seferlik ödeme|One-time payment|買い切り|Pago único|Paiement unique|Einmalzahlung
+2 kat tecrübe|Double experience|経験値2倍|Experiencia doble|Double expérience|Doppelte Erfahrung
+Her gün +2 eylem|+2 actions every day|毎日行動+2|+2 acciones cada día|+2 actions par jour|Täglich +2 Aktionen
+Reklamsız oyun|Ad-free play|広告なし|Juego sin anuncios|Jeu sans publicité|Werbefrei spielen
+Zaten bir kedin var.|You already have a cat.|すでに猫がいる。|Ya tienes un gato.|Tu as déjà un chat.|Du hast schon eine Katze.
+Zaten bir köpeğin var.|You already have a dog.|すでに犬がいる。|Ya tienes un perro.|Tu as déjà un chien.|Du hast schon einen Hund.
+Adını yaz, asker.|Write your name, soldier.|名前を書け、兵士。|Escribe tu nombre, soldado.|Écris ton nom, soldat.|Schreib deinen Namen, Soldat.
+Başlamak için bir dövüş sporu seç.|Choose a combat sport to begin.|開始するには格闘技を選べ。|Elige un deporte de combate para empezar.|Choisis un sport de combat pour commencer.|Wähle zum Start einen Kampfsport.
+Hikâyeni biraz daha anlat: en az 40 karakter.|Tell a little more of your story: at least 40 characters.|もう少し物語を書こう：40文字以上。|Cuenta un poco más de tu historia: al menos 40 caracteres.|Raconte un peu plus ton histoire : au moins 40 caractères.|Erzähl etwas mehr von deiner Geschichte: mindestens 40 Zeichen.
+Hikâyenin çekirdeğini seç.|Choose the core of your story.|物語の核を選べ。|Elige el núcleo de tu historia.|Choisis le cœur de ton histoire.|Wähle den Kern deiner Geschichte.
+Yön|Direction|方向|Dirección|Direction|Richtung
 `);
