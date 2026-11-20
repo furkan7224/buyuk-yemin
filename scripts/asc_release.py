@@ -118,25 +118,23 @@ def prepare():
             continue
         t = IAP_TEXT[pid]
         call('PATCH', f"/v2/inAppPurchases/{p['id']}", {'data': {'type': 'inAppPurchases', 'id': p['id'], 'attributes': {'name': t['ref'], 'reviewNote': IAP_NOTE}}})
-        ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations")['data']
-        log('Mevcut metinler', pid, [(x['attributes']['locale'], x['attributes'].get('state'), x['attributes'].get('name')) for x in ls])
+        def locs():
+            return call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
+        ls = locs()
+        if not any(x['attributes'].get('state') != 'APPROVED' for x in ls):
+            loc0 = 'en-US'; nm, ds = t[loc0]
+            call('POST', '/v1/inAppPurchaseLocalizations', {'data': {'type': 'inAppPurchaseLocalizations', 'attributes': {'locale': loc0, 'name': nm, 'description': ds},
+                  'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': p['id']}}}}}, ok=(200, 201, 409))
+            ls = locs()
         for l in ls:
             loc = l['attributes']['locale']
-            if loc in t:
-                nm, ds = t[loc]
-                if l['attributes'].get('name') == nm and l['attributes'].get('description') == ds:
-                    continue
-                if l['attributes'].get('state') in ('APPROVED', 'ACTIVE') or True:
-                    r = S.request('PATCH', BASE + f"/v1/inAppPurchaseLocalizations/{l['id']}", json={'data': {'type': 'inAppPurchaseLocalizations', 'id': l['id'], 'attributes': {'name': nm, 'description': ds}}},
-                                  headers={'Authorization': 'Bearer ' + token(), 'Content-Type': 'application/json'})
-                    if r.status_code == 409:
-                        if any(x['attributes']['locale'] == loc and x['id'] != l['id'] and x['attributes'].get('state') != 'APPROVED' for x in ls):
-                            continue
-                        call('POST', '/v1/inAppPurchaseLocalizations', {'data': {'type': 'inAppPurchaseLocalizations', 'attributes': {'locale': loc, 'name': nm, 'description': ds},
-                              'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': p['id']}}}}})
-                        log('Yeni metin taslağı:', pid, loc)
-                    elif r.status_code >= 300:
-                        print('HATA', r.status_code, r.text[:800]); raise SystemExit(1)
+            if loc not in t or l['attributes'].get('state') == 'APPROVED':
+                continue
+            nm, ds = t[loc]
+            if l['attributes'].get('name') == nm and l['attributes'].get('description') == ds:
+                continue
+            call('PATCH', f"/v1/inAppPurchaseLocalizations/{l['id']}", {'data': {'type': 'inAppPurchaseLocalizations', 'id': l['id'], 'attributes': {'name': nm, 'description': ds}}})
+        log('Metinler', pid, [(x['attributes']['locale'], x['attributes'].get('state'), x['attributes'].get('name')) for x in locs()])
         upload_shot(p['id'])
         log('Ürün güncellendi:', pid, '->', t['tr'][0], '| durum', p['attributes']['state'])
 
