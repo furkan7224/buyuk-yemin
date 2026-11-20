@@ -1,0 +1,34 @@
+name: App Store sürümü (API)
+on:
+  workflow_dispatch:
+    inputs:
+      islem:
+        description: "status / prepare / submit"
+        required: true
+        default: status
+        type: choice
+        options: [status, prepare, submit]
+      surum:
+        description: "Sürüm numarası"
+        required: true
+        default: "1.1.1"
+jobs:
+  asc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyjwt cryptography requests
+      - name: Anahtar
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          printf '%s' "${{ secrets.APP_STORE_KEY_P8 }}" > "$RUNNER_TEMP/keys/key.p8"
+      - name: Çalıştır
+        env:
+          APP_STORE_KEY_ID: ${{ secrets.APP_STORE_KEY_ID }}
+          APP_STORE_ISSUER_ID: ${{ secrets.APP_STORE_ISSUER_ID }}
+          APP_STORE_KEY_PATH: ${{ runner.temp }}/keys/key.p8
+          VERSION: ${{ inputs.surum }}
+        run: python scripts/asc_release.py ${{ inputs.islem }}
