@@ -1,14 +1,33 @@
-/* ===== v38 · Görünür dil seçici (1.1.1) ===== */
-const globe38=(s=17)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`;
-function langBtn38(cls){const cur=(LANGS.find(x=>x[0]===LANG)||LANGS[0]);return `<button class="lang38 ${cls||''} notr" data-a="langpick38" aria-label="Language">${globe38()}<b>${LANG.toUpperCase()}</b></button>`}
-function langPick38(){const el=document.getElementById('modal');
- pushModal({k:'Dil · Language',ti:'Dil seç',body:`<p class="small muted notr">Choose your language · 言語を選択 · Elige tu idioma · Choisis ta langue · Sprache wählen</p><div class="lp38 notr">${LANGS.map(([k,n])=>`<button class="lp38-b ${LANG===k?'on':''}" data-l="${k}">${n}${LANG===k?' ✓':''}</button>`).join('')}</div>`,
-  ch:[{t:'Kapat',fn:()=>{}}]});
- setTimeout(()=>{document.querySelectorAll('#modal .lp38-b').forEach(b=>b.onclick=()=>{const l=b.dataset.l;try{while(MO)nextModal()}catch(e){}setLang(l)})},0)}
-var A38={langpick38:langPick38};
-/* oyun üst çubuğu: müzik butonunun yanına */
-{const _vg=vGame;vGame=function(){return _vg().replace('<button class="mus31',langBtn38()+'<button class="mus31')}}
-/* ana ekran: sağ üst köşe */
-{const _vt=vTitleX;vTitleX=function(){return _vt().replace(/<div class="title[^"]*">/,m=>m+langBtn38('lang38t'))}}
-`Dil seç|Choose language|言語を選択|Elige idioma|Choisir la langue|Sprache wählen
-Kapat|Close|閉じる|Cerrar|Fermer|Schließen`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
+/* =====================================================================
+   v38 · Çeviri tamamlama: değişkenli kalıplar
+   Satır biçimi v26 ile aynı: tr|en|ja|es|fr|de
+   Türkçe sütunda {} = herhangi bir metin (isim, ülke, rütbe…), # = sayı.
+   Diğer sütunlarda yer tutucular sırayla $1, $2… olarak yazılır.
+   {} ile yakalanan metin de ayrıca çevrilmeye çalışılır (ör. "Bugün: {}").
+   Yer tutucusu olmayan satırlar doğrudan I18N sözlüğüne eklenir.
+   ===================================================================== */
+const I18T={};            /* ilk harfe göre kalıp kovaları */
+const I18T_ANY=[];        /* yer tutucuyla başlayan kalıplar */
+const I18C={};            /* dil başına önbellek */
+function i18Esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+function i18Add(src){src.trim().split('\n').forEach(l=>{if(!l.trim())return;const c=l.split('|');if(c.length!==6)return;
+ const k=c[0];if(!/\{\}|#/.test(k)){if(!I18N[k])I18N[k]=c;return}
+ const kinds=[];const re=new RegExp('^'+k.split(/(\{\}|#)/).map(p=>{if(p==='{}'){kinds.push('t');return '(.*?)'}if(p==='#'){kinds.push('n');return '([+\\-−]?\\d[\\d.,]*)'}return i18Esc(p)}).join('')+'$');
+ const e={re,kinds,L:c.slice(1),w:k.replace(/\{\}|#/g,'').length};const h=k[0];I18T_SORTED=false;
+ if(h==='{'||h==='#')I18T_ANY.push(e);else(I18T[h]=I18T[h]||[]).push(e)})}
+let I18T_SORTED=false,I18UP=null;
+/* daha çok sabit metin içeren kalıp önce denenir */
+function i18Sort(){const f=(a,b)=>b.w-a.w;for(const h in I18T)I18T[h].sort(f);I18T_ANY.sort(f);I18T_SORTED=true}
+/* BÜYÜK HARFLE yazılmış metinler: sözlükteki karşılığını bul, çeviriyi de büyük harfle ver */
+function i18Upper(c,li){if(!/[A-ZÇĞİÖŞÜ]/.test(c)||c!==c.toLocaleUpperCase('tr'))return null;
+ if(!I18UP){I18UP={};for(const k in I18N){const u=k.toLocaleUpperCase('tr');if(u!==k&&!I18UP[u])I18UP[u]=k}}
+ const k=I18UP[c];if(!k)return null;const t=tr1(k,li);return t==null?null:t.toLocaleUpperCase(['tr','en','ja','es','fr','de'][li])}
+function i18Tpl(c,li){if(!I18T_SORTED)i18Sort();const B=I18T[c[0]];const lists=B?[B,I18T_ANY]:[I18T_ANY];
+ for(const L of lists)for(const e of L){const m=c.match(e.re);if(!m)continue;
+  return e.L[li-1].replace(/\$(\d+)/g,(_,n)=>{let v=m[+n];if(v==null)return '';if(e.kinds[n-1]==='t'&&v){const sx=v.match(/^([^'’]+)['’][a-zçğıöşü]{1,5}$/);if(sx)v=sx[1];else v=v.replace(/ (bölgesi|sınır bölgesi)n(de|den|e|i|in)$/,' $1');const t=tr1(v.trim(),li);if(t!=null)return v.replace(v.trim(),t);if(v.includes(', ')){const ps=v.split(', ');const tp=ps.map(x=>{const y=tr1(x.trim(),li);return y==null?x:y});if(tp.some((y,i)=>y!==ps[i]))return tp.join(li===2?'、':', ')}}return v})}
+ return null}
+function i18Low(c,li){const f=c.charAt(0);if(!f||f===f.toLocaleUpperCase('tr')||f===f.toLocaleLowerCase('tr')&&f.toLocaleUpperCase('tr')===f)return null;const u=f.toLocaleUpperCase('tr')+c.slice(1);const r=tr1(u,li);if(r==null||r===u)return null;return li===2||li===5?r:r.charAt(0).toLowerCase()+r.slice(1)}
+{const _tr1=tr1;tr1=function(c,li){const C=I18C[li]||(I18C[li]=new Map());if(C.has(c))return C.get(c);
+ C.set(c,null);/* özyineleme koruması */
+ let r=null;const d=I18N[c];if(d)r=d[li];else{r=i18Tpl(c,li);if(r==null)r=_tr1(c,li);if(r==null)r=i18Upper(c,li);if(r==null)r=i18Low(c,li)}
+ if(C.size>20000)C.clear();C.set(c,r);return r}}

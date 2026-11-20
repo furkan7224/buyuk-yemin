@@ -24,7 +24,7 @@ function regionEvent2(r){const atk=(S.world.war===r.from)||rel(S.nation,r.from)<
  if(r.mem<45&&R()<.35)return regionEvent(r);
  const e=pick(pool);S.revSeen=[...S.revSeen,e.ti].slice(-10);
  const costTxt=k=>k&&k.startsWith('pop')?` · hazine ${money(r.pop*+k.slice(3))}`:'';
- pushModal({k:'Himaye bölgesi · '+n,ti:e.ti,body:`<p>${esc(e.b(n))}</p><div class="aar"><div><span>Güvenlik</span><b>${Math.round(r.guv)}</b></div><div><span>Memnuniyet</span><b>${Math.round(r.mem)}</b></div></div><p class="small muted">Ulusal hazine: ${money(S.treasury||0)}</p>`,ch:e.ch.map(([t,f,c])=>({t:t+costTxt(c),fn:()=>{f(r);log(n+': '+e.ti)}}))})}
+ pushModal({k:'Himaye bölgesi · '+n,ti:e.ti,body:`<p>${esc(e.b(n.replace(/ bölgesi$/,'')))}</p><div class="aar"><div><span>Güvenlik</span><b>${Math.round(r.guv)}</b></div><div><span>Memnuniyet</span><b>${Math.round(r.mem)}</b></div></div><p class="small muted">Ulusal hazine: ${money(S.treasury||0)}</p>`,ch:e.ch.map(([t,f,c])=>({t:t+costTxt(c),fn:()=>{f(r);log(n+': '+e.ti)}}))})}
 
 /* ---------- İlişkiyi bitirme ---------- */
 function breakStart(){const P=S.partner;if(!P)return;const n=P.name;const m=P.m;
