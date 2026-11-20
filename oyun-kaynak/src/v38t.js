@@ -6019,4 +6019,505 @@ Ginga|Ginga|ジンガ|Ginga|Ginga|Ginga
 Meia lua de frente|Meia lua de frente|メイア・ルア・ジ・フレンチ|Meia lua de frente|Meia lua de frente|Meia lua de frente
 Armada|Armada|アルマーダ|Armada|Armada|Armada
 Esquiva|Esquiva|エスキーヴァ|Esquiva|Esquiva|Esquiva
+hava kolordu|air corps|航空軍団|cuerpo aéreo|corps aérien|Luftkorps
+Pilot, hava savunma, radar.|Pilots, air defense, radar.|パイロット、防空、レーダー。|Pilotos, defensa aérea, radar.|Pilotes, défense aérienne, radar.|Piloten, Luftverteidigung, Radar.
+Deniz Piyadesi (Amfibi)|Marines (Amphibious)|海兵隊（水陸両用）|Infantería de Marina (anfibia)|Infanterie de marine (amphibie)|Marineinfanterie (amphibisch)
+VMF (Deniz Kuvvetleri)|VMF (Navy)|VMF（海軍）|VMF (Armada)|VMF (Marine)|WMF (Marine)
+Morskaya pekhota (Deniz Piyadesi)|Morskaya pekhota (Naval Infantry)|モルスカヤ・ペホータ（海軍歩兵）|Morskaya pekhota (Infantería naval)|Morskaïa pekhota (infanterie navale)|Morskaja pechota (Marineinfanterie)
+VKS (Hava-Uzay Kuvvetleri)|VKS (Aerospace Forces)|VKS（航空宇宙軍）|VKS (Fuerzas Aeroespaciales)|VKS (Forces aérospatiales)|WKS (Luft- und Weltraumstreitkräfte)
+PLA Kara Kuvvetleri|PLA Ground Force|人民解放軍陸軍|Fuerzas Terrestres del EPL|Forces terrestres de l'APL|PLA-Landstreitkräfte
+PLA Roket Kuvvetleri|PLA Rocket Force|人民解放軍ロケット軍|Fuerza de Cohetes del EPL|Force des fusées de l'APL|PLA-Raketenstreitkräfte
+PLA Deniz Kuvvetleri (Hǎijūn)|PLA Navy (Hǎijūn)|人民解放軍海軍（海軍）|Armada del EPL (Hǎijūn)|Marine de l'APL (Hǎijūn)|PLA-Marine (Hǎijūn)
+PLA Deniz Piyadesi|PLA Marine Corps|人民解放軍海軍陸戦隊|Infantería de Marina del EPL|Infanterie de marine de l'APL|PLA-Marineinfanterie
+PLA Hava Kuvvetleri (Kōngjūn)|PLA Air Force (Kōngjūn)|人民解放軍空軍（空軍）|Fuerza Aérea del EPL (Kōngjūn)|Armée de l'air de l'APL (Kōngjūn)|PLA-Luftstreitkräfte (Kōngjūn)
+Jiaolong Komando|Jiaolong Commando|蛟龍突撃隊|Comando Jiaolong|Commando Jiaolong|Jiaolong-Kommando
+Kaijō Jieitai (Deniz)|Kaijō Jieitai (Navy)|海上自衛隊|Kaijō Jieitai (Armada)|Kaijō Jieitai (Marine)|Kaijō Jieitai (Marine)
+Kōkū Jieitai (Hava)|Kōkū Jieitai (Air)|航空自衛隊|Kōkū Jieitai (Aire)|Kōkū Jieitai (Air)|Kōkū Jieitai (Luft)
+San Marco Deniz Piyadesi|San Marco Marines|サン・マルコ海兵隊|Infantería de Marina San Marco|Fusiliers marins San Marco|Marineinfanterie San Marco
+Tank Birlikleri|Tank Troops|戦車部隊|Tropas acorazadas|Troupes blindées|Panzertruppen
+Malazgirt Meydan Muharebesi|Battle of Manzikert|マラズギルトの戦い|Batalla de Manzikert|Bataille de Manzikert|Schlacht bei Manzikert
+Sakarya Meydan Muharebesi|Battle of Sakarya|サカリヤの戦い|Batalla de Sakarya|Bataille de la Sakarya|Schlacht am Sakarya
+Saratoga Muharebesi|Battle of Saratoga|サラトガの戦い|Batalla de Saratoga|Bataille de Saratoga|Schlacht von Saratoga
+Gettysburg Muharebesi|Battle of Gettysburg|ゲティスバーグの戦い|Batalla de Gettysburg|Bataille de Gettysburg|Schlacht von Gettysburg
+New Orleans Muharebesi|Battle of New Orleans|ニューオーリンズの戦い|Batalla de Nueva Orleans|Bataille de La Nouvelle-Orléans|Schlacht von New Orleans
+Moskova|Moscow|モスクワ|Moscú|Moscou|Moskau
+Kazan|Kazan|カザン|Kazán|Kazan|Kasan
+Borodino Muharebesi|Battle of Borodino|ボロジノの戦い|Batalla de Borodinó|Bataille de la Moskova|Schlacht von Borodino
+Kursk Muharebesi|Battle of Kursk|クルスクの戦い|Batalla de Kursk|Bataille de Koursk|Schlacht bei Kursk
+Pekin|Beijing|北京|Pekín|Pékin|Peking
+Huaihai Seferi|Huaihai Campaign|淮海戦役|Campaña de Huaihai|Campagne de Huaihai|Huaihai-Feldzug
+Liaoshen Seferi|Liaoshen Campaign|遼瀋戦役|Campaña de Liaoshen|Campagne de Liaoshen|Liaoshen-Feldzug
+Feishui Muharebesi|Battle of Fei River|淝水の戦い|Batalla del río Fei|Bataille de la rivière Fei|Schlacht am Fei-Fluss
+Lechfeld Muharebesi|Battle of Lechfeld|レヒフェルトの戦い|Batalla de Lechfeld|Bataille du Lechfeld|Schlacht auf dem Lechfeld
+Berlin Muharebesi|Battle of Berlin|ベルリンの戦い|Batalla de Berlín|Bataille de Berlin|Schlacht um Berlin
+Londra|London|ロンドン|Londres|Londres|London
+Hastings Muharebesi|Battle of Hastings|ヘイスティングズの戦い|Batalla de Hastings|Bataille d'Hastings|Schlacht bei Hastings
+Bosworth Muharebesi|Battle of Bosworth|ボズワースの戦い|Batalla de Bosworth|Bataille de Bosworth|Schlacht von Bosworth
+Culloden Muharebesi|Battle of Culloden|カロデンの戦い|Batalla de Culloden|Bataille de Culloden|Schlacht bei Culloden
+Bannockburn Muharebesi|Battle of Bannockburn|バノックバーンの戦い|Batalla de Bannockburn|Bataille de Bannockburn|Schlacht von Bannockburn
+Marne Muharebesi|Battle of the Marne|マルヌの戦い|Batalla del Marne|Bataille de la Marne|Schlacht an der Marne
+Verdun Muharebesi|Battle of Verdun|ヴェルダンの戦い|Batalla de Verdún|Bataille de Verdun|Schlacht um Verdun
+Valmy Muharebesi|Battle of Valmy|ヴァルミーの戦い|Batalla de Valmy|Bataille de Valmy|Kanonade von Valmy
+Devrim ordusu Prusya taarruzunu durdurdu.|The revolutionary army halted the Prussian offensive.|革命軍がプロイセンの攻勢を食い止めた。|El ejército revolucionario detuvo la ofensiva prusiana.|L'armée révolutionnaire arrêta l'offensive prussienne.|Die Revolutionsarmee stoppte die preußische Offensive.
+Sekigahara Muharebesi|Battle of Sekigahara|関ヶ原の戦い|Batalla de Sekigahara|Bataille de Sekigahara|Schlacht von Sekigahara
+Dan-no-ura Deniz Muharebesi|Naval Battle of Dan-no-ura|壇ノ浦の戦い|Batalla naval de Dan-no-ura|Bataille navale de Dan-no-ura|Seeschlacht von Dan-no-ura
+Okehazama Muharebesi|Battle of Okehazama|桶狭間の戦い|Batalla de Okehazama|Bataille d'Okehazama|Schlacht von Okehazama
+Lahor Cephesi|Lahore Front|ラホール戦線|Frente de Lahore|Front de Lahore|Lahore-Front
+Hidaspes (Ceylum) Muharebesi|Battle of the Hydaspes (Jhelum)|ヒュダスペス河畔の戦い|Batalla del Hidaspes (Jhelum)|Bataille de l'Hydaspe (Jhelum)|Schlacht am Hydaspes (Jhelum)
+Megiddo Muharebesi|Battle of Megiddo|メギドの戦い|Batalla de Megido|Bataille de Megiddo|Schlacht bei Megiddo
+Hattin Muharebesi|Battle of Hattin|ヒッティーンの戦い|Batalla de Hattin|Bataille de Hattin|Schlacht bei Hattin
+Napoli|Naples|ナポリ|Nápoles|Naples|Neapel
+Floransa|Florence|フィレンツェ|Florencia|Florence|Florenz
+Cannae Muharebesi|Battle of Cannae|カンナエの戦い|Batalla de Cannas|Bataille de Cannes|Schlacht bei Cannae
+Legnano Muharebesi|Battle of Legnano|レニャーノの戦い|Batalla de Legnano|Bataille de Legnano|Schlacht von Legnano
+Piave Muharebesi|Battle of the Piave|ピアーヴェ川の戦い|Batalla del Piave|Bataille du Piave|Piave-Schlacht
+Avusturya-Macaristan taarruzu Piave Nehri'nde durduruldu.|The Austro-Hungarian offensive was halted on the Piave River.|オーストリア＝ハンガリー軍の攻勢はピアーヴェ川で阻止された。|La ofensiva austrohúngara fue detenida en el río Piave.|L'offensive austro-hongroise fut stoppée sur le Piave.|Die österreichisch-ungarische Offensive wurde am Piave gestoppt.
+Humus|Homs|ホムス|Homs|Homs|Homs
+Mayseloun Muharebesi|Battle of Maysalun|マイサルーンの戦い|Batalla de Maysalun|Bataille de Khan Maysaloun|Schlacht von Maysalun
+Semerkant|Samarkand|サマルカンド|Samarcanda|Samarcande|Samarkand
+Buhara|Bukhara|ブハラ|Bujará|Boukhara|Buchara
+Hive|Khiva|ヒヴァ|Jiva|Khiva|Chiwa
+Hive Seferi|Khiva Campaign|ヒヴァ遠征|Campaña de Jiva|Campagne de Khiva|Chiwa-Feldzug
+Karate|Karate|空手|Kárate|Karaté|Karate
+Kendo|Kendo|剣道|Kendo|Kendo|Kendo
+Systema|Systema|システマ|Systema|Systema|Systema
+Sigara|Cigarettes|たばこ|Cigarrillos|Cigarettes|Zigaretten
+Koyu kahve|Dark brown|ダークブラウン|Castaño oscuro|Châtain foncé|Dunkelbraun
+Kahve|Brown|ブラウン|Castaño|Châtain|Braun
+Uzun|Long|ロング|Largo|Long|Lang
+Kirli sakal|Stubble|無精ひげ|Barba de tres días|Barbe de trois jours|Dreitagebart
+Tam sakal|Full beard|フルひげ|Barba completa|Barbe complète|Vollbart
+Konvoya pusu|Convoy ambush|車列への待ち伏せ|Emboscada al convoy|Embuscade contre le convoi|Hinterhalt auf den Konvoi
+Kaybolan devriye|Missing patrol|行方不明の巡回班|Patrulla desaparecida|Patrouille disparue|Vermisste Patrouille
+Sahaya uymayan emir|An order that doesn't fit the ground|現場に合わない命令|Una orden que no encaja con el terreno|Un ordre inadapté au terrain|Ein Befehl, der nicht zur Lage passt
+Su ikmali gecikti|Water resupply is late|給水が遅れている|El suministro de agua se retrasa|Le ravitaillement en eau est en retard|Die Wasserversorgung verspätet sich
+Hava kuvvetleri kendi halletsin|Let the air force handle it themselves|空軍に任せる|Que la fuerza aérea se encargue sola|Que l'armée de l'air s'en charge seule|Die Luftwaffe soll das selbst regeln
+Medya krizi|Media crisis|メディア危機|Crisis mediática|Crise médiatique|Medienkrise
+Yetersiz kurmay|Understaffed headquarters|幕僚不足|Estado Mayor insuficiente|État-major insuffisant|Unterbesetzter Stab
+Hemen angaje ol|Engage immediately|直ちに交戦する|Entra en combate de inmediato|Engage immédiatement|Sofort angreifen
+Batmakta olan bot|A sinking boat|沈みかけたボート|Un bote que se hunde|Un bateau en train de couler|Ein sinkendes Boot
+Jäger (Piyade)|Jäger (Infantry)|イェーガー（歩兵）|Jäger (Infantería)|Jäger (infanterie)|Jäger (Infanterie)
+Suiriku Kidōdan (Amfibi)|Suiriku Kidōdan (Amphibious)|水陸機動団|Suiriku Kidōdan (anfibio)|Suiriku Kidōdan (amphibie)|Suiriku Kidōdan (amphibisch)
+Keimutai (Askerî Polis)|Keimutai (Military Police)|警務隊|Keimutai (Policía Militar)|Keimutai (police militaire)|Keimutai (Militärpolizei)
+Leipzig (Milletler Muharebesi)|Leipzig (Battle of the Nations)|ライプツィヒ（諸国民の戦い）|Leipzig (Batalla de las Naciones)|Leipzig (bataille des Nations)|Leipzig (Völkerschlacht)
+Ayn Calut Muharebesi|Battle of Ain Jalut|アイン・ジャールートの戦い|Batalla de Ain Jalut|Bataille d'Aïn Djalout|Schlacht bei Ain Dschalut
+Vittorio Veneto Muharebesi|Battle of Vittorio Veneto|ヴィットリオ・ヴェネトの戦い|Batalla de Vittorio Veneto|Bataille de Vittorio Veneto|Schlacht von Vittorio Veneto
+Florida Keys sahil tatili|Beach holiday in the Florida Keys|フロリダ・キーズのビーチ休暇|Vacaciones de playa en los Cayos de Florida|Vacances balnéaires dans les Keys de Floride|Strandurlaub auf den Florida Keys
+Sanya sahil tatili|Beach holiday in Sanya|三亜のビーチ休暇|Vacaciones de playa en Sanya|Vacances balnéaires à Sanya|Strandurlaub in Sanya
+Mayorka sahil tatili|Beach holiday in Mallorca|マヨルカ島のビーチ休暇|Vacaciones de playa en Mallorca|Vacances balnéaires à Majorque|Strandurlaub auf Mallorca
+Cornwall sahil tatili|Beach holiday in Cornwall|コーンウォールのビーチ休暇|Vacaciones de playa en Cornualles|Vacances balnéaires en Cornouailles|Strandurlaub in Cornwall
+Côte d'Azur sahil tatili|Beach holiday on the Côte d'Azur|コート・ダジュールのビーチ休暇|Vacaciones de playa en la Costa Azul|Vacances balnéaires sur la Côte d'Azur|Strandurlaub an der Côte d'Azur
+Okinawa sahil tatili|Beach holiday in Okinawa|沖縄のビーチ休暇|Vacaciones de playa en Okinawa|Vacances balnéaires à Okinawa|Strandurlaub auf Okinawa
+Gwadar sahil tatili|Beach holiday in Gwadar|グワーダルのビーチ休暇|Vacaciones de playa en Gwadar|Vacances balnéaires à Gwadar|Strandurlaub in Gwadar
+Sardinya sahil tatili|Beach holiday in Sardinia|サルデーニャのビーチ休暇|Vacaciones de playa en Cerdeña|Vacances balnéaires en Sardaigne|Strandurlaub auf Sardinien
+Lazkiye sahil tatili|Beach holiday in Latakia|ラタキアのビーチ休暇|Vacaciones de playa en Latakia|Vacances balnéaires à Lattaquié|Strandurlaub in Latakia
+Eilat sahil tatili|Beach holiday in Eilat|エイラートのビーチ休暇|Vacaciones de playa en Eilat|Vacances balnéaires à Eilat|Strandurlaub in Eilat
+Kendi dairen|Your own apartment|自分のアパート|Tu propio piso|Ton propre appartement|Deine eigene Wohnung
+Spor otomobil|Sports car|スポーツカー|Deportivo|Voiture de sport|Sportwagen
+Kedi|Cat|猫|Gato|Chat|Katze
+Yeni ev:|New home:|新居：|Nueva casa:|Nouveau logement :|Neues Zuhause:
+Paran yetmiyor.|You can't afford it.|お金が足りない。|No te alcanza el dinero.|Tu n'as pas assez d'argent.|Dein Geld reicht nicht.
+Yeni dost:|New companion:|新しい仲間：|Nuevo compañero:|Nouveau compagnon :|Neuer Gefährte:
+Tatil:|Holiday:|休暇：|Vacaciones:|Vacances :|Urlaub:
+Sinema ya da konser|Cinema or a concert|映画かコンサート|Cine o concierto|Cinéma ou concert|Kino oder Konzert
+Hayatta kalan akrabanla yemek yedin. Ruh hali +9|You had a meal with your surviving relative. Mood +9|生き残った親族と食事をした。気分+9|Comiste con tu familiar superviviente. Ánimo +9|Tu as mangé avec ton parent survivant. Moral +9|Du hast mit deinem überlebenden Verwandten gegessen. Stimmung +9
+Yeni biri|Someone new|新しい出会い|Alguien nuevo|Quelqu'un de nouveau|Jemand Neues
+Hemen cevap ver|Reply right away|すぐに返信する|Responder enseguida|Répondre tout de suite|Sofort antworten
+Yeni teknik:|New technique:|新しい技：|Nueva técnica:|Nouvelle technique :|Neue Technik:
+Dokun|Tap|タップ|Toca|Touche|Tippen
+Emirleri uygulayan asker|A soldier who carries out orders|命令を遂行する兵士|Un soldado que cumple órdenes|Un soldat qui exécute les ordres|Ein Soldat, der Befehle ausführt
+Komuta yetenekleri|Command skills|指揮能力|Habilidades de mando|Compétences de commandement|Führungsfähigkeiten
+Komuta|Command|指揮|Mando|Commandement|Führung
+diplomatik mektup|diplomatic letter|外交書簡|carta diplomática|lettre diplomatique|diplomatischer Brief
+Asker seviyesi|Soldier level|兵士レベル|Nivel de soldado|Niveau de soldat|Soldatenstufe
+Etkinlik, yemek, yeni insanlar.|Activities, food, new people.|イベント、食事、新しい出会い。|Actividades, comida, gente nueva.|Activités, repas, nouvelles rencontres.|Aktivitäten, Essen, neue Leute.
+Silah|Weapon|武器|Arma|Arme|Waffe
+Ayak hareketi|Footwork|フットワーク|Juego de piernas|Jeu de jambes|Beinarbeit
+Kendo no kata|Kendo no kata|日本剣道形|Kendo no kata|Kendo no kata|Kendo no Kata
+Savunma drill|Defense drill|防御ドリル|Ejercicio de defensa|Exercice de défense|Abwehrübung
+Nefes drill|Breathing drill|呼吸ドリル|Ejercicio de respiración|Exercice de respiration|Atemübung
+Yer sparring|Ground sparring|寝技スパーリング|Sparring en el suelo|Sparring au sol|Bodensparring
+Torba (kick bag)|Heavy bag|サンドバッグ|Saco|Sac de frappe|Sandsack
+Jab geliyor|Jab incoming|ジャブが来る|Viene un jab|Jab qui arrive|Jab kommt
+Aparkat geliyor|Uppercut incoming|アッパーが来る|Viene un uppercut|Uppercut qui arrive|Aufwärtshaken kommt
+Rakip yan kontrole oturdu|The opponent settled into side control|相手がサイドコントロールを取った|El rival se asentó en control lateral|L'adversaire s'est installé en contrôle latéral|Der Gegner sitzt in der Seitenkontrolle
+Rakip armbar kuruyor|The opponent is setting up an armbar|相手が腕十字を狙っている|El rival prepara una palanca de brazo|L'adversaire prépare une clé de bras|Der Gegner setzt einen Armhebel an
+Mesafe koy|Create distance|距離を取る|Pon distancia|Prends de la distance|Abstand schaffen
+Kombinasyon|Combination|コンビネーション|Combinación|Combinaison|Kombination
+Temiz|Clean|クリーン|Limpio|Propre|Sauber
+Raunt|Round|ラウンド|Asalto|Round|Runde
+Kaliteli|Quality|質|Calidad|Qualité|Qualität
+Seri|Streak|連続|Racha|Série|Serie
+Rakip|Opponent|相手|Rival|Adversaire|Gegner
+Savunma|Defense|防御|Defensa|Défense|Verteidigung
+Sen {}|You $1|自分 $1|Tú $1|Toi $1|Du $1
+Rakip {}|Opponent $1|相手 $1|Rival $1|Adversaire $1|Gegner $1
+Teslim|Submission|一本|Sumisión|Soumission|Aufgabe
+Siyaset|Politics|政治|Política|Politique|Politik
+Gerilim|Tension|緊張|Tensión|Tension|Spannung
+Efsane Birlik|Legendary Unit|伝説の部隊|La Unidad Legendaria|L'Unité légendaire|Die legendäre Einheit
+Evden mektup|Letter from home|家からの手紙|Carta de casa|Lettre de la maison|Brief von zu Hause
+Mesaj|Message|メッセージ|Mensaje|Message|Nachricht
+Takdir|Commendation|表彰|Felicitación|Félicitations|Belobigung
+Cepheden haber|News from the front|前線からの知らせ|Noticias del frente|Nouvelles du front|Nachricht von der Front
+Bayram izni|Holiday leave|祝日休暇|Permiso de fiestas|Permission de fête|Festtagsurlaub
+Usta asker|Veteran soldier|熟練兵|Soldado veterano|Soldat aguerri|Erfahrener Soldat
+Biraz bak, sonra kapat|Look for a while, then close it|少し眺めてから閉じる|Mira un rato y luego cierra|Regarde un peu, puis ferme|Kurz ansehen, dann schließen
+Yemin|Oath|誓い|Juramento|Serment|Eid
+Yemin ederken sesin titremedi.|Your voice didn't waver as you took the oath.|誓いを立てるとき、声は震えなかった。|No te tembló la voz al jurar.|Ta voix n'a pas tremblé en prêtant serment.|Beim Schwur hat deine Stimme nicht gezittert.
+Hesap|Account|アカウント|Cuenta|Compte|Konto
+Zaferler: {}. Oyun devam ediyor.|Victories: $1. The game goes on.|勝利数：$1。ゲームは続く。|Victorias: $1. El juego continúa.|Victoires : $1. La partie continue.|Siege: $1. Das Spiel geht weiter.
+Spor salonu|Gym|ジム|Gimnasio|Salle de sport|Fitnessraum
+Antrenman|Training|訓練|Entrenamiento|Entraînement|Training
+Dersi oyna|Play the lesson|レッスンをプレイ|Jugar la lección|Jouer la leçon|Lektion spielen
+(mini oyun %#)|(minigame $1%)|（ミニゲーム$1%）|(minijuego $1 %)|(mini-jeu $1 %)|(Minispiel $1 %)
+(otomatik)|(automatic)|（自動）|(automático)|(automatique)|(automatisch)
+verim %|efficiency %|効率%|eficiencia %|efficacité %|Effizienz %
+Hayat|Life|生活|Vida|Vie|Leben
+Evet dedi|They said yes|承諾してくれた|Dijo que sí|C'est oui|Ja gesagt
+Komuta zaferi|Command victory|指揮の勝利|Victoria de mando|Victoire de commandement|Führungssieg
+Yeni silah:|New weapon:|新しい武器：|Nueva arma:|Nouvelle arme :|Neue Waffe:
+Yeni yetki:|New authority:|新しい権限：|Nueva autoridad:|Nouvelle autorité :|Neue Befugnis:
+Alarm seviyesi:|Alert level:|警戒レベル：|Nivel de alerta:|Niveau d'alerte :|Alarmstufe:
+{} antrenman|$1 training|$1訓練|Entrenamiento de $1|Entraînement de $1|$1-Training
+Disiplin kuruluna sevk edildin.|You've been referred to the disciplinary board.|懲戒委員会に送られた。|Te han enviado al consejo disciplinario.|Tu as été déféré devant le conseil de discipline.|Du wurdest an den Disziplinarausschuss verwiesen.
+Disiplin kurulu.|Disciplinary board.|懲戒委員会。|Consejo disciplinario.|Conseil de discipline.|Disziplinarausschuss.
+Sabah raporu|Morning report|朝の報告|Parte de la mañana|Rapport du matin|Morgenbericht
+Ruh halin:|Your mood:|気分：|Tu ánimo:|Ton moral :|Deine Stimmung:
+Cephe|Front|前線|Frente|Front|Front
+Hat tutuldu|The line held|戦線は維持された|La línea resistió|La ligne a tenu|Die Linie hielt
+Diplomatik kanal|Diplomatic channel|外交ルート|Canal diplomático|Canal diplomatique|Diplomatischer Kanal
+ittifak kurdu.|formed an alliance.|同盟を結んだ。|formó una alianza.|a formé une alliance.|hat ein Bündnis geschlossen.
+Zafer|Victory|勝利|Victoria|Victoire|Sieg
+Komuta zaferi {}|Command victory $1|指揮の勝利 $1|Victoria de mando $1|Victoire de commandement $1|Führungssieg $1
+Yenilgi|Defeat|敗北|Derrota|Défaite|Niederlage
+Bereni hak ettin|You've earned the beret|ベレー帽を勝ち取った|Te has ganado la boina|Tu as mérité le béret|Du hast dir das Barett verdient
+Elendin|You were eliminated|脱落した|Has sido eliminado|Tu es éliminé|Du bist ausgeschieden
+Bir fikrim var:|I have an idea:|考えがある：|Tengo una idea:|J'ai une idée :|Ich habe eine Idee:
+Bu sefer olmaz|Not this time|今回は無理だ|Esta vez no|Pas cette fois|Diesmal nicht
+Planlar|Plans|予定|Planes|Projets|Pläne
+Sahra hastanesi|Field hospital|野戦病院|Hospital de campaña|Hôpital de campagne|Feldlazarett
+Askerî sahra hastanesi kur|Set up a military field hospital|軍の野戦病院を設置する|Instala un hospital militar de campaña|Installe un hôpital militaire de campagne|Ein militärisches Feldlazarett errichten
+Hastane kuruldu. Halk minnettar.|The hospital is set up. The people are grateful.|病院が設置された。住民は感謝している。|El hospital está instalado. La población está agradecida.|L'hôpital est installé. La population est reconnaissante.|Das Lazarett steht. Die Bevölkerung ist dankbar.
+Mesafeli kal|Keep your distance|距離を置く|Mantén las distancias|Garde tes distances|Auf Abstand bleiben
+Elektrik santrali|Power plant|発電所|Central eléctrica|Centrale électrique|Kraftwerk
+Santrali onar|Repair the power plant|発電所を修理する|Repara la central|Répare la centrale|Das Kraftwerk reparieren
+Hasat festivali|Harvest festival|収穫祭|Fiesta de la cosecha|Fête des moissons|Erntefest
+Sessizce uyar|Warn them quietly|そっと注意する|Avisa discretamente|Avertis discrètement|Leise verwarnen
+Karantina ilan et|Declare a quarantine|隔離を宣言する|Declara la cuarentena|Déclare une quarantaine|Quarantäne ausrufen
+Yerel polise bildir|Report it to the local police|地元警察に通報する|Avisa a la policía local|Préviens la police locale|Der örtlichen Polizei melden
+hazine {}|treasury $1|国庫 $1|tesoro $1|trésor $1|Staatskasse $1
+Ulusal hazine: {}|National treasury: $1|国庫：$1|Tesoro nacional: $1|Trésor national : $1|Staatskasse: $1
+Bir mesajla bitir|End it with a message|メッセージで終わらせる|Terminarlo con un mensaje|Y mettre fin par un message|Mit einer Nachricht beenden
+Bir mektup yaz|Write a letter|手紙を書く|Escribe una carta|Écris une lettre|Einen Brief schreiben
+Bir hafta sonra yeniden deneyebilirsin.|You can try again in a week.|1週間後に再挑戦できる。|Podrás volver a intentarlo dentro de una semana.|Tu pourras réessayer dans une semaine.|In einer Woche kannst du es erneut versuchen.
+Revir tedavisi|Infirmary treatment|医務室での治療|Tratamiento en la enfermería|Soins à l'infirmerie|Behandlung im Sanitätsbereich
+Ek miting|Extra rally|追加の集会|Mitin adicional|Meeting supplémentaire|Zusätzliche Kundgebung
+Bir sonraki destek # dk sonra|Next support in $1 min|次の支援まで$1分|Próximo apoyo en $1 min|Prochain soutien dans $1 min|Nächste Unterstützung in $1 Min.
+Destek talep et|Request support|支援を要請する|Solicitar apoyo|Demander du soutien|Unterstützung anfordern
+Dinlen ya da destek iste|Rest or ask for support|休むか支援を求める|Descansa o pide apoyo|Repose-toi ou demande du soutien|Ausruhen oder Unterstützung anfordern
+en az 40 karakter|at least 40 characters|40文字以上|al menos 40 caracteres|au moins 40 caractères|mindestens 40 Zeichen
+Gemi timi|Ship's team|艦艇チーム|Equipo de buque|Équipe de bord|Bordtrupp
+Gemi|Ship|艦艇|Buque|Navire|Schiff
+Kalkan|Shield|盾|Escudo|Bouclier|Schild
+Tam yol hedefe, zaman kazan|Full speed to the target, gain time|全速で目標へ向かい時間を稼ぐ|A toda máquina hacia el objetivo, gana tiempo|Pleine vitesse vers l'objectif, gagne du temps|Volle Fahrt zum Ziel, Zeit gewinnen
+Tankeri bekle, kolu bekleme paterninde tut|Wait for the tanker, hold the flight in a holding pattern|給油機を待ち、編隊を待機旋回させる|Espera al cisterna y mantén la patrulla en circuito de espera|Attends le ravitailleur, garde la patrouille en attente|Auf den Tanker warten, die Rotte in der Warteschleife halten
+Biraz dinlensin, sonra devam|Let them rest a bit, then carry on|少し休ませてから続ける|Que descanse un poco y luego seguimos|Qu'il se repose un peu, puis on continue|Kurz ausruhen lassen, dann weiter
+Hemen cepheye getirt|Have it brought to the front at once|直ちに前線へ運ばせる|Haz que lo traigan al frente ya|Fais-le amener au front immédiatement|Sofort an die Front bringen lassen
+Teklifi reddet|Reject the offer|申し出を断る|Rechaza la oferta|Refuse l'offre|Das Angebot ablehnen
+Tankerden acil ikmal iste|Request emergency refueling from the tanker|給油機に緊急給油を要請する|Pide reabastecimiento urgente al cisterna|Demande un ravitaillement d'urgence au ravitailleur|Beim Tanker eine Notbetankung anfordern
+Kule|Tower|管制塔|Torre|Tour|Tower
+"Bu emri kim verdi? Hemen durum raporu istiyorum!"|"Who gave this order? I want a situation report right now!"|「誰がこの命令を出した？今すぐ状況報告をしろ！」|"¿Quién dio esta orden? ¡Quiero un informe de situación ya!"|« Qui a donné cet ordre ? Je veux un compte rendu de situation immédiatement ! »|„Wer hat diesen Befehl gegeben? Ich will sofort einen Lagebericht!“
+Timin|Your team|君のチーム|Tu equipo|Ton équipe|Dein Team
+Madalya|Medal|勲章|Medalla|Médaille|Orden
+{} etkisiz|$1 neutralized|$1を無力化|$1 neutralizado|$1 neutralisé|$1 ausgeschaltet
+Sivil zarar|Civilian harm|民間人被害|Daños a civiles|Dommages civils|Zivile Schäden
+Karar zinciri|Chain of decisions|判断の連鎖|Cadena de decisiones|Chaîne de décisions|Entscheidungskette
+Raporunu okudum. Otur.|I've read your report. Sit down.|報告書は読んだ。座れ。|He leído tu informe. Siéntate.|J'ai lu ton rapport. Assieds-toi.|Ich habe deinen Bericht gelesen. Setz dich.
+{} ailesine haberi ben vermek istiyorum.|I want to break the news to $1's family myself.|$1の家族には私から伝えたい。|Quiero darle yo la noticia a la familia de $1.|Je veux annoncer moi-même la nouvelle à la famille de $1.|Ich möchte der Familie von $1 die Nachricht selbst überbringen.
+Veriler bu yorumu desteklemiyor.|The data doesn't support that interpretation.|データはその解釈を裏付けていない。|Los datos no respaldan esa interpretación.|Les données ne confirment pas cette interprétation.|Die Daten stützen diese Deutung nicht.
+Uygun.|Acceptable.|よかろう。|Aceptable.|Acceptable.|In Ordnung.
+Evlat, bazen kendini savunmak yerine dinlemek gerekir.|Son, sometimes you need to listen instead of defending yourself.|いいか、時には弁解するより耳を傾けることが必要だ。|Hijo, a veces hay que escuchar en lugar de defenderse.|Petit, parfois il faut écouter au lieu de se défendre.|Junge, manchmal muss man zuhören, statt sich zu verteidigen.
+Birlik morali|Unit morale|部隊の士気|Moral de la unidad|Moral de l'unité|Moral der Einheit
+Ailesini sor|Ask about their family|家族のことを尋ねる|Pregunta por su familia|Demande des nouvelles de sa famille|Nach der Familie fragen
+nərd (tavla)|nard (backgammon)|ナルド（バックギャモン）|nard (backgammon)|nard (backgammon)|Nard (Backgammon)
+shesh besh (tavla)|shesh besh (backgammon)|シェシュベシュ（バックギャモン）|shesh besh (backgammon)|shesh besh (backgammon)|Shesh Besh (Backgammon)
+lig derbisi|league derby|リーグのダービー|derbi de liga|derby du championnat|Liga-Derby
+basketbol finali|basketball final|バスケットボール決勝|final de baloncesto|finale de basket|Basketballfinale
+"…Merhaba. Otur istersen."|"…Hi. Sit down if you like."|「…やあ。よかったら座って」|"…Hola. Siéntate si quieres."|« …Salut. Assieds-toi si tu veux. »|„…Hallo. Setz dich, wenn du willst.“
+Sohbet|Chat|会話|Charla|Discussion|Gespräch
+"Gel otur."|"Come, sit down."|「来て座れよ」|"Ven, siéntate."|« Viens, assieds-toi. »|„Komm, setz dich.“
+Sohbet 1 eylem|Chat: 1 action|会話：行動1回|Charla: 1 acción|Discussion : 1 action|Gespräch: 1 Aktion
+Oyun gecesi|Game night|ゲームナイト|Noche de juegos|Soirée jeux|Spieleabend
+Hep birlikte|All together|みんなで|Todos juntos|Tous ensemble|Alle zusammen
+Bu hafta olmaz|Not this week|今週は無理だ|Esta semana no|Pas cette semaine|Diese Woche nicht
+Sadece oyuncu ol|Just be a player|ただ参加するだけにする|Solo sé un jugador|Contente-toi de jouer|Nur mitspielen
+Komutana bildir|Report it to the commander|指揮官に報告する|Infórmalo al comandante|Signale-le au commandant|Dem Kommandanten melden
+Sadece dinle|Just listen|ただ聞く|Solo escucha|Écoute simplement|Einfach zuhören
+Bebek haberi|Baby news|赤ちゃんの知らせ|Noticia de un bebé|Nouvelle d'un bébé|Babynachricht
+Gergin|Tense|緊迫|Tenso|Tendu|Angespannt
+Sokak lezzetleri|Street food|屋台グルメ|Comida callejera|Cuisine de rue|Streetfood
+Konbini gecesi|Konbini night|コンビニの夜|Noche de konbini|Soirée konbini|Konbini-Abend
+Sahil kafesi|Seaside café|海辺のカフェ|Café junto al mar|Café en bord de mer|Strandcafé
+Eylem harcamaz|Costs no action|行動を消費しない|No gasta acciones|Ne coûte aucune action|Kostet keine Aktion
+♥ Teklif|♥ Proposal|♥ プロポーズ|♥ Propuesta|♥ Demande|♥ Antrag
+emekli general Victor Hale|retired general Victor Hale|退役将軍ヴィクター・ヘイル|el general retirado Victor Hale|le général à la retraite Victor Hale|der pensionierte General Victor Hale
+Sessiz diplomasiyle meseleyi kapat|Close the matter through quiet diplomacy|静かな外交で事態を収める|Cierra el asunto con diplomacia discreta|Règle l'affaire par une diplomatie discrète|Die Sache mit stiller Diplomatie beilegen
+Yeni ortaklar ara|Look for new partners|新たなパートナーを探す|Busca nuevos socios|Cherche de nouveaux partenaires|Neue Partner suchen
+Son dakika|Breaking news|速報|Última hora|Dernière minute|Eilmeldung
+ortak tatbikat|joint exercise|合同演習|maniobras conjuntas|exercice conjoint|gemeinsame Übung
+kabul edilemez|unacceptable|容認できない|inaceptable|inacceptable|inakzeptabel
+Diplomatik mektup|Diplomatic letter|外交書簡|Carta diplomática|Lettre diplomatique|Diplomatischer Brief
+Mektubunu yaz|Write your letter|手紙を書く|Escribe tu carta|Écris ta lettre|Deinen Brief schreiben
+{} Premium aktif|$1 Premium active|$1 プレミアム有効|$1 Premium activo|$1 Premium actif|$1 Premium aktiv
+harcanacak. Kalan paran: {}.|will be spent. Remaining funds: $1.|が使われる。残りの所持金：$1。|se gastarán. Te quedará: $1.|seront dépensés. Il te restera : $1.|werden ausgegeben. Verbleibendes Geld: $1.
+Sakin|Calm|落ち着いている|Tranquilo|Calme|Ruhig
+Refleks testi|Reflex test|反射テスト|Prueba de reflejos|Test de réflexes|Reflextest
+Lojistik|Logistics|兵站|Logística|Logistique|Logistik
+Askerî kariyer|Military career|軍歴|Carrera militar|Carrière militaire|Militärkarriere
+Mini oyun|Minigame|ミニゲーム|Minijuego|Mini-jeu|Minispiel
+Otomatik|Automatic|自動|Automático|Automatique|Automatisch
+En erken|Earliest|最短|Lo antes posible|Au plus tôt|Frühestens
+hep birlikte|all together|みんなで|todos juntos|tous ensemble|alle zusammen
+Bu konuyu siyasete alet etmeyin.|Don't use this issue as a political tool.|この問題を政治に利用しないでいただきたい。|No utilicen este asunto como arma política.|N'instrumentalisez pas ce sujet à des fins politiques.|Machen Sie dieses Thema nicht zum politischen Werkzeug.
+Bunlar sizi ilgilendirmez.|That's none of your business.|それはあなた方には関係ない。|Eso no es asunto suyo.|Cela ne vous regarde pas.|Das geht Sie nichts an.
+Soru #/#|Question $1/$2|質問 $1/$2|Pregunta $1/$2|Question $1/$2|Frage $1/$2
+Soru:|Question:|質問：|Pregunta:|Question :|Frage:
+Kolektif savunma|Collective defense|集団防衛|Defensa colectiva|Défense collective|Kollektive Verteidigung
+ortak savunma maddesi|mutual defense clause|共同防衛条項|cláusula de defensa mutua|clause de défense mutuelle|Beistandsklausel
+Kuvvet %#|Force $1%|戦力 $1%|Fuerza $1 %|Force $1 %|Stärke $1 %
+Kuvvetin yerinde|Your force is intact|戦力は健在|Tu fuerza está intacta|Tes forces sont intactes|Deine Kräfte sind intakt
+Gizlilik %#|Stealth $1%|隠密 $1%|Sigilo $1 %|Discrétion $1 %|Tarnung $1 %
+Acil ikmal|Emergency resupply|緊急補給|Reabastecimiento urgente|Ravitaillement d'urgence|Notversorgung
+Moral yerinde|Morale is good|士気は良好|La moral es buena|Le moral est bon|Die Moral ist gut
+Birlik morali +3|Unit morale +3|部隊の士気 +3|Moral de la unidad +3|Moral de l'unité +3|Moral der Einheit +3
+Sis perdesi|Smoke screen|煙幕|Cortina de humo|Écran de fumée|Nebelwand
+Pozisyon drill|Position drill|ポジションドリル|Ejercicio de posiciones|Exercice de positions|Positionsübung
+Akrobasi drill|Acrobatics drill|アクロバットドリル|Ejercicio de acrobacia|Exercice d'acrobatie|Akrobatikübung
+Sol tekme|Left kick|左の蹴り|Patada izquierda|Coup de pied gauche|Linker Tritt
+Kaval blok|Shin block|すね受け|Bloqueo con la espinilla|Blocage du tibia|Schienbeinblock
+/ hafta|/ week|／週|/ semana|/ semaine|/ Woche
+Plan yap|Make a plan|予定を立てる|Hacer un plan|Faire un projet|Plan machen
++ Plan yap|+ Make a plan|＋予定を立てる|+ Hacer un plan|+ Faire un projet|+ Plan machen
+Yerel liderin ziyareti|Visit from the local leader|地元指導者の訪問|Visita del líder local|Visite du responsable local|Besuch des örtlichen Anführers
+savunma analisti Dr. Leyla Aksoy|defense analyst Dr. Leyla Aksoy|防衛アナリストのレイラ・アクソイ博士|la analista de defensa Dra. Leyla Aksoy|l'analyste de défense Dr Leyla Aksoy|die Verteidigungsanalystin Dr. Leyla Aksoy
+Gerekirse hepsini haritadan sileriz.|If necessary, we'll wipe them all off the map.|必要とあらば、すべて地図から消し去る。|Si hace falta, los borraremos a todos del mapa.|S'il le faut, nous les rayerons tous de la carte.|Wenn nötig, radieren wir sie alle von der Landkarte.
+savunuluyor.|is being defended.|が防衛されている。|está siendo defendido.|est défendu.|wird verteidigt.
+Omuz atma|Shoulder barge|肩当て|Empujón con el hombro|Coup d'épaule|Schulterrempler
+Porridge, yumurta, berries|Porridge, eggs, berries|ポリッジ、卵、ベリー|Porridge, huevos y frutos rojos|Porridge, œufs, baies|Porridge, Eier, Beeren
+Mecedra (mercimekli pilav)|Mujaddara (lentil pilaf)|ムジャッダラ（レンズ豆のピラフ）|Mujaddara (arroz con lentejas)|Mujaddara (riz aux lentilles)|Mujaddara (Linsenpilaw)
+Tepsi kebbesi|Kibbeh in a tray|トレイのキッベ|Kibbeh al horno|Kebbé au plat|Kibbeh vom Blech
+Son anket|Latest poll|最新の世論調査|Última encuesta|Dernier sondage|Letzte Umfrage
+Meclise havale et|Refer it to parliament|議会に付託する|Remítelo al parlamento|Renvoie-le au parlement|An das Parlament verweisen
+Yere geri in|Head back down|地上に戻る|Vuelve a tierra|Redescends|Zurück zum Boden
+Tekneyle temas kur|Make contact with the boat|ボートと接触する|Contacta con la embarcación|Établis le contact avec le bateau|Mit dem Boot Kontakt aufnehmen
+{} (paket dahil)|$1 (pack included)|$1（パック込み）|$1 (paquete incluido)|$1 (pack inclus)|$1 (Paket inklusive)
+1 haftadan az|less than 1 week|1週間未満|menos de 1 semana|moins d'une semaine|weniger als 1 Woche
+Bu adaletsizlik.|This is unfair.|これは不当だ。|Esto es injusto.|C'est injuste.|Das ist ungerecht.
+3 litre su|3 liters of water|水3リットル|3 litros de agua|3 litres d'eau|3 Liter Wasser
+Bina temizleme|Building clearance|建物の掃討|Limpieza de edificios|Nettoyage de bâtiment|Gebäuderäumung
+Van kedisi|Van cat|ヴァン猫|Gato de Van|Chat de Van|Van-Katze
+Siyam kedisi|Siamese cat|シャム猫|Gato siamés|Chat siamois|Siamkatze
+Tekir kedi|Tabby cat|トラ猫|Gato atigrado|Chat tigré|Getigerte Katze
+Kapat ✕|Close ✕|閉じる ✕|Cerrar ✕|Fermer ✕|Schließen ✕
+Hareketi gizle|Conceal the movement|移動を隠す|Oculta el movimiento|Dissimule le mouvement|Die Bewegung verbergen
+Telsizlerini sustur|Silence their radios|敵の無線を封じる|Silencia sus radios|Fais taire leurs radios|Ihre Funkgeräte zum Schweigen bringen
+Sivil zarar haberi geldi|Reports of civilian harm came in|民間人被害の報告が入った|Llegó la noticia de daños a civiles|Des dommages civils ont été signalés|Meldungen über zivile Schäden gingen ein
+Planlama|Planning|計画|Planificación|Planification|Planung
+Tek bariyer yeterli|A single barrier is enough|障壁は一つで十分|Basta con una sola barrera|Une seule barrière suffit|Eine einzige Sperre reicht
+Konvoy refakati|Convoy escort|車列護衛|Escolta de convoy|Escorte de convoi|Konvoibegleitung
+Hemen evlere gir|Enter the houses immediately|直ちに家屋に突入する|Entra en las casas de inmediato|Entre dans les maisons immédiatement|Sofort in die Häuser eindringen
+Derinlikte savunma: ileri hat geciktirsin, tanklar ihtiyatta|Defense in depth: the forward line delays, tanks in reserve|縦深防御：前線で遅滞させ、戦車は予備に|Defensa en profundidad: la línea avanzada retrasa, los carros en reserva|Défense en profondeur : la ligne avancée retarde, les chars en réserve|Verteidigung in der Tiefe: die vordere Linie verzögert, Panzer in Reserve
+Hemen genel taarruz|Launch a general offensive now|直ちに総攻撃|Ofensiva general inmediata|Offensive générale immédiate|Sofort Generalangriff
+Kollar dursun, ikmal beklesin|Columns halt; resupply waits|部隊は停止し、補給を待つ|Que las columnas se detengan y esperen el suministro|Les colonnes s'arrêtent, le ravitaillement attend|Die Kolonnen halten, die Versorgung wartet
+Sessiz kal|Stay silent|沈黙を守る|Guarda silencio|Reste silencieux|Schweigen
+Teklifi reddet, tam zafer iste|Reject the offer, demand total victory|申し出を拒否し、完全勝利を求める|Rechaza la oferta y exige la victoria total|Refuse l'offre, exige la victoire totale|Das Angebot ablehnen, den vollständigen Sieg fordern
+Limana kadar takip et|Follow it all the way to port|港まで追跡する|Síguelo hasta el puerto|Suis-le jusqu'au port|Bis zum Hafen verfolgen
+Yerinde bekle|Hold your position|その場で待機する|Espera en tu posición|Reste en position|In Stellung warten
+Arama-kurtarma|Search and rescue|捜索救難|Búsqueda y rescate|Recherche et sauvetage|Suche und Rettung
+Hedef, dost birliklere 300 metre uzakta.|The target is 300 meters from friendly units.|目標は友軍部隊から300メートルの距離だ。|El objetivo está a 300 metros de unidades amigas.|La cible est à 300 mètres des unités amies.|Das Ziel ist 300 Meter von eigenen Einheiten entfernt.
+Sessizce etkisiz hale getir|Neutralize quietly|静かに無力化する|Neutraliza en silencio|Neutralise en silence|Lautlos ausschalten
+Delilleri koru, zinciri bozmadan istihbarata devret|Preserve the evidence and hand it to intelligence without breaking the chain|証拠を保全し、管理の連鎖を崩さず情報部に引き渡す|Conserva las pruebas y entrégalas a inteligencia sin romper la cadena de custodia|Préserve les preuves et transmets-les au renseignement sans rompre la chaîne|Beweise sichern und ohne Unterbrechung der Kette an die Aufklärung übergeben
+FPV dron taarruzu|FPV drone attack|FPVドローン攻撃|Ataque con drones FPV|Attaque de drones FPV|FPV-Drohnenangriff
+Ticari gemi refakati|Merchant ship escort|商船護衛|Escolta de buques mercantes|Escorte de navires marchands|Handelsschiffbegleitung
+Telsizle uyar|Warn by radio|無線で警告する|Avisa por radio|Avertis par radio|Per Funk warnen
+Konvoyu durdur|Stop the convoy|車列を止める|Detén el convoy|Arrête le convoi|Den Konvoi stoppen
+Sistemleri kapatmadan incele|Investigate without shutting the systems down|システムを停止せずに調査する|Investiga sin apagar los sistemas|Enquête sans éteindre les systèmes|Untersuchen, ohne die Systeme abzuschalten
+Kendi GPS sistemlerimizi de kapat|Shut down our own GPS systems too|自軍のGPSシステムも停止する|Apaga también nuestros sistemas GPS|Coupe aussi nos propres systèmes GPS|Auch unsere eigenen GPS-Systeme abschalten
+Angaje olma|Don't engage|交戦しない|No entres en combate|N'engage pas|Nicht angreifen
+Haberi gizle|Suppress the news|ニュースを伏せる|Oculta la noticia|Étouffe l'information|Die Nachricht unterdrücken
+{} Hava: {}.|$1 Weather: $2.|$1 天候：$2。|$1 Tiempo: $2.|$1 Météo : $2.|$1 Wetter: $2.
+Madde 5|Article 5|第5条|Artículo 5|Article 5|Artikel 5
+askerî gerginlik|military tension|軍事的緊張|tensión militar|tension militaire|militärische Spannungen
+{}, {} lojistik destek veriyor.|$1 is providing logistical support to $2.|$1が$2に兵站支援を行っている。|$1 presta apoyo logístico a $2.|$1 apporte un soutien logistique à $2.|$1 leistet $2 logistische Unterstützung.
+1,5 kat|1.5×|1.5倍|1,5 veces|1,5 fois|1,5-fach
+Tayin:|Posting:|配属：|Destino:|Affectation :|Versetzung:
+Tayin talebi reddedildi:|Transfer request denied:|転属願は却下された：|Solicitud de traslado denegada:|Demande de mutation refusée :|Versetzungsantrag abgelehnt:
+(Genelkurmay).|(General Staff).|（参謀本部）。|(Estado Mayor).|(état-major).|(Generalstab).
+seni istiyor|wants you|が君を求めている|te quiere|te veut|will dich
+Davetle|By invitation|招待で|Por invitación|Sur invitation|Auf Einladung
+Genelkurmay brifingi:|General Staff briefing:|参謀本部ブリーフィング：|Informe del Estado Mayor:|Briefing de l'état-major :|Lagebesprechung des Generalstabs:
+Genelkurmay’dan yeni brifing bekleniyor.|A new briefing from the General Staff is expected.|参謀本部から新たなブリーフィングが待たれている。|Se espera un nuevo informe del Estado Mayor.|Un nouveau briefing de l'état-major est attendu.|Eine neue Lagebesprechung des Generalstabs wird erwartet.
+Enflasyon kadar zam|A raise in line with inflation|インフレ並みの賃上げ|Subida igual a la inflación|Augmentation alignée sur l'inflation|Erhöhung in Höhe der Inflation
+Zam yerine vergi indirimi|A tax cut instead of a raise|賃上げの代わりに減税|Rebaja de impuestos en lugar de subida|Baisse d'impôts au lieu d'une augmentation|Steuersenkung statt Erhöhung
+Piyasa kendi dengesini bulur|The market will find its own balance|市場は自ら均衡を見出す|El mercado encontrará su equilibrio|Le marché trouvera son équilibre|Der Markt findet sein Gleichgewicht selbst
+Belediyelerle ortak plan|A joint plan with the municipalities|自治体との共同計画|Plan conjunto con los ayuntamientos|Plan commun avec les municipalités|Gemeinsamer Plan mit den Kommunen
+Ortak bildiriye imza at|Sign the joint statement|共同声明に署名する|Firma la declaración conjunta|Signe la déclaration commune|Die gemeinsame Erklärung unterzeichnen
+Kabine revizyonu|Cabinet reshuffle|内閣改造|Remodelación del gabinete|Remaniement ministériel|Kabinettsumbildung
+Sabah|Morning|朝|Mañana|Matin|Morgen
+Gece|Night|夜|Noche|Nuit|Nacht
+Cephe seni bekliyor.|The front is waiting for you.|前線が君を待っている。|El frente te espera.|Le front t'attend.|Die Front wartet auf dich.
+Devam ›|Continue ›|続ける ›|Continuar ›|Continuer ›|Weiter ›
+Sessiz|Quiet|静か|Tranquilo|Calme|Ruhig
+Birlik kadron|Your unit roster|部隊の編成|Plantilla de tu unidad|Effectif de ton unité|Deine Einheitsaufstellung
+Kavga|Fight|けんか|Pelea|Bagarre|Schlägerei
+Yumruklar havada|Fists flying|拳が飛び交う|Vuelan los puñetazos|Les poings volent|Fäuste fliegen
+Araya gir: "Burada kimse kimseyi ezmez."|Step in: "Nobody pushes anyone around here."|割って入る：「ここでは誰も誰かを踏みにじらない」|Interponte: "Aquí nadie pisotea a nadie."|Interviens : « Ici, personne n'écrase personne. »|Dazwischengehen: „Hier macht keiner einen anderen fertig.“
+Mektup gelmiyor|No letters arrive|手紙が来ない|No llegan cartas|Aucune lettre n'arrive|Es kommen keine Briefe
+Kendi derdin yeter|You have enough troubles of your own|自分のことで手一杯だ|Ya tienes bastante con lo tuyo|Tu as assez de tes propres soucis|Du hast genug eigene Sorgen
+Gece sohbeti|Late-night talk|夜の語らい|Charla nocturna|Discussion nocturne|Nachtgespräch
+Ortak ceza|Collective punishment|連帯責任の罰|Castigo colectivo|Punition collective|Kollektivstrafe
+Askerî tehdit|Military threat|軍事的脅威|Amenaza militar|Menace militaire|Militärische Bedrohung
+Teklif reddedildi|Offer rejected|申し出は拒否された|Oferta rechazada|Offre refusée|Angebot abgelehnt
+Ticaret karakolu|Trading post|交易所|Puesto comercial|Comptoir commercial|Handelsposten
+Hazine yetersiz:|Insufficient treasury:|国庫が不足：|Tesoro insuficiente:|Trésor insuffisant :|Staatskasse reicht nicht:
+Reddet, egemenlik meselesi|Refuse: it's a matter of sovereignty|拒否する。主権の問題だ|Rechaza: es una cuestión de soberanía|Refuse : c'est une question de souveraineté|Ablehnen: eine Frage der Souveränität
+Eri disipline sevk et|Refer the private for discipline|兵を懲戒処分に回す|Envía al soldado a disciplina|Renvoie le soldat devant la discipline|Den Soldaten disziplinarisch melden
+Dinle, not al|Listen and take notes|話を聞き、メモを取る|Escucha y toma notas|Écoute et prends des notes|Zuhören, Notizen machen
+Kantin borcu|Canteen debt|売店のツケ|Deuda en la cantina|Ardoise à la cantine|Kantinenschulden
+Kantinciye "beni ilgilendirmez" de|Tell the canteen keeper "it's not my business"|売店の主人に「私には関係ない」と言う|Dile al de la cantina "no es asunto mío"|Dis au cantinier « ça ne me regarde pas »|Dem Kantinenwirt sagen: „Das geht mich nichts an“
+Kuru fasulye, pilav, ayran|White beans, rice, ayran|白いんげん豆の煮込み、ピラフ、アイラン|Alubias, arroz y ayran|Haricots blancs, riz, ayran|Weiße Bohnen, Reis, Ayran
+Congee, yumurta, sebze|Congee, egg, vegetables|お粥、卵、野菜|Congee, huevo y verduras|Congee, œuf, légumes|Congee, Ei, Gemüse
+Somon, patates, brokoli|Salmon, potatoes, broccoli|サーモン、ポテト、ブロッコリー|Salmón, patatas y brócoli|Saumon, pommes de terre, brocoli|Lachs, Kartoffeln, Brokkoli
+Tavuk, kinoa, salata|Chicken, quinoa, salad|チキン、キヌア、サラダ|Pollo, quinoa y ensalada|Poulet, quinoa, salade|Hähnchen, Quinoa, Salat
+Izgara morina, bezelye, patates|Grilled cod, peas, potatoes|タラのグリル、グリーンピース、ポテト|Bacalao a la plancha, guisantes y patatas|Cabillaud grillé, petits pois, pommes de terre|Gegrillter Kabeljau, Erbsen, Kartoffeln
+Poulet rôti, haricots verts, pilav|Poulet rôti, green beans, rice|ローストチキン、いんげん、ライス|Pollo asado, judías verdes y arroz|Poulet rôti, haricots verts, riz|Brathähnchen, grüne Bohnen, Reis
+Makarna carbonara|Pasta carbonara|カルボナーラ|Pasta carbonara|Pâtes carbonara|Pasta Carbonara
+Yumurta, roti, meyve|Eggs, roti, fruit|卵、ロティ、果物|Huevos, roti y fruta|Œufs, roti, fruits|Eier, Roti, Obst
+Tavuk tikka, roti, salata|Chicken tikka, roti, salad|チキンティッカ、ロティ、サラダ|Pollo tikka, roti y ensalada|Poulet tikka, roti, salade|Chicken Tikka, Roti, Salat
+Tavuk biryani|Chicken biryani|チキンビリヤニ|Biryani de pollo|Biryani au poulet|Hähnchen-Biryani
+Izgara tavuk, kinoa, salata|Grilled chicken, quinoa, salad|グリルチキン、キヌア、サラダ|Pollo a la plancha, quinoa y ensalada|Poulet grillé, quinoa, salade|Gegrilltes Hähnchen, Quinoa, Salat
+Kazan kebab|Qozon kabob|鍋ケバブ|Kebab de caldero|Kebab au chaudron|Kessel-Kebab
+Gidenler zaten burada kalmak istemiyordu.|Those who left didn't want to stay here anyway.|去った者たちは、どのみちここに残りたくなかったのだ。|Los que se fueron no querían quedarse aquí de todos modos.|Ceux qui sont partis ne voulaient de toute façon pas rester.|Wer gegangen ist, wollte ohnehin nicht hierbleiben.
+Kampanya ivmesi|Campaign momentum|選挙戦の勢い|Impulso de campaña|Dynamique de campagne|Wahlkampfdynamik
+Ertele|Postpone|延期する|Aplazar|Reporter|Verschieben
+Askerî hastaneler|Military hospitals|軍病院|Hospitales militares|Hôpitaux militaires|Militärkrankenhäuser
+Teknoloji transferi olmadan sat|Sell without technology transfer|技術移転なしで売却する|Vende sin transferencia de tecnología|Vends sans transfert de technologie|Ohne Technologietransfer verkaufen
+Mevcut kapasiteyle devam|Continue with existing capacity|現有能力で継続する|Seguir con la capacidad actual|Continuer avec la capacité existante|Mit vorhandener Kapazität weitermachen
+Trafik denetimi|Traffic checks|交通取り締まり|Controles de tráfico|Contrôles routiers|Verkehrskontrollen
+Ulusal merkez kur|Set up a national center|国家センターを設立する|Crea un centro nacional|Crée un centre national|Ein nationales Zentrum gründen
+Mevcut birimler yeter|Existing units are enough|既存の部隊で十分|Bastan las unidades actuales|Les unités existantes suffisent|Die vorhandenen Einheiten reichen
+Ara zam yap|Grant an interim raise|臨時の賃上げを行う|Aprueba una subida intermedia|Accorde une augmentation intermédiaire|Eine Zwischenerhöhung gewähren
+Turizm sezonu|Tourist season|観光シーズン|Temporada turística|Saison touristique|Tourismussaison
+Ortak finansman|Joint financing|共同出資|Financiación conjunta|Cofinancement|Gemeinsame Finanzierung
+Reddet|Reject|拒否する|Rechazar|Refuser|Ablehnen
+Anayasa komisyonu|Constitutional commission|憲法委員会|Comisión constitucional|Commission constitutionnelle|Verfassungskommission
+Raporu reddet|Reject the report|報告書を却下する|Rechaza el informe|Rejette le rapport|Den Bericht zurückweisen
+Makineliyle o pencereyi tara|Rake that window with the machine gun|機関銃でその窓を掃射する|Barre esa ventana con la ametralladora|Arrose cette fenêtre à la mitrailleuse|Das Fenster mit dem MG bestreichen
+Defteri yak|Burn the notebook|ノートを燃やす|Quema el cuaderno|Brûle le carnet|Das Notizbuch verbrennen
+Defteri kendin incele|Examine the notebook yourself|ノートを自分で調べる|Examina tú mismo el cuaderno|Examine toi-même le carnet|Das Notizbuch selbst untersuchen
+Gemiyi denizde yakala|Seize the ship at sea|洋上で船を拿捕する|Captura el barco en el mar|Arraisonne le navire en mer|Das Schiff auf See aufbringen
+Delil zincirini koru, belgeleri istihbarata ilet|Protect the chain of evidence and pass the documents to intelligence|証拠の連鎖を守り、書類を情報部に渡す|Protege la cadena de pruebas y pasa los documentos a inteligencia|Préserve la chaîne de preuves et transmets les documents au renseignement|Die Beweiskette sichern und die Dokumente an die Aufklärung weiterleiten
+Gizli|Classified|機密|Secreto|Secret|Geheim
+Sivil risk|Civilian risk|民間人へのリスク|Riesgo para civiles|Risque pour les civils|Risiko für Zivilisten
+Hemen ilerle, vakit kaybetme|Advance now, don't waste time|すぐに前進し、時間を無駄にしない|Avanza ya, no pierdas tiempo|Avance tout de suite, ne perds pas de temps|Sofort vorrücken, keine Zeit verlieren
+Sis kalkana kadar bekle|Wait until the fog lifts|霧が晴れるまで待つ|Espera a que se levante la niebla|Attends que le brouillard se lève|Warten, bis sich der Nebel lichtet
+Kamyonu imha et|Destroy the truck|トラックを破壊する|Destruye el camión|Détruis le camion|Den Lkw zerstören
+Askeri hemen vur|Hit the soldier immediately|直ちにその兵を撃つ|Dispara al soldado de inmediato|Abats le soldat immédiatement|Den Soldaten sofort ausschalten
+Sert sorguya al|Interrogate harshly|厳しく尋問する|Interroga con dureza|Interroge durement|Hart verhören
+Depoyu savun|Defend the depot|倉庫を守る|Defiende el depósito|Défends le dépôt|Das Depot verteidigen
+Herkes hedefe kendi gitsin|Everyone makes their own way to the target|各自で目標に向かう|Que cada uno vaya por su cuenta al objetivo|Que chacun rejoigne l'objectif par ses propres moyens|Jeder geht für sich zum Ziel
+Kritik anda telsizde 20 saniye sessizlik oldu. Neredeydin?|At the critical moment there were 20 seconds of radio silence. Where were you?|決定的な瞬間に無線が20秒間途絶えた。どこにいた？|En el momento crítico hubo 20 segundos de silencio por radio. ¿Dónde estabas?|Au moment critique, il y a eu 20 secondes de silence radio. Où étais-tu ?|Im entscheidenden Moment herrschten 20 Sekunden Funkstille. Wo warst du?
+Durumu tam okumadan emir vermek istemedim.|I didn't want to give orders before reading the situation fully.|状況を完全に把握する前に命令を出したくありませんでした。|No quise dar órdenes sin entender del todo la situación.|Je ne voulais pas donner d'ordres sans avoir bien compris la situation.|Ich wollte keine Befehle geben, bevor ich die Lage ganz erfasst hatte.
+Ailesine haberi ben vermek istiyorum.|I want to break the news to the family myself.|ご家族には私から伝えたいです。|Quiero darle yo la noticia a su familia.|Je veux annoncer moi-même la nouvelle à sa famille.|Ich möchte der Familie die Nachricht selbst überbringen.
+Kabul.|Accepted.|認める。|Aceptado.|Accepté.|Akzeptiert.
+Mazeret dinlemem.|I won't hear excuses.|言い訳は聞かん。|No quiero excusas.|Je n'écoute pas les excuses.|Ausreden will ich nicht hören.
+Bu cevap beni tatmin etmedi.|That answer doesn't satisfy me.|その答えでは納得できない。|Esa respuesta no me satisface.|Cette réponse ne me satisfait pas.|Diese Antwort stellt mich nicht zufrieden.
+Evet evlat.|Yes, son.|そうだ。|Sí, hijo.|Oui, petit.|Ja, Junge.
+Evlat…|Son…|いいか…|Hijo…|Petit…|Junge …
+Veriler seni destekliyor.|The data supports you.|データは君を支持している。|Los datos te respaldan.|Les données te donnent raison.|Die Daten geben dir recht.
+Veriler bunu desteklemiyor.|The data doesn't support that.|データはそれを裏付けていない。|Los datos no lo respaldan.|Les données ne le confirment pas.|Die Daten stützen das nicht.
+Bunu kabul edemem.|I can't accept that.|それは受け入れられない。|No puedo aceptarlo.|Je ne peux pas accepter cela.|Das kann ich nicht akzeptieren.
+Gir. Ayakta kal.|Come in. Stay standing.|入れ。立ったままでいい。|Pasa. Quédate de pie.|Entre. Reste debout.|Komm rein. Bleib stehen.
+AWACS teyidini bekle, devriyede kal|Wait for AWACS confirmation, stay on patrol|AWACSの確認を待ち、哨戒を続ける|Espera la confirmación del AWACS y sigue patrullando|Attends la confirmation de l'AWACS, reste en patrouille|Auf AWACS-Bestätigung warten, auf Patrouille bleiben
+CSAR ekibini havada beklet|Keep the CSAR team airborne|CSARチームを空中待機させる|Mantén al equipo CSAR en el aire|Garde l'équipe CSAR en vol|Das CSAR-Team in der Luft warten lassen
+Taarruzu durdur, ikmali bekle|Halt the attack, wait for resupply|攻撃を止めて補給を待つ|Detén el ataque y espera el suministro|Arrête l'attaque, attends le ravitaillement|Den Angriff stoppen, auf Nachschub warten
+Kendi hedefini bitir, sonra destek ver|Finish your own target, then support|自分の目標を片付けてから支援する|Termina tu objetivo y luego apoya|Termine ta cible, puis apporte ton soutien|Erst das eigene Ziel erledigen, dann unterstützen
+Siyasi makama havale et|Refer it to the political authorities|政治当局に委ねる|Remítelo a la autoridad política|Renvoie-le à l'autorité politique|An die politische Führung verweisen
+Subay gazinosu: dana bonfile, sebze sote|Officers' mess: beef tenderloin, sautéed vegetables|将校食堂：牛ヒレ肉と野菜のソテー|Comedor de oficiales: solomillo de ternera y verduras salteadas|Mess des officiers : filet de bœuf, légumes sautés|Offizierskasino: Rinderfilet, sautiertes Gemüse
+Antrenman verimi +%#|Training efficiency +$1%|訓練効率 +$1%|Eficiencia de entrenamiento +$1 %|Efficacité d'entraînement +$1 %|Trainingseffizienz +$1 %
+Emrin|Your order|君の命令|Tu orden|Ton ordre|Dein Befehl
+Yerli tank motoru|Domestic tank engine|国産戦車エンジン|Motor de carro nacional|Moteur de char national|Heimischer Panzermotor
+Projeyi iptal et|Cancel the project|計画を中止する|Cancela el proyecto|Annule le projet|Das Projekt streichen
+Polis reformu|Police reform|警察改革|Reforma policial|Réforme de la police|Polizeireform
+Enflasyon|Inflation|インフレ|Inflación|Inflation|Inflation
+Zirve daveti|Summit invitation|サミットへの招待|Invitación a la cumbre|Invitation au sommet|Gipfeleinladung
+Daveti reddet|Decline the invitation|招待を断る|Rechaza la invitación|Décline l'invitation|Die Einladung ablehnen
+Paketi destekle|Back the package|パッケージを支持する|Apoya el paquete|Soutiens le paquet|Das Paket unterstützen
+Karar verilmeyen dosya: {}.|Undecided file: $1.|未決の案件：$1。|Expediente sin resolver: $1.|Dossier non tranché : $1.|Unentschiedene Akte: $1.
+Onay −2.|Approval −2.|支持率 −2。|Aprobación −2.|Approbation −2.|Zustimmung −2.
+Yeni makam:|New office:|新しい役職：|Nuevo cargo:|Nouvelle fonction :|Neues Amt:
+Kaybettin|You lost|敗れた|Has perdido|Tu as perdu|Du hast verloren
+Brifing|Briefing|ブリーフィング|Informe|Briefing|Lagebesprechung
+Savun|Defend|防ぐ|Defiende|Défends|Verteidigen
+Kavra|Grip|つかむ|Agarra|Saisis|Greifen
+Kilit|Lock|極める|Llave|Clé|Hebel
+Diz / Dirsek|Knee / Elbow|膝 / 肘|Rodilla / Codo|Genou / Coude|Knie / Ellbogen
+Maket|Dummy|標的人形|Maniquí|Mannequin|Puppe
+Puan|Score|得点|Puntuación|Score|Punkte
+Silah:|Weapon:|武器：|Arma:|Arme :|Waffe:
+Nefes tutuluyor…|Holding breath…|息を止めている…|Conteniendo la respiración…|Respiration retenue…|Atem anhalten …
+Nefes al (#)|Breathe ($1)|息を吸う（$1）|Respira ($1)|Respire ($1)|Atmen ($1)
+Toplam puan:|Total score:|合計得点：|Puntuación total:|Score total :|Gesamtpunktzahl:
+Harp tarihi|Military history|戦史|Historia militar|Histoire militaire|Kriegsgeschichte
+En uygun:|Best option:|最適：|Mejor opción:|Meilleure option :|Beste Option:
+Tam isabet.|Direct hit.|命中。|Impacto directo.|En plein dans le mille.|Volltreffer.
+Zirve|Summit|頂上|Cima|Sommet|Gipfel
+Hata # km.|Off by $1 km.|誤差$1 km。|Error de $1 km.|Écart de $1 km.|Abweichung $1 km.
+Emredersiniz.|Yes, sir.|了解しました。|A sus órdenes.|À vos ordres.|Jawohl.
+Taraf tuttunuz.|You took sides.|一方の肩を持った。|Tomaste partido.|Vous avez pris parti.|Sie haben Partei ergriffen.
+Herkes devam etsin|Everyone carry on|全員続行|Que todos sigan|Tout le monde continue|Alle machen weiter
+Ayakta uyuyoruz.|We're asleep on our feet.|立ったまま眠りそうです。|Nos dormimos de pie.|On dort debout.|Wir schlafen im Stehen.
+Emri reddet, tim dinlensin|Refuse the order; let the team rest|命令を拒否し、チームを休ませる|Rechaza la orden y deja descansar al equipo|Refuse l'ordre, que l'équipe se repose|Den Befehl verweigern, das Team soll sich ausruhen
+Peki.|Very well.|わかった。|Está bien.|Très bien.|Na gut.
+Ortalama moral {}|Average morale $1|平均士気 $1|Moral media $1|Moral moyen $1|Durchschnittliche Moral $1
+Sonraki durum|Next situation|次の状況|Siguiente situación|Situation suivante|Nächste Lage
+Devlet ›|State ›|国家 ›|Estado ›|État ›|Staat ›
+Aileni ara|Call your family|家族に電話する|Llama a tu familia|Appelle ta famille|Deine Familie anrufen
+Ortalama {}|Average $1|平均 $1|Media $1|Moyenne $1|Durchschnitt $1
+Bekleyen istek|Pending request|保留中の依頼|Solicitud pendiente|Demande en attente|Offene Anfrage
+Evlilik teklif et|Propose marriage|プロポーズする|Pide matrimonio|Demande en mariage|Einen Heiratsantrag machen
+Mesaj at|Send a message|メッセージを送る|Envía un mensaje|Envoie un message|Eine Nachricht schicken
+Ticaret karakolu kur|Set up a trading post|交易所を設ける|Establece un puesto comercial|Établis un comptoir commercial|Einen Handelsposten errichten
+Komuta yetkilerin|Your command authorities|君の指揮権限|Tus atribuciones de mando|Tes prérogatives de commandement|Deine Befehlsbefugnisse
+Halk memnuniyeti|Public satisfaction|住民の満足度|Satisfacción de la población|Satisfaction de la population|Zufriedenheit der Bevölkerung
+{} Hazine {}|$1 Treasury $2|$1 国庫 $2|$1 Tesoro $2|$1 Trésor $2|$1 Staatskasse $2
+Kurmay raporu (1 eylem)|Staff report (1 action)|幕僚報告（行動1回）|Informe del Estado Mayor (1 acción)|Rapport d'état-major (1 action)|Stabsbericht (1 Aktion)
+Yeni ittifaklar|New alliances|新たな同盟|Nuevas alianzas|Nouvelles alliances|Neue Bündnisse
+{} Ayarlar|$1 Settings|$1 設定|$1 Ajustes|$1 Réglages|$1 Einstellungen
+Deniz Piyadesi|Marines|海兵隊|Infantería de Marina|Infanterie de marine|Marineinfanterie
+Bu zaten sende.|You already have this.|もう持っている。|Ya lo tienes.|Tu l'as déjà.|Das hast du schon.
+Terfi ettin:|You've been promoted:|昇進した：|Has ascendido:|Tu as été promu :|Du wurdest befördert:
+Premium'u incele|Explore Premium|プレミアムを見る|Ver Premium|Découvrir Premium|Premium ansehen
+Kariyerine|Your career|君のキャリアへ|A tu carrera|À ta carrière|Deine Karriere
+Yuva|Slot|スロット|Ranura|Emplacement|Slot
+Sadece mesaj at|Just send a message|メッセージだけ送る|Solo envía un mensaje|Envoie juste un message|Nur eine Nachricht schicken
+"Belki de bitirmeliyiz"|"Maybe we should end it"|「もう終わりにしたほうがいいかも」|"Quizá deberíamos dejarlo"|« On devrait peut-être arrêter »|„Vielleicht sollten wir Schluss machen“
+kaybedildi.|was lost.|が失われた。|se perdió.|a été perdu.|ging verloren.
+Garnizon devriyesi|Garrison patrol|駐屯地の巡回|Patrulla de guarnición|Patrouille de garnison|Garnisonsstreife
+ulusal hazine {}.|national treasury $1.|国庫 $1。|tesoro nacional $1.|trésor national $1.|Staatskasse $1.
+Protesto|Protest|抗議|Protesta|Manifestation|Protest
+Yerel polisle ortak operasyon|Joint operation with the local police|地元警察との合同作戦|Operación conjunta con la policía local|Opération conjointe avec la police locale|Gemeinsamer Einsatz mit der örtlichen Polizei
+Pazar yeri|Marketplace|市場|Mercado|Place du marché|Marktplatz
+Cevap verme|Don't reply|返事をしない|No respondas|Ne réponds pas|Nicht antworten
+Haberi yalanla|Deny the report|報道を否定する|Desmiente la noticia|Dément l'information|Die Meldung dementieren
+su krizi|water crisis|水危機|crisis del agua|crise de l'eau|Wasserkrise
+Lahor|Lahore|ラホール|Lahore|Lahore|Lahore
+Lazkiye|Latakia|ラタキア|Latakia|Lattaquié|Latakia
+{} hemen cevap verdi. Ruh hali +2|$1 replied right away. Mood +2|$1がすぐに返信してくれた。気分+2|$1 respondió enseguida. Ánimo +2|$1 a répondu tout de suite. Moral +2|$1 hat sofort geantwortet. Stimmung +2
+# sa # dk|$1 h $2 min|$1時間$2分|$1 h $2 min|$1 h $2 min|$1 Std. $2 Min.
+Ek miting · onay +4|Extra rally · approval +4|追加の集会・支持率+4|Mitin adicional · aprobación +4|Meeting supplémentaire · approbation +4|Zusätzliche Kundgebung · Zustimmung +4
+onay +4|approval +4|支持率+4|aprobación +4|approbation +4|Zustimmung +4
+{} {} halka seslendi|$1 $2 addressed the nation|$1 $2が国民に向けて演説した|$1 $2 se dirigió a la nación|$1 $2 s'est adressé à la nation|$1 $2 hat sich an die Nation gewandt
+Doğru. {}, tehdide en yakın lojistik merkez; ihtiyat en kısa sürede cepheye ulaşır.|Correct. $1 is the logistics hub closest to the threat; reserves reach the front fastest from there.|正解。$1は脅威に最も近い兵站拠点で、予備兵力が最短で前線に届く。|Correcto. $1 es el centro logístico más cercano a la amenaza; la reserva llega antes al frente.|Exact. $1 est le centre logistique le plus proche de la menace ; la réserve rejoint le front au plus vite.|Richtig. $1 ist das Logistikzentrum, das der Bedrohung am nächsten liegt; die Reserve erreicht die Front am schnellsten.
 `);
