@@ -7,7 +7,7 @@ on:
         required: true
         default: status
         type: choice
-        options: [status, prepare, submit, iapinfo, withdraw, resubmit]
+        options: [status, prepare, submit, iapinfo, withdraw, resubmit, release]
       surum:
         description: "Sürüm numarası"
         required: true

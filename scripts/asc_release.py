@@ -241,6 +241,18 @@ def resubmit():
     submit()
 
 
+def release():
+    """Onaylanmış (PENDING_DEVELOPER_RELEASE) sürümü yayınlar."""
+    r = call('GET', f'/v1/apps/{APP_ID}/appStoreVersions?filter[platform]=IOS&filter[versionString]={VERSION}&limit=1')['data']
+    if not r: raise SystemExit('Sürüm yok')
+    v = r[0]; st = v['attributes'].get('appStoreState')
+    log('Sürüm durumu:', st)
+    if st != 'PENDING_DEVELOPER_RELEASE': raise SystemExit('Yayına hazır değil: ' + str(st))
+    call('POST', '/v1/appStoreVersionReleaseRequests', {'data': {'type': 'appStoreVersionReleaseRequests', 'relationships': {'appStoreVersion': {'data': {'type': 'appStoreVersions', 'id': v['id']}}}}})
+    log('YAYINLANDI: yayın isteği gönderildi')
+    time.sleep(10); status()
+
+
 def iapinfo():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
@@ -249,4 +261,4 @@ def iapinfo():
         ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
         log(pid, p['attributes']['state'], json.dumps([(x['id'][:8], x['attributes']) for x in ls], ensure_ascii=False))
 
-{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit}[MODE]()
+{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release}[MODE]()
