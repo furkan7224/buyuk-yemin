@@ -5753,4 +5753,270 @@ Silah teknisyeni|Weapons technician|武器技術員|Técnico de armamento|Techni
 Telsizci|Radio operator|通信手|Radiooperador|Opérateur radio|Funker
 #. Kol lideri|Flight lead $1|第$1編隊長|Jefe de patrulla $1|Chef de patrouille $1|Rottenführer $1
 #. Tim lideri|Team leader $1|第$1チームリーダー|Jefe de equipo $1|Chef d'équipe $1|Truppführer $1
+Ön ayak hafif önde, ağırlık ortada|Lead foot slightly forward, weight centered|前足をやや前に、重心は中央に|Pie adelantado un poco al frente, peso en el centro|Pied avant légèrement devant, poids au centre|Vorderer Fuß leicht vorn, Gewicht in der Mitte
+Ön eli omuz döndürerek düz uzat|Extend the lead hand straight, turning the shoulder|肩を回して前の手をまっすぐ伸ばす|Extiende la mano adelantada recta girando el hombro|Allonge la main avant en ligne droite en tournant l'épaule|Die Führhand mit Schulterdrehung gerade ausstrecken
+Vuruş anında avuç içi aşağı dönsün|At impact, turn the palm down|当たる瞬間に手のひらを下に向ける|En el impacto, gira la palma hacia abajo|À l'impact, tourne la paume vers le bas|Beim Treffer die Handfläche nach unten drehen
+Eli aynı hattan hızla gardaya geri çek|Snap the hand back to guard along the same line|同じ軌道で素早く手をガードに戻す|Devuelve la mano rápido a la guardia por la misma línea|Ramène vite la main en garde sur la même ligne|Die Hand auf derselben Linie schnell in die Deckung zurückziehen
+Sol kroşe|Left hook|左フック|Gancho de izquierda|Crochet du gauche|Linker Haken
+Ağırlığı ön ayağa al|Shift your weight onto the lead foot|重心を前足に移す|Pasa el peso al pie adelantado|Mets le poids sur le pied avant|Das Gewicht auf den vorderen Fuß verlagern
+Dirseği 90 derece bükerek omuz hizasına kaldır|Bend the elbow to 90 degrees and raise it to shoulder height|肘を90度に曲げて肩の高さまで上げる|Dobla el codo a 90 grados y súbelo a la altura del hombro|Plie le coude à 90 degrés et monte-le à hauteur d'épaule|Den Ellbogen auf 90 Grad beugen und auf Schulterhöhe heben
+Ön ayak ve kalçayı içe döndür|Pivot the lead foot and hip inward|前足と腰を内側にひねる|Gira hacia dentro el pie adelantado y la cadera|Pivote le pied avant et la hanche vers l'intérieur|Vorderen Fuß und Hüfte nach innen drehen
+Yumruğu kısa bir yayla çeneye savur|Swing the fist in a short arc to the jaw|拳を小さな弧で顎へ振る|Lanza el puño en un arco corto a la mandíbula|Envoie le poing en arc court vers la mâchoire|Die Faust in kurzem Bogen zum Kinn schwingen
+Aparkat|Uppercut|アッパーカット|Uppercut|Uppercut|Aufwärtshaken
+Dizleri hafif kır, ağırlığı öne ver|Bend the knees slightly, weight forward|膝を軽く曲げ、重心を前へ|Flexiona un poco las rodillas, peso hacia delante|Fléchis légèrement les genoux, poids vers l'avant|Knie leicht beugen, Gewicht nach vorn
+Omzu hafifçe düşür|Drop the shoulder slightly|肩を少し落とす|Baja ligeramente el hombro|Abaisse légèrement l'épaule|Die Schulter leicht senken
+Kalçadan yukarı itiş al|Drive upward from the hips|腰から上へ押し上げる|Impúlsate hacia arriba desde la cadera|Pousse vers le haut depuis les hanches|Aus der Hüfte nach oben drücken
+Yumruğu avuç içi sana dönük dikey çıkar|Bring the fist up vertically, palm facing you|手のひらを自分に向けて拳を垂直に突き上げる|Sube el puño en vertical con la palma hacia ti|Monte le poing à la verticale, paume vers toi|Die Faust senkrecht hochbringen, Handfläche zu dir
+Slip ve karşılık|Slip and counter|スリップしてカウンター|Esquiva y contra|Esquive et contre|Abtauchen und kontern
+Rakibin jabını omzundan oku|Read the opponent's jab from the shoulder|肩の動きで相手のジャブを読む|Lee el jab del rival por su hombro|Lis le jab adverse à son épaule|Den Jab des Gegners an seiner Schulter ablesen
+Başını yumruğun dışına kaydır|Slip your head outside the punch|頭をパンチの外側へずらす|Desliza la cabeza por fuera del golpe|Décale la tête à l'extérieur du coup|Den Kopf außen am Schlag vorbeischieben
+Ağırlığı ön dizine yükle|Load your weight onto the front knee|重心を前の膝に乗せる|Carga el peso en la rodilla adelantada|Charge le poids sur le genou avant|Das Gewicht aufs vordere Knie laden
+Aynı anda düz ile karşılık ver|Counter with a straight at the same time|同時にストレートで反撃する|Contesta a la vez con un directo|Contre simultanément avec un direct|Gleichzeitig mit einer Geraden kontern
+Yüksek tekme|High kick|ハイキック|Patada alta|Coup de pied haut|Hoher Tritt
+Ön ayağın parmak ucunda dön|Pivot on the ball of the lead foot|前足のつま先で回る|Gira sobre la punta del pie adelantado|Pivote sur la pointe du pied avant|Auf dem Ballen des vorderen Fußes drehen
+Kalçayı tamamen çevir|Turn the hip over completely|腰を完全に回す|Gira la cadera por completo|Tourne complètement la hanche|Die Hüfte ganz eindrehen
+Kaval kemiğiyle başa savur|Swing the shin to the head|すねで頭を狙って振る|Lanza la espinilla a la cabeza|Frappe la tête avec le tibia|Mit dem Schienbein zum Kopf schwingen
+Kolu aşağı sallayarak denge kur|Swing the arm down for balance|腕を下に振ってバランスを取る|Baja el brazo con un balanceo para equilibrarte|Balance le bras vers le bas pour l'équilibre|Den Arm zum Ausgleich nach unten schwingen
+Tekme yakalama|Kick catch|キャッチング|Atrapar la patada|Saisie du coup de pied|Tritt fangen
+Tekmeyi kolunla kaburgana sar|Trap the kick against your ribs with your arm|蹴りを腕で脇腹に抱え込む|Atrapa la patada contra tus costillas con el brazo|Bloque le coup de pied contre tes côtes avec le bras|Den Tritt mit dem Arm an die Rippen klemmen
+Ayağı kalçana yasla|Pin the foot against your hip|足を自分の腰に押し付ける|Apoya el pie contra tu cadera|Plaque le pied contre ta hanche|Den Fuß an deine Hüfte drücken
+Destek bacağını süpür|Sweep the standing leg|軸足を払う|Barre la pierna de apoyo|Fauche la jambe d'appui|Das Standbein fegen
+Düşen rakibe pozisyon al|Take position on the falling opponent|倒れた相手に対してポジションを取る|Toma posición sobre el rival que cae|Prends position sur l'adversaire qui tombe|Am fallenden Gegner Position beziehen
+Kontra kroşe|Counter hook|カウンターフック|Gancho de contra|Crochet en contre|Konterhaken
+Rakibin düzünü pariye et|Parry the opponent's straight|相手のストレートをパリーする|Desvía el directo del rival|Pare le direct adverse|Die Gerade des Gegners parieren
+Ağırlığı ön ayağa kaydır|Shift the weight to the lead foot|重心を前足へ移す|Desplaza el peso al pie adelantado|Fais glisser le poids sur le pied avant|Das Gewicht auf den vorderen Fuß verschieben
+Kısa sol kroşe at|Throw a short left hook|短い左フックを打つ|Lanza un gancho de izquierda corto|Envoie un crochet du gauche court|Einen kurzen linken Haken schlagen
+Açıdan çık|Exit at an angle|角度をつけて抜ける|Sal en ángulo|Sors en angle|Im Winkel herausgehen
+Ön dizini kaldır|Lift the front knee|前の膝を上げる|Levanta la rodilla adelantada|Lève le genou avant|Das vordere Knie heben
+Tabanla karına bas|Push into the stomach with the sole|足裏で腹を押し込む|Empuja el abdomen con la planta|Pousse dans le ventre avec la plante du pied|Mit der Fußsohle in den Bauch drücken
+Ayağı hızla geri çek|Pull the foot back fast|足を素早く引き戻す|Recoge el pie rápido|Ramène vite le pied|Den Fuß schnell zurückziehen
+Yuvarlak tekme|Roundhouse kick|回し蹴り|Patada circular|Coup de pied circulaire|Halbkreistritt
+Ön ayakla açıya adım at|Step to an angle with the lead foot|前足で角度をつけて踏み出す|Da un paso en ángulo con el pie adelantado|Fais un pas en angle avec le pied avant|Mit dem vorderen Fuß in den Winkel treten
+Ön ayak üzerinde dön|Pivot on the lead foot|前足を軸に回る|Gira sobre el pie adelantado|Pivote sur le pied avant|Auf dem vorderen Fuß drehen
+Kalçayı çevirip kaval kemiğiyle vur|Turn the hip and strike with the shin|腰を回してすねで蹴る|Gira la cadera y golpea con la espinilla|Tourne la hanche et frappe avec le tibia|Die Hüfte eindrehen und mit dem Schienbein treffen
+Kolu savurarak dengeni koru|Swing the arm to keep your balance|腕を振ってバランスを保つ|Balancea el brazo para mantener el equilibrio|Balance le bras pour garder l'équilibre|Den Arm schwingen, um das Gleichgewicht zu halten
+Diz vuruşu|Knee strike|膝蹴り|Rodillazo|Coup de genou|Kniestoß
+Rakibin ensesini kavra|Grab the back of the opponent's neck|相手の首の後ろをつかむ|Agarra la nuca del rival|Saisis la nuque de l'adversaire|Den Nacken des Gegners greifen
+Dizi göğse doğru sür|Drive the knee toward the chest|膝を胸に向けて突き上げる|Lleva la rodilla hacia el pecho|Monte le genou vers la poitrine|Das Knie Richtung Brust treiben
+Rakibi aşağı çekerek vuruşa yaklaştır|Pull the opponent down into the strike|相手を引き下ろして打撃に合わせる|Tira del rival hacia abajo contra el golpe|Tire l'adversaire vers le bas, dans le coup|Den Gegner nach unten in den Stoß ziehen
+Dirsek|Elbow|肘打ち|Codazo|Coude|Ellbogen
+Mesafeyi kapat|Close the distance|間合いを詰める|Acorta la distancia|Réduis la distance|Die Distanz schließen
+Dirseği omuz hizasına kaldır|Raise the elbow to shoulder height|肘を肩の高さに上げる|Sube el codo a la altura del hombro|Monte le coude à hauteur d'épaule|Den Ellbogen auf Schulterhöhe heben
+Gövdeyi döndür|Rotate the torso|体幹をひねる|Gira el tronco|Fais pivoter le buste|Den Oberkörper drehen
+Dirseği yatay savur|Swing the elbow horizontally|肘を水平に振る|Lanza el codo en horizontal|Balance le coude à l'horizontale|Den Ellbogen waagerecht schwingen
+Klinç kontrolü|Clinch control|クリンチの制圧|Control del clinch|Contrôle du clinch|Clinch-Kontrolle
+Elleri ensede üst üste kilitle|Lock the hands on top of each other behind the neck|首の後ろで両手を重ねてロックする|Cierra las manos una sobre otra en la nuca|Verrouille les mains l'une sur l'autre derrière la nuque|Die Hände im Nacken übereinander verschränken
+Dirsekleri göğse sık|Squeeze the elbows to the chest|肘を胸に締める|Aprieta los codos contra el pecho|Serre les coudes contre la poitrine|Die Ellbogen an die Brust pressen
+Rakibin başını aşağı çek|Pull the opponent's head down|相手の頭を引き下げる|Tira hacia abajo de la cabeza del rival|Tire la tête de l'adversaire vers le bas|Den Kopf des Gegners nach unten ziehen
+Dengesini bozup diz vur|Break the balance and knee|崩してから膝を入れる|Rompe su equilibrio y mete la rodilla|Déséquilibre et frappe du genou|Aus dem Gleichgewicht bringen und das Knie setzen
+Seviyeni düşür|Drop your level|姿勢を低くする|Baja tu nivel|Abaisse ton centre de gravité|Den Schwerpunkt senken
+Ön dizin mindere yakın dal|Shoot in with the front knee near the mat|前の膝をマットすれすれに入る|Entra con la rodilla adelantada cerca del tapiz|Pénètre, le genou avant près du tapis|Mit dem vorderen Knie dicht über der Matte eindringen
+Rakibin bacağını kucakla|Wrap the opponent's leg|相手の脚を抱える|Abraza la pierna del rival|Enlace la jambe de l'adversaire|Das Bein des Gegners umschlingen
+Başı içeride tutup kaldır ve düşür|Keep the head inside, lift and take down|頭を内側に保ち、持ち上げて倒す|Mantén la cabeza dentro, levanta y derriba|Garde la tête à l'intérieur, soulève et amène au sol|Den Kopf innen halten, anheben und zu Boden bringen
+Çift dalma|Double-leg takedown|両足タックル|Derribo a dos piernas|Double jambe|Double-Leg-Takedown
+Mesafeyi ayarla, seviyeni düşür|Set the distance, drop your level|間合いを合わせ、姿勢を低くする|Ajusta la distancia y baja tu nivel|Règle la distance, abaisse-toi|Die Distanz einstellen, den Schwerpunkt senken
+Penetrasyon adımıyla dal|Shoot with a penetration step|ペネトレーションステップで入る|Entra con un paso de penetración|Pénètre avec un pas de pénétration|Mit einem Penetrationsschritt eindringen
+İki bacağı sar|Wrap both legs|両脚を抱える|Rodea las dos piernas|Enlace les deux jambes|Beide Beine umfassen
+Omuzla iterek yere indir|Drive with the shoulder and take them down|肩で押して倒す|Empuja con el hombro y derriba|Pousse avec l'épaule et amène au sol|Mit der Schulter schieben und zu Boden bringen
+Köprü ile kurtulma|Bridge escape|ブリッジで脱出|Escape con puente|Sortie en pont|Befreiung mit Brücke
+Topukları kalçana çek|Pull your heels to your hips|かかとを腰に引き寄せる|Lleva los talones hacia la cadera|Ramène les talons vers les hanches|Die Fersen an die Hüfte ziehen
+Kalçayı yukarı patlat|Explode the hips upward|腰を爆発的に突き上げる|Lanza la cadera hacia arriba con fuerza|Fais exploser les hanches vers le haut|Die Hüfte explosiv nach oben schieben
+Omuz üstünden dön|Roll over the shoulder|肩越しに返す|Gira por encima del hombro|Roule par-dessus l'épaule|Über die Schulter drehen
+Rakibin üstüne çık|Come up on top of the opponent|相手の上を取る|Ponte encima del rival|Passe au-dessus de l'adversaire|Auf den Gegner kommen
+Rakibi sırtüstü kontrol et|Control the opponent on their back|相手を仰向けにして制する|Controla al rival boca arriba|Contrôle l'adversaire sur le dos|Den Gegner in Rückenlage kontrollieren
+Kolunu boynunun altından geçir|Slide your arm under their neck|腕を相手の首の下に通す|Pasa el brazo por debajo de su cuello|Passe ton bras sous son cou|Den Arm unter seinem Nacken durchschieben
+Göğsünle bastır|Press down with your chest|胸で押さえ込む|Presiona con el pecho|Écrase avec la poitrine|Mit der Brust niederdrücken
+İki omzunu mindere yapıştır|Pin both shoulders to the mat|両肩をマットにつける|Pega sus dos hombros al tapiz|Plaque ses deux épaules au tapis|Beide Schultern auf die Matte drücken
+Kolu çek, yakayı tut|Pull the sleeve, grip the collar|袖を引き、襟を持つ|Tira de la manga, agarra la solapa|Tire la manche, saisis le col|Am Ärmel ziehen, das Revers greifen
+Rakibin önüne dönerek gir|Turn in in front of the opponent|相手の前に回り込んで入る|Entra girando delante del rival|Entre en pivotant devant l'adversaire|Vor dem Gegner eindrehen
+Kalçanı rakibin altına yerleştir|Set your hips under the opponent|腰を相手の下に入れる|Coloca tu cadera bajo el rival|Place tes hanches sous l'adversaire|Die Hüfte unter den Gegner setzen
+Öne eğilip omuz üstünden at|Bend forward and throw over the shoulder|前にかがんで肩越しに投げる|Inclínate hacia delante y proyecta por encima del hombro|Penche-toi en avant et projette par-dessus l'épaule|Nach vorn beugen und über die Schulter werfen
+Rakibi öne dengesizleştir|Break the opponent's balance forward|相手を前方に崩す|Desequilibra al rival hacia delante|Déséquilibre l'adversaire vers l'avant|Den Gegner nach vorn aus dem Gleichgewicht bringen
+Destek ayağını içe döndür|Turn the supporting foot inward|軸足を内側に向ける|Gira hacia dentro el pie de apoyo|Tourne le pied d'appui vers l'intérieur|Den Standfuß nach innen drehen
+Atış bacağını iç uyluğa savur|Swing the throwing leg into the inner thigh|払い足を内ももへ振り上げる|Lanza la pierna de proyección al interior del muslo|Lance la jambe de projection dans l'intérieur de la cuisse|Das Wurfbein an die Innenseite des Oberschenkels schwingen
+Kalçayı döndürerek tamamla|Finish by turning the hips|腰を回して投げ切る|Termina girando la cadera|Termine en tournant les hanches|Mit einer Hüftdrehung vollenden
+Rakibin yanına otur|Sit beside the opponent|相手の横に座る|Siéntate al lado del rival|Assieds-toi à côté de l'adversaire|Dich neben den Gegner setzen
+Kolunu koltuğunun altına sıkıştır|Trap their arm under your armpit|相手の腕を脇の下に挟む|Atrapa su brazo bajo tu axila|Coince son bras sous ton aisselle|Seinen Arm unter deiner Achsel einklemmen
+Boynunu sar|Wrap the neck|首を抱える|Rodea el cuello|Enroule le cou|Den Hals umschlingen
+Bacaklarını açarak taban kur|Spread your legs to make a base|脚を開いて土台を作る|Abre las piernas para hacer base|Écarte les jambes pour faire une base|Die Beine spreizen und eine Basis bilden
+Kolu iki elle göğsüne kilitle|Lock the arm to your chest with both hands|両手で腕を胸に固定する|Bloquea el brazo contra tu pecho con las dos manos|Verrouille le bras contre ta poitrine à deux mains|Den Arm mit beiden Händen an die Brust klemmen
+Bacakları göğsü ve yüzü üzerine at|Throw your legs over the chest and face|脚を胸と顔の上にかける|Echa las piernas sobre el pecho y la cara|Passe les jambes sur la poitrine et le visage|Die Beine über Brust und Gesicht werfen
+Dizleri birleştir|Squeeze the knees together|膝を締める|Junta las rodillas|Serre les genoux|Die Knie zusammendrücken
+Kalçayı kaldırarak kolu düzleştir|Lift the hips to straighten the arm|腰を上げて腕を伸ばし切る|Levanta la cadera para estirar el brazo|Soulève les hanches pour tendre le bras|Die Hüfte anheben und den Arm strecken
+Bir kolu içeride, birini dışarıda bırak|Leave one arm in and one arm out|片腕を内側に、もう片方を外側に残す|Deja un brazo dentro y otro fuera|Laisse un bras à l'intérieur, l'autre à l'extérieur|Einen Arm drinnen, einen draußen lassen
+Bacağını boynun arkasına at|Throw your leg behind the neck|脚を首の後ろにかける|Echa la pierna por detrás del cuello|Passe la jambe derrière la nuque|Das Bein hinter den Nacken werfen
+Diğer bacakla üçgeni kilitle|Lock the triangle with the other leg|もう片方の脚で三角を組む|Cierra el triángulo con la otra pierna|Verrouille le triangle avec l'autre jambe|Mit dem anderen Bein das Dreieck schließen
+Başı çekip dizleri sık|Pull the head down and squeeze the knees|頭を引き寄せて膝を締める|Tira de la cabeza y aprieta las rodillas|Tire la tête et serre les genoux|Den Kopf heranziehen und die Knie zusammendrücken
+Sırtı al, kancaları tak|Take the back, put in the hooks|バックを取り、フックをかける|Toma la espalda y mete los ganchos|Prends le dos, place les crochets|Den Rücken nehmen, die Haken setzen
+Bir kolunu boynun altından geçir|Slide one arm under the neck|片腕を首の下に通す|Pasa un brazo por debajo del cuello|Passe un bras sous le cou|Einen Arm unter dem Hals durchschieben
+Diğer elinin pazısını tut|Grip the biceps of your other arm|もう片方の腕の二頭筋をつかむ|Agarra el bíceps de tu otro brazo|Saisis le biceps de ton autre bras|Den Bizeps deines anderen Arms greifen
+Elini başın arkasına koyup sık|Put your hand behind the head and squeeze|手を頭の後ろに当てて絞める|Pon la mano detrás de la cabeza y aprieta|Place la main derrière la tête et serre|Die Hand hinter den Kopf legen und zudrücken
+Ayak parmaklarını geri çek|Pull the toes back|つま先を反らす|Echa hacia atrás los dedos del pie|Ramène les orteils vers l'arrière|Die Zehen zurückziehen
+Ayağın önüyle ileri vur|Strike forward with the ball of the foot|足の前部（上足底）で前へ蹴る|Golpea hacia delante con la parte delantera del pie|Frappe vers l'avant avec l'avant du pied|Mit dem Fußballen nach vorn treten
+Ayağı geri çekip dur|Pull the foot back and stop|足を引き戻して止まる|Recoge el pie y detente|Ramène le pied et arrête-toi|Den Fuß zurückziehen und stehen bleiben
+Dizi yana kaldır|Raise the knee to the side|膝を横に上げる|Levanta la rodilla de lado|Lève le genou sur le côté|Das Knie seitlich heben
+Destek ayağında dön|Pivot on the supporting foot|軸足で回る|Gira sobre el pie de apoyo|Pivote sur le pied d'appui|Auf dem Standfuß drehen
+Ayak üstüyle yay çiz|Arc through with the top of the foot|足の甲で弧を描く|Traza un arco con el empeine|Décris un arc avec le dessus du pied|Mit dem Spann einen Bogen ziehen
+Hızla geri çek|Snap it back quickly|素早く引き戻す|Recoge rápido|Ramène vite|Schnell zurückziehen
+Kolu başın önünden kaldır|Raise the arm in front of the head|腕を頭の前に上げる|Sube el brazo por delante de la cabeza|Monte le bras devant la tête|Den Arm vor dem Kopf heben
+Önkolu çapraz tut|Hold the forearm across|前腕を斜めに構える|Mantén el antebrazo cruzado|Tiens l'avant-bras en travers|Den Unterarm quer halten
+Darbeyi yukarı saptır|Deflect the strike upward|攻撃を上へそらす|Desvía el golpe hacia arriba|Dévie le coup vers le haut|Den Schlag nach oben ablenken
+Karşı yumruğa hazırlan|Get ready for the counterpunch|反撃の突きに備える|Prepárate para el contragolpe|Prépare le contre en direct|Dich auf den Konterschlag vorbereiten
+Kumite girişi|Kumite entry|組手の入り|Entrada de kumite|Entrée en kumite|Kumite-Eingang
+Mesafeyi koru|Keep the distance|間合いを保つ|Mantén la distancia|Garde la distance|Die Distanz halten
+Sahte jab at|Throw a feint jab|フェイントのジャブを打つ|Lanza un jab de finta|Envoie un jab feinté|Einen Finten-Jab schlagen
+İleri kay|Slide forward|前へ滑り込む|Deslízate hacia delante|Glisse vers l'avant|Nach vorn gleiten
+Gyaku-zuki ile sayı al|Score with a gyaku-zuki|逆突きでポイントを取る|Puntúa con un gyaku-zuki|Marque avec un gyaku-zuki|Mit einem Gyaku-zuki punkten
+Dizini yatay kaldır|Raise the knee horizontally|膝を水平に上げる|Levanta la rodilla en horizontal|Lève le genou à l'horizontale|Das Knie waagerecht heben
+Ayak üstüyle savur|Whip it with the top of the foot|足の甲で振り抜く|Lanza con el empeine|Fouette avec le dessus du pied|Mit dem Spann durchschwingen
+Dengeye dön|Return to balance|バランスを取り戻す|Recupera el equilibrio|Reviens en équilibre|Ins Gleichgewicht zurückkehren
+Dizini göğse çek|Pull the knee to the chest|膝を胸に引き寄せる|Lleva la rodilla al pecho|Ramène le genou à la poitrine|Das Knie zur Brust ziehen
+Kalçayı yana çevir|Turn the hip sideways|腰を横に向ける|Gira la cadera de lado|Tourne la hanche de côté|Die Hüfte seitlich drehen
+Topukla düz it|Thrust straight with the heel|かかとでまっすぐ押し出す|Empuja recto con el talón|Pousse droit avec le talon|Mit der Ferse gerade stoßen
+Geri çek|Pull back|引き戻す|Recoge|Ramène|Zurückziehen
+Sırtını dön|Turn your back|背中を向ける|Gira de espaldas|Tourne le dos|Den Rücken drehen
+Omuz üstünden hedefe bak|Look at the target over your shoulder|肩越しに標的を見る|Mira al objetivo por encima del hombro|Regarde la cible par-dessus l'épaule|Über die Schulter aufs Ziel schauen
+Arka tekmeyi düz it|Drive the back kick straight|後ろ蹴りをまっすぐ突き出す|Lanza recta la patada trasera|Pousse le coup de pied arrière droit|Den Rückwärtstritt gerade stoßen
+Dönüp gardaya geç|Turn back into guard|向き直って構えに戻る|Gira y vuelve a la guardia|Pivote et reviens en garde|Zurückdrehen und in die Deckung gehen
+Elleri kanca yapıp parmakları çek|Hook your hands and pull the fingers|手を鉤にして指を引きはがす|Haz ganchos con las manos y tira de los dedos|Fais des crochets avec les mains et tire les doigts|Die Hände zu Haken formen und an den Fingern ziehen
+Aynı anda kasığa diz vur|Knee to the groin at the same time|同時に股間へ膝蹴り|A la vez, rodillazo a la ingle|En même temps, genou à l'entrejambe|Gleichzeitig das Knie in die Leiste
+Çeneni indir, omuzları kaldır|Tuck the chin, raise the shoulders|顎を引き、肩を上げる|Baja el mentón, sube los hombros|Rentre le menton, monte les épaules|Kinn runter, Schultern hoch
+Dirsek ve itişle çık|Get out with an elbow and a push|肘と押しで抜け出す|Sal con un codazo y un empujón|Dégage-toi avec un coude et une poussée|Mit Ellbogen und Stoß herauskommen
+Bıçak tehdidi|Knife threat|ナイフによる脅威|Amenaza con cuchillo|Menace au couteau|Messerbedrohung
+Bıçaklı eli yönlendir|Redirect the knife hand|ナイフを持つ手をそらす|Desvía la mano del cuchillo|Redirige la main armée|Die Messerhand umlenken
+Bileği iki elle kontrol et|Control the wrist with both hands|両手で手首を制する|Controla la muñeca con las dos manos|Contrôle le poignet à deux mains|Das Handgelenk mit beiden Händen kontrollieren
+Vücudunun dışına çevir|Turn it away from your body|体の外側へ向ける|Llévalo fuera de tu cuerpo|Écarte-le de ton corps|Vom Körper weg drehen
+Silahı alıp mesafe koy|Take the weapon and create distance|武器を奪って距離を取る|Quita el arma y pon distancia|Prends l'arme et crée de la distance|Die Waffe nehmen und Abstand schaffen
+Ağırlığını düşür|Drop your weight|重心を落とす|Baja tu peso|Abaisse ton poids|Das Gewicht absenken
+Dirsekle geriye vur|Strike back with the elbow|肘で後ろへ打つ|Golpea hacia atrás con el codo|Frappe en arrière avec le coude|Mit dem Ellbogen nach hinten schlagen
+Topukla ayağına bas|Stomp on their foot with your heel|かかとで相手の足を踏む|Písale el pie con el talón|Écrase-lui le pied avec le talon|Mit der Ferse auf seinen Fuß treten
+Dönüp karşı atak yap|Turn and counterattack|振り向いて反撃する|Gira y contraataca|Retourne-toi et contre-attaque|Umdrehen und kontern
+Tabanca tehdidi|Handgun threat|拳銃による脅威|Amenaza con pistola|Menace au pistolet|Pistolenbedrohung
+Tabancayı tutup bileği bük|Grab the handgun and twist the wrist|拳銃をつかんで手首をひねる|Agarra la pistola y tuerce la muñeca|Saisis le pistolet et tords le poignet|Die Pistole greifen und das Handgelenk verdrehen
+Karşı vuruş yap|Strike back|反撃の打撃を入れる|Contragolpea|Riposte|Zurückschlagen
+Silahı alıp geri çekil|Take the weapon and back away|武器を奪って下がる|Quita el arma y retrocede|Prends l'arme et recule|Die Waffe nehmen und zurückweichen
+Diz kilidi|Knee lock|膝十字固め|Llave de rodilla|Clé de genou|Kniehebel
+Bacağı kucakla|Hug the leg|脚を抱え込む|Abraza la pierna|Enlace la jambe|Das Bein umarmen
+Diz eklemini kalçanın üstüne yerleştir|Place the knee joint over your hips|膝関節を自分の腰の上に置く|Coloca la articulación de la rodilla sobre tu cadera|Place l'articulation du genou sur tes hanches|Das Kniegelenk über deine Hüfte legen
+Bacaklarınla sar|Wrap it with your legs|脚で挟み込む|Rodea con tus piernas|Enroule avec tes jambes|Mit den Beinen umschlingen
+Kalçayı iterek dizi düzleştir|Push the hips to straighten the knee|腰を押し出して膝を伸ばし切る|Empuja la cadera para estirar la rodilla|Pousse les hanches pour tendre le genou|Die Hüfte schieben und das Knie strecken
+Ayak bileği kilidi|Ankle lock|アンクルロック|Llave de tobillo|Clé de cheville|Fußhebel
+Ayağı koltuk altına sıkıştır|Trap the foot under your armpit|足を脇の下に挟む|Atrapa el pie bajo la axila|Coince le pied sous l'aisselle|Den Fuß unter der Achsel einklemmen
+Önkolu aşil tendonuna yerleştir|Set the forearm on the Achilles tendon|前腕をアキレス腱に当てる|Coloca el antebrazo sobre el tendón de Aquiles|Place l'avant-bras sur le tendon d'Achille|Den Unterarm an die Achillessehne legen
+Göğsünü öne it|Push your chest forward|胸を前に突き出す|Empuja el pecho hacia delante|Pousse la poitrine vers l'avant|Die Brust nach vorn drücken
+Kalçayı geri yaslayıp bas|Lean the hips back and apply pressure|腰を後ろに倒して極める|Echa la cadera atrás y aprieta|Recule les hanches et appuie|Die Hüfte zurücklehnen und Druck geben
+Yere indir ve kontrol|Takedown and control|倒して制圧|Derribo y control|Amenée au sol et contrôle|Zu Boden bringen und kontrollieren
+Rakibi dengesizleştir|Unbalance the opponent|相手を崩す|Desequilibra al rival|Déséquilibre l'adversaire|Den Gegner aus dem Gleichgewicht bringen
+Atışla yere indir|Take them down with a throw|投げで倒す|Derriba con una proyección|Amène au sol par une projection|Mit einem Wurf zu Boden bringen
+Yan kontrole geç|Move to side control|サイドコントロールに移る|Pasa al control lateral|Passe en contrôle latéral|In die Seitenkontrolle wechseln
+Kilit için kolu izole et|Isolate the arm for a lock|関節技のために腕を孤立させる|Aísla el brazo para la llave|Isole le bras pour la clé|Den Arm für einen Hebel isolieren
+Yere indirip pozisyon al|Take down and get position|倒してポジションを取る|Derriba y toma posición|Amène au sol et prends position|Zu Boden bringen und Position beziehen
+Dalmayı gör|See the shot coming|タックルを見切る|Ve venir el derribo|Vois venir la plongée|Den Takedown-Versuch erkennen
+Kalçayı geri ve aşağı fırlat|Throw the hips back and down|腰を後ろ下に投げ出す|Lanza la cadera hacia atrás y abajo|Projette les hanches en arrière et vers le bas|Die Hüfte nach hinten unten werfen
+Önden kalkıp karşı vur|Come up in front and counter|正面で起き上がって反撃する|Levántate de frente y contraataca|Relève-toi de face et contre|Vorn hochkommen und kontern
+Üst pozisyonu sabitle|Secure the top position|上のポジションを固める|Asegura la posición superior|Stabilise la position haute|Die obere Position sichern
+Bir kolu kontrol et|Control one arm|片腕を制する|Controla un brazo|Contrôle un bras|Einen Arm kontrollieren
+Kısa yumruk ve dirsek at|Throw short punches and elbows|短いパンチと肘を打つ|Lanza puñetazos cortos y codazos|Envoie des coups courts et des coudes|Kurze Schläge und Ellbogen setzen
+Rakip dönerse sırtını al|If the opponent turns, take the back|相手が背を向けたらバックを取る|Si el rival se gira, toma la espalda|Si l'adversaire se retourne, prends le dos|Dreht sich der Gegner, den Rücken nehmen
+Kafese yaslanıp kalkış|Wall walk against the cage|ケージを使って立ち上がる|Levantarse apoyado en la jaula|Se relever contre la cage|Am Käfig aufstehen
+Bir dirseği yere koy|Post one elbow on the mat|片肘を床につく|Apoya un codo en el suelo|Pose un coude au sol|Einen Ellbogen auf den Boden setzen
+Sırtını kafese yasla|Put your back against the cage|背中をケージにつける|Apoya la espalda en la jaula|Plaque ton dos contre la cage|Den Rücken an den Käfig lehnen
+Ayaklarını altına al|Get your feet under you|足を体の下に入れる|Pon los pies debajo de ti|Ramène tes pieds sous toi|Die Füße unter den Körper bringen
+Ellerle iterek ayağa kalk|Push with the hands and stand up|手で押して立ち上がる|Empuja con las manos y ponte de pie|Pousse avec les mains et relève-toi|Mit den Händen abdrücken und aufstehen
+Dalan rakibin başını koltuk altına al|Trap the shooting opponent's head under your armpit|タックルに来た相手の頭を脇に抱える|Atrapa bajo la axila la cabeza del rival que entra|Coince sous l'aisselle la tête de l'adversaire qui plonge|Den Kopf des eindringenden Gegners unter die Achsel nehmen
+Kolunu boynun altına sar|Wrap your arm under the neck|腕を首の下に巻きつける|Rodea el cuello por debajo con el brazo|Enroule ton bras sous le cou|Den Arm unter dem Hals herumlegen
+Kapalı guard çek|Pull closed guard|クローズドガードに引き込む|Tira a guardia cerrada|Tire en garde fermée|In die geschlossene Guard ziehen
+Kalçayı kaldırıp sık|Lift the hips and squeeze|腰を上げて絞める|Levanta la cadera y aprieta|Soulève les hanches et serre|Die Hüfte anheben und zudrücken
+Bileği iki elle kavra|Grasp the wrist with both hands|両手で手首をつかむ|Agarra la muñeca con las dos manos|Saisis le poignet à deux mains|Das Handgelenk mit beiden Händen fassen
+Kolun altından dön|Turn under the arm|腕の下をくぐって回る|Gira por debajo del brazo|Tourne sous le bras|Unter dem Arm hindurchdrehen
+Kolu omzun üstüne taşı|Carry the arm over your shoulder|腕を肩の上に担ぐ|Lleva el brazo por encima de tu hombro|Passe le bras par-dessus ton épaule|Den Arm über deine Schulter führen
+Arkaya düşür|Drop them backward|後ろへ倒す|Derríbalo hacia atrás|Fais-le tomber en arrière|Nach hinten werfen
+Saldırı hattından çık|Step off the line of attack|攻撃線から外れる|Sal de la línea de ataque|Sors de la ligne d'attaque|Die Angriffslinie verlassen
+Rakibin arkasına gir|Get behind the opponent|相手の背後に入る|Colócate detrás del rival|Passe derrière l'adversaire|Hinter den Gegner kommen
+Başını omzuna çek|Draw their head to your shoulder|相手の頭を自分の肩に引き寄せる|Lleva su cabeza a tu hombro|Ramène sa tête contre ton épaule|Seinen Kopf an deine Schulter ziehen
+Kolunla yay çizerek düşür|Throw them with a sweeping arc of your arm|腕で弧を描いて倒す|Derríbalo trazando un arco con el brazo|Fais-le tomber en décrivant un arc avec le bras|Mit einem Armbogen zu Fall bringen
+Bileği dışa çevir|Turn the wrist outward|手首を外側に返す|Gira la muñeca hacia fuera|Tourne le poignet vers l'extérieur|Das Handgelenk nach außen drehen
+Avuç içini kavra|Grip the palm|手のひらをつかむ|Agarra la palma|Saisis la paume|Die Handfläche greifen
+Spiral hareketle döndür|Turn them with a spiral motion|らせんの動きで回す|Gíralo con un movimiento en espiral|Fais-le tourner d'un mouvement en spirale|Mit einer Spiralbewegung drehen
+Yere indirip kilitle|Take down and lock|倒して極める|Derriba y bloquea|Amène au sol et immobilise|Zu Boden bringen und fixieren
+Yumruğu belden başlat|Start the punch from the waist|突きを腰から始める|Inicia el puñetazo desde la cintura|Démarre le coup depuis la taille|Den Schlag an der Hüfte beginnen
+Döndürerek uzat|Extend with a twist|ひねりながら突き出す|Extiende girando|Allonge en vrillant|Mit einer Drehung ausstrecken
+Omzu öne düşürme|Don't drop the shoulder forward|肩を前に落とさない|No adelantes el hombro|Ne laisse pas tomber l'épaule en avant|Die Schulter nicht nach vorn fallen lassen
+Geri çekerken diğer el çıksın|As you pull back, the other hand goes out|引き手と同時にもう一方の手を出す|Al recoger, sale la otra mano|En ramenant, l'autre main part|Beim Zurückziehen kommt die andere Hand
+Topukla it|Push with the heel|かかとで押し出す|Empuja con el talón|Pousse avec le talon|Mit der Ferse stoßen
+Kalçayı ileri ver|Drive the hips forward|腰を前に出す|Lleva la cadera hacia delante|Avance les hanches|Die Hüfte nach vorn bringen
+Alçak duruştan kalk|Rise from the low stance|低い構えから立ち上がる|Levántate desde la postura baja|Relève-toi depuis la position basse|Aus dem tiefen Stand hochkommen
+Bilekle yukarı blok yap|Block upward with the wrist|手首で上段受けをする|Bloquea hacia arriba con la muñeca|Bloque vers le haut avec le poignet|Mit dem Handgelenk nach oben blocken
+Diğer elle düz yumruk at|Throw a straight punch with the other hand|もう一方の手でまっすぐ突く|Lanza un directo con la otra mano|Envoie un direct de l'autre main|Mit der anderen Hand eine Gerade schlagen
+Duruşa geri dön|Return to the stance|構えに戻る|Vuelve a la postura|Reviens en position|In den Stand zurückkehren
+Taolu dizisi|Taolu sequence|套路|Secuencia de taolu|Enchaînement de taolu|Taolu-Folge
+Selamla başla|Begin with a salute|礼で始める|Empieza con el saludo|Commence par le salut|Mit dem Gruß beginnen
+Duruş geçişi yap|Transition between stances|構えを移行する|Cambia de postura|Enchaîne les positions|Den Stand wechseln
+Blok ve yumruk|Block and punch|受けと突き|Bloqueo y puñetazo|Blocage et coup de poing|Block und Schlag
+Tekme ve kapanış|Kick and closing|蹴りと締め|Patada y cierre|Coup de pied et clôture|Tritt und Abschluss
+Tsubazeriai pozisyonunda kal|Hold the tsubazeriai position|鍔迫り合いの体勢を保つ|Mantén la posición de tsubazeriai|Reste en position de tsubazeriai|In der Tsubazeriai-Position bleiben
+Rakibi it|Push the opponent|相手を押す|Empuja al rival|Pousse l'adversaire|Den Gegner wegdrücken
+Geri adım atarken vur|Strike while stepping back|下がりながら打つ|Golpea mientras retrocedes|Frappe en reculant|Beim Rückwärtsschritt treffen
+Mesafede zanshin|Zanshin at distance|間合いを取って残心|Zanshin a distancia|Zanshin à distance|Zanshin auf Distanz
+Burundan al|Breathe in through the nose|鼻から吸う|Inspira por la nariz|Inspire par le nez|Durch die Nase einatmen
+Yana yuvarlan|Roll to the side|横に転がる|Rueda de lado|Roule sur le côté|Zur Seite rollen
+Kısa vuruş|Short strike|短い打撃|Golpe corto|Frappe courte|Kurzer Schlag
+Gevşek yumruk yap|Make a loose fist|力を抜いて拳を握る|Cierra el puño relajado|Fais un poing relâché|Eine lockere Faust machen
+Kısa mesafeden vur|Strike from short range|短い距離から打つ|Golpea a corta distancia|Frappe à courte distance|Aus kurzer Distanz schlagen
+Geri gevşe|Relax back|力を抜いて戻る|Relájate de nuevo|Relâche-toi|Wieder locker werden
+Bıçak savunması|Knife defense|ナイフ防御|Defensa contra cuchillo|Défense contre couteau|Messerabwehr
+Hattan çık|Get off the line|線から外れる|Sal de la línea|Sors de la ligne|Aus der Linie gehen
+Bileği yönlendir|Redirect the wrist|手首をそらす|Desvía la muñeca|Redirige le poignet|Das Handgelenk umlenken
+Dengesini boz|Break their balance|相手のバランスを崩す|Rompe su equilibrio|Déséquilibre-le|Sein Gleichgewicht brechen
+Kontrol et|Take control|制圧する|Controla|Contrôle|Kontrollieren
+Hareketli kal|Stay mobile|動き続ける|Mantente en movimiento|Reste mobile|In Bewegung bleiben
+Saldırganları tek hatta diz|Line the attackers up in a single row|攻撃者を一直線に並ばせる|Pon a los atacantes en una sola línea|Aligne les agresseurs sur une seule ligne|Die Angreifer in eine Linie bringen
+Kısa vur ve geç|Hit short and move on|短く打って抜ける|Golpea corto y pasa|Frappe court et passe|Kurz schlagen und weitergehen
+Kaçış yolunu açık tut|Keep your escape route open|逃げ道を確保しておく|Mantén abierta tu vía de escape|Garde ta voie de sortie libre|Den Fluchtweg offen halten
+Ritmi koru|Keep the rhythm|リズムを保つ|Mantén el ritmo|Garde le rythme|Den Rhythmus halten
+Dengeyi koru|Keep your balance|バランスを保つ|Mantén el equilibrio|Garde l'équilibre|Das Gleichgewicht halten
+Arka ayakla dön|Turn on the back foot|後ろ足で回る|Gira con el pie trasero|Pivote sur le pied arrière|Auf dem hinteren Fuß drehen
+Omuz üstünden bak|Look over your shoulder|肩越しに見る|Mira por encima del hombro|Regarde par-dessus l'épaule|Über die Schulter schauen
+Bacağı dışa savur|Swing the leg outward|脚を外側へ振る|Lanza la pierna hacia fuera|Balance la jambe vers l'extérieur|Das Bein nach außen schwingen
+Gövdeyi alçalt|Lower your body|体を低くする|Baja el cuerpo|Abaisse le corps|Den Körper absenken
+Kolla yüzü koru|Protect your face with your arm|腕で顔を守る|Protégete la cara con el brazo|Protège ton visage avec le bras|Das Gesicht mit dem Arm schützen
+Tekmenin altından eğil|Duck under the kick|蹴りの下をくぐる|Agáchate bajo la patada|Baisse-toi sous le coup de pied|Unter dem Tritt abtauchen
+Kalkıp karşılık ver|Come up and counter|起き上がって反撃する|Levántate y contraataca|Relève-toi et contre|Hochkommen und kontern
+"Kote!" kiai|"Kote!" kiai|「小手！」の気合|Kiai: "¡Kote!"|Kiai : « Kote ! »|Kiai: „Kote!“
+Ön el çeneyi korurken eli geri getir|Bring the hand back while the lead hand guards the jaw|前の手で顎を守りながら手を戻す|Recoge la mano mientras la adelantada protege la mandíbula|Ramène la main pendant que la main avant protège la mâchoire|Die Hand zurückholen, während die Führhand das Kinn schützt
+Jab|Jab|ジャブ|Jab|Jab|Jab
+Teep|Teep|ティープ|Teep|Teep|Teep
+O-soto-gari|O-soto-gari|大外刈り|O-soto-gari|O-soto-gari|O-soto-gari
+Seoi-nage|Seoi-nage|背負い投げ|Seoi-nage|Seoi-nage|Seoi-nage
+Uchi-mata|Uchi-mata|内股|Uchi-mata|Uchi-mata|Uchi-mata
+Kesa-gatame|Kesa-gatame|袈裟固め|Kesa-gatame|Kesa-gatame|Kesa-gatame
+Juji-gatame|Juji-gatame|十字固め|Juji-gatame|Juji-gatame|Juji-gatame
+Triangle choke|Triangle choke|三角絞め|Estrangulación triangular|Étranglement en triangle|Dreieckswürger
+Rear naked choke|Rear naked choke|リアネイキッドチョーク|Mataleón|Étranglement arrière|Rear Naked Choke
+Gyaku-zuki|Gyaku-zuki|逆突き|Gyaku-zuki|Gyaku-zuki|Gyaku-zuki
+Mae-geri|Mae-geri|前蹴り|Mae-geri|Mae-geri|Mae-geri
+Mawashi-geri|Mawashi-geri|回し蹴り|Mawashi-geri|Mawashi-geri|Mawashi-geri
+Age-uke|Age-uke|上げ受け|Age-uke|Age-uke|Age-uke
+Ap chagi|Ap chagi|アプチャギ（前蹴り）|Ap chagi|Ap chagi|Ap chagi
+Dollyo chagi|Dollyo chagi|トルリョチャギ（回し蹴り）|Dollyo chagi|Dollyo chagi|Dollyo chagi
+Yop chagi|Yop chagi|ヨプチャギ（横蹴り）|Yop chagi|Yop chagi|Yop chagi
+Dwi chagi|Dwi chagi|ティチャギ（後ろ蹴り）|Dwi chagi|Dwi chagi|Dwi chagi
+Sprawl|Sprawl|スプロール|Sprawl|Sprawl|Sprawl
+Ground and pound|Ground and pound|パウンド|Ground and pound|Ground and pound|Ground and pound
+Guillotine|Guillotine|ギロチンチョーク|Guillotina|Guillotine|Guillotine
+Mae ukemi|Mae ukemi|前受け身|Mae ukemi|Mae ukemi|Mae ukemi
+Ikkyo|Ikkyo|一教|Ikkyo|Ikkyo|Ikkyo
+Shiho-nage|Shiho-nage|四方投げ|Shiho-nage|Shiho-nage|Shiho-nage
+Irimi-nage|Irimi-nage|入身投げ|Irimi-nage|Irimi-nage|Irimi-nage
+Kote-gaeshi|Kote-gaeshi|小手返し|Kote-gaeshi|Kote-gaeshi|Kote-gaeshi
+Chong quan|Chong quan|衝拳|Chong quan|Chong quan|Chong quan
+Deng tui|Deng tui|蹬腿|Deng tui|Deng tui|Deng tui
+Pao chui|Pao chui|炮捶|Pao chui|Pao chui|Pao chui
+Chudan no kamae|Chudan no kamae|中段の構え|Chudan no kamae|Chudan no kamae|Chudan no kamae
+Kote uchi|Kote uchi|小手打ち|Kote uchi|Kote uchi|Kote uchi
+Hiki-waza|Hiki-waza|引き技|Hiki-waza|Hiki-waza|Hiki-waza
+Ginga|Ginga|ジンガ|Ginga|Ginga|Ginga
+Meia lua de frente|Meia lua de frente|メイア・ルア・ジ・フレンチ|Meia lua de frente|Meia lua de frente|Meia lua de frente
+Armada|Armada|アルマーダ|Armada|Armada|Armada
+Esquiva|Esquiva|エスキーヴァ|Esquiva|Esquiva|Esquiva
 `);
