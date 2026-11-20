@@ -1,0 +1,17 @@
+import {chromium} from '/opt/node22/lib/node_modules/playwright/index.mjs';
+const b=await chromium.launch();const errs=[];const out={};
+const p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,locale:'tr'});
+p.on('pageerror',e=>errs.push(e.message));
+await p.addInitScript(()=>{try{localStorage.setItem('by-fict','1');localStorage.setItem('by_music','0')}catch(e){}});
+await p.goto('file://'+process.cwd()+'/demir-yemin.html');await p.waitForTimeout(1200);
+await p.evaluate(()=>{UI.d.name='Test Asker';UI.d.trauma=TRAUMA[0].id;newGame()});await p.waitForTimeout(600);
+await p.evaluate(()=>{while(MO)nextModal()});
+const shot=async(n,fn)=>{await p.evaluate(fn);await p.waitForTimeout(350);out[n]=await p.evaluate(()=>document.querySelectorAll('.unl37').length);
+ await p.evaluate(()=>{const e=document.querySelector('.unl37');if(e)e.scrollIntoView({block:'center'})});await p.waitForTimeout(150);await p.screenshot({path:'v37-'+n+'.png'})};
+await shot('state',()=>{UI.scr='game';UI.tab='mission';UI.msub='state';render()});
+await shot('hq',()=>{UI.tab='hq';render()});
+await shot('train',()=>{UI.tab='train';render()});
+await shot('world',()=>{UI.tab='world';render()});
+await shot('prof',()=>{UI.tab='prof';render()});
+out.html=await p.evaluate(()=>{const r={};for(const t of ['hq','train','life','mission','world','prof']){UI.tab=t;r[t]=document.createElement('div').innerHTML=vGame().split('unl37"').length-1}return r});
+console.log(JSON.stringify(out));console.log('ERR',errs);await b.close();
