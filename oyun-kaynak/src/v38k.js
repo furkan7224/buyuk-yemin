@@ -1,0 +1,22 @@
+/* v38k: halka sesleniş (serbest metin) anahtar kelimeleri — diğer diller */
+if(typeof SPT!=='undefined'&&typeof SPW!=='undefined'){
+ const add=(o,k,a)=>{if(o[k]){const L=Array.isArray(o[k][1])?o[k][1]:o[k];a.forEach(w=>{if(!L.includes(w))L.push(w)})}};
+ const T={
+  eko:['economy','jobs','employment','wage','salary','inflation','price','production','investment','farmer','export','tax','rent','cost of living','経済','雇用','仕事','賃金','給料','物価','インフレ','投資','農家','輸出','税','家賃','economía','empleo','trabajo','salario','sueldo','inflación','precio','inversión','agricultor','impuesto','alquiler','économie','emploi','travail','salaire','prix','investissement','agriculteur','impôt','loyer','pouvoir d\'achat','wirtschaft','arbeit','lohn','gehalt','preis','investition','landwirt','export','steuer','miete'],
+  guv:['security','terror','border','soldier','army','defence','defense','hero','protect','police','安全','テロ','国境','兵士','軍','防衛','英雄','守る','警察','seguridad','terror','frontera','soldado','ejército','defensa','héroe','proteger','policía','sécurité','frontière','soldat','armée','défense','héros','protéger','police','sicherheit','grenze','soldat','armee','verteidigung','held','schützen','polizei'],
+  bir:['unity','together','brother','nation','homeland','団結','共に','一緒','兄弟','国民','祖国','unidad','juntos','herman','nación','patria','unité','ensemble','frère','fraternité','nation','patrie','einheit','gemeinsam','zusammen','bruder','nation','heimat'],
+  gen:['youth','young','school','education','university','student','teacher','若者','学校','教育','大学','学生','教師','jóvenes','juventud','escuela','educación','universidad','estudiante','profesor','jeunes','jeunesse','école','éducation','université','étudiant','enseignant','jugend','jung','schule','bildung','universität','student','lehrer'],
+  sag:['health','hospital','doctor','pension','retire','医療','病院','医師','年金','退職','salud','hospital','médico','pensión','jubilad','santé','hôpital','médecin','retraite','gesundheit','krankenhaus','arzt','rente','rentner'],
+  dis:['peace','diplomacy','neighbour','neighbor','ally','alliance','平和','外交','隣国','同盟','paz','diplomacia','vecino','aliado','paix','diplomatie','voisin','allié','frieden','diplomatie','nachbar','verbündet','bündnis'],
+  ada:['justice','law','transparen','court','corruption','正義','法','透明','裁判','汚職','justicia','ley','transparencia','tribunal','corrupción','justice','loi','transparence','tribunal','corruption','gerechtigkeit','gesetz','transparenz','gericht','korruption']};
+ Object.keys(T).forEach(k=>add(SPT,k,T[k]));
+ const W={
+  umut:['hope','tomorrow','we will succeed','build','strong','proud','bright','希望','明日','築','強い','誇り','明るい','esperanza','mañana','lo lograremos','construir','fuerte','orgullo','espoir','demain','nous réussirons','construire','fort','fierté','hoffnung','morgen','wir schaffen','aufbauen','stark','stolz'],
+  soz:['i promise','we will','we are launching','million','billion','percent','this year','this month','約束','します','百万','億','パーセント','今年','今月','prometo','vamos a','millones','por ciento','este año','este mes','je promets','nous allons','million','milliard','pour cent','cette année','ce mois','ich verspreche','wir werden','million','milliarde','prozent','dieses jahr','diesen monat'],
+  emp:['pain','grief','i understand','with you','thank','sacrifice','痛み','悲しみ','理解','寄り添','感謝','犠牲','dolor','duelo','entiendo','con ustedes','gracias','sacrificio','douleur','deuil','je comprends','avec vous','merci','sacrifice','schmerz','trauer','ich verstehe','an ihrer seite','danke','opfer'],
+  sert:['crush','destroy','punish','traitor','wipe out','潰す','滅ぼす','罰する','裏切り者','aplastar','destruir','castigar','traidor','écraser','détruire','punir','traître','zerschlagen','vernichten','bestrafen','verräter'],
+  bol:['treason','traitors','so-called','fifth column','裏切り','売国','いわゆる','traición','traidores','supuesto','quinta columna','trahison','traîtres','soi-disant','cinquième colonne','verrat','verräter','sogenannt','fünfte kolonne'],
+  ego:['i did it','thanks to me','owe me','alone','私がやった','私のおかげ','lo hice yo','gracias a mí','me deben','c\'est moi','grâce à moi','me doivent','ich habe das','dank mir','schulden mir']};
+ Object.keys(W).forEach(k=>{if(SPW[k])W[k].forEach(w=>{if(!SPW[k].includes(w))SPW[k].push(w)})});
+}
+if(typeof speechEval==='function'){const _se=speechEval;speechEval=function(t){if(typeof LANG!=='undefined'&&LANG!=='tr'&&t)t=String(t).toLowerCase();return _se(t)}}
