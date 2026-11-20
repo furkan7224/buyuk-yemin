@@ -33,7 +33,7 @@ const A={
  reset2(){try{localStorage.removeItem(KEY)}catch(e){}S=null;UI.confirmReset=false;UI.scr='title';render()},
  mc(v){const c=(MO&&MO.ch||[])[+v];c&&c.fn&&c.fn();if(S)save();nextModal()},
 };
-Object.assign(A,A8,A9,A10,A11,A13,A14,A15,A16,A17,A19,A20,A26,A29,A31,A32,A33,typeof A36!=='undefined'?A36:{});
+Object.assign(A,A8,A9,A10,A11,A13,A14,A15,A16,A17,A19,A20,A26,A29,A31,A32,A33,typeof A36!=='undefined'?A36:{},typeof A38!=='undefined'?A38:{});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.disabled)return;const f=A[b.dataset.a];if(f){const sc=document.getElementById('scr')?.scrollTop;f(b.dataset.v);const s=document.getElementById('scr');if(s&&sc!=null&&!['tab','toCreate','goto','lifetab','cont','new'].includes(b.dataset.a))s.scrollTop=sc}});
 document.addEventListener('input',e=>{const lf=e.target.dataset.lf;
  if(lf){UI.d.look[lf]=+e.target.value;$('#v'+lf).textContent=e.target.value;const bl=brList(UI.d.nation);$('#pv').innerHTML=avatar(124,bl.find(b=>b.id===UI.d.branch)||bl[0],PATHS.find(p=>p.id===UI.d.path).r,UI.d.look,UI.d.nation);$('#bfx').textContent=bfxText(UI.d.look);return}

@@ -224,6 +224,10 @@ def resubmit():
         bb = call('GET', f"/v1/appStoreVersions/{r[0]['id']}/build")['data']
         cur = int(bb['attributes']['version']) if bb else None
     log('Şu an bağlı yapı:', cur)
+    q0 = call('GET', f'/v1/builds?filter[app]={APP_ID}&filter[preReleaseVersion.version]={VERSION}&sort=-uploadedDate&limit=10')['data']
+    hi = max([int(b['attributes']['version']) for b in q0] or [0])
+    cur = max(cur or 0, hi)
+    log('Bundan yeni yapı beklenecek:', cur)
     for _ in range(170):
         q = call('GET', f'/v1/builds?filter[app]={APP_ID}&filter[preReleaseVersion.version]={VERSION}&sort=-uploadedDate&limit=5')['data']
         ok = [b for b in q if b['attributes']['processingState'] == 'VALID' and (cur is None or int(b['attributes']['version']) > cur)]

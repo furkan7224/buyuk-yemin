@@ -1157,6 +1157,15 @@ button:focus-visible{outline:2px solid color-mix(in srgb,var(--acc) 80%,#fff);ou
 .unl37 .u37-c{color:#e3b341;display:flex;flex:none}.unl37 b{display:block;font-size:13.5px;color:#f3dfa6}.unl37 small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.3}
 .unl37 .u37-p{flex:none;font-weight:800;color:#17120a;background:linear-gradient(90deg,#f3dfa6,#e3b341);padding:6px 9px;border-radius:8px;font-size:12.5px;white-space:nowrap}.unl37 .u37-p em{font-style:normal;margin-left:3px}
 .gl ~ .unl37,.card>.unl37:last-child{margin-bottom:0}
+/* v38 dil butonu */
+.lang38{flex:none;height:34px;padding:0 10px;border-radius:17px;display:inline-flex;align-items:center;gap:5px;border:1px solid #c9a64a99;color:#f3dfa6;background:color-mix(in srgb,var(--panel2) 75%,transparent);font-weight:800;font-size:12px;letter-spacing:.06em}
+.lang38 svg{color:#e3b341}
+.title .lang38t,.lang38t{position:fixed!important;width:auto!important;margin:0!important;top:calc(env(safe-area-inset-top,0px) + 6px);right:10px;z-index:20;height:34px;padding:0 12px;font-size:12.5px;background:#15130dee;box-shadow:0 4px 14px #0008}
+.title{position:relative}
+.lp38{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.lp38-b{padding:13px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--fg);font-weight:700;font-size:15px}
+.lp38-b.on{border-color:#e3b341;background:linear-gradient(135deg,#3a2d0f,#17130b);color:#f3dfa6}
+.top .lang38{width:34px;padding:0;justify-content:center;border-radius:50%}.top .lang38 b{display:none}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head>
@@ -9995,6 +10004,21 @@ Bu harekât olmadı.|This operation failed.|この作戦は失敗した。|Esta 
 Başarısız harekâtlar terfini geciktirir. Premium ile tecrüben 2 katına çıkar, her gün 2 eylem hakkı fazlası kazanırsın ve istediğin rütbeden başlayabilirsin.|Failed operations delay your promotion. With Premium you earn double experience, get 2 extra actions every day and can start at any rank.|作戦の失敗は昇進を遅らせる。プレミアムなら経験値2倍、毎日2回多く行動でき、好きな階級から始められる。|Las operaciones fallidas retrasan tu ascenso. Con Premium ganas el doble de experiencia, 2 acciones extra cada día y puedes empezar en cualquier rango.|Les opérations ratées retardent ta promotion. Avec Premium, tu gagnes deux fois plus d'expérience, 2 actions de plus chaque jour et tu peux commencer au grade de ton choix.|Gescheiterte Einsätze verzögern deine Beförderung. Mit Premium bekommst du doppelte Erfahrung, täglich 2 Aktionen mehr und kannst in jedem Rang starten.
 Şimdi değil|Not now|今はしない|Ahora no|Pas maintenant|Nicht jetzt`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
 
+/* ===== v38 · Görünür dil seçici (1.1.1) ===== */
+const globe38=(s=17)=>`<svg viewBox="0 0 24 24" width="${s}" height="${s}" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>`;
+function langBtn38(cls){const cur=(LANGS.find(x=>x[0]===LANG)||LANGS[0]);return `<button class="lang38 ${cls||''} notr" data-a="langpick38" aria-label="Language">${globe38()}<b>${LANG.toUpperCase()}</b></button>`}
+function langPick38(){const el=document.getElementById('modal');
+ pushModal({k:'Dil · Language',ti:'Dil seç',body:`<p class="small muted notr">Choose your language · 言語を選択 · Elige tu idioma · Choisis ta langue · Sprache wählen</p><div class="lp38 notr">${LANGS.map(([k,n])=>`<button class="lp38-b ${LANG===k?'on':''}" data-l="${k}">${n}${LANG===k?' ✓':''}</button>`).join('')}</div>`,
+  ch:[{t:'Kapat',fn:()=>{}}]});
+ setTimeout(()=>{document.querySelectorAll('#modal .lp38-b').forEach(b=>b.onclick=()=>{const l=b.dataset.l;try{while(MO)nextModal()}catch(e){}setLang(l)})},0)}
+var A38={langpick38:langPick38};
+/* oyun üst çubuğu: müzik butonunun yanına */
+{const _vg=vGame;vGame=function(){return _vg().replace('<button class="mus31',langBtn38()+'<button class="mus31')}}
+/* ana ekran: sağ üst köşe */
+{const _vt=vTitleX;vTitleX=function(){return _vt().replace(/<div class="title[^"]*">/,m=>m+langBtn38('lang38t'))}}
+`Dil seç|Choose language|言語を選択|Elige idioma|Choisir la langue|Sprache wählen
+Kapat|Close|閉じる|Cerrar|Fermer|Schließen`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
+
 /* ============ OLAY BAĞLAMA ============ */
 const A={
  new(){UI.scr='story';UI.d=newDraft();S=null;render()},
@@ -10030,7 +10054,7 @@ const A={
  reset2(){try{localStorage.removeItem(KEY)}catch(e){}S=null;UI.confirmReset=false;UI.scr='title';render()},
  mc(v){const c=(MO&&MO.ch||[])[+v];c&&c.fn&&c.fn();if(S)save();nextModal()},
 };
-Object.assign(A,A8,A9,A10,A11,A13,A14,A15,A16,A17,A19,A20,A26,A29,A31,A32,A33,typeof A36!=='undefined'?A36:{});
+Object.assign(A,A8,A9,A10,A11,A13,A14,A15,A16,A17,A19,A20,A26,A29,A31,A32,A33,typeof A36!=='undefined'?A36:{},typeof A38!=='undefined'?A38:{});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.disabled)return;const f=A[b.dataset.a];if(f){const sc=document.getElementById('scr')?.scrollTop;f(b.dataset.v);const s=document.getElementById('scr');if(s&&sc!=null&&!['tab','toCreate','goto','lifetab','cont','new'].includes(b.dataset.a))s.scrollTop=sc}});
 document.addEventListener('input',e=>{const lf=e.target.dataset.lf;
  if(lf){UI.d.look[lf]=+e.target.value;$('#v'+lf).textContent=e.target.value;const bl=brList(UI.d.nation);$('#pv').innerHTML=avatar(124,bl.find(b=>b.id===UI.d.branch)||bl[0],PATHS.find(p=>p.id===UI.d.path).r,UI.d.look,UI.d.nation);$('#bfx').textContent=bfxText(UI.d.look);return}

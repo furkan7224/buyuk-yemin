@@ -1,0 +1,13 @@
+import {chromium} from '/opt/node22/lib/node_modules/playwright/index.mjs';
+const b=await chromium.launch();const errs=[];
+const p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,locale:'tr'});
+p.on('pageerror',e=>errs.push(e.message));
+await p.addInitScript(()=>{try{localStorage.setItem('by-fict','1');localStorage.setItem('by_music','0')}catch(e){}});
+await p.goto('file://'+process.cwd()+'/demir-yemin.html');await p.waitForTimeout(1200);
+await p.screenshot({path:'l38-title.png'});
+await p.click('.lang38');await p.waitForTimeout(400);await p.screenshot({path:'l38-modal.png'});
+await p.click('.lp38-b[data-l=en]');await p.waitForTimeout(500);await p.screenshot({path:'l38-title-en.png'});
+const r1=await p.evaluate(()=>LANG);
+await p.evaluate(()=>{UI.d.name='Test Asker';UI.d.trauma=TRAUMA[0].id;newGame();while(MO)nextModal()});await p.waitForTimeout(400);
+await p.screenshot({path:'l38-game.png'});
+console.log(r1,'ERR',errs);await b.close();

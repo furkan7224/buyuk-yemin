@@ -1138,3 +1138,12 @@ button:focus-visible{outline:2px solid color-mix(in srgb,var(--acc) 80%,#fff);ou
 .unl37 .u37-c{color:#e3b341;display:flex;flex:none}.unl37 b{display:block;font-size:13.5px;color:#f3dfa6}.unl37 small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.3}
 .unl37 .u37-p{flex:none;font-weight:800;color:#17120a;background:linear-gradient(90deg,#f3dfa6,#e3b341);padding:6px 9px;border-radius:8px;font-size:12.5px;white-space:nowrap}.unl37 .u37-p em{font-style:normal;margin-left:3px}
 .gl ~ .unl37,.card>.unl37:last-child{margin-bottom:0}
+/* v38 dil butonu */
+.lang38{flex:none;height:34px;padding:0 10px;border-radius:17px;display:inline-flex;align-items:center;gap:5px;border:1px solid #c9a64a99;color:#f3dfa6;background:color-mix(in srgb,var(--panel2) 75%,transparent);font-weight:800;font-size:12px;letter-spacing:.06em}
+.lang38 svg{color:#e3b341}
+.title .lang38t,.lang38t{position:fixed!important;width:auto!important;margin:0!important;top:calc(env(safe-area-inset-top,0px) + 6px);right:10px;z-index:20;height:34px;padding:0 12px;font-size:12.5px;background:#15130dee;box-shadow:0 4px 14px #0008}
+.title{position:relative}
+.lp38{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.lp38-b{padding:13px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--fg);font-weight:700;font-size:15px}
+.lp38-b.on{border-color:#e3b341;background:linear-gradient(135deg,#3a2d0f,#17130b);color:#f3dfa6}
+.top .lang38{width:34px;padding:0;justify-content:center;border-radius:50%}.top .lang38 b{display:none}
