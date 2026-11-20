@@ -4924,4 +4924,166 @@ Yoğurt, granola ve meyve|Yoghurt, granola and fruit|ヨーグルト、グラノ
 Yoğurt, müsli, elma|Yoghurt, muesli, apple|ヨーグルト、ミューズリー、りんご|Yogur, muesli y manzana|Yaourt, muesli, pomme|Joghurt, Müsli, Apfel
 Şarap ve antipasti|Wine and antipasti|ワインと前菜|Vino y antipasti|Vin et antipasti|Wein und Antipasti
 Şarap ve peynir tabağı|Wine and cheese platter|ワインとチーズの盛り合わせ|Vino y tabla de quesos|Vin et plateau de fromages|Wein und Käseplatte
+"Yarın boşsun değil mi? {} yapalım mı? Seni özledim."|"You're free tomorrow, right? How about $1? I miss you."|"明日は空いてるよね？$1しない？会いたいよ。"|"Mañana estás libre, ¿no? ¿Qué tal si hacemos $1? Te echo de menos."|"Tu es libre demain, non ? Et si on faisait : $1 ? Tu me manques."|"Du hast morgen frei, oder? Wie wär's mit $1? Ich vermisse dich."
+"Yarın boşsun değil mi? {} yapalım mı? Çoktandır görüşmedik."|"You're free tomorrow, right? How about $1? We haven't seen each other in ages."|"明日は空いてるよね？$1しない？しばらく会ってないし。"|"Mañana estás libre, ¿no? ¿Qué tal si hacemos $1? Hace mucho que no nos vemos."|"Tu es libre demain, non ? Et si on faisait : $1 ? Ça fait longtemps qu'on ne s'est pas vus."|"Du hast morgen frei, oder? Wie wär's mit $1? Wir haben uns ewig nicht gesehen."
+"Yarın izinlisin, biliyorum! {} yapalım mı? Seni özledim."|"You're off tomorrow, I know! How about $1? I miss you."|"明日は休みでしょ、知ってるよ！$1しない？会いたいよ。"|"Mañana tienes permiso, ¡lo sé! ¿Qué tal si hacemos $1? Te echo de menos."|"Tu es en permission demain, je le sais ! Et si on faisait : $1 ? Tu me manques."|"Du hast morgen frei, ich weiß es! Wie wär's mit $1? Ich vermisse dich."
+"Yarın izinlisin, biliyorum! {} yapalım mı? Çoktandır görüşmedik."|"You're off tomorrow, I know! How about $1? We haven't seen each other in ages."|"明日は休みでしょ、知ってるよ！$1しない？しばらく会ってないし。"|"Mañana tienes permiso, ¡lo sé! ¿Qué tal si hacemos $1? Hace mucho que no nos vemos."|"Tu es en permission demain, je le sais ! Et si on faisait : $1 ? Ça fait longtemps qu'on ne s'est pas vus."|"Du hast morgen frei, ich weiß es! Wie wär's mit $1? Wir haben uns ewig nicht gesehen."
+"Bir fikrim var: {} yapalım mı? Seni özledim."|"I have an idea: How about $1? I miss you."|"いいこと思いついた：$1しない？会いたいよ。"|"Tengo una idea: ¿Qué tal si hacemos $1? Te echo de menos."|"J'ai une idée : Et si on faisait : $1 ? Tu me manques."|"Ich habe eine Idee: Wie wär's mit $1? Ich vermisse dich."
+"Bir fikrim var: {} yapalım mı? Çoktandır görüşmedik."|"I have an idea: How about $1? We haven't seen each other in ages."|"いいこと思いついた：$1しない？しばらく会ってないし。"|"Tengo una idea: ¿Qué tal si hacemos $1? Hace mucho que no nos vemos."|"J'ai une idée : Et si on faisait : $1 ? Ça fait longtemps qu'on ne s'est pas vus."|"Ich habe eine Idee: Wie wär's mit $1? Wir haben uns ewig nicht gesehen."
+Geçmişinden kaçıyorsun. Eski mahallende geçirdiğin son gecenin sabahında kapının üstüne kırmızı bir pençe çizilmişti. O işareti bir daha görmek istemiyordun.|You're running from your past. On the morning after your last night in your old neighbourhood, a red claw had been drawn above your door. You never wanted to see that mark again.|君は過去から逃げている。かつての街で過ごした最後の夜が明けた朝、家の扉の上に赤い爪の印が描かれていた。あの印を二度と見たくなかった。|Huyes de tu pasado. La mañana siguiente a tu última noche en tu antiguo barrio, alguien había pintado una garra roja sobre tu puerta. No querías volver a ver esa marca.|Tu fuis ton passé. Au matin de ta dernière nuit dans ton ancien quartier, une griffe rouge avait été dessinée au-dessus de ta porte. Tu ne voulais plus jamais revoir ce signe.|Du fliehst vor deiner Vergangenheit. Am Morgen nach deiner letzten Nacht im alten Viertel war eine rote Klaue über deine Tür gemalt. Dieses Zeichen wolltest du nie wieder sehen.
+Motor uyarı ışığı|Engine warning light|エンジン警告灯|Luz de aviso del motor|Voyant d'alerte moteur|Triebwerkswarnleuchte
+{} (Gün #)|$1 (Day $2)|$1（$2日目）|$1 (día $2)|$1 (jour $2)|$1 (Tag $2)
+Ah, o gün başka bir sözüm var. Bir dahakine kesin!|Oh, I've got another commitment that day. Next time for sure!|あ、その日は先約があるの。次は絶対ね！|Ay, ese día ya he quedado. ¡La próxima seguro!|Ah, j'ai déjà un engagement ce jour-là. La prochaine fois, c'est sûr !|Ach, an dem Tag habe ich schon was vor. Nächstes Mal ganz sicher!
+Biraz yorgunum, evde dinlenmek istiyorum. Kusura bakma.|I'm a bit tired; I want to rest at home. Sorry.|ちょっと疲れてて、家で休みたいの。ごめんね。|Estoy algo cansado, quiero descansar en casa. Perdona.|Je suis un peu fatigué, je veux me reposer à la maison. Désolé.|Ich bin etwas müde und will zu Hause ausruhen. Tut mir leid.
+Anlaştık, kaçırmam!|Deal, I won't miss it!|決まりね、絶対行く！|¡Hecho, no me lo pierdo!|Marché conclu, je ne manquerai pas ça !|Abgemacht, das lasse ich mir nicht entgehen!
+Arkadaşın|Your friend|友人|Tu amigo|Ton ami|Dein Freund
+Arkadaşın · {}|Your friend · $1|友人・$1|Tu amigo · $1|Ton ami · $1|Dein Freund · $1
+Sevgilin|Your partner|恋人|Tu pareja|Ton partenaire|Dein Partner
+Herkes|Everyone|全員|Todos|Tout le monde|Alle
+Sevgilin ve arkadaşların|Your partner and friends|恋人と友人たち|Tu pareja y tus amigos|Ton partenaire et tes amis|Dein Partner und deine Freunde
+Battaniye, film ve sıcak bir çorba.|A blanket, a film and a hot soup.|毛布と映画と温かいスープ。|Una manta, una película y una sopa caliente.|Une couverture, un film et une soupe chaude.|Eine Decke, ein Film und eine heiße Suppe.
+Bağınız güçlendikçe kabul etme ihtimali artar.|The stronger your bond, the more likely they are to accept.|絆が強まるほど、受け入れてもらえる可能性が上がる。|Cuanto más fuerte sea vuestro vínculo, más probable es que acepte.|Plus votre lien est fort, plus il y a de chances qu'on accepte.|Je stärker eure Bindung, desto eher die Zusage.
+Bir dere kenarında ateş yakıp çay demlediniz.|You built a fire by a stream and brewed tea.|小川のほとりで火を起こしてお茶を淹れた。|Encendisteis un fuego junto a un arroyo y preparasteis té.|Vous avez fait un feu au bord d'un ruisseau et préparé du thé.|Ihr habt an einem Bach ein Feuer gemacht und Tee gekocht.
+Bu hafta çok yoğunum, sonra telafi edelim mi?|I'm really busy this week; can we make up for it later?|今週はすごく忙しいの。また今度埋め合わせしない？|Esta semana estoy muy liado, ¿lo dejamos para más adelante?|Je suis débordé cette semaine, on se rattrape plus tard ?|Diese Woche bin ich total beschäftigt, holen wir das später nach?
+Bu plan için paran yetmiyor.|You can't afford this plan.|このプランにはお金が足りない。|No te llega el dinero para este plan.|Tu n'as pas assez d'argent pour ce projet.|Für diesen Plan reicht dein Geld nicht.
+Buluşma|Meet-up|待ち合わせ|Quedada|Rendez-vous|Treffen
+Buluşma · {}|Meet-up · $1|待ち合わせ・$1|Quedada · $1|Rendez-vous · $1|Treffen · $1
+İptal|Cancel|キャンセル|Cancelar|Annuler|Absagen
+Davet|Invitation|招待|Invitación|Invitation|Einladung
+Plan|Plan|予定|Plan|Projet|Plan
+Dalgaların sesi, uzun bir sessizlik ve bir itiraf.|The sound of the waves, a long silence and a confession.|波の音、長い沈黙、そして告白。|El sonido de las olas, un largo silencio y una confesión.|Le bruit des vagues, un long silence et un aveu.|Das Rauschen der Wellen, langes Schweigen und ein Geständnis.
+Akşam yemeği|Dinner|ディナー|Cena|Dîner|Abendessen
+Sinema|Cinema|映画館|Cine|Cinéma|Kino
+Konser|Concert|コンサート|Concierto|Concert|Konzert
+Doğa yürüyüşü ve piknik|Nature walk and picnic|ハイキングとピクニック|Excursión y pícnic|Randonnée et pique-nique|Wanderung und Picknick
+Dışarıda yendi|Eaten out|外食した|Comida fuera|Repas à l'extérieur|Auswärts gegessen
+Evde film ve yemek|Film and dinner at home|家で映画と食事|Película y cena en casa|Film et repas à la maison|Film und Essen zu Hause
+Film bitince yol boyunca sonunu tartıştınız.|After the film you argued about the ending all the way home.|映画の後、帰り道ずっと結末について語り合った。|Al terminar la película discutisteis el final todo el camino.|Après le film, vous avez débattu de la fin tout le long du chemin.|Nach dem Film habt ihr den ganzen Heimweg über das Ende diskutiert.
+Gün batımında sahil yürüyüşü|Sunset walk on the beach|夕暮れの海辺の散歩|Paseo por la playa al atardecer|Promenade sur la plage au coucher du soleil|Strandspaziergang bei Sonnenuntergang
+Güneş denize gömülürken el ele yürüdünüz.|You walked hand in hand as the sun sank into the sea.|夕日が海に沈む中、手をつないで歩いた。|Caminasteis de la mano mientras el sol se hundía en el mar.|Vous avez marché main dans la main pendant que le soleil plongeait dans la mer.|Ihr seid Hand in Hand gegangen, während die Sonne im Meer versank.
+Güneşli bir terasta öğlene kadar kahvaltı.|Breakfast until noon on a sunny terrace.|日当たりのいいテラスで昼まで朝食。|Desayuno hasta mediodía en una terraza soleada.|Petit-déjeuner jusqu'à midi sur une terrasse ensoleillée.|Frühstück bis mittags auf einer sonnigen Terrasse.
+Harika fikir! Sabırsızlanıyorum.|Great idea! I can't wait.|いいね！楽しみ。|¡Qué buena idea! Estoy deseándolo.|Super idée ! J'ai hâte.|Tolle Idee! Ich freu mich schon.
+Henüz plan yok. arkadaşlarınla izin günün için bir şey ayarla.|No plans yet. Set something up with your friends for your day off.|まだ予定はない。友人たちと休日の予定を立てよう。|Aún no hay planes. Organiza algo con tus amigos para tu día libre.|Pas encore de projets. Organise quelque chose avec tes amis pour ton jour de repos.|Noch keine Pläne. Organisiere mit deinen Freunden etwas für deinen freien Tag.
+Herkesle grup yemeği|Group dinner with everyone|みんなで食事会|Cena en grupo con todos|Dîner de groupe avec tout le monde|Gruppenessen mit allen
+Hesabı ben ödeyeyim|I'll pay the bill|会計は僕が払う|Pago yo la cuenta|Je paie l'addition|Ich zahle die Rechnung
+Hesabı paylaşalım|Let's split the bill|割り勘にしよう|Paguemos a medias|Partageons l'addition|Teilen wir die Rechnung
+Kalabalığın içinde aynı şarkıyı bağırdınız.|You shouted the same song in the middle of the crowd.|群衆の中で同じ歌を叫んだ。|Gritasteis la misma canción entre la multitud.|Vous avez hurlé la même chanson au milieu de la foule.|Ihr habt mitten in der Menge dasselbe Lied gegrölt.
+Mum ışığında bir masa, uzun bir sohbet.|A candlelit table, a long conversation.|キャンドルの灯るテーブル、長い会話。|Una mesa a la luz de las velas y una larga conversación.|Une table aux chandelles, une longue conversation.|Ein Tisch bei Kerzenlicht, ein langes Gespräch.
+Ne yapalım?|What shall we do?|何をしよう？|¿Qué hacemos?|Qu'est-ce qu'on fait ?|Was machen wir?
+Patikada yürüdünüz, tepede sandviçlerinizi açtınız.|You walked the trail and unpacked your sandwiches on the hilltop.|小道を歩き、丘の上でサンドイッチを広げた。|Recorristeis el sendero y abristeis los bocadillos en la cima.|Vous avez suivi le sentier et déballé vos sandwichs au sommet.|Ihr seid den Pfad entlanggewandert und habt oben auf dem Hügel eure Sandwiches ausgepackt.
+Patlamış mısır, karanlık salon ve birkaç saatlik huzur.|Popcorn, a dark theatre and a few hours of peace.|ポップコーン、暗い館内、数時間の安らぎ。|Palomitas, una sala oscura y unas horas de paz.|Du pop-corn, une salle obscure et quelques heures de paix.|Popcorn, ein dunkler Saal und ein paar Stunden Ruhe.
+Plan yapacak kimse yok. İzin günlerinde yeni insanlarla tanış.|There's no one to make plans with. Meet new people on your days off.|予定を立てる相手がいない。休日に新しい人と出会おう。|No hay nadie con quien hacer planes. Conoce gente nueva en tus días libres.|Personne avec qui faire des projets. Rencontre de nouvelles personnes pendant tes jours de repos.|Niemand da, mit dem man planen kann. Lerne an freien Tagen neue Leute kennen.
+Plan {} için yapılacak. Kabul edip etmemeleri aranızdaki bağa bağlı.|The plan will be for $1. Whether they accept depends on your bond.|予定は$1のためのもの。受け入れてもらえるかは絆次第だ。|El plan será para $1. Que acepten depende de vuestro vínculo.|Le projet sera pour $1. Leur acceptation dépend de votre lien.|Der Plan ist für $1. Ob zugesagt wird, hängt von eurer Bindung ab.
+Son dakika golünde birbirinize sarıldınız.|You hugged each other at the last-minute goal.|終了間際のゴールで抱き合った。|Os abrazasteis con el gol en el último minuto.|Vous vous êtes enlacés au but de la dernière minute.|Beim Tor in letzter Minute seid ihr euch um den Hals gefallen.
+Stadyumda maç|Match at the stadium|スタジアムで試合観戦|Partido en el estadio|Match au stade|Spiel im Stadion
+Tam ihtiyacım olan şey. Görüşürüz!|Just what I needed. See you!|まさに必要だったもの。またね！|Justo lo que necesitaba. ¡Nos vemos!|Exactement ce qu'il me fallait. À bientôt !|Genau das, was ich brauche. Bis dann!
+Tribünde sesiniz kısılana kadar bağırdınız.|You shouted in the stands until you were hoarse.|スタンドで声が枯れるまで叫んだ。|Gritasteis en la grada hasta quedaros afónicos.|Vous avez crié dans les tribunes jusqu'à en perdre la voix.|Ihr habt auf der Tribüne geschrien, bis ihr heiser wart.
+Uzun bir kahvaltı|A long breakfast|ゆっくり朝食|Un desayuno largo|Un long petit-déjeuner|Ein langes Frühstück
+Yarın boşsun değil mi?|You're free tomorrow, right?|明日は空いてるよね？|Mañana estás libre, ¿no?|Tu es libre demain, non ?|Du hast morgen frei, oder?
+Yarın izinlisin, biliyorum!|You're off tomorrow, I know!|明日は休みでしょ、知ってるよ！|Mañana tienes permiso, ¡lo sé!|Tu es en permission demain, je le sais !|Du hast morgen frei, ich weiß es!
+{} ile plan: {} ({})|Plan with $1: $2 ($3)|$1との予定：$2（$3）|Plan con $1: $2 ($3)|Projet avec $1 : $2 ($3)|Plan mit $1: $2 ($3)
+{} ile planı iptal ettin. Biraz kırıldı.|You cancelled your plan with $1. They were a little hurt.|$1との予定をキャンセルした。少し傷ついたようだ。|Cancelaste el plan con $1. Se ha sentido un poco dolido.|Tu as annulé ton projet avec $1. Cela l'a un peu blessé.|Du hast den Plan mit $1 abgesagt. Das hat etwas gekränkt.
+{} ile planı kaçırdın.|You missed your plan with $1.|$1との予定をすっぽかした。|Te perdiste el plan con $1.|Tu as manqué ton projet avec $1.|Du hast den Plan mit $1 verpasst.
+{} ile {}.|$2 with $1.|$1と$2。|$2 con $1.|$2 avec $1.|$2 mit $1.
+{} yapıldı|$1 done|$1済み|$1 hecho|$1 fait|$1 erledigt
+Çay üstüne çay, gülüşmeler.|Tea after tea, and laughter.|お茶を何杯も、笑い声。|Té tras té, y risas.|Thé après thé, et des rires.|Tee um Tee, und Gelächter.
+Ön sıralarda, müziğin içinde kayboldunuz.|In the front rows, you lost yourselves in the music.|最前列で音楽に我を忘れた。|En las primeras filas os perdisteis en la música.|Aux premiers rangs, vous vous êtes perdus dans la musique.|In den vorderen Reihen habt ihr euch in der Musik verloren.
+Şehrin en sevdiğiniz lokantasında saatlerce oturdunuz.|You sat for hours in your favourite restaurant in the city.|街でお気に入りのレストランに何時間も居座った。|Pasasteis horas en vuestro restaurante favorito de la ciudad.|Vous êtes restés des heures dans votre restaurant préféré de la ville.|Ihr habt stundenlang in eurem Lieblingsrestaurant der Stadt gesessen.
+yarın|tomorrow|明日|mañana|demain|morgen
+1. Bölüm sorumlusu|1st Division officer|第1分隊長|Jefe de la 1.ª división|Chef de la 1re division|Leiter 1. Abteilung
+2. Bölüm sorumlusu|2nd Division officer|第2分隊長|Jefe de la 2.ª división|Chef de la 2e division|Leiter 2. Abteilung
+Ana Jet Üssü|Main Jet Base|主力ジェット基地|Base Aérea Principal|Base aérienne principale|Hauptjetbasis
+Ana jet üs komutanı|Main jet base commander|主力ジェット基地司令|Jefe de la base aérea principal|Commandant de la base aérienne principale|Kommandeur der Hauptjetbasis
+Bakım astsubayı|Maintenance NCO|整備下士官|Suboficial de mantenimiento|Sous-officier de maintenance|Wartungsunteroffizier
+Bakım subayı|Maintenance officer|整備将校|Oficial de mantenimiento|Officier de maintenance|Wartungsoffizier
+Bakım çavuşu|Maintenance sergeant|整備軍曹|Sargento de mantenimiento|Sergent de maintenance|Wartungsfeldwebel
+Bölüm sorumlusu|Division officer|分隊長|Jefe de división|Chef de division|Abteilungsleiter
+Deniz Kuvvetleri Komutanı|Commander of the Naval Forces|海軍司令官|Comandante de la Armada|Commandant de la Marine|Befehlshaber der Seestreitkräfte
+Deniz bölge komutanı|Naval area commander|海軍地方司令官|Comandante de zona naval|Commandant de région maritime|Kommandeur des Marinebezirks
+Donanma komutanı|Fleet commander|艦隊司令長官|Comandante de la flota|Commandant de la flotte|Flottenbefehlshaber
+Filo Kısmı|Squadron Section|飛行隊分隊|Sección de escuadrón|Section d'escadron|Staffelteil
+Filo komutanlığı komutanı|Fleet command commander|艦隊司令部司令官|Jefe del mando de flota|Commandant du commandement de flotte|Kommandeur des Flottenkommandos
+Filo komutanı|Squadron commander|飛行隊長|Jefe de escuadrón|Commandant d'escadron|Staffelkapitän
+Filo kısım komutanı|Squadron section commander|飛行隊分隊長|Jefe de sección de escuadrón|Chef de section d'escadron|Staffelteilführer
+Filotilla komutanı|Flotilla commander|小艦隊司令|Comandante de flotilla|Commandant de flottille|Flottillenchef
+Grup komutanı|Group commander|群司令|Jefe de grupo|Commandant de groupe|Geschwaderkommandeur
+Görev Grubu|Task Group|任務群|Grupo de Tarea|Groupe opérationnel|Einsatzgruppe
+Görev grubu komutanı|Task group commander|任務群司令|Comandante del grupo de tarea|Commandant du groupe opérationnel|Kommandeur der Einsatzgruppe
+Güverte eri|Deckhand|甲板員|Marinero de cubierta|Matelot de pont|Decksmann
+Güverte çavuşu|Deck sergeant|甲板軍曹|Sargento de cubierta|Sergent de pont|Decksmaat
+Hava Kuvveti komutanı|Air Force commander|空軍部隊司令官|Comandante de la fuerza aérea|Commandant de la force aérienne|Kommandeur der Luftstreitmacht
+Hava Kuvvetleri Komutanı|Commander of the Air Force|空軍司令官|Comandante del Ejército del Aire|Commandant de l'Armée de l'air|Befehlshaber der Luftwaffe
+Hava bölge komutanı|Air region commander|航空方面司令官|Comandante de región aérea|Commandant de région aérienne|Kommandeur des Luftwaffenbezirks
+Hücumbot|Fast attack craft|ミサイル艇|Patrullero lanzamisiles|Vedette lance-missiles|Schnellboot
+Hücumbot komutanı|Fast attack craft commander|ミサイル艇長|Comandante de patrullero lanzamisiles|Commandant de vedette lance-missiles|Schnellbootkommandant
+Komutanlığı|Command|司令部|Mando|Commandement|Kommando
+Korvet komutanı|Corvette commander|コルベット艦長|Comandante de corbeta|Commandant de corvette|Korvettenkommandant
+Kısım amiri|Section chief|分隊長|Jefe de sección|Chef de section|Abschnittsleiter
+Makine astsubayı|Engineering NCO|機関下士官|Suboficial de máquinas|Sous-officier mécanicien|Maschinenunteroffizier
+Makine başçavuşu|Chief engineering sergeant|機関曹長|Brigada de máquinas|Maître principal mécanicien|Maschinenoberbootsmann
+Seyir astsubayı|Navigation NCO|航海下士官|Suboficial de navegación|Sous-officier de navigation|Navigationsunteroffizier
+Seyir subayı|Navigation officer|航海士|Oficial de navegación|Officier de navigation|Navigationsoffizier
+Silah astsubayı|Weapons NCO|砲術下士官|Suboficial de armas|Sous-officier armes|Waffenunteroffizier
+Silah subayı|Weapons officer|砲術士|Oficial de armas|Officier armes|Waffenoffizier
+Taktik hava komutanı|Tactical air commander|戦術航空司令官|Comandante aéreo táctico|Commandant aérien tactique|Taktischer Luftwaffenbefehlshaber
+Uçak teknisyeni|Aircraft technician|航空機整備員|Técnico de aeronaves|Technicien aéronautique|Flugzeugtechniker
+Uçuş Ekibi|Flight Crew|飛行班|Tripulación|Équipage|Flugbesatzung
+Uçuş ekibi üyesi|Flight crew member|飛行班員|Miembro de la tripulación|Membre d'équipage|Mitglied der Flugbesatzung
+Yakıt teknisyeni|Fuel technician|燃料整備員|Técnico de combustible|Technicien carburant|Treibstofftechniker
+Üs komutanı|Base commander|基地司令|Jefe de base|Commandant de base|Basiskommandant
+İstihbarat astsubayı|Intelligence NCO|情報下士官|Suboficial de inteligencia|Sous-officier renseignement|Nachrichtenunteroffizier
+(eski ev satışı dahil)|(including sale of old home)|（旧居の売却を含む）|(incluida la venta de la casa anterior)|(vente de l'ancien logement incluse)|(inkl. Verkauf des alten Hauses)
+Satın al · {} (eski ev satışı dahil)|Buy · $1 (including sale of old home)|購入・$1（旧居の売却を含む）|Comprar · $1 (incluida la venta de la casa anterior)|Acheter · $1 (vente de l'ancien logement incluse)|Kaufen · $1 (inkl. Verkauf des alten Hauses)
+Aracını sattın: +{}|You sold your vehicle: +$1|車を売った：+$1|Vendiste tu vehículo: +$1|Tu as vendu ton véhicule : +$1|Fahrzeug verkauft: +$1
+Bakım {}/hafta|Upkeep $1/week|維持費 $1/週|Mantenimiento $1/semana|Entretien $1/semaine|Unterhalt $1/Woche
+Bavyera Alpleri'nde dağ evi|Chalet in the Bavarian Alps|バイエルン・アルプスの山荘|Chalet en los Alpes bávaros|Chalet dans les Alpes bavaroises|Berghütte in den Bayerischen Alpen
+Borçtasın ({}).|You're in debt ($1).|借金がある（$1）。|Estás endeudado ($1).|Tu es endetté ($1).|Du bist verschuldet ($1).
+Faturalar birikiyor; ruh hali −3. Varlık sat ya da harcamaları kıs.|Bills are piling up; morale −3. Sell assets or cut spending.|請求書がたまっている。士気−3。資産を売るか出費を減らせ。|Las facturas se acumulan; moral −3. Vende bienes o recorta gastos.|Les factures s'accumulent ; moral −3. Vends des biens ou réduis tes dépenses.|Die Rechnungen stapeln sich; Moral −3. Verkaufe Besitz oder spare.
+Bu kadar nakdin yok.|You don't have that much cash.|そんなに現金はない。|No tienes tanto efectivo.|Tu n'as pas autant de liquide.|So viel Bargeld hast du nicht.
+Chamonix'de dağ evi|Chalet in Chamonix|シャモニーの山荘|Chalet en Chamonix|Chalet à Chamonix|Chalet in Chamonix
+Dolomitler'de dağ evi|Chalet in the Dolomites|ドロミテの山荘|Chalet en los Dolomitas|Chalet dans les Dolomites|Berghütte in den Dolomiten
+Eski aracın +{}|Your old vehicle +$1|旧車 +$1|Tu vehículo anterior +$1|Ton ancien véhicule +$1|Dein altes Fahrzeug +$1
+Fransız Çoban Köpeği (Briard)|French Shepherd (Briard)|ブリアード|Pastor de Brie (Briard)|Berger de Brie (Briard)|Briard
+Güneş, deniz ve uzun sohbetler. Telefonuna hiç bakmadın.|Sun, sea and long conversations. You never looked at your phone.|太陽と海と長いおしゃべり。携帯には一度も目をやらなかった。|Sol, mar y largas conversaciones. No miraste el teléfono ni una vez.|Soleil, mer et longues conversations. Tu n'as pas regardé ton téléphone une seule fois.|Sonne, Meer und lange Gespräche. Du hast kein einziges Mal aufs Handy geschaut.
+Hafta sonları binicilik. Ruh hali +2, dayanıklılık ve statü.|Horse riding at weekends. Morale +2, endurance and status.|週末は乗馬。士気+2、持久力とステータスも上がる。|Equitación los fines de semana. Moral +2, resistencia y estatus.|Équitation le week-end. Moral +2, endurance et statut.|Reiten am Wochenende. Moral +2, Ausdauer und Status.
+Haftalık bakım {}|Weekly upkeep $1|週の維持費 $1|Mantenimiento semanal $1|Entretien hebdomadaire $1|Wöchentlicher Unterhalt $1
+Haftalık giderler: −{} ({})|Weekly expenses: −$1 ($2)|週の出費：−$1（$2）|Gastos semanales: −$1 ($2)|Dépenses hebdomadaires : −$1 ($2)|Wöchentliche Ausgaben: −$1 ($2)
+Haftalık giderler:|Weekly expenses:|週の出費：|Gastos semanales:|Dépenses hebdomadaires :|Wöchentliche Ausgaben:
+Huangshan dağ evi|Huangshan mountain lodge|黄山の山荘|Refugio en Huangshan|Chalet à Huangshan|Berghaus in Huangshan
+Kafkas Çoban Köpeği|Caucasian Shepherd Dog|コーカシアン・シェパード|Pastor del Cáucaso|Berger du Caucase|Kaukasischer Owtscharka
+Karabaş|Karabaş|カラバシュ|Karabaş|Karabaş|Karabaş
+Kenan Köpeği|Canaan Dog|カナーン・ドッグ|Perro de Canaán|Chien de Canaan|Kanaan-Hund
+Maremma Çoban Köpeği|Maremma Sheepdog|マレンマ・シープドッグ|Pastor de Maremma|Berger de la Maremme|Maremmen-Abruzzen-Schäferhund
+Müzeler, sokaklar, yeni tatlar. Dünyanın savaştan ibaret olmadığını hatırladın.|Museums, streets, new flavours. You remembered the world isn't just war.|美術館、街並み、新しい味。世界は戦争だけではないと思い出した。|Museos, calles, sabores nuevos. Recordaste que el mundo no es solo guerra.|Musées, rues, nouvelles saveurs. Tu t'es rappelé que le monde ne se résume pas à la guerre.|Museen, Straßen, neue Geschmäcker. Du hast dich erinnert, dass die Welt nicht nur aus Krieg besteht.
+Orta Asya Çoban Köpeği|Central Asian Shepherd Dog|中央アジア・シェパード|Pastor de Asia Central|Berger d'Asie centrale|Zentralasiatischer Owtscharka
+Paran yetmiyor. Gereken: {} (eski evinin satışı dahil).|You can't afford it. Needed: $1 (including sale of your old home).|お金が足りない。必要額：$1（旧居の売却を含む）。|No te llega el dinero. Necesitas: $1 (incluida la venta de tu casa anterior).|Tu n'as pas assez d'argent. Il faut : $1 (vente de ton ancien logement incluse).|Dein Geld reicht nicht. Benötigt: $1 (inkl. Verkauf deines alten Hauses).
+Paran yetmiyor. Gereken: {}.|You can't afford it. Needed: $1.|お金が足りない。必要額：$1。|No te llega el dinero. Necesitas: $1.|Tu n'as pas assez d'argent. Il faut : $1.|Dein Geld reicht nicht. Benötigt: $1.
+Paşa|Paşa|パシャ|Paşa|Paşa|Paşa
+Sabah sisli dağlarda yürüdün, akşam şöminenin başında kitap okudun.|In the morning you walked in the misty mountains; in the evening you read by the fireplace.|朝は霧の山を歩き、夜は暖炉のそばで本を読んだ。|Por la mañana caminaste por montañas brumosas; por la noche leíste junto a la chimenea.|Le matin, tu as marché dans les montagnes brumeuses ; le soir, tu as lu au coin du feu.|Morgens bist du durch neblige Berge gewandert, abends hast du am Kamin gelesen.
+Satın almak için şehre inmen gerekiyor: izin gününü bekle.|You need to go into town to buy it: wait for your day off.|買うには町へ出る必要がある。休日を待て。|Tienes que bajar a la ciudad para comprarlo: espera a tu día libre.|Tu dois descendre en ville pour l'acheter : attends ton jour de repos.|Zum Kaufen musst du in die Stadt: Warte auf deinen freien Tag.
+Savaş sürerken tatil yok.|No holidays while the war goes on.|戦争中は休暇旅行はない。|No hay vacaciones mientras dura la guerra.|Pas de vacances tant que dure la guerre.|Kein Urlaub, solange der Krieg andauert.
+Sonraki maaş # gün sonra|Next pay in $1 days|次の給料：$1日後|Próximo sueldo en $1 días|Prochaine solde dans $1 jours|Nächster Sold in $1 Tagen
+Sonraki maaş {}|Next pay $1|次の給料 $1|Próximo sueldo $1|Prochaine solde $1|Nächster Sold $1
+bugün gece|tonight|今夜|esta noche|ce soir|heute Nacht
+Soçi'de dağ evi|Chalet in Sochi|ソチの山荘|Chalet en Sochi|Chalet à Sotchi|Berghütte in Sotschi
+Swat Vadisi'nde dağ evi|Chalet in the Swat Valley|スワート渓谷の山荘|Chalet en el valle de Swat|Chalet dans la vallée de Swat|Berghütte im Swat-Tal
+Tarçın|Tarçın|タルチュン|Tarçın|Tarçın|Tarçın
+Tatile ancak izin gününde çıkabilirsin.|You can only go on holiday on your day off.|休暇旅行は休日にしか出られない。|Solo puedes irte de vacaciones en tu día libre.|Tu ne peux partir en vacances que pendant ton jour de repos.|In den Urlaub kannst du nur an deinem freien Tag.
+Tatile izin gününde çıkılır. Çok günlü tatiller ödül izin günlerinden düşer. # tatil yaptın.|Holidays start on your day off. Multi-day holidays are deducted from your reward leave days. You've been on $1 holidays.|休暇旅行は休日に出発する。複数日の旅行は褒賞休暇から差し引かれる。これまでに$1回旅行した。|Las vacaciones empiezan en tu día libre. Las de varios días se descuentan de tus días de permiso de recompensa. Has hecho $1 viajes.|Les vacances commencent pendant ton jour de repos. Les séjours de plusieurs jours sont déduits de tes jours de permission de récompense. Tu as fait $1 voyages.|Urlaub beginnt an deinem freien Tag. Mehrtägige Reisen werden von deinen Belohnungsurlaubstagen abgezogen. Du warst $1-mal im Urlaub.
+Yeni araç:|New vehicle:|新しい車：|Nuevo vehículo:|Nouveau véhicule :|Neues Fahrzeug:
+Zaten bir tane var.|You already have one.|すでに1匹いる。|Ya tienes uno.|Tu en as déjà un.|Du hast schon einen.
+{} artık evinde. Adını|$1 is now at your home. You named it|$1が家にやってきた。名前は|$1 ya está en tu casa. Le pusiste de nombre|$1 est désormais chez toi. Tu l'as appelé|$1 ist jetzt bei dir zu Hause. Du hast ihn
+koydun.|.|にした。|.|.|genannt.
+# gündür seninle · mutluluk #|With you for $1 days · happiness $2|一緒に$1日・幸福度$2|Contigo desde hace $1 días · felicidad $2|Avec toi depuis $1 jours · bonheur $2|Seit $1 Tagen bei dir · Zufriedenheit $2
+{} için en az {} gerekiyor.|$1 needs at least: $2.|$1には最低でも$2が必要。|Para $1 necesitas como mínimo: $2.|Pour $1, il faut au moins : $2.|Für $1 brauchst du mindestens: $2.
+{} gerekli|$1 required|$1が必要|Se necesita: $1|$1 requis|$1 erforderlich
+{} {}, {} aldı.|$1 $2 bought a $3.|$1 $2が$3を購入した。|$1 $2 compró: $3.|$1 $2 a acheté : $3.|$1 $2 hat gekauft: $3.
+Yeni dost: {}|New companion: $1|新しい相棒：$1|Nuevo compañero: $1|Nouveau compagnon : $1|Neuer Gefährte: $1
+Tatil: {}|Holiday: $1|休暇旅行：$1|Vacaciones: $1|Vacances : $1|Urlaub: $1
+{}: {} nakde çevrildi.|$1: $2 cashed out.|$1：$2を現金化した。|$1: $2 retirados en efectivo.|$1 : $2 convertis en liquide.|$1: $2 ausgezahlt.
+{}: {} yatırıldı.|$1: $2 invested.|$1：$2を投資した。|$1: $2 invertidos.|$1 : $2 investis.|$1: $2 investiert.
+{} ile # gün boyunca üniformayı unuttun. {}|With $1, you forgot the uniform for $2 days. $3|$1と$2日間、制服のことを忘れた。$3|Con $1 olvidaste el uniforme durante $2 días. $3|Avec $1, tu as oublié l'uniforme pendant $2 jours. $3|Mit $1 hast du die Uniform $2 Tage lang vergessen. $3
+# gün boyunca üniformayı unuttun. {}|For $1 days you forgot the uniform. $2|$1日間、制服のことを忘れた。$2|Durante $1 días olvidaste el uniforme. $2|Pendant $1 jours, tu as oublié l'uniforme. $2|$1 Tage lang hast du die Uniform vergessen. $2
+Çoban köpeği|Shepherd dog|牧羊犬|Perro pastor|Chien de berger|Hirtenhund
+İskoç Dağlık Bölgesi'nde kulübe|Cottage in the Scottish Highlands|スコットランド高地のコテージ|Cabaña en las Highlands escocesas|Cottage dans les Highlands écossais|Cottage in den schottischen Highlands
 `);
