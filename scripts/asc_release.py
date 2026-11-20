@@ -191,10 +191,10 @@ def submit():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
         pid = p['attributes']['productId'].split('.')[-1]
-        if pid in IAP_TEXT and p['attributes']['state'] in ('READY_TO_SUBMIT', 'DEVELOPER_ACTION_NEEDED', 'REJECTED'):
-            call('POST', '/v1/inAppPurchaseSubmissions', {'data': {'type': 'inAppPurchaseSubmissions',
-                  'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': p['id']}}}}}, ok=(200, 201, 409))
-            log('Ürün incelemeye eklendi:', pid)
+        if pid in IAP_TEXT:
+            r = S.request('POST', BASE + '/v1/inAppPurchaseSubmissions', json={'data': {'type': 'inAppPurchaseSubmissions',
+                  'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': p['id']}}}}}, headers={'Authorization': 'Bearer ' + token(), 'Content-Type': 'application/json'})
+            log('Ürün gönderimi:', pid, r.status_code, r.text[:300].replace(chr(10), ' '))
     call('PATCH', f'/v1/reviewSubmissions/{sid}', {'data': {'type': 'reviewSubmissions', 'id': sid, 'attributes': {'submitted': True}}})
     log('GÖNDERİLDİ: sürüm', VERSION, 'Apple incelemesine gitti')
     status()
