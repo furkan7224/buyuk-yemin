@@ -6520,4 +6520,113 @@ Ek miting · onay +4|Extra rally · approval +4|追加の集会・支持率+4|Mi
 onay +4|approval +4|支持率+4|aprobación +4|approbation +4|Zustimmung +4
 {} {} halka seslendi|$1 $2 addressed the nation|$1 $2が国民に向けて演説した|$1 $2 se dirigió a la nación|$1 $2 s'est adressé à la nation|$1 $2 hat sich an die Nation gewandt
 Doğru. {}, tehdide en yakın lojistik merkez; ihtiyat en kısa sürede cepheye ulaşır.|Correct. $1 is the logistics hub closest to the threat; reserves reach the front fastest from there.|正解。$1は脅威に最も近い兵站拠点で、予備兵力が最短で前線に届く。|Correcto. $1 es el centro logístico más cercano a la amenaza; la reserva llega antes al frente.|Exact. $1 est le centre logistique le plus proche de la menace ; la réserve rejoint le front au plus vite.|Richtig. $1 ist das Logistikzentrum, das der Bedrohung am nächsten liegt; die Reserve erreicht die Front am schnellsten.
+Aberdeen|Aberdeen|アバディーン|Aberdeen|Aberdeen|Aberdeen
+Adana|Adana|アダナ|Adana|Adana|Adana
+Andican|Andijan|アンディジャン|Andiyán|Andijan|Andischan
+Ankara|Ankara|アンカラ|Ankara|Ankara|Ankara
+Antalya|Antalya|アンタルヤ|Antalya|Antalya|Antalya
+Atlanta|Atlanta|アトランタ|Atlanta|Atlanta|Atlanta
+Aşdod|Ashdod|アシュドッド|Asdod|Ashdod|Aschdod
+Bari|Bari|バーリ|Bari|Bari|Bari
+Beerşeba|Beersheba|ベエルシェバ|Beerseba|Beersheba|Be’er Scheva
+Belfast|Belfast|ベルファスト|Belfast|Belfast|Belfast
+Berlin|Berlin|ベルリン|Berlín|Berlin|Berlin
+Birmingham|Birmingham|バーミンガム|Birmingham|Birmingham|Birmingham
+Bordeaux|Bordeaux|ボルドー|Burdeos|Bordeaux|Bordeaux
+Brest|Brest|ブレスト|Brest|Brest|Brest
+Cagliari|Cagliari|カリャリ|Cagliari|Cagliari|Cagliari
+Cardiff|Cardiff|カーディフ|Cardiff|Cardiff|Cardiff
+Chengdu|Chengdu|成都|Chengdu|Chengdu|Chengdu
+Chicago|Chicago|シカゴ|Chicago|Chicago|Chicago
+Dallas|Dallas|ダラス|Dallas|Dallas|Dallas
+Denver|Denver|デンバー|Denver|Denver|Denver
+Dera|Daraa|ダルアー|Daraa|Deraa|Daraa
+Deyrizor|Deir ez-Zor|デリゾール|Deir ez-Zor|Deir ez-Zor|Deir ez-Zor
+Diyarbakır|Diyarbakır|ディヤルバクル|Diyarbakır|Diyarbakır|Diyarbakır
+Dresden|Dresden|ドレスデン|Dresde|Dresde|Dresden
+Edinburgh|Edinburgh|エディンバラ|Edimburgo|Édimbourg|Edinburgh
+Eilat|Eilat|エイラート|Eilat|Eilat|Eilat
+Erzurum|Erzurum|エルズルム|Erzurum|Erzurum|Erzurum
+Fergana|Fergana|フェルガナ|Fergana|Ferghana|Fergana
+Frankfurt|Frankfurt|フランクフルト|Fráncfort|Francfort|Frankfurt
+Fukuoka|Fukuoka|福岡|Fukuoka|Fukuoka|Fukuoka
+Gilgit|Gilgit|ギルギット|Gilgit|Gilgit|Gilgit
+Glasgow|Glasgow|グラスゴー|Glasgow|Glasgow|Glasgow
+Guangzhou|Guangzhou|広州|Cantón|Canton|Guangzhou
+Gwadar|Gwadar|グワーダル|Gwadar|Gwadar|Gwadar
+Hama|Hama|ハマー|Hama|Hama|Hama
+Hamburg|Hamburg|ハンブルク|Hamburgo|Hambourg|Hamburg
+Hannover|Hanover|ハノーファー|Hannover|Hanovre|Hannover
+Harbin|Harbin|ハルビン|Harbin|Harbin|Harbin
+Haydarabad|Hyderabad|ハイデラバード|Hyderabad|Hyderabad|Hyderabad
+Hayfa|Haifa|ハイファ|Haifa|Haïfa|Haifa
+Houston|Houston|ヒューストン|Houston|Houston|Houston
+Kamışlı|Qamishli|カーミシュリー|Qamishli|Qamichli|Qamischli
+Kiel|Kiel|キール|Kiel|Kiel|Kiel
+Kiryat Şmona|Kiryat Shmona|キルヤット・シュモナ|Kiryat Shmona|Kiryat Shmona|Kirjat Schmona
+Konya|Konya|コンヤ|Konya|Konya|Konya
+Kuba|Quba|クバ|Quba|Quba|Quba
+Kuetta|Quetta|クエッタ|Quetta|Quetta|Quetta
+La Spezia|La Spezia|ラ・スペツィア|La Spezia|La Spezia|La Spezia
+Lenkeran|Lankaran|ランカラン|Lankaran|Lankaran|Lənkəran
+Lhasa|Lhasa|ラサ|Lhasa|Lhassa|Lhasa
+Lille|Lille|リール|Lille|Lille|Lille
+Los Angeles|Los Angeles|ロサンゼルス|Los Ángeles|Los Angeles|Los Angeles
+Lyon|Lyon|リヨン|Lyon|Lyon|Lyon
+Manchester|Manchester|マンチェスター|Mánchester|Manchester|Manchester
+Marsilya|Marseille|マルセイユ|Marsella|Marseille|Marseille
+Milano|Milan|ミラノ|Milán|Milan|Mailand
+Mingeçevir|Mingachevir|ミンゲチェヴィル|Mingachevir|Mingachevir|Mingəçevir
+Multan|Multan|ムルターン|Multán|Multan|Multan
+Murmansk|Murmansk|ムルマンスク|Múrmansk|Mourmansk|Murmansk
+Nagoya|Nagoya|名古屋|Nagoya|Nagoya|Nagoya
+Nahçıvan|Nakhchivan|ナヒチェヴァン|Najicheván|Nakhitchevan|Nachitschewan
+Namangan|Namangan|ナマンガン|Namangán|Namangan|Namangan
+Nantes|Nantes|ナント|Nantes|Nantes|Nantes
+New York|New York|ニューヨーク|Nueva York|New York|New York
+Newcastle|Newcastle|ニューカッスル|Newcastle|Newcastle|Newcastle
+Niigata|Niigata|新潟|Niigata|Niigata|Niigata
+Norfolk|Norfolk|ノーフォーク|Norfolk|Norfolk|Norfolk
+Novosibirsk|Novosibirsk|ノヴォシビルスク|Novosibirsk|Novossibirsk|Nowosibirsk
+Nukus|Nukus|ヌクス|Nukus|Noukous|Nukus
+Osaka|Osaka|大阪|Osaka|Osaka|Osaka
+Palermo|Palermo|パレルモ|Palermo|Palerme|Palermo
+Paris|Paris|パリ|París|Paris|Paris
+Plymouth|Plymouth|プリマス|Plymouth|Plymouth|Plymouth
+Rakka|Raqqa|ラッカ|Raqqa|Raqqa|Rakka
+Roma|Rome|ローマ|Roma|Rome|Rom
+Rostov|Rostov|ロストフ|Rostov|Rostov|Rostow
+Sapporo|Sapporo|札幌|Sapporo|Sapporo|Sapporo
+Seattle|Seattle|シアトル|Seattle|Seattle|Seattle
+Sendai|Sendai|仙台|Sendai|Sendai|Sendai
+Shenyang|Shenyang|瀋陽|Shenyang|Shenyang|Shenyang
+Sialkot|Sialkot|シアールコート|Sialkot|Sialkot|Sialkot
+Strazburg|Strasbourg|ストラスブール|Estrasburgo|Strasbourg|Straßburg
+Stuttgart|Stuttgart|シュトゥットガルト|Stuttgart|Stuttgart|Stuttgart
+Sumgayıt|Sumgait|スムガイト|Sumgait|Soumgaït|Sumqayıt
+Tartus|Tartus|タルトゥース|Tartus|Tartous|Tartus
+Tel Aviv (Kirya)|Tel Aviv (Kirya)|テルアビブ（キルヤ）|Tel Aviv (Kirya)|Tel Aviv (Kirya)|Tel Aviv (Kirja)
+Tirmiz|Termez|テルメズ|Termez|Termez|Termez
+Tokyo|Tokyo|東京|Tokio|Tokyo|Tokio
+Torino|Turin|トリノ|Turín|Turin|Turin
+Toulon|Toulon|トゥーロン|Tolón|Toulon|Toulon
+Toulouse|Toulouse|トゥールーズ|Toulouse|Toulouse|Toulouse
+Trabzon|Trabzon|トラブゾン|Trebisonda|Trébizonde|Trabzon
+Van|Van|ヴァン|Van|Van|Van
+Venedik|Venice|ヴェネツィア|Venecia|Venise|Venedig
+Vladivostok|Vladivostok|ウラジオストク|Vladivostok|Vladivostok|Wladiwostok
+Washington|Washington|ワシントン|Washington|Washington|Washington
+Wuhan|Wuhan|武漢|Wuhan|Wuhan|Wuhan
+Yakutsk|Yakutsk|ヤクーツク|Yakutsk|Iakoutsk|Jakutsk
+Yekaterinburg|Yekaterinburg|エカテリンブルク|Ekaterimburgo|Iekaterinbourg|Jekaterinburg
+İrkutsk|Irkutsk|イルクーツク|Irkutsk|Irkoutsk|Irkutsk
+Şeki|Shaki|シャキ|Shaki|Chaki|Şəki
+Şuşa|Shusha|シュシャ|Shusha|Choucha|Şuşa
+Senin timin gece #:#'da araçlardan indi. Hedefe # kilometre var; haritada iki yol görünüyor.|Your team dismounted from the vehicles at $1:$2 at night. The target is $3 km away; the map shows two routes.|君のチームは夜$1:$2に車両から降りた。目標まで$3 km。地図には二つの道がある。|Tu equipo desembarcó de los vehículos a las $1:$2 de la noche. El objetivo está a $3 km; el mapa muestra dos caminos.|Ton équipe a débarqué des véhicules à $1 h $2 dans la nuit. L'objectif est à $3 km ; la carte montre deux itinéraires.|Dein Team ist nachts um $1:$2 Uhr abgesessen. Bis zum Ziel sind es $3 km; die Karte zeigt zwei Wege.
+Senin takımın gece #:#'da araçlardan indi. Hedefe # kilometre var; haritada iki yol görünüyor.|Your platoon dismounted from the vehicles at $1:$2 at night. The target is $3 km away; the map shows two routes.|君の小隊は夜$1:$2に車両から降りた。目標まで$3 km。地図には二つの道がある。|Tu sección desembarcó de los vehículos a las $1:$2 de la noche. El objetivo está a $3 km; el mapa muestra dos caminos.|Ta section a débarqué des véhicules à $1 h $2 dans la nuit. L'objectif est à $3 km ; la carte montre deux itinéraires.|Dein Zug ist nachts um $1:$2 Uhr abgesessen. Bis zum Ziel sind es $3 km; die Karte zeigt zwei Wege.
+Senin bölüğün gece #:#'da araçlardan indi. Hedefe # kilometre var; haritada iki yol görünüyor.|Your company dismounted from the vehicles at $1:$2 at night. The target is $3 km away; the map shows two routes.|君の中隊は夜$1:$2に車両から降りた。目標まで$3 km。地図には二つの道がある。|Tu compañía desembarcó de los vehículos a las $1:$2 de la noche. El objetivo está a $3 km; el mapa muestra dos caminos.|Ta compagnie a débarqué des véhicules à $1 h $2 dans la nuit. L'objectif est à $3 km ; la carte montre deux itinéraires.|Deine Kompanie ist nachts um $1:$2 Uhr abgesessen. Bis zum Ziel sind es $3 km; die Karte zeigt zwei Wege.
+Senin taburun gece #:#'da araçlardan indi. Hedefe # kilometre var; haritada iki yol görünüyor.|Your battalion dismounted from the vehicles at $1:$2 at night. The target is $3 km away; the map shows two routes.|君の大隊は夜$1:$2に車両から降りた。目標まで$3 km。地図には二つの道がある。|Tu batallón desembarcó de los vehículos a las $1:$2 de la noche. El objetivo está a $3 km; el mapa muestra dos caminos.|Ton bataillon a débarqué des véhicules à $1 h $2 dans la nuit. L'objectif est à $3 km ; la carte montre deux itinéraires.|Dein Bataillon ist nachts um $1:$2 Uhr abgesessen. Bis zum Ziel sind es $3 km; die Karte zeigt zwei Wege.
+{} emri verildi. {}|$1 order given. $2|$1の命令が出された。$2|Orden dada: $1. $2|Ordre donné : $1. $2|Befehl erteilt: $1. $2
+{} emri verildi.|$1 order given.|$1の命令が出された。|Orden dada: $1.|Ordre donné : $1.|Befehl erteilt: $1.
+Taşkale|Taşkale|タシュカレ|Taşkale|Taşkale|Taşkale
 `);
