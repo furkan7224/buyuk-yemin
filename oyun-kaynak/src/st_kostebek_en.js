@@ -255,6 +255,6 @@ T.en={ti:'The Mole',genre:'Espionage · Detective',sub:'Find the traitor at HQ i
  endings:[{k:'ag',ti:'Network dismantled',medal:'Shadow Hunter',tone:'good'},{k:'cift',ti:'Double agent',medal:'Invisible Insignia',tone:'good'},{k:'yanlis',ti:'The wrong person',tone:'bad'},{k:'kacti',ti:'The mole escaped',tone:'bad'}],
  view,endText,subtitle:R=>R.end?'Ending':R.phase==='brief'?'Chapter 1 · The Assignment':`Day ${Math.min(R.day,DAYS)} · ${CHS[chOf(R)].ti}`};
 const actTR=KB.act;
-A32.kb=v=>{const P=tp32('kostebek');if(!P.run)return;(taleEnOn34()?act:actTR)(P.run,v);tpSave32();render();const el=$('#tscr');if(el)el.scrollTop=0;window.scrollTo(0,0)};
+A32.kb=v=>{const P=tp32('kostebek');if(!P.run)return;((window.__KBL&&window.__KBL[LANG])||(taleEnOn34()?act:actTR))(P.run,v);tpSave32();render();const el=$('#tscr');if(el)el.scrollTop=0;window.scrollTo(0,0)};
 window.__KBEN={SU,act,str,endDay,view,endText};
 })();
