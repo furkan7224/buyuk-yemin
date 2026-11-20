@@ -26,7 +26,8 @@ function i18Tpl(c,li){if(!I18T_SORTED)i18Sort();const B=I18T[c[0]];const lists=B
  for(const L of lists)for(const e of L){const m=c.match(e.re);if(!m)continue;
   return e.L[li-1].replace(/\$(\d+)/g,(_,n)=>{let v=m[+n];if(v==null)return '';if(e.kinds[n-1]==='t'&&v){const sx=v.match(/^([^'’]+)['’][a-zçğıöşü]{1,5}$/);if(sx)v=sx[1];const t=tr1(v.trim(),li);if(t!=null)return v.replace(v.trim(),t)}return v})}
  return null}
+function i18Low(c,li){const f=c.charAt(0);if(!f||f===f.toLocaleUpperCase('tr')||f===f.toLocaleLowerCase('tr')&&f.toLocaleUpperCase('tr')===f)return null;const u=f.toLocaleUpperCase('tr')+c.slice(1);const r=tr1(u,li);if(r==null||r===u)return null;return li===2||li===5?r:r.charAt(0).toLowerCase()+r.slice(1)}
 {const _tr1=tr1;tr1=function(c,li){const C=I18C[li]||(I18C[li]=new Map());if(C.has(c))return C.get(c);
  C.set(c,null);/* özyineleme koruması */
- let r=null;const d=I18N[c];if(d)r=d[li];else{r=i18Tpl(c,li);if(r==null)r=_tr1(c,li);if(r==null)r=i18Upper(c,li)}
+ let r=null;const d=I18N[c];if(d)r=d[li];else{r=i18Tpl(c,li);if(r==null)r=_tr1(c,li);if(r==null)r=i18Upper(c,li);if(r==null)r=i18Low(c,li)}
  if(C.size>20000)C.clear();C.set(c,r);return r}}
