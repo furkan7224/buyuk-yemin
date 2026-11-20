@@ -1,6 +1,6 @@
 /* =====================================================================
-   v34 · Hikâyelerin İngilizce sürümü
-   Türkçe dışındaki bütün dillerde hikâyeler İngilizce gösterilir.
+   v34 · Hikâyelerin çok dilli sürümü (en, ja, es, fr, de)
+   Türkçe dışındaki dillerde hikâye o dilin katmanından gelir; yoksa İngilizce gösterilir.
    Sahne hikâyelerinde mantık (etki, şans, hedef) Türkçe dosyadan gelir;
    İngilizce katman yalnızca metinleri değiştirir: TALE_EN[id] = {meta, scenes, end}
    Özel motorlu hikâyeler (Köstebek) kendi t.en nesnesini verir.

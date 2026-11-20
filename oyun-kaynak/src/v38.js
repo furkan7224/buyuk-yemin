@@ -9,6 +9,7 @@
 const I18T={};            /* ilk harfe göre kalıp kovaları */
 const I18T_ANY=[];        /* yer tutucuyla başlayan kalıplar */
 const I18C={};            /* dil başına önbellek */
+function i18Native(v){if(!i18Native.S){const S=new Set();try{for(const n in RS)for(const k in RS[n]){const a=RS[n][k];if(Array.isArray(a))a.forEach(x=>{S.add(x);S.add(x.replace(/ \(.*\)$/,''))})}}catch(e){}i18Native.S=S}return i18Native.S.has(v)}
 function i18Esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
 function i18Add(src){src.trim().split('\n').forEach(l=>{if(!l.trim())return;const c=l.split('|');if(c.length!==6)return;
  const k=c[0];if(!/\{\}|#/.test(k)){if(!I18N[k])I18N[k]=c;return}
@@ -24,7 +25,7 @@ function i18Upper(c,li){if(!/[A-ZÇĞİÖŞÜ]/.test(c)||(c!==c.toLocaleUpperCas
  const k=I18UP[c];if(!k)return null;const t=tr1(k,li);return t==null?null:t.toLocaleUpperCase(['tr','en','ja','es','fr','de'][li])}
 function i18Tpl(c,li){if(!I18T_SORTED)i18Sort();const B=I18T[c[0]];const lists=B?[B,I18T_ANY]:[I18T_ANY];
  for(const L of lists)for(const e of L){const m=c.match(e.re);if(!m)continue;let bad=false;
-  const out=e.L[li-1].replace(/\$(\d+)/g,(_,n)=>{let v=m[+n];if(v==null)return '';if(e.kinds[n-1]==='t'&&v){const sx=v.match(/^([^'’]+)['’][a-zçğıöşü]{1,5}$/);if(sx)v=sx[1];else v=v.replace(/ (bölgesi|sınır bölgesi)n(de|den|e|i|in)$/,' $1');const t=tr1(v.trim(),li);if(t!=null)return v.replace(v.trim(),t);if(v.includes(', ')){const ps=v.split(', ');const tp=ps.map(x=>{const y=tr1(x.trim(),li);return y==null?x:y});if(tp.some((y,i)=>y!==ps[i]))return tp.join(li===2?'、':', ')}if(/(^|\s)[a-zçğıöşüâî]{4,}/.test(v))bad=true}return v});if(!bad)return out}
+  const out=e.L[li-1].replace(/\$(\d+)/g,(_,n)=>{let v=m[+n];if(v==null)return '';if(e.kinds[n-1]==='t'&&v){if(v.includes(' · ')){bad=true;return v}const sx=v.match(/^([^'’]+)['’][a-zçğıöşü]{1,5}$/);if(sx)v=sx[1];else v=v.replace(/ (bölgesi|sınır bölgesi)n(de|den|e|i|in)$/,' $1');const t=tr1(v.trim(),li);if(t!=null)return v.replace(v.trim(),t);if(v.includes(', ')){const ps=v.split(', ');const tp=ps.map(x=>{const y=tr1(x.trim(),li);return y==null?x:y});if(tp.some((y,i)=>y!==ps[i]))return tp.join(li===2?'、':', ')}if(!i18Native(v.trim())&&(/(^|\s)[a-zâî]*[çğıöşü][a-zçğıöşüâî]*/.test(v)||/(^|\s)(ve|ile|bir|için|olarak|kadar|sonra|önce|daha|gibi|her|yeni|eski|büyük|küçük|tabur|alay|birlik|tugay|komutan|subay|asker|harekât|görev|bölge|bölgesi|başla|merkez|karargâh|hava|deniz|kara|yardım|destek|eğitim|kalem|ordu|kuvvet|kuvvetleri)(?=\s|$|[.,;:])/.test(v)))bad=true}return v});if(!bad)return out}
  return null}
 function i18Wrap(c,li){const m=c.match(/^(["“])([\s\S]+)(["”])$/);if(m&&!/["“”]/.test(m[2])){const t=tr1(m[2],li);if(t==null)return null;const Q=[['"','"'],['“','”'],['「','」'],['“','”'],['« ',' »'],['„','“']][li];return Q[0]+t+Q[1]}
  if(c.includes(' → ')){const ps=c.split(' → ');const tp=ps.map(x=>{const y=tr1(x,li);return y==null?x:y});if(tp.some((y,i)=>y!==ps[i]))return tp.join(' → ')}return null}

@@ -478,5 +478,5 @@ function setTitle(){try{document.title=GAMET[LANG]||GAMET.tr}catch(e){}}
 function setLang(v){if(LIDX[v]==null)return;LANG=v;try{localStorage.setItem('by-lang',v)}catch(e){}document.documentElement.lang=v;setTitle();render();trNode(document.body)}
 function langPicker(){return `<div class="langp">${LANGS.map(([k,n])=>`<button class="${LANG===k?'on':''}" data-a="lang" data-v="${k}">${n}</button>`).join('')}</div>`}
 /* Başlık ekranı ve ayarlara dil seçici */
-function vSettingsLang(){return `<div class="card"><div class="sec-h"><h2>Dil</h2><span class="small muted">Language</span></div>${langPicker()}<p class="small muted">${LANG==='tr'?'Arayüz seçtiğin dile çevrilir. Hikâye ve olay metinlerinin çevirisi aşamalı olarak ekleniyor.':'Interface translated. Story and event texts are being translated in stages and may still appear in Turkish.'}</p></div>`}
+function vSettingsLang(){return `<div class="card"><div class="sec-h"><h2>Dil</h2><span class="small muted">Language</span></div>${langPicker()}<p class="small muted">Oyunun tamamı (arayüz, olaylar ve hikâyeler) seçtiğin dile çevrilir.</p></div>`}
 var A26={lang:setLang};
