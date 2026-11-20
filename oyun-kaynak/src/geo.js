@@ -52,6 +52,6 @@ function nationMap(k,f,extra=''){
  ${extra}
  <g transform="translate(${W-26},26)"><circle r="14" fill="#00000066" stroke="#ffffff30"/><path d="M0 -12 L4 0 L0 -3 L-4 0Z" fill="${acc}"/><path d="M0 12 L4 0 L0 3 L-4 0Z" fill="#ffffff55"/><text y="-15.5" text-anchor="middle" font-size="7" fill="#fff" font-family="Barlow Condensed,sans-serif">K</text></g>
  <g transform="translate(12,${H-16})"><rect width="${bl.toFixed(1)}" height="4" fill="#eeeadb"/><rect width="${(bl/2).toFixed(1)}" height="4" fill="#00000088"/><text y="-3" font-size="7" fill="#fff" font-family="Barlow Condensed,sans-serif">${km} km</text></g>
- <text x="10" y="13" font-size="7.5" letter-spacing="1.5" fill="${acc}" font-family="Barlow Condensed,sans-serif" font-weight="700">GİZLİ · ${esc(NAT[k].n.toLocaleUpperCase('tr'))} KURMAY HARİTASI</text>
+ <text x="10" y="13" font-size="7.5" letter-spacing="1.5" fill="${acc}" font-family="Barlow Condensed,sans-serif" font-weight="700">GİZLİ · ${esc(NAT[k].n.toLocaleUpperCase(typeof LANG!=='undefined'&&LANG!=='tr'?'en':'tr'))} KURMAY HARİTASI</text>
  </svg>`;
 }

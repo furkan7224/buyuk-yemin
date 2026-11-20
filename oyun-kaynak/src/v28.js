@@ -19,4 +19,4 @@ function rolesFix(){if(!S||!S.tim||S.rolesV===2)return;const R_=keyRoles(S.tim.l
 /* Birlik başlığı: üst kademelerde takma ad kullanılmaz, en üstte "… Komutanlığı" */
 function forceName(){const n=B().n.split('·')[0].trim();return n}
 function unitTitle(lv=uLv()){const u=UL8[uKind()][lv];if(lv>=11)return forceName()+' Komutanlığı';if(lv>=10)return u;return (S.tim?S.tim.name+' ':'')+u}
-function emblemText(lv=uLv()){const t=(lv>=11?forceName():UL8[uKind()][lv]).toLocaleUpperCase('tr');return t}
+function emblemText(lv=uLv()){const t=(lv>=11?forceName():UL8[uKind()][lv]).toLocaleUpperCase(typeof LANG!=='undefined'&&LANG!=='tr'?'en':'tr');return t}

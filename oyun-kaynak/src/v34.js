@@ -5,21 +5,22 @@
    İngilizce katman yalnızca metinleri değiştirir: TALE_EN[id] = {meta, scenes, end}
    Özel motorlu hikâyeler (Köstebek) kendi t.en nesnesini verir.
    ===================================================================== */
-const TALE_EN={};
+const TALE_EN={},TALE_JA={},TALE_ES={},TALE_FR={},TALE_DE={};
+const TALE_L34={en:TALE_EN,ja:TALE_JA,es:TALE_ES,fr:TALE_FR,de:TALE_DE};
 const TALE_META34=['ti','genre','sub','pitch','chapters','statDefs'];
 const taleEnOn34=()=>typeof LANG!=='undefined'&&LANG!=='tr';
-function taleBuildEn34(t){const E=TALE_EN[t.id];if(!E)return null;if(t._enBuilt)return t._enBuilt;
+function taleBuildEn34(t){const lg=(TALE_L34[LANG]&&TALE_L34[LANG][t.id])?LANG:'en';const E=TALE_L34[lg][t.id];if(!E)return null;t._bl=t._bl||{};if(t._bl[lg])return t._bl[lg];
  const o=Object.assign({},E.meta||{});
  if(t.scenes&&E.scenes){const sc={};for(const id in t._trv.scenes){const s=t._trv.scenes[id],e=E.scenes[id]||{};const s2=Object.assign({},s);
    if(e.b!=null)s2.b=e.b;if(e.ti!=null)s2.ti=e.ti;
    if(s.ch)s2.ch=s.ch.map((c,i)=>{const c2=Object.assign({},c);if(e.ch&&e.ch[i]!=null)c2.t=e.ch[i];if(e.why&&e.why[i]!=null)c2.why=e.why[i];return c2});
    if(s.end)s2.end=Object.assign({},s.end,{ti:(E.end&&E.end[s.end.k])||s.end.ti},s.end.medal&&E.medal?{medal:E.medal}:{});
    sc[id]=s2}o.scenes=sc}
- return t._enBuilt=o}
+ return t._bl[lg]=o}
 function taleLang34(){TALES.forEach(t=>{
  if(!t._trv){t._trv={};TALE_META34.concat(['scenes','view','endText','subtitle','endArt','endings']).forEach(k=>{if(k in t)t._trv[k]=t[k]})}
  Object.assign(t,t._trv);
- if(taleEnOn34()){const en=t.en||taleBuildEn34(t);if(en)Object.assign(t,en)}})}
+ if(taleEnOn34()){const en=t[LANG]||t.en||taleBuildEn34(t);if(en)Object.assign(t,en)}})}
 {const _sl=setLang;setLang=function(v){_sl(v);taleLang34();render()}}
 setTimeout(()=>{taleLang34();try{render()}catch(e){}},0);
 /* hikâye arayüzündeki kalıp metinler */

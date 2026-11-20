@@ -87,7 +87,7 @@ function vTitle(){
  const sv=loadSave();const nat=sv&&NAT[sv.nation]?sv.nation:'TR';
  return `<div class="title t2 gut">
  <div class="ttape"><span>GİZLİ</span><span>DOSYA NO ${String(1000+((sv&&sv.day)||0)*37%9000)}</span><span>${new Date().getFullYear()}</span></div>
- <div class="tpatch">${flag(nat,46)}</div>${dogTags(sv?sv.name.split(' ').pop().toLocaleUpperCase('tr').slice(0,10):'ASKER')}
+ <div class="tpatch">${flag(nat,46)}</div>${dogTags(sv?sv.name.split(' ').pop().toLocaleUpperCase(typeof LANG!=='undefined'&&LANG!=='tr'?'en':'tr').slice(0,10):'ASKER')}
  <div class="plate"><i class="rv a"></i><i class="rv b"></i><i class="rv c"></i><i class="rv d"></i><div class="lbl">Askerî kariyer · Strateji · Yaşam</div><h1 class="logo">BÜYÜK<br><span>YEMİN</span></h1><div class="stencilbar"><span></span>Erden mareşale<span></span></div></div>
  <p class="tag">Kaybettiklerin için, vatanın için, kendin için.</p>
  <div class="menu">

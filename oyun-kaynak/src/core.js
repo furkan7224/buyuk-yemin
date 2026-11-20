@@ -89,7 +89,7 @@ function avatar(sz=96,br,rk,lk,nat,nameOverride){
  const pat=dig?`<rect width="24" height="24" fill="${cm[0]}"/>${[[0,0,4,4,1],[8,4,4,4,2],[16,0,4,8,3],[4,12,8,4,1],[16,16,4,4,2],[0,20,4,4,3],[12,8,4,4,3],[20,12,4,4,1]].map(([x,y,a,b,c])=>`<rect x="${x}" y="${y}" width="${a}" height="${b}" fill="${cm[c]}"/>`).join('')}`
   :`<rect width="44" height="44" fill="${cm[0]}"/><path d="M0 6 Q9 1 17 7 Q24 4 27 11 Q20 17 12 14 Q5 17 0 13Z" fill="${cm[1]}"/><path d="M24 22 Q33 17 42 23 Q44 31 36 33 Q30 29 25 33 Q20 28 24 22Z" fill="${cm[2]}"/><path d="M3 28 Q10 24 16 30 Q14 37 8 38 Q2 35 3 28Z" fill="${cm[3]}"/><path d="M30 2 Q38 0 42 6 Q38 11 32 9Z" fill="${cm[3]}"/><path d="M14 36 Q22 34 26 40 Q20 44 13 42Z" fill="${cm[1]}"/>`;
  const L=80-58*w,Rr=80+58*w,sh=80-40*w,sr=80+40*w;
- const surname=(nameOverride||(S&&S.name)||UI.d.name||'ASKER').trim().split(/\s+/).pop().toLocaleUpperCase('tr').slice(0,10);
+ const surname=(nameOverride||(S&&S.name)||UI.d.name||'ASKER').trim().split(/\s+/).pop().toLocaleUpperCase(typeof LANG!=='undefined'&&LANG!=='tr'?'en':'tr').slice(0,10);
  const officer=rk>=8;const kind=!lk.hat?'none':officer&&br.hat!=='beret'&&br.hat!=='pilot'?'peak':br.hat;
  let back='';
  if(lk.hs==='uzun')back=`<path d="M55 66 Q50 30 80 30 Q110 30 105 66 L109 114 Q98 120 93 106 L67 106 Q62 120 51 114Z" fill="${hc}"/>`;

@@ -62,7 +62,7 @@ function meet(){
  const ch=[];if(canLove)ch.push({t:'Bir sonraki buluşmayı ayarla',fn:()=>{S.partner={name:n,aff:32,m:false,last:S.day};log(n+' ile flört başladı.');toast(n+' ile yeni bir hikâye başlıyor.')}});
  ch.push({t:'Arkadaş olarak tanışmaya devam et',fn:()=>{S.friends=[...(S.friends||[]),{n,job,b:35,last:S.day}].slice(-8);log(n+' ile arkadaş oldunuz.');toast(n+' artık arkadaşın.')}});
  ch.push({t:'Kibarca vedalaş',fn:()=>{}});
- pushModal({k:'Yeni biri',ti:n,body:`<p>${esc(n)} ile tanıştın. ${esc(job[0].toLocaleUpperCase('tr')+job.slice(1))} ve sohbeti çok keyifli. Üniformanı sordu; bir süre görevden değil hayattan konuştunuz.</p>`,ch});
+ pushModal({k:'Yeni biri',ti:n,body:`<p>${esc(n)} ile tanıştın. ${esc(job[0].toLocaleUpperCase(typeof LANG!=='undefined'&&LANG!=='tr'?'en':'tr')+job.slice(1))} ve sohbeti çok keyifli. Üniformanı sordu; bir süre görevden değil hayattan konuştunuz.</p>`,ch});
 }
 function friendAct(i){const f=(S.friends||[])[+i];if(!f)return;if(!S.izin)return toast('Arkadaşlarınla buluşmak için izin günü gerekiyor.');if(f.last===S.day)return toast('Bugün zaten görüştünüz.');if(!useAP())return;f.b=clamp(f.b+12);f.last=S.day;addSt('mental',8);S.fatigue=clamp(S.fatigue-8);toast(f.n+' ile güzel bir gün geçirdin. Ruh hali +8');log(f.n+' ile buluştun.');save();render()}
 function friendTick(){(S.friends||[]).forEach(f=>{f.b=clamp(f.b-.6)});S.friends=(S.friends||[]).filter(f=>f.b>2);
