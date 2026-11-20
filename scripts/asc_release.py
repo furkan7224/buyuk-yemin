@@ -200,6 +200,43 @@ def submit():
     status()
 
 
+def withdraw():
+    """Bekleyen incelemeyi geri çeker (sürüm silinmez, yayındaki sürüm etkilenmez)."""
+    subs = call('GET', f'/v1/reviewSubmissions?filter[app]={APP_ID}&filter[platform]=IOS&limit=10')['data']
+    act = [x for x in subs if x['attributes'].get('state') in ('WAITING_FOR_REVIEW', 'IN_REVIEW', 'UNRESOLVED_ISSUES')]
+    for x in act:
+        call('PATCH', f"/v1/reviewSubmissions/{x['id']}", {'data': {'type': 'reviewSubmissions', 'id': x['id'], 'attributes': {'canceled': True}}})
+        log('İnceleme geri çekiliyor', x['id'], x['attributes'].get('state'))
+    for _ in range(40):
+        subs = call('GET', f'/v1/reviewSubmissions?filter[app]={APP_ID}&filter[platform]=IOS&limit=10')['data']
+        if not any(x['attributes'].get('state') in ('WAITING_FOR_REVIEW', 'IN_REVIEW', 'CANCELING') for x in subs):
+            break
+        time.sleep(15)
+    log('Geri çekme tamam')
+    status()
+
+
+def resubmit():
+    """Yeni yapı işlenince: eski incelemeyi geri çek, yeni yapıyı bağla, tekrar gönder."""
+    r = call('GET', f'/v1/apps/{APP_ID}/appStoreVersions?filter[platform]=IOS&filter[versionString]={VERSION}&limit=1')['data']
+    cur = None
+    if r:
+        bb = call('GET', f"/v1/appStoreVersions/{r[0]['id']}/build")['data']
+        cur = int(bb['attributes']['version']) if bb else None
+    log('Şu an bağlı yapı:', cur)
+    for _ in range(60):
+        q = call('GET', f'/v1/builds?filter[app]={APP_ID}&filter[preReleaseVersion.version]={VERSION}&sort=-uploadedDate&limit=5')['data']
+        ok = [b for b in q if b['attributes']['processingState'] == 'VALID' and (cur is None or int(b['attributes']['version']) > cur)]
+        if ok:
+            log('Yeni yapı hazır:', ok[0]['attributes']['version']); break
+        log('Yeni yapı bekleniyor...', [(b['attributes']['version'], b['attributes']['processingState']) for b in q])
+        time.sleep(30)
+    else:
+        raise SystemExit('Yeni yapı gelmedi')
+    withdraw()
+    submit()
+
+
 def iapinfo():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
@@ -208,4 +245,4 @@ def iapinfo():
         ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
         log(pid, p['attributes']['state'], json.dumps([(x['id'][:8], x['attributes']) for x in ls], ensure_ascii=False))
 
-{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo}[MODE]()
+{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit}[MODE]()
