@@ -5638,4 +5638,119 @@ avukat|lawyer|弁護士|abogado|avocat|Anwalt
 aşçı|cook|料理人|cocinero|cuisinier|Koch
 fotoğrafçı|photographer|写真家|fotógrafo|photographe|Fotograf
 eczacı|pharmacist|薬剤師|farmacéutico|pharmacien|Apotheker
+Timin cepheye intikal ediyor. Lojistik subayı: "Ana yol açık ama düşman İHA'ları izliyor; ara yollar yavaş."|Your team is moving up to the front. Logistics officer: "The main road is open but enemy drones are watching it; the side roads are slow."|君のチームが前線へ移動中。兵站将校「幹線道路は通れるが敵のドローンが監視している。脇道は遅い」|Tu equipo se desplaza al frente. Oficial de logística: "La carretera principal está abierta, pero los drones enemigos la vigilan; los caminos secundarios son lentos."|Ton équipe fait mouvement vers le front. Officier logistique : « La route principale est ouverte, mais les drones ennemis la surveillent ; les routes secondaires sont lentes. »|Dein Team verlegt an die Front. Logistikoffizier: „Die Hauptstraße ist frei, aber feindliche Drohnen beobachten sie; die Nebenstraßen sind langsam.“
+doğu dağ geçidi|eastern mountain pass|東の山岳峠|paso de montaña oriental|col de montagne est|östlicher Gebirgspass
+güney sınır hattı|southern border line|南部国境線|línea fronteriza sur|ligne frontalière sud|südliche Grenzlinie
+batı kıyısı|west coast|西海岸|costa oeste|côte ouest|Westküste
+kuzey kıyısı|north coast|北海岸|costa norte|côte nord|Nordküste
+güney kıyısı|south coast|南海岸|costa sur|côte sud|Südküste
+kuzey ormanları|northern forests|北部の森林|bosques del norte|forêts du nord|nördliche Wälder
+doğu limanları|eastern ports|東部の港湾|puertos del este|ports de l'est|östliche Häfen
+kuzey limanları|northern ports|北部の港湾|puertos del norte|ports du nord|nördliche Häfen
+batı ovaları|western plains|西部平原|llanuras occidentales|plaines de l'ouest|westliche Ebenen
+güney bozkırı|southern steppe|南部の草原|estepa del sur|steppe du sud|südliche Steppe
+kuzey bozkırı|northern steppe|北部の草原|estepa del norte|steppe du nord|nördliche Steppe
+doğu taygası|eastern taiga|東部のタイガ|taiga oriental|taïga de l'est|östliche Taiga
+güney denizi|southern sea|南の海|mar del sur|mer du sud|südliches Meer
+kuzey denizi|northern sea|北の海|mar del norte|mer du nord|nördliches Meer
+batı denizi|western sea|西の海|mar occidental|mer de l'ouest|westliches Meer
+doğu denizi|eastern sea|東の海|mar oriental|mer de l'est|östliches Meer
+batı dağları|western mountains|西部山地|montañas occidentales|montagnes de l'ouest|westliche Berge
+güney dağları|southern mountains|南部山地|montañas del sur|montagnes du sud|südliche Berge
+batı nehri|western river|西の川|río occidental|fleuve de l'ouest|westlicher Fluss
+batı adaları|western islands|西部諸島|islas occidentales|îles de l'ouest|westliche Inseln
+güney adaları|southern islands|南部諸島|islas del sur|îles du sud|südliche Inseln
+kuzey adaları|northern islands|北部諸島|islas del norte|îles du nord|nördliche Inseln
+güney kanalı|southern channel|南の海峡|canal del sur|canal sud|südlicher Kanal
+kuzey kanalı|northern channel|北の海峡|canal del norte|canal nord|nördlicher Kanal
+batı okyanusu|western ocean|西の大洋|océano occidental|océan de l'ouest|westlicher Ozean
+doğu okyanusu|eastern ocean|東の大洋|océano oriental|océan de l'est|östlicher Ozean
+kuzey geçitleri|northern passes|北部の峠|pasos del norte|cols du nord|nördliche Pässe
+güney çölü|southern desert|南部の砂漠|desierto del sur|désert du sud|südliche Wüste
+doğu çölü|eastern desert|東部の砂漠|desierto oriental|désert de l'est|östliche Wüste
+batı çölü|western desert|西部の砂漠|desierto occidental|désert de l'ouest|westliche Wüste
+doğu vadisi|eastern valley|東の谷|valle oriental|vallée de l'est|östliches Tal
+güney Alpleri|southern Alps|アルプス南部|Alpes del sur|Alpes du Sud|Südalpen
+kuzey Alpleri|northern Alps|アルプス北部|Alpes del norte|Alpes du Nord|Nordalpen
+Tırmanış|Climbing|クライミング|Escalada|Escalade|Klettern
+Fotoğrafçılık|Photography|写真|Fotografía|Photographie|Fotografie
+Satranç|Chess|チェス|Ajedrez|Échecs|Schach
+Dalış|Diving|ダイビング|Buceo|Plongée|Tauchen
+tırmanış|climbing|クライミング|escalada|escalade|Klettern
+fotoğrafçılık|photography|写真|fotografía|photographie|Fotografie
+satranç|chess|チェス|ajedrez|échecs|Schach
+dalış|diving|ダイビング|buceo|plongée|Tauchen
+gitar|guitar|ギター|guitarra|guitare|Gitarre
+koşu|running|ランニング|correr|course à pied|Laufen
+resim|painting|絵画|pintura|peinture|Malen
+yemek yapmak|cooking|料理|cocinar|cuisine|Kochen
+eski filmler|old films|古い映画|películas antiguas|vieux films|alte Filme
+{} seviyor|Likes $1|好きなもの：$1|Le gusta: $1|Aime : $1|Mag: $1
+{} (kıdemli kademe) {}|$1 (senior grade) $2|$1（上級）$2|$1 (grado superior) $2|$1 (échelon supérieur) $2|$1 (höhere Stufe) $2
+Telsizci:|Radio operator:|通信手：|Radiooperador:|Radio :|Funker:
+Köprüüstü:|Bridge:|艦橋：|Puente:|Passerelle :|Brücke:
+Sonar:|Sonar:|ソナー：|Sonar:|Sonar :|Sonar:
+Kanat arkadaşı:|Wingman:|僚機：|Punto:|Ailier :|Flügelmann:
+AWACS:|AWACS:|AWACS：|AWACS:|AWACS :|AWACS:
+Kule:|Tower:|管制塔：|Torre:|Tour :|Tower:
+Alarm seviyesi: {}|Alert level: $1|警戒レベル：$1|Nivel de alerta: $1|Niveau d'alerte : $1|Alarmstufe: $1
+TEYAKKUZ|ALERT|警戒態勢|ALERTA|VIGILANCE|ALARMBEREITSCHAFT
+Deniz Bölge|Naval Area|海域|Zona Naval|Zone maritime|Marinebereich
+Deniz Bölge Komutanlığı|Naval Area Command|海域司令部|Mando de Zona Naval|Commandement de zone maritime|Marinebereichskommando
+Deniz Bölge Komutanı|Naval Area Commander|海域司令官|Comandante de Zona Naval|Commandant de zone maritime|Marinebereichskommandeur
+Manga|Squad|分隊|Pelotón|Groupe|Gruppe
+Takım|Platoon|小隊|Sección|Section|Zug
+Bölük|Company|中隊|Compañía|Compagnie|Kompanie
+Tabur|Battalion|大隊|Batallón|Bataillon|Bataillon
+Alay|Regiment|連隊|Regimiento|Régiment|Regiment
+Tugay|Brigade|旅団|Brigada|Brigade|Brigade
+Kolordu|Corps|軍団|Cuerpo de Ejército|Corps d'armée|Korps
+Ordu|Army|軍|Ejército|Armée|Armee
+Kuvvet Komutanlığı|Force Command|軍種司令部|Mando de Fuerza|Commandement des forces|Teilstreitkraftkommando
+{} Kuvvet Komutanlığı|$1 Force Command|$1軍種司令部|Mando de Fuerza $1|Commandement des forces $1|Teilstreitkraftkommando $1
+Gemi Timi|Ship's Team|艦艇チーム|Equipo de buque|Équipe de bord|Bordtrupp
+{} Gemi Timi|$1 Ship's Team|$1艦艇チーム|Equipo de buque $1|Équipe de bord $1|Bordtrupp $1
+{} Bölüm|$1 Section|$1科|Sección $1|Section $1|Abschnitt $1
+{} Kısım|$1 Department|$1部|Departamento $1|Département $1|Abteilung $1
+{} Hücumbot|$1 Fast Attack Craft|$1高速攻撃艇|Patrullero de ataque $1|Vedette d'attaque $1|Schnellboot $1
+Korvet|Corvette|コルベット|Corbeta|Corvette|Korvette
+{} Korvet|$1 Corvette|$1コルベット|Corbeta $1|Corvette $1|Korvette $1
+Filotilla|Flotilla|小艦隊|Flotilla|Flottille|Flottille
+{} Filotilla|$1 Flotilla|$1小艦隊|Flotilla $1|Flottille $1|Flottille $1
+Filo|Squadron|戦隊|Escuadrón|Escadron|Geschwader
+{} Filo|$1 Squadron|$1戦隊|Escuadrón $1|Escadron $1|Geschwader $1
+{} Görev Grubu|$1 Task Group|$1任務群|Grupo de Tareas $1|Groupe opérationnel $1|Einsatzgruppe $1
+Filo Komutanlığı|Fleet Command|艦隊司令部|Mando de Flota|Commandement de la flotte|Flottenkommando
+{} Filo Komutanlığı|$1 Fleet Command|$1艦隊司令部|Mando de Flota $1|Commandement de la flotte $1|Flottenkommando $1
+{} Deniz Bölge Komutanlığı|$1 Naval Area Command|$1海域司令部|Mando de Zona Naval $1|Commandement de zone maritime $1|Marinebereichskommando $1
+Donanma|Fleet|艦隊|Armada|Flotte|Flotte
+{} Donanma|$1 Fleet|$1艦隊|Armada $1|Flotte $1|Flotte $1
+Deniz Kuvvetleri|Naval Forces|海軍|Fuerzas Navales|Forces navales|Seestreitkräfte
+{} Deniz Kuvvetleri|$1 Naval Forces|$1海軍|Fuerzas Navales $1|Forces navales $1|Seestreitkräfte $1
+{} Uçuş Ekibi|$1 Flight Crew|$1飛行班|Tripulación de vuelo $1|Équipage $1|Flugbesatzung $1
+Kol|Flight|編隊|Patrulla|Patrouille|Rotte
+{} Kol|$1 Flight|$1編隊|Patrulla $1|Patrouille $1|Rotte $1
+{} Filo Kısmı|$1 Squadron Section|$1飛行隊分遣班|Sección de escuadrón $1|Section d'escadron $1|Staffelteil $1
+Grup|Group|飛行群|Grupo|Groupe|Gruppe
+{} Grup|$1 Group|$1飛行群|Grupo $1|Groupe $1|Gruppe $1
+{} Üs|$1 Base|$1基地|Base $1|Base $1|Stützpunkt $1
+{} Ana Jet Üssü|$1 Main Jet Base|$1主力ジェット基地|Base Principal de Reactores $1|Base aérienne principale $1|Hauptjetbasis $1
+Taktik Hava Komutanlığı|Tactical Air Command|戦術航空司令部|Mando Aéreo Táctico|Commandement aérien tactique|Taktisches Luftkommando
+{} Taktik Hava Komutanlığı|$1 Tactical Air Command|$1戦術航空司令部|Mando Aéreo Táctico $1|Commandement aérien tactique $1|Taktisches Luftkommando $1
+Hava Bölge Komutanlığı|Air Region Command|航空方面司令部|Mando de Región Aérea|Commandement de région aérienne|Luftbereichskommando
+{} Hava Bölge Komutanlığı|$1 Air Region Command|$1航空方面司令部|Mando de Región Aérea $1|Commandement de région aérienne $1|Luftbereichskommando $1
+Hava Kuvveti|Air Force|航空軍|Fuerza Aérea|Force aérienne|Luftstreitmacht
+{} Hava Kuvveti|$1 Air Force|$1航空軍|Fuerza Aérea $1|Force aérienne $1|Luftstreitmacht $1
+Hava Kuvvetleri|Air Forces|空軍|Fuerzas Aéreas|Forces aériennes|Luftstreitkräfte
+{} Hava Kuvvetleri|$1 Air Forces|$1空軍|Fuerzas Aéreas $1|Forces aériennes $1|Luftstreitkräfte $1
+Kol lideri|Flight lead|編隊長|Jefe de patrulla|Chef de patrouille|Rottenführer
+Tim lideri|Team leader|チームリーダー|Jefe de equipo|Chef d'équipe|Truppführer
+Tim eri|Team member|チーム員|Miembro del equipo|Équipier|Truppmitglied
+Birinci zabit|First officer|副長|Segundo comandante|Officier en second|Erster Offizier
+Makineci|Machinist|機関員|Maquinista|Mécanicien|Maschinist
+Muhabere|Signals|通信|Transmisiones|Transmissions|Fernmelder
+Silah teknisyeni|Weapons technician|武器技術員|Técnico de armamento|Technicien armement|Waffentechniker
+Telsizci|Radio operator|通信手|Radiooperador|Opérateur radio|Funker
+#. Kol lideri|Flight lead $1|第$1編隊長|Jefe de patrulla $1|Chef de patrouille $1|Rottenführer $1
+#. Tim lideri|Team leader $1|第$1チームリーダー|Jefe de equipo $1|Chef d'équipe $1|Truppführer $1
 `);
