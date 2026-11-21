@@ -1,0 +1,13 @@
+import {chromium} from '/opt/node22/lib/node_modules/playwright/index.mjs';
+const b=await chromium.launch();const p=await b.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.addInitScript(()=>{try{localStorage.setItem('by-fict','1')}catch(e){}});
+await p.goto('file://'+process.cwd()+'/demir-yemin.html');await p.waitForTimeout(1200);
+const r=await p.evaluate(async()=>{UI.d.name='T';UI.d.trauma=TRAUMA[0].id;newGame();while(MO)nextModal();
+ const shown=[];window.AdBridge={showInterstitial:async()=>{shown.push('i'+S.day)},showRewarded:async()=>true};
+ const day=async()=>{S.mDone=1;FXON=false;FXQ.length=0;endDay(true);while(MO)nextModal();FXON=false;FXQ.length=0;interTry();await new Promise(r=>setTimeout(r,30))};
+ for(let i=0;i<6;i++)await day();const a=shown.slice();
+ adS().lastRw=Date.now();await day();const afterRw=shown.length-a.length;
+ adS().lastRw=Date.now()-6*60000;await day();const after6=shown.length-a.length-afterRw;
+ ENT32.premium=1;const n=shown.length;await day();await day();const prem=shown.length-n;ENT32.premium=0;
+ return {a,afterRw,after6,prem,cfg:ADCFG.inter}});
+console.log(JSON.stringify(r));console.log('ERR',errs);await b.close();
