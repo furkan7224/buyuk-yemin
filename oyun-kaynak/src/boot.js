@@ -33,13 +33,13 @@ const A={
  reset2(){try{localStorage.removeItem(KEY)}catch(e){}S=null;UI.confirmReset=false;UI.scr='title';render()},
  mc(v){const c=(MO&&MO.ch||[])[+v];c&&c.fn&&c.fn();if(S)save();nextModal()},
 };
-Object.assign(A,A8,A9,A10,A11,A13,A14,A15,A16,A17,A19,A20,A26,A29,A31,A32,A33,typeof A36!=='undefined'?A36:{},typeof A40!=='undefined'?A40:{});
+Object.assign(A,A8,A9,A10,A11,A13,A14,A15,A16,A17,A19,A20,A26,A29,A31,A32,A33,typeof A36!=='undefined'?A36:{},typeof A40!=='undefined'?A40:{},typeof A42!=='undefined'?A42:{});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.disabled)return;const f=A[b.dataset.a];if(f){const sc=document.getElementById('scr')?.scrollTop;f(b.dataset.v);const s=document.getElementById('scr');if(s&&sc!=null&&!['tab','toCreate','goto','lifetab','cont','new'].includes(b.dataset.a))s.scrollTop=sc}});
 document.addEventListener('input',e=>{const lf=e.target.dataset.lf;
  if(lf){UI.d.look[lf]=+e.target.value;$('#v'+lf).textContent=e.target.value;const bl=brList(UI.d.nation);$('#pv').innerHTML=avatar(124,bl.find(b=>b.id===UI.d.branch)||bl[0],PATHS.find(p=>p.id===UI.d.path).r,UI.d.look,UI.d.nation);$('#bfx').textContent=bfxText(UI.d.look);return}
  const f=e.target.dataset.f;if(!f)return;UI.d[f]=e.target.value;
  if(f==='name'&&$('#pv')){const bl=brList(UI.d.nation);$('#pv').innerHTML=avatar(124,bl.find(b=>b.id===UI.d.branch)||bl[0],PATHS.find(p=>p.id===UI.d.path).r,UI.d.look,UI.d.nation)}
- if(f==='story'){const c=$('#cnt');if(c)c.textContent=e.target.value.length+' / 2000 · en az 40 karakter'}});
+ if(f==='story'){const c=$('#cnt');if(c)c.textContent=e.target.value.length+' / 2000 · isteğe bağlı'}});
 window.claude?.hot?.snapshot?.(()=>({S,scr:UI.scr,tab:UI.tab}));
 function boot(d){if(d&&d.S){S=d.S;fixS();UI.scr=d.scr||'game';UI.tab=d.tab||'hq'}render()}
 try{i18nInit()}catch(e){}

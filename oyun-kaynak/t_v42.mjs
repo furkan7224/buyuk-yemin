@@ -1,0 +1,12 @@
+import {chromium} from '/opt/node22/lib/node_modules/playwright/index.mjs';
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,locale:'tr'});const errs=[];p.on('pageerror',e=>errs.push(e.message));
+await p.addInitScript(()=>{try{localStorage.setItem('by-fict','1');localStorage.setItem('by-lang','tr')}catch(e){}});
+await p.goto('file://'+process.cwd()+'/demir-yemin.html');await p.waitForTimeout(1200);
+const o={};
+await p.evaluate(()=>{UI.d.story='';UI.d.trauma=null;UI.scr='story';render()});await p.waitForTimeout(300);await p.screenshot({path:'v42-story.png'});
+await p.click('[data-a=toCreate]');o.noTrauma=await p.evaluate(()=>UI.scr);
+await p.click('[data-a=trauma][data-v=vatan]');await p.click('[data-a=toCreate]');o.withTrauma=await p.evaluate(()=>UI.scr);
+await p.evaluate(()=>{UI.d.name='Deneme';newGame();while(MO)nextModal()});o.story=await p.evaluate(()=>S.story.slice(0,60));
+await p.evaluate(()=>{UI.d.story='kısa';UI.scr='story';render()});await p.click('[data-a=toCreate]');o.short=await p.evaluate(()=>UI.scr);
+await p.fill('#story','Babamın yarım kalan yeminini tamamlamak için buradayım.');o.cnt=await p.textContent('#cnt');await p.click('[data-a=toCreate]');o.typed=await p.evaluate(()=>UI.scr);
+console.log(JSON.stringify(o));console.log('ERR',errs);await b.close();

@@ -1,0 +1,11 @@
+/* ===== v42 · İlk giriş: hikâye yazmak isteğe bağlı (1.1.2) =====
+   "Hikâyenin çekirdeği" seçilince yazı yazmadan devam edilebilir. Boş bırakılırsa seçilen çekirdeğin hikâyesi kullanılır. */
+{const _vs=vStory;vStory=function(){return _vs.apply(this,arguments)
+ .replace('Yazdıkların oyun boyunca karşına çıkacak.','Yazdıkların oyun boyunca karşına çıkacak. İstersen yazmadan, aşağıdan bir seçenek seçip devam edebilirsin.')
+ .replace(/(<div class="small muted num" id="cnt">)[^<]*(<\/div>)/,(m,a,b)=>a+UI.d.story.length+' / 2000 · isteğe bağlı'+b)}}
+var A42={toCreate(){if(!UI.d.trauma)return toast('Aşağıdan hikâyenin çekirdeğini seç.');const s=UI.d.story.trim();if(s&&s.length<10)return toast('Biraz daha yaz ya da yazıyı boş bırak.');UI.scr='create';render();$('#scr')?.scrollTo(0,0)}};
+{const _ng=newGame;newGame=function(){try{if(UI.d&&!UI.d.story.trim()&&UI.d.trauma&&LOSS[UI.d.trauma])UI.d.story=LOSS[UI.d.trauma]}catch(e){}return _ng.apply(this,arguments)}}
+`Yazdıkların oyun boyunca karşına çıkacak. İstersen yazmadan, aşağıdan bir seçenek seçip devam edebilirsin.|What you write will come back throughout the game. You can also skip writing and just pick an option below.|書いたことはゲーム中に何度も登場する。書かずに下の選択肢を選んで進んでもいい。|Lo que escribas volverá a lo largo del juego. También puedes no escribir y elegir una opción abajo.|Ce que tu écris reviendra tout au long du jeu. Tu peux aussi ne rien écrire et choisir une option ci-dessous.|Was du schreibst, begegnet dir im ganzen Spiel wieder. Du kannst das Schreiben auch überspringen und unten eine Option wählen.
+Aşağıdan hikâyenin çekirdeğini seç.|Pick the core of your story below.|下から物語の核を選ぼう。|Elige abajo el núcleo de tu historia.|Choisis ci-dessous le cœur de ton histoire.|Wähle unten den Kern deiner Geschichte.
+Biraz daha yaz ya da yazıyı boş bırak.|Write a little more, or leave it empty.|もう少し書くか、空欄のままにしよう。|Escribe un poco más o déjalo vacío.|Écris un peu plus ou laisse vide.|Schreib etwas mehr oder lass es leer.`.split('\n').forEach(l=>{const c=l.split('|');if(c.length===6)I18N[c[0]]=c});
+I18P.push([/^(\d+) \/ 2000 · isteğe bağlı$/,['$1 / 2000 · optional','$1 / 2000 · 任意','$1 / 2000 · opcional','$1 / 2000 · facultatif','$1 / 2000 · optional']]);
