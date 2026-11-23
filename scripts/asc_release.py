@@ -7,24 +7,22 @@ import os, sys, time, json, hashlib
 import jwt, requests
 
 APP_ID = os.environ.get('APP_ID', '6830630846')
-VERSION = os.environ.get('VERSION', '1.1.1')
+VERSION = os.environ.get('VERSION', '1.1.2')
 MARKETING_URL = os.environ.get('MARKETING_URL', 'https://furkan7224.github.io')
 BASE = 'https://api.appstoreconnect.apple.com'
 MODE = sys.argv[1] if len(sys.argv) > 1 else 'status'
 
 WHATS_NEW = {
-    'tr': ("• Altın kalktı: artık tek para birimi var. Paketler oyun parası (₺) veriyor; "
-           "ev, araba ve mağazadaki her şey bu parayla alınıyor. Elindeki altın otomatik olarak oyun parasına çevrildi.\n"
-           "• Hızlı öğün: tek dokunuşla günün bütün öğünleri, istersen her gün otomatik.\n"
-           "• Rütbe ilerlemesi daha dengeli.\n"
-           "• Oyunun yazı tipleri artık internetsiz de görünüyor.\n"
-           "• Reklam ve küçük hata düzeltmeleri."),
-    'en-US': ("• Gold is gone: there is now a single currency. Packs give in-game cash, "
-              "which buys homes, cars and everything in the store. Your gold was converted automatically.\n"
-              "• Quick meals: plan the whole day with one tap, or let it happen automatically.\n"
-              "• Better-balanced rank progression.\n"
-              "• The game's fonts now work offline too.\n"
-              "• Ad and minor bug fixes."),
+    'tr': ("• Oyunun tamamı 6 dilde: Türkçe, İngilizce, Japonca, İspanyolca, Fransızca ve Almanca. Hikâyeler dahil. "
+           "Dili sağ üstteki dünya simgesinden tek dokunuşla değiştirebilirsin.\n"
+           "• İlk girişte hikâyeni yazmak artık isteğe bağlı; bir seçenek seçip hemen başlayabilirsin.\n"
+           "• Premium avantajları artık daha görünür; Premium sahiplerine hiç reklam çıkmaz.\n"
+           "• Reklam düzeni iyileştirildi, küçük hata düzeltmeleri."),
+    'en-US': ("• The whole game is now available in 6 languages: Turkish, English, Japanese, Spanish, French and German, stories included. "
+              "Switch language with one tap from the globe icon at the top right.\n"
+              "• Writing your backstory is now optional; pick an option and start right away.\n"
+              "• Premium benefits are easier to find; Premium players never see ads.\n"
+              "• Improved ad pacing and minor bug fixes."),
 }
 IAP_TEXT = {
     'altin_kucuk': {'ref': '50.000 TL Oyun Parasi',
@@ -253,6 +251,20 @@ def release():
     time.sleep(10); status()
 
 
+def ship():
+    """Yeni yapı işlenene kadar bekle, sürümü hazırla ve incelemeye gönder."""
+    for _ in range(170):
+        r = call('GET', f'/v1/builds?filter[app]={APP_ID}&filter[preReleaseVersion.version]={VERSION}&sort=-uploadedDate&limit=5')['data']
+        if any(b['attributes']['processingState'] == 'VALID' for b in r):
+            break
+        log('Yapı bekleniyor...', [(b['attributes']['version'], b['attributes']['processingState']) for b in r])
+        time.sleep(30)
+    else:
+        raise SystemExit('Yapı gelmedi')
+    prepare()
+    submit()
+
+
 def iapinfo():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
@@ -261,4 +273,4 @@ def iapinfo():
         ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
         log(pid, p['attributes']['state'], json.dumps([(x['id'][:8], x['attributes']) for x in ls], ensure_ascii=False))
 
-{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release}[MODE]()
+{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release, 'ship': ship}[MODE]()

@@ -18,7 +18,7 @@ function dayFX(prev,sum){fxPush(done=>{
  <button class="fxskip" id="fxs">Devam ›</button></div>`,'day');
  let t=0;const c=el.querySelector('#fxc');const iv=setInterval(()=>{t++;const h=(22+t)%24;if(c)c.textContent=String(h).padStart(2,'0')+':00';if(t>=8)clearInterval(iv)},RM()?10:190);
  const go=()=>{clearInterval(iv);clearTimeout(a);clearTimeout(z);fxClose(done)};
- const a=setTimeout(()=>el.firstElementChild.classList.add('dawn'),RM()?50:1900);const z=setTimeout(go,RM()?900:4300);
+ const a=setTimeout(()=>{const fc=el.firstElementChild;if(fc)fc.classList.add('dawn')},RM()?50:1900);const z=setTimeout(go,RM()?900:4300);
  el.querySelector('#fxs').addEventListener('click',go);
 })}
 function ceremony(old,neu,unl,quote){fxPush(done=>{

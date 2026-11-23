@@ -7,11 +7,11 @@ on:
         required: true
         default: status
         type: choice
-        options: [status, prepare, submit, iapinfo, withdraw, resubmit, release]
+        options: [status, prepare, submit, iapinfo, withdraw, resubmit, release, ship]
       surum:
         description: "Sürüm numarası"
         required: true
-        default: "1.1.1"
+        default: "1.1.2"
 jobs:
   asc:
     runs-on: ubuntu-latest
