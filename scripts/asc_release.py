@@ -96,8 +96,8 @@ def prepare():
     b = find_build()
     v = find_or_create_version()
     vid = v['id']
-    call('PATCH', f'/v1/appStoreVersions/{vid}', {'data': {'type': 'appStoreVersions', 'id': vid, 'attributes': {'releaseType': 'MANUAL'}}})
-    log('Yayın: elle (onaydan sonra sen yayınlarsın)')
+    call('PATCH', f'/v1/appStoreVersions/{vid}', {'data': {'type': 'appStoreVersions', 'id': vid, 'attributes': {'releaseType': os.environ.get('RELEASE_TYPE', 'MANUAL')}}})
+    log('Yayın türü:', os.environ.get('RELEASE_TYPE', 'MANUAL'))
     call('PATCH', f'/v1/appStoreVersions/{vid}/relationships/build', {'data': {'type': 'builds', 'id': b['id']}})
     log('Yapı sürüme bağlandı')
     locs = call('GET', f'/v1/appStoreVersions/{vid}/appStoreVersionLocalizations')['data']

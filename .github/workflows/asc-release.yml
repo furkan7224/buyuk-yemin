@@ -8,6 +8,10 @@ on:
         default: status
         type: choice
         options: [status, prepare, submit, iapinfo, withdraw, resubmit, release, ship]
+      yayin:
+        description: "MANUAL / AFTER_APPROVAL"
+        required: false
+        default: MANUAL
       surum:
         description: "Sürüm numarası"
         required: true
@@ -32,4 +36,5 @@ jobs:
           APP_STORE_ISSUER_ID: ${{ secrets.APP_STORE_ISSUER_ID }}
           APP_STORE_KEY_PATH: ${{ runner.temp }}/keys/key.p8
           VERSION: ${{ inputs.surum }}
+          RELEASE_TYPE: ${{ inputs.yayin }}
         run: python scripts/asc_release.py ${{ inputs.islem }}
