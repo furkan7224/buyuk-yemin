@@ -7,7 +7,7 @@ import os, sys, time, json, hashlib
 import jwt, requests
 
 APP_ID = os.environ.get('APP_ID', '6830630846')
-VERSION = os.environ.get('VERSION', '1.1.2')
+VERSION = os.environ.get('VERSION', '1.1.3')
 MARKETING_URL = os.environ.get('MARKETING_URL', 'https://furkan7224.github.io')
 BASE = 'https://api.appstoreconnect.apple.com'
 MODE = sys.argv[1] if len(sys.argv) > 1 else 'status'
@@ -265,6 +265,12 @@ def ship():
     submit()
 
 
+def swap():
+    """İncelemedeki eski sürümü geri çek, aynı kaydı VERSION'a çevirip yeni yapıyla gönder."""
+    withdraw()
+    ship()
+
+
 def iapinfo():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
@@ -273,4 +279,4 @@ def iapinfo():
         ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
         log(pid, p['attributes']['state'], json.dumps([(x['id'][:8], x['attributes']) for x in ls], ensure_ascii=False))
 
-{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release, 'ship': ship}[MODE]()
+{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release, 'ship': ship, 'swap': swap}[MODE]()
