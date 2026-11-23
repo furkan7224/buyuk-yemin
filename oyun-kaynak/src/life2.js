@@ -16,7 +16,7 @@ function cmdLine(kind){const p=CMDP[S.cmdP]||CMDP.sert;S.lastL=S.lastL||[];let p
 
 /* ============ PARA ============ */
 const CUR_S={TR:'₺',ABD:'$',RUS:'₽',CIN:'¥',ALM:'€',IGB:'£',FRA:'€',JPN:'¥',PAK:'₨',AZE:'₼',ISR:'₪'};
-const money=v=>Math.round(v).toLocaleString('tr-TR')+' '+(CUR_S[S.nation]||'');
+const money=v=>Math.round(v).toLocaleString('tr-TR')+' '+(CUR_S[(S&&S.nation)||'tr']||'');
 const SALARY=[3500,6000,9500,15000,24000];
 
 /* ============ İLİŞKİ ============ */

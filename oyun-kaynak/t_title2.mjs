@@ -1,0 +1,12 @@
+import {chromium} from '/opt/node22/lib/node_modules/playwright/index.mjs';
+const file=process.argv[2];const b=await chromium.launch();
+const p=await b.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,hasTouch:true,isMobile:true,locale:'tr-TR'});const errs=[];p.on('pageerror',e=>errs.push(e.stack.split('\n').slice(0,4).join(' | ')));
+await p.addInitScript(()=>{try{localStorage.setItem('by-fict','1');localStorage.setItem('by-lang','tr')}catch(e){}});
+await p.goto('file://'+file);await p.waitForTimeout(2500);
+await p.tap('[data-a=store33]');await p.waitForTimeout(800);
+await p.screenshot({path:'title-store.png'});
+const o={scr:await p.evaluate(()=>UI.scr),txt:await p.evaluate(()=>document.querySelector('#app').innerText.slice(0,200))};
+await p.goto('file://'+file);await p.waitForTimeout(2000);
+await p.tap('text=English');await p.waitForTimeout(1500);o.en=await p.evaluate(()=>[LANG,document.querySelector('#app').innerText.slice(0,150)]);
+await p.screenshot({path:'title-en.png'});
+console.log(JSON.stringify(o,null,1));console.log('ERR',errs);await b.close();
