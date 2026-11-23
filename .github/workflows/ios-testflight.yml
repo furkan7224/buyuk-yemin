@@ -57,6 +57,9 @@ jobs:
       - name: Capacitor iOS senkronizasyonu
         run: npx cap sync ios
 
+      - name: Unity + Liftoff reklam adaptörlerini ekle
+        run: python3 scripts/add_mediation.py
+
       - name: App Store Connect API anahtarını yaz
         run: |
           mkdir -p "$RUNNER_TEMP/keys"
