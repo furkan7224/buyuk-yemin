@@ -229,8 +229,40 @@ function regCard49(sel) {
  const k = h.indexOf('</p></div>');
  return k > 0 ? h.slice(0, k + 10) + card + h.slice(k + 10) : card + h;
 }}
+
+/* ---------- 3) İSTEDİĞİN ÜLKEYLE SAVAŞ: müttefik olsa bile ittifakı bozup harekât ---------- */
+function war49(k) {
+ const me = S.nation; if (!NAT[k] || k === me) return;
+ if (allied(me, k)) {
+  pushModal({k: 'Diplomasi', ti: 'İttifakı boz ve saldır', body: `<p>${flag(k, 24)} <b>${esc(NAT[k].n)}</b></p><p>${esc('Müttefikine saldırmak için önce ittifakı bozman gerekiyor. İlişkiler ağır hasar görür ve diğer müttefiklerin tepki gösterebilir.')}</p>`,
+   ch: [{t: 'İttifakı boz, harekâtı başlat', fn: () => {
+     S.world.al = S.world.al.filter(x => x !== pk(me, k)); setRel(me, k, rel(me, k) - 60);
+     NK.filter(a => a !== me && a !== k && allied(me, a)).forEach(a => setRel(me, a, rel(me, a) - 8));
+     news(NAT[me].n + ', ' + NAT[k].n + ' ile ittifaktan çekildi.'); save();
+     setTimeout(() => opStart(k), 0) }}, {t: 'Vazgeç'}]});
+  return;
+ }
+ opStart(k);
+}
+{const _wd = warDeclare; warDeclare = function (k) {
+ const me = S.nation;
+ if (S.rank >= 14 && !S.world.war && allied(me, k)) {
+  pushModal({k: 'Diplomasi', ti: 'İttifakı boz ve saldır', body: `<p>${flag(k, 24)} <b>${esc(NAT[k].n)}</b></p><p>${esc('Müttefikine saldırmak için önce ittifakı bozman gerekiyor. İlişkiler ağır hasar görür ve diğer müttefiklerin tepki gösterebilir.')}</p>`,
+   ch: [{t: 'İttifakı boz, savaş ilan et', fn: () => { S.world.al = S.world.al.filter(x => x !== pk(me, k)); setRel(me, k, rel(me, k) - 60); NK.filter(a => a !== me && a !== k && allied(me, a)).forEach(a => setRel(me, a, rel(me, a) - 8)); news(NAT[me].n + ', ' + NAT[k].n + ' ile ittifaktan çekildi.'); save(); setTimeout(() => _wd(k), 0) }}, {t: 'Vazgeç'}]});
+  return;
+ }
+ return _wd.apply(this, arguments) }}
+{const _vd = vDiplo; vDiplo = function () { let h = _vd.apply(this, arguments); if (S.rank >= 14 && !S.world.war) h = h.replace(/(data-a="declare" data-v="[^"]+") disabled/, '$1'); return h }}
+{const _vs = vStrat; vStrat = function () {
+ const h = _vs.apply(this, arguments); if (!(S.rank >= 14)) return h;
+ return h.replace(/<div class="acts">([\s\S]*?)<\/div><\/div>/g, (m, inner) => {
+  if (/data-a="op"/.test(inner)) return m.replace('data-a="op"', 'data-a="war49"');
+  const mm = inner.match(/data-v="([^"]+)"/); if (!mm) return m;
+  return `<div class="acts">${inner}<button class="mini r" data-a="war49" data-v="${mm[1]}">Harekât</button></div></div>`;
+ });
+}}
 {const _fl = fxLayer; fxLayer = function (html, cls) { if (typeof html === 'string' && lc49On() && S.op && S.op.lc49) html = html.replace('<div class="bt-order"><span>Emrin</span>', '<div class="bt-order"><span>Tim kararı</span>'); return _fl.call(this, html, cls) }}
-const A49 = {cc49: cc49Start, rg49(v) { UI.rg49 = +v; render() }, lc49: lcOrder49, lc49go: lcGo49};
+const A49 = {cc49: cc49Start, rg49(v) { UI.rg49 = +v; render() }, lc49: lcOrder49, lc49go: lcGo49, war49};
 
 (function () { const st = document.createElement('style'); st.textContent = `
 .cc49-feed{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(199,245,201,.25)}
@@ -406,5 +438,10 @@ KAYIP VAR|CASUALTIES|損害発生|HAY BAJAS|DES PERTES|VERLUSTE
 İnisiyatifi tim liderine bırak|Leave the initiative to the team leader|判断を班長に任せる|Deja la iniciativa al jefe de equipo|Laisse l'initiative au chef d'équipe|Initiative dem Teamführer überlassen
 Emir bekliyorum, komutanım.|Awaiting your order, sir.|命令をお待ちしています、司令官。|Espero su orden, mi comandante.|J'attends vos ordres, mon commandant.|Erwarte Ihren Befehl, Kommandant.
 Duruma göre emrini ver; tim icra eder. Emin değilsen inisiyatifi tim liderine bırak.|Give your order based on the situation; the team carries it out. If unsure, leave the initiative to the team leader.|状況に応じて命令を出せ。班が実行する。迷うなら判断を班長に任せろ。|Da tu orden según la situación; el equipo la ejecuta. Si dudas, deja la iniciativa al jefe de equipo.|Donne ton ordre selon la situation ; l'équipe l'exécute. En cas de doute, laisse l'initiative au chef d'équipe.|Gib deinen Befehl je nach Lage; das Team führt ihn aus. Im Zweifel überlass die Initiative dem Teamführer.
+İttifakı boz ve saldır|Break the alliance and attack|同盟を破棄して攻撃|Rompe la alianza y ataca|Romps l'alliance et attaque|Bündnis brechen und angreifen
+Müttefikine saldırmak için önce ittifakı bozman gerekiyor. İlişkiler ağır hasar görür ve diğer müttefiklerin tepki gösterebilir.|To attack your ally you must first break the alliance. Relations will be badly damaged and your other allies may react.|同盟国を攻撃するには、まず同盟を破棄しなければならない。関係は大きく損なわれ、他の同盟国も反発するかもしれない。|Para atacar a tu aliado primero debes romper la alianza. Las relaciones sufrirán mucho y tus otros aliados pueden reaccionar.|Pour attaquer ton allié, tu dois d'abord rompre l'alliance. Les relations en souffriront gravement et tes autres alliés pourraient réagir.|Um deinen Verbündeten anzugreifen, musst du zuerst das Bündnis brechen. Die Beziehungen leiden schwer, und deine anderen Verbündeten könnten reagieren.
+İttifakı boz, harekâtı başlat|Break the alliance, start the operation|同盟を破棄し、作戦開始|Rompe la alianza, inicia la operación|Romps l'alliance, lance l'opération|Bündnis brechen, Einsatz starten
+Vazgeç|Cancel|やめる|Cancelar|Annuler|Abbrechen
+İttifakı boz, savaş ilan et|Break the alliance, declare war|同盟を破棄し、宣戦布告|Rompe la alianza, declara la guerra|Romps l'alliance, déclare la guerre|Bündnis brechen, Krieg erklären
 Seçili bölge|Selected region|選択中の地域|Región seleccionada|Région sélectionnée|Ausgewählte Region`.split('\n').forEach(l => { const c = l.split('|'); if (c.length === 6) I18N[c[0]] = c });
 i18Add(`Başarılı harekâtlar: #|Successful operations: $1|成功した作戦：$1|Operaciones con éxito: $1|Opérations réussies : $1|Erfolgreiche Einsätze: $1`);
