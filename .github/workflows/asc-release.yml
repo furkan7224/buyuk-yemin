@@ -37,4 +37,5 @@ jobs:
           APP_STORE_KEY_PATH: ${{ runner.temp }}/keys/key.p8
           VERSION: ${{ inputs.surum }}
           RELEASE_TYPE: ${{ inputs.yayin }}
+          MIN_BUILD: '30'
         run: python scripts/asc_release.py ${{ inputs.islem }}

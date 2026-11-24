@@ -7,20 +7,24 @@ import os, time, sys, time, json, hashlib
 import jwt, requests
 
 APP_ID = os.environ.get('APP_ID', '6830630846')
-VERSION = os.environ.get('VERSION', '1.1.4')
+VERSION = os.environ.get('VERSION', '1.1.5')
 MARKETING_URL = os.environ.get('MARKETING_URL', 'https://furkan7224.github.io')
 BASE = 'https://api.appstoreconnect.apple.com'
 MODE = sys.argv[1] if len(sys.argv) > 1 else 'status'
 
 WHATS_NEW = {
-    'tr': ("• Günlük ödül: Her gün gir, 7 günlük seriyi tamamla, büyük ödülü al. Premium sahipleri 2 katını alır.\n"
-           "• Yeni askerlere özel Acemi Paketi: oyun parası, 3 gün reklamsız oyun ve 3 gün 2 kat tecrübe.\n"
-           "• Mağazada Ücretsiz ve Premium karşılaştırması: Premium'un neler kazandırdığını tek bakışta gör.\n"
-           "• Küçük iyileştirmeler ve hata düzeltmeleri."),
-    'en-US': ("• Daily reward: log in every day, complete the 7-day streak and claim the big prize. Premium owners get double.\n"
-              "• New Recruit Pack for new players: in-game cash, 3 days ad-free and 3 days of double experience.\n"
-              "• Free vs Premium comparison in the store: see everything Premium gives you at a glance.\n"
-              "• Minor improvements and bug fixes."),
+    'tr': ("• Canlı harekât: Mareşal ve devlet makamında tertibi ve desteği seç, harekâtı İHA görüntüsünden canlı izle, tim liderine telsizden duruma göre emir ver.\n"
+           "• Harekât haritası: Fethettiğin bölgeler artık haritada. Bölgeye dokun, güvenliğini, ticaretini ve halkını yönet.\n"
+           "• Dilediğin ülkeyle savaş: Müttefikin olsa bile ittifakı bozup harekât başlatabilirsin.\n"
+           "• Yüksek rütbelere uygun olaylar: Komutanlar artık er olaylarıyla uğraşmıyor.\n"
+           "• Günlük ödül, yeni askerlere özel Acemi Paketi ve mağazada Ücretsiz/Premium karşılaştırması.\n"
+           "• Başlık ekranı düzeltmesi, küçük iyileştirmeler ve hata düzeltmeleri."),
+    'en-US': ("• Live operations: as Marshal or in state office, choose formation and support, watch the operation live through the drone feed and give situational orders to the team leader by radio.\n"
+              "• Operations map: your conquered regions are now on a map. Tap a region to manage its security, trade and people.\n"
+              "• Go to war with anyone: break an alliance and launch an operation, even against an ally.\n"
+              "• Rank-appropriate events: commanders no longer deal with private-level events.\n"
+              "• Daily reward, a Recruit Pack for new players and a Free vs Premium comparison in the store.\n"
+              "• Title screen fix, minor improvements and bug fixes."),
 }
 IAP_TEXT = {
     'altin_kucuk': {'ref': '50.000 TL Oyun Parasi',
@@ -253,7 +257,8 @@ def ship():
     """Yeni yapı işlenene kadar bekle, sürümü hazırla ve incelemeye gönder."""
     for _ in range(170):
         r = call('GET', f'/v1/builds?filter[app]={APP_ID}&filter[preReleaseVersion.version]={VERSION}&sort=-uploadedDate&limit=5')['data']
-        if any(b['attributes']['processingState'] == 'VALID' for b in r):
+        mb = int(os.environ.get('MIN_BUILD', '0') or 0)
+        if any(b['attributes']['processingState'] == 'VALID' and int(b['attributes']['version']) >= mb for b in r) and not any(int(b['attributes']['version']) >= mb and b['attributes']['processingState'] == 'PROCESSING' for b in r):
             break
         log('Yapı bekleniyor...', [(b['attributes']['version'], b['attributes']['processingState']) for b in r])
         time.sleep(30)
