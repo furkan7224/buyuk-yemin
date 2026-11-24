@@ -22668,7 +22668,7 @@ const cc49Ready = () => cc49On() && S.cc49 !== S.day;
 let CCR49 = null;
 
 /* İHA görüntüsü (dil içermeyen HUD) */
-function feed49(lay, ph, done) {
+function feed49(lay, ph, done, lbl) {
  const P = [[[40, 150], [150, 112], [212, 96]], [[30, 40], [140, 70], [205, 88]], [[60, 160], [118, 66], [190, 58]], [[30, 120], [130, 120], [230, 112]]][lay];
  const T = [[225, 86], [228, 92], [196, 50], [250, 70]][lay];
  const tm = P[Math.min(ph, 2)];
@@ -22684,50 +22684,128 @@ function feed49(lay, ph, done) {
  const mm = String(3 + ph).padStart(2, '0') + ':' + String(17 + ph * 13).padStart(2, '0');
  return `<svg class="cc49-feed" viewBox="0 0 320 180" role="img" aria-label="UAV"><defs><pattern id="sl49" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000" fill-opacity=".22"/></pattern><radialGradient id="vg49"><stop offset=".6" stop-opacity="0"/><stop offset="1" stop-opacity=".7"/></radialGradient></defs>
  <rect width="320" height="180" fill="#0c1a12"/>${s}<rect width="320" height="180" fill="url(#sl49)"/><rect width="320" height="180" fill="url(#vg49)"/>
- <g font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#c7f5c9"><text x="10" y="16">UAV-2 <tspan fill="#ff5a4a" class="cc49-blink">●</tspan> REC</text><text x="310" y="16" text-anchor="end">${mm}</text><text x="10" y="172">37.${41 + lay}N 41.${8 + ph}E · ALT 3200</text><text x="310" y="172" text-anchor="end">${Math.min(ph + 1, 3)}/3</text></g>
+ <g font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#c7f5c9"><text x="10" y="16">UAV-2 <tspan fill="#ff5a4a" class="cc49-blink">●</tspan> REC</text><text x="310" y="16" text-anchor="end">${mm}</text><text x="10" y="172">37.${41 + lay}N 41.${8 + ph}E · ALT 3200</text><text x="310" y="172" text-anchor="end">${lbl || (Math.min(ph + 1, 3) + '/3')}</text></g>
  <path d="M6 24V6h18M296 6h18v18M314 156v18h-18M24 174H6v-18" stroke="#c7f5c9" stroke-opacity=".6" fill="none"/></svg>`
 }
 function radio49(who, role, txt) { return `<div class="cc49-r ${who === 'Şahin-2' ? 's' : ''}"><div class="cc49-w"><b>${esc(who)}</b> <span>${esc(role)}</span></div><span class="cc49-t">${esc(txt)}</span></div>` }
+/* Komuta emirleri: sahadaki kararı tim verir, sen komuta emri verirsin */
+const ORD49 = [['plan', 'Planı uygula, inisiyatifi tim liderine bırak'], ['giz', 'Gizliliği koru, sessiz ilerleyin'], ['hiz', 'Tempoyu artırın, hızlı bitirin'], ['temkin', 'Temkinli olun, kayıp vermeyin']];
+const CC49T = [['giz', 'hiz', 'temkin'], ['giz', 'giz', 'hiz'], ['plan', 'hiz', 'temkin'], ['temkin', 'plan', 'plan']];
+const CC49F = ['gizli', 'gizli', 'agir', 'agir'];
+const TAG49 = {giz: ['giz'], hiz: ['hiz', 'atk'], temkin: ['yavas']};
+/* tim, komuta emrine göre seçeneklerden birini kendisi seçer */
+function teamPick49(opts, ord, bestBoost, k0) {
+ const qs = opts.map(o => o[1]); const bq = Math.max(...qs);
+ let k = (k0 || 2.6) + (S.st.lider || 30) / 45 + (ord === 'plan' ? 1.1 : 0);
+ const w = opts.map((o, i) => { let x = Math.exp(k * o[1]); const tg = o[3] || ''; if (TAG49[ord] && TAG49[ord].includes(tg)) x *= 3; if (ord === 'temkin' && (tg === 'risk' || tg === 'kayip')) x *= .35; if (o[1] === bq && bestBoost) x *= bestBoost; return x });
+ let r = R() * w.reduce((a, b) => a + b, 0); for (let i = 0; i < w.length; i++) { r -= w[i]; if (r <= 0) return i } return w.length - 1;
+}
+/* --- Devlet makamı: hazırlık -> canlı yayın -> komuta --- */
 function cc49Start() {
  if (!cc49Ready()) return toast('Bugünkü harekât tamamlandı. Yarın yeni görev.');
  const pool = CC49.map((_, i) => i).filter(i => i !== S.cc49l);
  const i = pool[Math.floor(R() * pool.length)];
- CCR49 = {i, p: 0, sc: 0};
+ CCR49 = {i, p: 0, sc: 0, last: null};
  const C = CC49[i];
- pushModal({k: 'Komuta merkezi · Canlı', ti: C.ti, art: feed49(C.lay, 0, false), body: `<p>${esc(C.in)}</p><p class="small muted">Her aşamada tim liderini dinle ve emrini ver. Kararların sonucu belirler.</p>`, ch: [{t: 'Canlı yayına bağlan', fn: () => cc49Phase()}]});
+ pushModal({k: 'Harekât hazırlığı · Tertip', ti: C.ti, art: feed49(C.lay, 0, false), body: `<p>${esc(C.in)}</p><div class="sec-t">Birliğin nasıl bir tertiple girsin?</div>`,
+  ch: PKG.map(([k, n]) => ({t: n, fn: () => { CCR49.pkg = k; cc49Sup() }}))});
+}
+function cc49Sup() {
+ const C = CC49[CCR49.i]; const L = supports().slice(0, 4);
+ pushModal({k: 'Harekât hazırlığı · Destek', ti: C.ti, body: `<div class="sec-t">Hangi destek unsuru hazır beklesin?</div>${L.map(([k, n, d]) => `<div class="small"><b>${esc(n)}</b> <span class="muted">${esc(d)}</span></div>`).join('')}`,
+  ch: L.map(([k, n]) => ({t: n, fn: () => { CCR49.sup = k; cc49Ready2() }}))});
+}
+function cc49Ready2() {
+ const R_ = CCR49, C = CC49[R_.i]; const pn = PKG.find(p => p[0] === R_.pkg)[1], sn = (supports().find(s => s[0] === R_.sup) || ['', '—'])[1];
+ pushModal({k: 'Komuta merkezi', ti: 'Hazırlık tamam', art: feed49(C.lay, 0, false), body: `<div class="aar"><div><span>Tertip</span><b>${esc(pn)}</b></div><div><span>Destek</span><b>${esc(sn)}</b></div></div><p class="small muted">${esc('Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.')}</p>`,
+  ch: [{t: 'Harekâta canlı yayınla başla', fn: () => cc49Phase()}]});
 }
 function cc49Phase() {
  const R_ = CCR49; if (!R_) return; const C = CC49[R_.i], P = C.ph[R_.p];
- const ord = P.o.map((o, j) => j).sort(() => R() - .5);
- pushModal({k: 'Komuta merkezi · Canlı', ti: C.ti, art: feed49(C.lay, R_.p, false),
-  body: `${R_.p ? `<p class="small cc49-ack">${esc('Anlaşıldı, emriniz uygulanıyor.')}</p>` : ''}${radio49('Bozkurt-1', 'Tim lideri', P.b)}${radio49('Şahin-2', 'İHA operatörü', P.s)}<div class="sec-t">Emrin ne?</div>`,
-  ch: ord.map(j => ({t: P.o[j][0], fn: () => { R_.sc += P.o[j][1]; R_.p++; if (R_.p < C.ph.length) cc49Phase(); else cc49End() }}))});
+ const ack = R_.last ? `<div class="lc49-ack ${R_.last[1] ? 'ok' : 'bad'}"><span>Tim kararı</span> <b>${esc(R_.last[0])}</b> <em>${esc(R_.last[1] ? 'İcra başarılı' : 'İcra aksadı')}</em></div>` : '';
+ const ch = ORD49.map(([k, t]) => ({t, fn: () => cc49Order(k)}));
+ if (R_.sup && R_.sup !== 'yok' && !R_.used) ch.push({t: 'Destek unsurunu devreye sok', fn: () => { R_.used = 1; cc49Order('destek') }});
+ pushModal({k: 'Canlı yayın · Komuta', ti: C.ti, art: feed49(C.lay, R_.p, false),
+  body: `${ack}${radio49('Bozkurt-1', 'Tim lideri', P.b)}${radio49('Şahin-2', 'İHA operatörü', P.s)}<div class="sec-t">Komuta emrin ne?</div><p class="small muted">${esc('Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.')}</p>`, ch});
+}
+function cc49Order(ord) {
+ const R_ = CCR49; if (!R_) return; const C = CC49[R_.i], P = C.ph[R_.p];
+ const fit = R_.pkg === CC49F[R_.i];
+ const ideal = CC49T[R_.i][R_.p];
+ const boost = (ord === ideal ? 3 : 1) * (ord === 'destek' ? 2.5 : 1);
+ const j = teamPick49(P.o, ord === 'destek' ? 'plan' : ord, boost, fit ? 3.2 : 2.4);
+ const q = P.o[j][1]; const ok = R() < clamp(.5 + q * .35 + (fit ? .08 : 0) + (ord === 'destek' ? .1 : 0), .1, .95);
+ R_.sc += q * (ok ? 1 : .6); R_.last = [P.o[j][0], ok]; R_.p++;
+ if (R_.p < C.ph.length) cc49Phase(); else cc49End();
 }
 function cc49End() {
  const R_ = CCR49; CCR49 = null; if (!R_) return; const C = CC49[R_.i];
  const avg = R_.sc / C.ph.length; const ok = R() < clamp(.1 + avg * .85, .05, .95);
  const P = S.pol, me = S.nation; S.cc49 = S.day; S.cc49l = R_.i; S.cc49n = (S.cc49n || 0) + (ok ? 1 : 0);
  const fx = [];
+ const ack = R_.last ? `<div class="lc49-ack ${R_.last[1] ? 'ok' : 'bad'}"><span>Tim kararı</span> <b>${esc(R_.last[0])}</b> <em>${esc(R_.last[1] ? 'İcra başarılı' : 'İcra aksadı')}</em></div>` : '';
  if (ok) {
   if (P) { P.guv = clamp(P.guv + 6); P.onay = clamp(P.onay + 3); fx.push('İç güvenlik +6', 'Halk onayı +3') }
   S.trust = clamp(S.trust + 5); S.xp += 60; addSt('mental', 4); fx.push('Güven +5', 'Tecrübe +60');
   let reg = '';
   if (S.world && S.world.war && typeof transfer === 'function') { const n = transfer(S.world.war, me, 1); if (n) { S.warScore = (S.warScore || 0) + 1; reg = `<p class="small green">${esc('Cephede bir bölge ele geçirildi. Haritada gör: Dünya › Bölgeler')}</p>` } }
-  pushModal({k: 'Harekât sonucu', ti: 'Harekât başarılı', art: feed49(C.lay, 2, true), body: `${radio49('Bozkurt-1', 'Tim lideri', C.w)}${reg}<div class="fx">${fx.map(t => `<span class="p">${esc(t)}</span>`).join('')}</div>`});
+  pushModal({k: 'Harekât sonucu', ti: 'Harekât başarılı', art: feed49(C.lay, 2, true), body: `${ack}${radio49('Bozkurt-1', 'Tim lideri', C.w)}${reg}<div class="fx">${fx.map(t => `<span class="p">${esc(t)}</span>`).join('')}</div>`});
  } else {
   if (P) { P.onay = clamp(P.onay - 4); P.guv = clamp(P.guv - 2); fx.push('Halk onayı -4', 'İç güvenlik -2') }
   addSt('mental', -5); fx.push('Moral -5');
-  pushModal({k: 'Harekât sonucu', ti: 'Harekât aksadı', art: feed49(C.lay, 2, false), body: `${radio49('Bozkurt-1', 'Tim lideri', C.l)}<div class="fx">${fx.map(t => `<span class="p">${esc(t)}</span>`).join('')}</div><p class="small muted">${esc('Yarın yeni bir harekât emrine hazır olacaklar.')}</p>`});
+  pushModal({k: 'Harekât sonucu', ti: 'Harekât aksadı', art: feed49(C.lay, 2, false), body: `${ack}${radio49('Bozkurt-1', 'Tim lideri', C.l)}<div class="fx">${fx.map(t => `<span class="p">${esc(t)}</span>`).join('')}</div><p class="small muted">${esc('Yarın yeni bir harekât emrine hazır olacaklar.')}</p>`});
  }
  log(C.ti + ': ' + (ok ? 'başarılı' : 'aksadı') + '.'); save(); render();
 }
 function ccCard49() {
  if (!cc49On()) return '';
  const rd = cc49Ready();
- return `<div class="card cc49c"><div class="cc49-mini">${feed49(S.day % 4, 1, false)}</div><div class="lbl acc">Canlı harekât · Komuta merkezi</div><p class="small">Harekâtları uzaktan, İHA görüntüsünden izle. Tim liderini telsizden dinle ve emri sen ver.</p>${(S.cc49n || 0) ? `<div class="small muted">Başarılı harekâtlar: ${S.cc49n}</div>` : ''}<button class="btn block" data-a="cc49" ${rd ? '' : 'disabled'}>${rd ? 'Harekâtı başlat' : 'Bugünkü harekât tamamlandı. Yarın yeni görev.'}</button></div>`
+ return `<div class="card cc49c"><div class="cc49-mini">${feed49(S.day % 4, 1, false)}</div><div class="lbl acc">Yeni harekât emri · Komuta merkezi</div><p class="small">Tertibi ve desteği seç, harekâtı canlı yayından izle. Sahadaki kararları tim verir, komuta emirleri senden.</p>${(S.cc49n || 0) ? `<div class="small muted">Başarılı harekâtlar: ${S.cc49n}</div>` : ''}<button class="btn block" data-a="cc49" ${rd ? '' : 'disabled'}>${rd ? 'Harekâtı hazırla' : 'Bugünkü harekât tamamlandı. Yarın yeni görev.'}</button></div>`
 }
 {const _co = civilOpCard31; civilOpCard31 = function () { const h = _co.apply(this, arguments); return h.replace('<div class="card dos">', ccCard49() + '$&').replace('<div class="card"><p class="small muted">Genelkurmay', ccCard49() + '$&') }}
-{const _vm = vMission; vMission = function () { const h = _vm.apply(this, arguments); if (cc49On() && !civil31() && (UI.msub || 'op') === 'op' && h.includes('hq31')) return h.replace('<div class="card hq31">', ccCard49() + '$&'); return h }}
+
+/* --- Mareşal (ordu başı): normal harekât; hazırlık seçilir, canlı yayınla başlatılır, sorulara tim karar verir --- */
+const lc49On = () => !!(S && S.rank >= 18 && !civil31());
+{const _op = opPrep; opPrep = function (v) {
+ if (!lc49On()) return _op.apply(this, arguments);
+ const [p, s] = String(v).split('|'); const o = S.op; if (!o || o.prep) return; if (p) o.pkgSel = p; if (s) o.supSel = s; save(); render() }}
+function lcGo49() {
+ const o = S.op; if (!o || o.prep || !o.pkgSel || !o.supSel) return; if (!useAP()) return;
+ o.prep = {p: o.pkgSel, s: o.supSel}; o.lc49 = 1; if (typeof opIntro === 'function') opIntro(); save(); render();
+}
+function lcOrder49(ord) {
+ const o = S.op; if (!o || !o.prep || S.mDone) return; upgradeOp(); const def = OPS.find(x => x.id === o.id);
+ const [sit, opts] = stepData(o, o.st, def); if (!opts || !opts.length) return;
+ const fit = o.prep.p === fitOf(def.id);
+ const j = teamPick49(opts, ord, 1, fit ? 3.2 : 2.6);
+ o.ord49 = (o.ord49 || 0) + 1; clearTimeout(UI.ktT); clearInterval(UI.ktI); UI.kt = null;
+ opStep(String(j));
+}
+function lcSection49(o, def) {
+ const [sit, opts] = stepData(o, o.st, def); const n = (o.steps || []).length || 6;
+ const last = (o.notes || []).length ? o.notes[o.notes.length - 1] : null;
+ const lay = Math.abs([...String(o.id)].reduce((a, c) => a + c.charCodeAt(0), 0)) % 4;
+ return `<section id="evc" class="evc lc49"><div class="evc-bar"><span class="evc-live"><i></i>${esc('Canlı yayın · Komuta')}</span><span class="evc-st">${o.st + 1}/${n}</span></div>
+ <div class="lc49-feed">${feed49(lay, Math.min(2, Math.floor(o.st * 3 / n)), false, (o.st + 1) + '/' + n)}</div>
+ ${last ? `<div class="lc49-ack ${last[3] ? 'ok' : 'bad'}"><span>Tim kararı</span> <b>${esc(opText(last[1]))}</b> <em>${esc(last[3] ? 'İcra başarılı' : 'İcra aksadı')}</em></div>` : ''}
+ <div class="evc-body"><div class="evc-k">${esc(stepLabel(o, o.st))}</div>${radio49((S.tim && S.tim.name ? S.tim.name : 'Bozkurt') + '-1', 'Tim lideri', opText(sit))}</div>
+ <div class="evc-q"><span>Komuta emrin ne?</span><small>${esc('Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.')}</small></div>
+ <div class="evc-opts">${ORD49.map(([k, t], j) => `<button class="opt op2 evo" data-a="lc49" data-v="${k}"><span class="k">${'ABCD'[j]}</span><span class="grow"><span class="evt">${esc(t)}</span></span></button>`).join('')}</div></section>`
+}
+{const _vm = vMission; vMission = function () {
+ const h = _vm.apply(this, arguments); if (!lc49On() || (UI.msub || 'op') !== 'op' || !S.op || S.izin) return h;
+ const o = S.op;
+ if (!o.prep) {
+  const rdy = o.pkgSel && o.supSel;
+  const btn = `<button class="btn block lc49-go" data-a="lc49go" ${rdy ? '' : 'disabled'}>${esc('Harekâta canlı yayınla başla')}</button>`;
+  let x = h.replace(/(<div class="prep-go[^"]*">[\s\S]*?<small>)[\s\S]*?(<\/small><\/div>)/, `$1${esc('Seçimlerini yap, sonra harekâtı canlı yayınla başlat (1 eylem).')}$2${btn}`);
+  return x;
+ }
+ if (S.mDone) return h;
+ clearTimeout(UI.ktT); clearInterval(UI.ktI);
+ const def = OPS.find(x => x.id === o.id);
+ return h.replace(/<section id="evc"[\s\S]*?<\/section>/, lcSection49(o, def));
+}}
 
 /* ---------- 2) HAREKÂT HARİTASI ---------- */
 function regMap49(sel) {
@@ -22775,7 +22853,8 @@ function regCard49(sel) {
  const k = h.indexOf('</p></div>');
  return k > 0 ? h.slice(0, k + 10) + card + h.slice(k + 10) : card + h;
 }}
-const A49 = {cc49: cc49Start, rg49(v) { UI.rg49 = +v; render() }};
+{const _fl = fxLayer; fxLayer = function (html, cls) { if (typeof html === 'string' && lc49On() && S.op && S.op.lc49) html = html.replace('<div class="bt-order"><span>Emrin</span>', '<div class="bt-order"><span>Tim kararı</span>'); return _fl.call(this, html, cls) }}
+const A49 = {cc49: cc49Start, rg49(v) { UI.rg49 = +v; render() }, lc49: lcOrder49, lc49go: lcGo49};
 
 (function () { const st = document.createElement('style'); st.textContent = `
 .cc49-feed{width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(199,245,201,.25)}
@@ -22787,6 +22866,9 @@ const A49 = {cc49: cc49Start, rg49(v) { UI.rg49 = +v; render() }};
 .cc49-t{display:block;line-height:1.4}.cc49-ack{color:#59b8ff;font-style:italic;margin:0 0 4px}
 .cc49c{border:1px solid rgba(89,184,255,.35);background:linear-gradient(180deg,rgba(89,184,255,.08),transparent)}
 .cc49-mini{margin:-4px -4px 10px}.cc49c .btn{margin-top:10px}
+.lc49-ack{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;border-radius:10px;padding:8px 10px;margin:8px 0;background:rgba(95,211,138,.08);border:1px solid rgba(95,211,138,.3);font-size:13px}
+.lc49-ack.bad{background:rgba(255,90,74,.08);border-color:rgba(255,90,74,.35)}.lc49-ack span{opacity:.7;font-size:11px;text-transform:uppercase;letter-spacing:.06em}.lc49-ack em{font-style:normal;font-size:11px;font-weight:700;color:#5fd38a}.lc49-ack.bad em{color:#ff6a5a}
+.lc49-feed{padding:10px 12px 0}.lc49 .cc49-r{margin:6px 0 0}.lc49-go{margin-top:12px}
 .rg49c{border:1px solid rgba(243,198,107,.3)}
 .rg49-map{width:100%;height:auto;display:block;border-radius:10px}.rg49-wrap{padding:0;overflow:hidden;border-radius:10px}
 .rg49-on{animation:rg49p 1.4s ease-in-out infinite}@keyframes rg49p{50%{stroke-opacity:.35}}
@@ -22907,6 +22989,44 @@ Gergin|Tense|緊張|Tensa|Tendue|Angespannt
 Güvenlik düşük|Low security|治安悪化|Seguridad baja|Sécurité faible|Geringe Sicherheit
 Memnuniyet|Satisfaction|満足度|Satisfacción|Satisfaction|Zufriedenheit
 Tahkimat|Fortification|要塞化|Fortificación|Fortification|Befestigung
+Planı uygula, inisiyatifi tim liderine bırak|Execute the plan, leave the initiative to the team leader|計画を実行し、判断は班長に任せる|Ejecutad el plan, la iniciativa queda en manos del jefe de equipo|Exécutez le plan, laissez l'initiative au chef d'équipe|Plan ausführen, Initiative dem Teamführer überlassen
+Gizliliği koru, sessiz ilerleyin|Keep it covert, move in silence|隠密を保ち、静かに前進せよ|Mantened el sigilo, avanzad en silencio|Restez discrets, avancez en silence|Tarnung wahren, leise vorrücken
+Tempoyu artırın, hızlı bitirin|Pick up the pace, finish it fast|テンポを上げ、素早く終わらせろ|Aumentad el ritmo, acabad rápido|Accélérez, finissez vite|Tempo erhöhen, schnell abschließen
+Temkinli olun, kayıp vermeyin|Be cautious, no casualties|慎重に行動し、損害を出すな|Sed prudentes, sin bajas|Soyez prudents, pas de pertes|Vorsichtig sein, keine Verluste
+Harekât hazırlığı · Tertip|Operation prep · Formation|作戦準備 · 編成|Preparación · Formación|Préparation · Dispositif|Einsatzvorbereitung · Aufstellung
+Birliğin nasıl bir tertiple girsin?|What formation should your unit go in with?|部隊はどの編成で突入する？|¿Con qué formación entra tu unidad?|Avec quel dispositif ton unité doit-elle entrer ?|In welcher Aufstellung soll deine Einheit vorgehen?
+Harekât hazırlığı · Destek|Operation prep · Support|作戦準備 · 支援|Preparación · Apoyo|Préparation · Appui|Einsatzvorbereitung · Unterstützung
+Hangi destek unsuru hazır beklesin?|Which support element should stand by?|どの支援部隊を待機させる？|¿Qué elemento de apoyo debe estar listo?|Quel élément d'appui doit se tenir prêt ?|Welche Unterstützung soll bereitstehen?
+Komuta merkezi|Command centre|指揮センター|Centro de mando|Centre de commandement|Kommandozentrale
+Hazırlık tamam|Preparation complete|準備完了|Preparación lista|Préparation terminée|Vorbereitung abgeschlossen
+Tertip|Formation|編成|Formación|Dispositif|Aufstellung
+Destek|Support|支援|Apoyo|Appui|Unterstützung
+Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.|The team makes and carries out the field decisions itself. You give the command orders.|現場の判断は班が自ら下して実行する。君は指揮命令を出せ。|El equipo toma y ejecuta por sí mismo las decisiones sobre el terreno. Tú das las órdenes de mando.|L'équipe prend et exécute elle-même les décisions sur le terrain. Toi, tu donnes les ordres de commandement.|Das Team trifft und vollzieht die Entscheidungen vor Ort selbst. Du gibst die Führungsbefehle.
+Harekâta canlı yayınla başla|Start the operation on live feed|ライブ映像で作戦開始|Iniciar la operación en directo|Lancer l'opération en direct|Einsatz mit Live-Bild starten
+Tim kararı|Team decision|班の判断|Decisión del equipo|Décision de l'équipe|Teamentscheidung
+İcra başarılı|Executed well|実行成功|Ejecución con éxito|Exécution réussie|Erfolgreich ausgeführt
+İcra aksadı|Execution faltered|実行に支障|La ejecución falló|Exécution ratée|Ausführung misslang
+Destek unsurunu devreye sok|Bring in the support element|支援部隊を投入せよ|Haz entrar el elemento de apoyo|Engage l'élément d'appui|Unterstützung einsetzen
+Canlı yayın · Komuta|Live feed · Command|ライブ映像 · 指揮|En directo · Mando|En direct · Commandement|Live-Bild · Führung
+Komuta emrin ne?|Your command order?|指揮命令は？|¿Cuál es tu orden de mando?|Quel est ton ordre de commandement ?|Dein Führungsbefehl?
+Yeni harekât emri · Komuta merkezi|New operation order · Command centre|新たな作戦命令 · 指揮センター|Nueva orden de operación · Centro de mando|Nouvel ordre d'opération · Centre de commandement|Neuer Einsatzbefehl · Kommandozentrale
+Tertibi ve desteği seç, harekâtı canlı yayından izle. Sahadaki kararları tim verir, komuta emirleri senden.|Choose the formation and support, then watch the operation live. The team makes the field decisions; the command orders come from you.|編成と支援を選び、作戦をライブ映像で見守れ。現場の判断は班が下し、指揮命令は君が出す。|Elige la formación y el apoyo y sigue la operación en directo. El equipo decide sobre el terreno; las órdenes de mando son tuyas.|Choisis le dispositif et l'appui, puis suis l'opération en direct. L'équipe décide sur le terrain, les ordres de commandement viennent de toi.|Wähle Aufstellung und Unterstützung und verfolge den Einsatz live. Das Team entscheidet vor Ort, die Führungsbefehle kommen von dir.
+Harekâtı hazırla|Prepare operation|作戦を準備|Preparar operación|Préparer l'opération|Einsatz vorbereiten
+Seçimlerini yap, sonra harekâtı canlı yayınla başlat (1 eylem).|Make your choices, then start the operation on live feed (1 action).|選択を済ませたら、ライブ映像で作戦を開始せよ（1行動）。|Haz tus elecciones y luego inicia la operación en directo (1 acción).|Fais tes choix, puis lance l'opération en direct (1 action).|Triff deine Auswahl und starte dann den Einsatz mit Live-Bild (1 Aktion).
+HEDEF SUSTURULDU|TARGET SILENCED|目標沈黙|OBJETIVO SILENCIADO|CIBLE RÉDUITE AU SILENCE|ZIEL AUSGESCHALTET
+HAT YARILDI|LINE BROKEN|戦線突破|LÍNEA ROTA|LIGNE PERCÉE|LINIE DURCHBROCHEN
+KANAT KAPANDI|FLANK CLOSED|側面封鎖|FLANCO CERRADO|FLANC FERMÉ|FLANKE GESCHLOSSEN
+CEPHE TUTUNDU|FRONT HELD|戦線維持|FRENTE MANTENIDO|FRONT TENU|FRONT GEHALTEN
+BASKI KURULDU|PRESSURE ESTABLISHED|圧力確立|PRESIÓN ESTABLECIDA|PRESSION ÉTABLIE|DRUCK AUFGEBAUT
+HEDEF SUSTU|TARGET DOWN|目標沈黙|OBJETIVO ABATIDO|CIBLE NEUTRALISÉE|ZIEL STILL
+SABIR KAZANDIRDI|PATIENCE PAID OFF|忍耐が実った|LA PACIENCIA DIO FRUTOS|LA PATIENCE A PAYÉ|GEDULD HAT SICH GELOHNT
+TOPARLANIYORUZ|REGROUPING|態勢立て直し中|REAGRUPÁNDONOS|ON SE REGROUPE|WIR SAMMELN UNS
+ZAMAN KAYBI|TIME LOST|時間の損失|TIEMPO PERDIDO|TEMPS PERDU|ZEITVERLUST
+KIL PAYI|BY A HAIR|間一髪|POR LOS PELOS|DE JUSTESSE|HAARSCHARF
+PUSU!|AMBUSH!|待ち伏せ！|¡EMBOSCADA!|EMBUSCADE !|HINTERHALT!
+KAOS|CHAOS|混乱|CAOS|CHAOS|CHAOS
+TEMAS KAYBI|CONTACT LOST|連絡途絶|CONTACTO PERDIDO|CONTACT PERDU|KONTAKT VERLOREN
+KAYIP VAR|CASUALTIES|損害発生|HAY BAJAS|DES PERTES|VERLUSTE
 Seçili bölge|Selected region|選択中の地域|Región seleccionada|Région sélectionnée|Ausgewählte Region`.split('\n').forEach(l => { const c = l.split('|'); if (c.length === 6) I18N[c[0]] = c });
 i18Add(`Başarılı harekâtlar: #|Successful operations: $1|成功した作戦：$1|Operaciones con éxito: $1|Opérations réussies : $1|Erfolgreiche Einsätze: $1`);
 
