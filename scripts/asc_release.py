@@ -3,7 +3,7 @@
 Kullanım: asc_release.py prepare|submit|status
 Ortam: APP_STORE_KEY_ID, APP_STORE_ISSUER_ID, APP_STORE_KEY_PATH, VERSION, APP_ID
 """
-import os, sys, time, json, hashlib
+import os, time, sys, time, json, hashlib
 import jwt, requests
 
 APP_ID = os.environ.get('APP_ID', '6830630846')
@@ -331,8 +331,8 @@ def iapnew():
     SHOT = cfg['shot']; upload_shot(iid); log('İnceleme görseli yüklendi')
     if os.environ.get('IAP_SUBMIT', '1') == '1':
         r = call('POST', '/v1/inAppPurchaseSubmissions', {'data': {'type': 'inAppPurchaseSubmissions', 'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': iid}}}}}, ok=(200, 201, 409))
-        log('İncelemeye gönderildi' if r else 'Gönderim yanıtı boş')
-    st = call('GET', f'/v2/inAppPurchases/{iid}')['data']['attributes']['state']; log('Ürün durumu:', st)
+        log('Gönderim yanıtı:', json.dumps(r, ensure_ascii=False)[:600])
+    time.sleep(20); st = call('GET', f'/v2/inAppPurchases/{iid}')['data']['attributes']['state']; log('Ürün durumu:', st)
 
 
 def iapinfo():
