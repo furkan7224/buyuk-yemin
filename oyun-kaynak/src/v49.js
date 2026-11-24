@@ -94,23 +94,22 @@ function cc49Sup() {
 }
 function cc49Ready2() {
  const R_ = CCR49, C = CC49[R_.i]; const pn = PKG.find(p => p[0] === R_.pkg)[1], sn = (supports().find(s => s[0] === R_.sup) || ['', '—'])[1];
- pushModal({k: 'Komuta merkezi', ti: 'Hazırlık tamam', art: feed49(C.lay, 0, false), body: `<div class="aar"><div><span>Tertip</span><b>${esc(pn)}</b></div><div><span>Destek</span><b>${esc(sn)}</b></div></div><p class="small muted">${esc('Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.')}</p>`,
+ pushModal({k: 'Komuta merkezi', ti: 'Hazırlık tamam', art: feed49(C.lay, 0, false), body: `<div class="aar"><div><span>Tertip</span><b>${esc(pn)}</b></div><div><span>Destek</span><b>${esc(sn)}</b></div></div><p class="small muted">${esc('Duruma göre emrini ver; tim icra eder. Emin değilsen inisiyatifi tim liderine bırak.')}</p>`,
   ch: [{t: 'Harekâta canlı yayınla başla', fn: () => cc49Phase()}]});
 }
 function cc49Phase() {
  const R_ = CCR49; if (!R_) return; const C = CC49[R_.i], P = C.ph[R_.p];
  const ack = R_.last ? `<div class="lc49-ack ${R_.last[1] ? 'ok' : 'bad'}"><span>Tim kararı</span> <b>${esc(R_.last[0])}</b> <em>${esc(R_.last[1] ? 'İcra başarılı' : 'İcra aksadı')}</em></div>` : '';
- const ch = ORD49.map(([k, t]) => ({t, fn: () => cc49Order(k)}));
+ const ch = P.o.map((o, j) => j).sort(() => R() - .5).map(j => ({t: P.o[j][0], fn: () => cc49Order(j)})); ch.push({t: 'İnisiyatifi tim liderine bırak', fn: () => cc49Order('plan')});
  if (R_.sup && R_.sup !== 'yok' && !R_.used) ch.push({t: 'Destek unsurunu devreye sok', fn: () => { R_.used = 1; cc49Order('destek') }});
  pushModal({k: 'Canlı yayın · Komuta', ti: C.ti, art: feed49(C.lay, R_.p, false),
-  body: `${ack}${radio49('Bozkurt-1', 'Tim lideri', P.b)}${radio49('Şahin-2', 'İHA operatörü', P.s)}<div class="sec-t">Komuta emrin ne?</div><p class="small muted">${esc('Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.')}</p>`, ch});
+  body: `${ack}${radio49('Bozkurt-1', 'Tim lideri', P.b)}${radio49('Şahin-2', 'İHA operatörü', P.s)}<div class="sec-t">Komuta emrin ne?</div><p class="small muted">${esc('Duruma göre emrini ver; tim icra eder. Emin değilsen inisiyatifi tim liderine bırak.')}</p>`, ch});
 }
 function cc49Order(ord) {
  const R_ = CCR49; if (!R_) return; const C = CC49[R_.i], P = C.ph[R_.p];
  const fit = R_.pkg === CC49F[R_.i];
  const ideal = CC49T[R_.i][R_.p];
- const boost = (ord === ideal ? 3 : 1) * (ord === 'destek' ? 2.5 : 1);
- const j = teamPick49(P.o, ord === 'destek' ? 'plan' : ord, boost, fit ? 3.2 : 2.4);
+ const j = typeof ord === 'number' ? ord : teamPick49(P.o, 'plan', ord === 'destek' ? 2.5 : 1, fit ? 3.2 : 2.4);
  const q = P.o[j][1]; const ok = R() < clamp(.5 + q * .35 + (fit ? .08 : 0) + (ord === 'destek' ? .1 : 0), .1, .95);
  R_.sc += q * (ok ? 1 : .6); R_.last = [P.o[j][0], ok]; R_.p++;
  if (R_.p < C.ph.length) cc49Phase(); else cc49End();
@@ -154,7 +153,7 @@ function lcOrder49(ord) {
  const o = S.op; if (!o || !o.prep || S.mDone) return; upgradeOp(); const def = OPS.find(x => x.id === o.id);
  const [sit, opts] = stepData(o, o.st, def); if (!opts || !opts.length) return;
  const fit = o.prep.p === fitOf(def.id);
- const j = teamPick49(opts, ord, 1, fit ? 3.2 : 2.6);
+ const j = /^o\d+$/.test(ord) ? +ord.slice(1) : teamPick49(opts, 'plan', 1, fit ? 3.2 : 2.6); if (!opts[j]) return;
  o.ord49 = (o.ord49 || 0) + 1; clearTimeout(UI.ktT); clearInterval(UI.ktI); UI.kt = null;
  opStep(String(j));
 }
@@ -165,9 +164,9 @@ function lcSection49(o, def) {
  return `<section id="evc" class="evc lc49"><div class="evc-bar"><span class="evc-live"><i></i>${esc('Canlı yayın · Komuta')}</span><span class="evc-st">${o.st + 1}/${n}</span></div>
  <div class="lc49-feed">${feed49(lay, Math.min(2, Math.floor(o.st * 3 / n)), false, (o.st + 1) + '/' + n)}</div>
  ${last ? `<div class="lc49-ack ${last[3] ? 'ok' : 'bad'}"><span>Tim kararı</span> <b>${esc(opText(last[1]))}</b> <em>${esc(last[3] ? 'İcra başarılı' : 'İcra aksadı')}</em></div>` : ''}
- <div class="evc-body"><div class="evc-k">${esc(stepLabel(o, o.st))}</div>${radio49((S.tim && S.tim.name ? S.tim.name : 'Bozkurt') + '-1', 'Tim lideri', opText(sit))}</div>
- <div class="evc-q"><span>Komuta emrin ne?</span><small>${esc('Tim sahadaki kararı kendisi verip uygulayacak. Sen komuta emrini ver.')}</small></div>
- <div class="evc-opts">${ORD49.map(([k, t], j) => `<button class="opt op2 evo" data-a="lc49" data-v="${k}"><span class="k">${'ABCD'[j]}</span><span class="grow"><span class="evt">${esc(t)}</span></span></button>`).join('')}</div></section>`
+ <div class="evc-body"><div class="evc-k">${esc(stepLabel(o, o.st))}</div>${radio49((S.tim && S.tim.name ? S.tim.name : 'Bozkurt') + '-1', 'Tim lideri', opText(sit)) + `<p class="small muted" style="margin:6px 0 0">${esc('Emir bekliyorum, komutanım.')}</p>`}</div>
+ <div class="evc-q"><span>Komuta emrin ne?</span><small>${esc('Duruma göre emrini ver; tim icra eder. Emin değilsen inisiyatifi tim liderine bırak.')}</small></div>
+ <div class="evc-opts">${ordsOf(o, opts).map((idx, j) => opts[idx] ? `<button class="opt op2 evo" data-a="lc49" data-v="o${idx}"><span class="k">${'ABCDE'[j]}</span><span class="grow"><span class="evt">${esc(opText(opts[idx][0]))}</span></span></button>` : '').join('')}<button class="opt op2 evo lc49-ini" data-a="lc49" data-v="plan"><span class="k">★</span><span class="grow"><span class="evt">${esc('İnisiyatifi tim liderine bırak')}</span></span></button></div></section>`
 }
 {const _vm = vMission; vMission = function () {
  const h = _vm.apply(this, arguments); if (!lc49On() || (UI.msub || 'op') !== 'op' || !S.op || S.izin) return h;
@@ -245,7 +244,7 @@ const A49 = {cc49: cc49Start, rg49(v) { UI.rg49 = +v; render() }, lc49: lcOrder4
 .cc49-mini{margin:-4px -4px 10px}.cc49c .btn{margin-top:10px}
 .lc49-ack{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;border-radius:10px;padding:8px 10px;margin:8px 0;background:rgba(95,211,138,.08);border:1px solid rgba(95,211,138,.3);font-size:13px}
 .lc49-ack.bad{background:rgba(255,90,74,.08);border-color:rgba(255,90,74,.35)}.lc49-ack span{opacity:.7;font-size:11px;text-transform:uppercase;letter-spacing:.06em}.lc49-ack em{font-style:normal;font-size:11px;font-weight:700;color:#5fd38a}.lc49-ack.bad em{color:#ff6a5a}
-.lc49-feed{padding:10px 12px 0}.lc49 .cc49-r{margin:6px 0 0}.lc49-go{margin-top:12px}
+.lc49-feed{padding:10px 12px 0}.lc49 .cc49-r{margin:6px 0 0}.lc49-go{margin-top:12px}.lc49-ini{border-style:dashed!important;opacity:.92}
 .rg49c{border:1px solid rgba(243,198,107,.3)}
 .rg49-map{width:100%;height:auto;display:block;border-radius:10px}.rg49-wrap{padding:0;overflow:hidden;border-radius:10px}
 .rg49-on{animation:rg49p 1.4s ease-in-out infinite}@keyframes rg49p{50%{stroke-opacity:.35}}
@@ -404,5 +403,8 @@ PUSU!|AMBUSH!|待ち伏せ！|¡EMBOSCADA!|EMBUSCADE !|HINTERHALT!
 KAOS|CHAOS|混乱|CAOS|CHAOS|CHAOS
 TEMAS KAYBI|CONTACT LOST|連絡途絶|CONTACTO PERDIDO|CONTACT PERDU|KONTAKT VERLOREN
 KAYIP VAR|CASUALTIES|損害発生|HAY BAJAS|DES PERTES|VERLUSTE
+İnisiyatifi tim liderine bırak|Leave the initiative to the team leader|判断を班長に任せる|Deja la iniciativa al jefe de equipo|Laisse l'initiative au chef d'équipe|Initiative dem Teamführer überlassen
+Emir bekliyorum, komutanım.|Awaiting your order, sir.|命令をお待ちしています、司令官。|Espero su orden, mi comandante.|J'attends vos ordres, mon commandant.|Erwarte Ihren Befehl, Kommandant.
+Duruma göre emrini ver; tim icra eder. Emin değilsen inisiyatifi tim liderine bırak.|Give your order based on the situation; the team carries it out. If unsure, leave the initiative to the team leader.|状況に応じて命令を出せ。班が実行する。迷うなら判断を班長に任せろ。|Da tu orden según la situación; el equipo la ejecuta. Si dudas, deja la iniciativa al jefe de equipo.|Donne ton ordre selon la situation ; l'équipe l'exécute. En cas de doute, laisse l'initiative au chef d'équipe.|Gib deinen Befehl je nach Lage; das Team führt ihn aus. Im Zweifel überlass die Initiative dem Teamführer.
 Seçili bölge|Selected region|選択中の地域|Región seleccionada|Région sélectionnée|Ausgewählte Region`.split('\n').forEach(l => { const c = l.split('|'); if (c.length === 6) I18N[c[0]] = c });
 i18Add(`Başarılı harekâtlar: #|Successful operations: $1|成功した作戦：$1|Operaciones con éxito: $1|Opérations réussies : $1|Erfolgreiche Einsätze: $1`);
