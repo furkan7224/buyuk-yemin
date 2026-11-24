@@ -7,7 +7,7 @@ on:
         required: true
         default: status
         type: choice
-        options: [status, prepare, submit, iapinfo, withdraw, resubmit, release, ship, swap]
+        options: [status, prepare, submit, iapinfo, withdraw, resubmit, release, ship, swap, iapnew]
       yayin:
         description: "MANUAL / AFTER_APPROVAL"
         required: false

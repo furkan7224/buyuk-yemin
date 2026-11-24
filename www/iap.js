@@ -13,6 +13,7 @@
   var PRODUCTS=[
     {key:'premium',id:BASE+'premium',non:true},
     {key:'story',id:BASE+'hikaye',non:true},
+    {key:'acemi',id:BASE+'acemi',non:true},
     {key:'goldL',id:BASE+'altin_buyuk'},
     {key:'goldS',id:BASE+'altin_kucuk'},
     {key:'terfi',id:BASE+'terfi'}

@@ -7,22 +7,20 @@ import os, sys, time, json, hashlib
 import jwt, requests
 
 APP_ID = os.environ.get('APP_ID', '6830630846')
-VERSION = os.environ.get('VERSION', '1.1.3')
+VERSION = os.environ.get('VERSION', '1.1.4')
 MARKETING_URL = os.environ.get('MARKETING_URL', 'https://furkan7224.github.io')
 BASE = 'https://api.appstoreconnect.apple.com'
 MODE = sys.argv[1] if len(sys.argv) > 1 else 'status'
 
 WHATS_NEW = {
-    'tr': ("• Oyunun tamamı 6 dilde: Türkçe, İngilizce, Japonca, İspanyolca, Fransızca ve Almanca. Hikâyeler dahil. "
-           "Dili sağ üstteki dünya simgesinden tek dokunuşla değiştirebilirsin.\n"
-           "• İlk girişte hikâyeni yazmak artık isteğe bağlı; bir seçenek seçip hemen başlayabilirsin.\n"
-           "• Premium avantajları artık daha görünür; Premium sahiplerine hiç reklam çıkmaz.\n"
-           "• Reklam düzeni iyileştirildi, küçük hata düzeltmeleri."),
-    'en-US': ("• The whole game is now available in 6 languages: Turkish, English, Japanese, Spanish, French and German, stories included. "
-              "Switch language with one tap from the globe icon at the top right.\n"
-              "• Writing your backstory is now optional; pick an option and start right away.\n"
-              "• Premium benefits are easier to find; Premium players never see ads.\n"
-              "• Improved ad pacing and minor bug fixes."),
+    'tr': ("• Günlük ödül: Her gün gir, 7 günlük seriyi tamamla, büyük ödülü al. Premium sahipleri 2 katını alır.\n"
+           "• Yeni askerlere özel Acemi Paketi: oyun parası, 3 gün reklamsız oyun ve 3 gün 2 kat tecrübe.\n"
+           "• Mağazada Ücretsiz ve Premium karşılaştırması: Premium'un neler kazandırdığını tek bakışta gör.\n"
+           "• Küçük iyileştirmeler ve hata düzeltmeleri."),
+    'en-US': ("• Daily reward: log in every day, complete the 7-day streak and claim the big prize. Premium owners get double.\n"
+              "• New Recruit Pack for new players: in-game cash, 3 days ad-free and 3 days of double experience.\n"
+              "• Free vs Premium comparison in the store: see everything Premium gives you at a glance.\n"
+              "• Minor improvements and bug fixes."),
 }
 IAP_TEXT = {
     'altin_kucuk': {'ref': '50.000 TL Oyun Parasi',
@@ -271,6 +269,72 @@ def swap():
     ship()
 
 
+NEW_IAP = {
+    'acemi': {'ref': 'Acemi Paketi', 'type': 'NON_CONSUMABLE', 'price': '49.99',
+              'note': ('Recruit Pack (one-time, non-consumable). Shown at the top of the store ("Mağaza ve Premium" from the main menu, or the crown icon '
+                       'in the top bar) during the first 3 days after install, and as a banner on the Headquarters screen. It grants 75,000 ₺ in-game cash, '
+                       '3 days without ads and 3 days of double experience. It can be restored with "Satın alımları geri yükle".'),
+              'shot': 'magaza-paketi/iap/acemi.png',
+              'loc': {'tr': ('Acemi Paketi', '75.000 ₺ oyun parası, 3 gün reklamsız, 2x XP'),
+                      'en-US': ('Recruit Pack', '₺75,000 cash, 3 days ad-free and 2x XP'),
+                      'ja': ('新兵パック', 'ゲーム内マネー75,000₺、3日間広告なし、経験値2倍'),
+                      'es-ES': ('Pack de Recluta', '75.000 ₺, 3 días sin anuncios y XP x2'),
+                      'fr-FR': ('Pack Recrue', '75 000 ₺, 3 jours sans pub et XP x2'),
+                      'de-DE': ('Rekrutenpaket', '75.000 ₺, 3 Tage werbefrei und 2x EP')}},
+}
+
+
+def iapnew():
+    key = os.environ.get('IAP_KEY', 'acemi'); cfg = NEW_IAP[key]
+    pid_full = 'com.gulergamestudios.buyukyemin.' + key
+    iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
+    ex = [p for p in iaps if p['attributes']['productId'] == pid_full]
+    if ex:
+        iid = ex[0]['id']; log('Ürün zaten var:', key, ex[0]['attributes']['state'])
+    else:
+        iid = call('POST', '/v2/inAppPurchases', {'data': {'type': 'inAppPurchases', 'attributes': {
+            'name': cfg['ref'], 'productId': pid_full, 'inAppPurchaseType': cfg['type'], 'reviewNote': cfg['note'], 'familySharable': False},
+            'relationships': {'app': {'data': {'type': 'apps', 'id': APP_ID}}}}})['data']['id']
+        log('Ürün oluşturuldu:', key, iid)
+    # yerelleştirmeler
+    have = {l['attributes']['locale']: l for l in call('GET', f'/v2/inAppPurchases/{iid}/inAppPurchaseLocalizations?limit=20')['data']}
+    for loc, (nm, ds) in cfg['loc'].items():
+        if loc in have:
+            call('PATCH', f"/v1/inAppPurchaseLocalizations/{have[loc]['id']}", {'data': {'type': 'inAppPurchaseLocalizations', 'id': have[loc]['id'], 'attributes': {'name': nm, 'description': ds}}})
+        else:
+            call('POST', '/v1/inAppPurchaseLocalizations', {'data': {'type': 'inAppPurchaseLocalizations', 'attributes': {'locale': loc, 'name': nm, 'description': ds},
+                  'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': iid}}}}}, ok=(200, 201, 409))
+    log('Yerelleştirmeler tamam')
+    # fiyat (Türkiye taban)
+    pp = None; url = f'/v2/inAppPurchases/{iid}/pricePoints?filter[territory]=TUR&limit=200'
+    while url and not pp:
+        r = call('GET', url)
+        for x in r['data']:
+            if x['attributes'].get('customerPrice') == cfg['price']: pp = x['id']; break
+        nxt = r.get('links', {}).get('next'); url = nxt.replace(BASE, '') if nxt else None
+    if not pp: log('Fiyat noktası bulunamadı', cfg['price']); raise SystemExit(1)
+    call('POST', '/v1/inAppPurchasePriceSchedules', {'data': {'type': 'inAppPurchasePriceSchedules', 'relationships': {
+        'inAppPurchase': {'data': {'type': 'inAppPurchases', 'id': iid}}, 'baseTerritory': {'data': {'type': 'territories', 'id': 'TUR'}},
+        'manualPrices': {'data': [{'type': 'inAppPurchasePrices', 'id': '${p1}'}]}}},
+        'included': [{'type': 'inAppPurchasePrices', 'id': '${p1}', 'attributes': {'startDate': None},
+                      'relationships': {'inAppPurchasePricePoint': {'data': {'type': 'inAppPurchasePricePoints', 'id': pp}}}}]}, ok=(200, 201, 409))
+    log('Fiyat ayarlandı: TRY', cfg['price'])
+    # ülkeler
+    terr = []; url = '/v1/territories?limit=200'
+    while url:
+        r = call('GET', url); terr += [{'type': 'territories', 'id': t['id']} for t in r['data']]
+        nxt = r.get('links', {}).get('next'); url = nxt.replace(BASE, '') if nxt else None
+    call('POST', '/v1/inAppPurchaseAvailabilities', {'data': {'type': 'inAppPurchaseAvailabilities', 'attributes': {'availableInNewTerritories': True},
+          'relationships': {'inAppPurchase': {'data': {'type': 'inAppPurchases', 'id': iid}}, 'availableTerritories': {'data': terr}}}}, ok=(200, 201, 409))
+    log('Satış ülkeleri:', len(terr))
+    global SHOT
+    SHOT = cfg['shot']; upload_shot(iid); log('İnceleme görseli yüklendi')
+    if os.environ.get('IAP_SUBMIT', '1') == '1':
+        r = call('POST', '/v1/inAppPurchaseSubmissions', {'data': {'type': 'inAppPurchaseSubmissions', 'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': iid}}}}}, ok=(200, 201, 409))
+        log('İncelemeye gönderildi' if r else 'Gönderim yanıtı boş')
+    st = call('GET', f'/v2/inAppPurchases/{iid}')['data']['attributes']['state']; log('Ürün durumu:', st)
+
+
 def iapinfo():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
@@ -279,4 +343,4 @@ def iapinfo():
         ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
         log(pid, p['attributes']['state'], json.dumps([(x['id'][:8], x['attributes']) for x in ls], ensure_ascii=False))
 
-{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release, 'ship': ship, 'swap': swap}[MODE]()
+{'prepare': prepare, 'submit': submit, 'status': status, 'iapinfo': iapinfo, 'withdraw': withdraw, 'resubmit': resubmit, 'release': release, 'ship': ship, 'swap': swap, 'iapnew': iapnew}[MODE]()
