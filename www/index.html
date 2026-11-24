@@ -23069,7 +23069,7 @@ Vazgeç|Cancel|やめる|Cancelar|Annuler|Abbrechen
 Seçili bölge|Selected region|選択中の地域|Región seleccionada|Région sélectionnée|Ausgewählte Region`.split('\n').forEach(l => { const c = l.split('|'); if (c.length === 6) I18N[c[0]] = c });
 i18Add(`Başarılı harekâtlar: #|Successful operations: $1|成功した作戦：$1|Operaciones con éxito: $1|Opérations réussies : $1|Erfolgreiche Einsätze: $1`);
 
-window.BY_DBG50 = true; /* GEÇİCİ: yalnız TestFlight teşhis yapısı; gönderimden önce false yapılacak */
+window.BY_DBG50 = false; /* teşhis notları kapalı */
 /* ===== v50 · Başlık ekranında Mağaza dokunuşu (iPhone) teşhis + yedek tetikleme =====
    Bazı iPhone'larda başlıktaki Mağaza satırına dokununca tıklama olayı gelmiyor.
    1) Dokunma bittiğinde 450 ms içinde tıklama gelmezse eylemi biz tetikleriz.

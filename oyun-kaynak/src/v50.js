@@ -1,4 +1,4 @@
-window.BY_DBG50 = true; /* GEÇİCİ: yalnız TestFlight teşhis yapısı; gönderimden önce false yapılacak */
+window.BY_DBG50 = false; /* teşhis notları kapalı */
 /* ===== v50 · Başlık ekranında Mağaza dokunuşu (iPhone) teşhis + yedek tetikleme =====
    Bazı iPhone'larda başlıktaki Mağaza satırına dokununca tıklama olayı gelmiyor.
    1) Dokunma bittiğinde 450 ms içinde tıklama gelmezse eylemi biz tetikleriz.
