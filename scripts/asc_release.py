@@ -270,17 +270,17 @@ def swap():
 
 
 NEW_IAP = {
-    'acemi': {'ref': 'Acemi Paketi', 'type': 'NON_CONSUMABLE', 'price': '49.99',
+    'acemi': {'ref': 'Acemi Paketi', 'type': 'NON_CONSUMABLE', 'price': '99.99',
               'note': ('Recruit Pack (one-time, non-consumable). Shown at the top of the store ("Mağaza ve Premium" from the main menu, or the crown icon '
-                       'in the top bar) during the first 3 days after install, and as a banner on the Headquarters screen. It grants 75,000 ₺ in-game cash, '
+                       'in the top bar) during the first 3 days after install, and as a banner on the Headquarters screen. It grants 150,000 ₺ in-game cash, '
                        '3 days without ads and 3 days of double experience. It can be restored with "Satın alımları geri yükle".'),
               'shot': 'magaza-paketi/iap/acemi.png',
-              'loc': {'tr': ('Acemi Paketi', '75.000 ₺ oyun parası, 3 gün reklamsız, 2x XP'),
-                      'en-US': ('Recruit Pack', '₺75,000 cash, 3 days ad-free and 2x XP'),
-                      'ja': ('新兵パック', 'ゲーム内マネー75,000₺、3日間広告なし、経験値2倍'),
-                      'es-ES': ('Pack de Recluta', '75.000 ₺, 3 días sin anuncios y XP x2'),
-                      'fr-FR': ('Pack Recrue', '75 000 ₺, 3 jours sans pub et XP x2'),
-                      'de-DE': ('Rekrutenpaket', '75.000 ₺, 3 Tage werbefrei und 2x EP')}},
+              'loc': {'tr': ('Acemi Paketi', '150.000 ₺ oyun parası, 3 gün reklamsız, 2x XP'),
+                      'en-US': ('Recruit Pack', '₺150,000 cash, 3 days ad-free and 2x XP'),
+                      'ja': ('新兵パック', 'ゲーム内マネー150,000₺、3日間広告なし、経験値2倍'),
+                      'es-ES': ('Pack de Recluta', '150.000 ₺, 3 días sin anuncios y XP x2'),
+                      'fr-FR': ('Pack Recrue', '150 000 ₺, 3 jours sans pub et XP x2'),
+                      'de-DE': ('Rekrutenpaket', '150.000 ₺, 3 Tage werbefrei und 2x EP')}},
 }
 
 

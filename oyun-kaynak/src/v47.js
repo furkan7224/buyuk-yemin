@@ -7,9 +7,9 @@
    ===================================================================== */
 
 /* ---------- 1) ACEMİ PAKETİ ---------- */
-PROD33.acemi = {ti: 'Acemi Paketi', price: '₺49,99', type: 'non'};
+PROD33.acemi = {ti: 'Acemi Paketi', price: '₺99,99', type: 'non'};
 PID33.acemi = 'com.gulergamestudios.buyukyemin.acemi';
-const ACEMI47 = {cash: 75000, days: 3, show: 3};
+const ACEMI47 = {cash: 150000, days: 3, show: 3};
 const DAY47 = 864e5;
 (function () { try { if (!localStorage.getItem('by_first')) localStorage.setItem('by_first', String(Date.now())) } catch (e) {} })();
 function first47() { try { return +localStorage.getItem('by_first') || Date.now() } catch (e) { return Date.now() } }
@@ -55,8 +55,10 @@ function cmp47() {
   return `<div class="card cmp47"><div class="cmp47-r cmp47-hd"><span></span><span>Ücretsiz</span><span>${crown33(14)} Premium</span></div>${R.map(r => `<div class="cmp47-r"><span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span></div>`).join('')}<p class="cmp47-n">Tek seferlik ödeme · abonelik yok · ömür boyu senin</p></div>`;
 }
 { const _vs = vStore33; vStore33 = function () { let h = _vs.apply(this, arguments); if ((UI.st33 || 'p') !== 'p') return h;
-  const ins = acemiCard47(false) + (isPrem33() ? '' : cmp47());
-  if (ins) h = h.replace(/(<div class="card prem33)/, ins + '$1'); return h } }
+  /* sıra: Premium kartı → karşılaştırma → Acemi Paketi (Premium her zaman en üstte) */
+  const ins = (isPrem33() ? '' : cmp47()) + acemiCard47(false);
+  if (ins) { const i = h.indexOf('<div class="card prem33'); const j = i >= 0 ? h.indexOf('</div>', h.indexOf('pr33-n', i)) : -1;
+    if (j > 0) h = h.slice(0, j + 6) + ins + h.slice(j + 6); else if (i >= 0) h = h.slice(0, i) + ins + h.slice(i) } return h } }
 
 /* ---------- 3) GÜNLÜK GİRİŞ ÖDÜLÜ ---------- */
 const DREW47 = [10000, 15000, 20000, 25000, 30000, 40000, 100000];
@@ -142,4 +144,4 @@ Al · {}|Claim · $1|受け取る · $1|Reclamar · $1|Récupérer · $1|Abholen
 ⏱ {} kaldı|⏱ $1 left|⏱ 残り$1|⏱ quedan $1|⏱ encore $1|⏱ noch $1
 # gün # saat|$1 d $2 h|$1日$2時間|$1 d $2 h|$1 j $2 h|$1 T $2 Std
 # saat # dk|$1 h $2 min|$1時間$2分|$1 h $2 min|$1 h $2 min|$1 Std $2 Min`);
-`75.000 ₺ oyun parası|₺75,000 game money|ゲーム内マネー₺75,000|₺75.000 de dinero del juego|75 000 ₺ d'argent du jeu|75.000 ₺ Spielgeld`.split('\n').forEach(l => { const c = l.split('|'); if (c.length === 6) I18N[c[0]] = c });
+`150.000 ₺ oyun parası|₺150,000 game money|ゲーム内マネー₺150,000|₺150.000 de dinero del juego|150 000 ₺ d'argent du jeu|150.000 ₺ Spielgeld`.split('\n').forEach(l => { const c = l.split('|'); if (c.length === 6) I18N[c[0]] = c });
