@@ -271,7 +271,7 @@ def swap():
 
 NEW_IAP = {
     'acemi': {'ref': 'Acemi Paketi', 'type': 'NON_CONSUMABLE', 'price': '99.99',
-              'note': ('Recruit Pack (one-time, non-consumable). Shown at the top of the store ("Mağaza ve Premium" from the main menu, or the crown icon '
+              'note': ('Recruit Pack (one-time, non-consumable). Shown in the store directly below the Premium card ("Mağaza ve Premium" from the main menu, or the crown icon '
                        'in the top bar) during the first 3 days after install, and as a banner on the Headquarters screen. It grants 150,000 ₺ in-game cash, '
                        '3 days without ads and 3 days of double experience. It can be restored with "Satın alımları geri yükle".'),
               'shot': 'magaza-paketi/iap/acemi.png',
