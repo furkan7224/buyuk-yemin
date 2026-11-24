@@ -329,6 +329,13 @@ def iapnew():
     log('Satış ülkeleri:', len(terr))
     global SHOT
     SHOT = cfg['shot']; upload_shot(iid); log('İnceleme görseli yüklendi')
+    for _ in range(40):
+        sh = call('GET', f'/v2/inAppPurchases/{iid}/appStoreReviewScreenshot', ok=(200, 404)).get('data') or {}
+        ds = ((sh.get('attributes') or {}).get('assetDeliveryState') or {}).get('state')
+        log('Görsel durumu:', ds)
+        if ds == 'COMPLETE': break
+        if ds == 'FAILED': raise SystemExit('Görsel işlenemedi')
+        time.sleep(15)
     if os.environ.get('IAP_SUBMIT', '1') == '1':
         r = call('POST', '/v1/inAppPurchaseSubmissions', {'data': {'type': 'inAppPurchaseSubmissions', 'relationships': {'inAppPurchaseV2': {'data': {'type': 'inAppPurchases', 'id': iid}}}}}, ok=(200, 201, 409))
         log('Gönderim yanıtı:', json.dumps(r, ensure_ascii=False)[:600])
