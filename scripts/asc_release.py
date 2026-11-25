@@ -351,7 +351,11 @@ def iapinfo():
     iaps = call('GET', f'/v1/apps/{APP_ID}/inAppPurchasesV2?limit=50')['data']
     for p in iaps:
         pid = p['attributes']['productId'].split('.')[-1]
-        if pid not in IAP_TEXT: continue
+        try:
+            sch = call('GET', f"/v2/inAppPurchases/{p['id']}/iapPriceSchedule/manualPrices?include=inAppPurchasePricePoint,territory&limit=50", ok=(200, 404))
+            pp = {x['id']: x['attributes'].get('customerPrice') for x in sch.get('included', []) if x['type'] == 'inAppPurchasePricePoints'}
+            log('FIYAT', pid, p['attributes'].get('inAppPurchaseType'), p['attributes']['state'], sorted(set(pp.values()))[:6])
+        except SystemExit: pass
         ls = call('GET', f"/v2/inAppPurchases/{p['id']}/inAppPurchaseLocalizations?limit=20")['data']
         log(pid, p['attributes']['state'], json.dumps([(x['id'][:8], x['attributes']) for x in ls], ensure_ascii=False))
 
