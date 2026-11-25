@@ -7,7 +7,7 @@
   if(!(cap&&cap.isNativePlatform&&cap.isNativePlatform()))return;
 
   /* RevenueCat herkese açık SDK anahtarları (uygulamaya gömülmek için tasarlanmıştır, gizli değildir) */
-  var RC_KEYS={ios:'appl_HYEAZqoiaElJuPUTyHtawSeWJnx',android:'RC_ANDROID_KEY'};
+  var RC_KEYS={ios:'appl_HYEAZqoiaElJuPUTyHtawSeWJnx',android:'goog_pKMyzEhuKGQyBLmvTgHctNMiRMs'};
 
   var BASE='com.gulergamestudios.buyukyemin.';
   var PRODUCTS=[
