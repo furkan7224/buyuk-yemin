@@ -54,6 +54,8 @@ dependencies {
     implementation project(':capacitor-cordova-android-plugins')
     // Liftoff Monetize (Vungle) · AdMob mediasyon adaptörü
     implementation 'com.google.ads.mediation:vungle:7.8.0.0'
+    // Unity Ads · AdMob mediasyon adaptörü
+    implementation 'com.google.ads.mediation:unity:4.21.0.0'
 }
 
 apply from: 'capacitor.build.gradle'
